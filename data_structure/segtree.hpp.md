@@ -7,11 +7,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_1.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_1.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -98,8 +98,8 @@ data:
   timestamp: '2021-05-12 10:17:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_1.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
 documentation_of: data_structure/segtree.hpp
 layout: document
 redirect_from:

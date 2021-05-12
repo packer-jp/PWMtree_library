@@ -4,14 +4,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
-    title: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
-  _extendedVerifiedWith: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
+    title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/modint.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\n\
@@ -80,11 +80,11 @@ data:
   - template.hpp
   isVerificationFile: false
   path: math/modint.hpp
-  requiredBy:
-  - test/judge.yosupo.jp/Determinant_of_Matrix.cpp
+  requiredBy: []
   timestamp: '2021-05-12 10:57:52+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 redirect_from:

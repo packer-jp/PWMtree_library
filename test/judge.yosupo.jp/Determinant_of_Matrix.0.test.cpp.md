@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -14,12 +14,14 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/matrix_det
     links:
     - https://judge.yosupo.jp/problem/matrix_det
-  bundledCode: "#line 1 \"test/judge.yosupo.jp/Determinant_of_Matrix.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n#line 1 \"math/matrix.hpp\"\
+  bundledCode: "#line 1 \"test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n#line 1 \"math/matrix.hpp\"\
     \n\n\n\n#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\n#define rep(i, n) for (int i = 0; i < (int)(n); i++)\n#define all(a)\
     \ (a).begin(), (a).end()\n#define bit(n) (1LL << (n))\nusing ll = long long;\n\
@@ -107,10 +109,10 @@ data:
     \ }\n    friend istream &operator>>(istream &is, modint &a) {\n        ll val;\n\
     \        is >> val;\n        a = modint(val);\n        return is;\n    }\n   \
     \ friend ostream &operator<<(ostream &os, const modint &a) { return os << a.val;\
-    \ }\n};\n\n\n#line 4 \"test/judge.yosupo.jp/Determinant_of_Matrix.cpp\"\n\nint\
-    \ main() {\n    using mint = modint<998244353>;\n    struct mint_field {\n   \
-    \     using val_t = mint;\n        static val_t zero() { return mint(0); }\n \
-    \       static val_t one() { return mint(1); }\n    };\n    ll n;\n    cin >>\
+    \ }\n};\n\n\n#line 4 \"test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp\"\
+    \n\nint main() {\n    using mint = modint<998244353>;\n    struct mint_field {\n\
+    \        using val_t = mint;\n        static val_t zero() { return mint(0); }\n\
+    \        static val_t one() { return mint(1); }\n    };\n    ll n;\n    cin >>\
     \ n;\n    matrix<mint_field> a(n, n);\n    rep(i, n) {\n        rep(j, n) { cin\
     \ >> a[i][j]; }\n    }\n    cout << a.det() << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n#include\
@@ -124,16 +126,16 @@ data:
   - math/matrix.hpp
   - template.hpp
   - math/modint.hpp
-  isVerificationFile: false
-  path: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
+  isVerificationFile: true
+  path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   requiredBy: []
-  timestamp: '2021-05-12 10:57:52+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2021-05-12 11:07:02+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
+documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 layout: document
 redirect_from:
-- /library/test/judge.yosupo.jp/Determinant_of_Matrix.cpp
-- /library/test/judge.yosupo.jp/Determinant_of_Matrix.cpp.html
-title: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
+- /verify/test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
+- /verify/test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp.html
+title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 ---

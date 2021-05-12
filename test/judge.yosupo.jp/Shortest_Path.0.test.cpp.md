@@ -17,7 +17,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
     links:
     - https://judge.yosupo.jp/problem/shortest_path
-  bundledCode: "#line 1 \"test/judge.yosupo.jp/Shortest_Path_0.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"test/judge.yosupo.jp/Shortest_Path.0.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n#line 1 \"graph/dijkstra.hpp\"\
     \n\n\n\n#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\n#define rep(i, n) for (int i = 0; i < (int)(n); i++)\n#define all(a)\
@@ -46,7 +46,7 @@ data:
     \       prev[to] = i;\n                    pq.emplace(nd, to);\n             \
     \   }\n            }\n        }\n        return {dist, prev};\n    }\n};\n\nstruct\
     \ ll_dij {\n    using dist_t = ll;\n    using cost_t = ll;\n    static dist_t\
-    \ inf() { return LLONG_MAX; }\n};\n\n\n#line 3 \"test/judge.yosupo.jp/Shortest_Path_0.test.cpp\"\
+    \ inf() { return LLONG_MAX; }\n};\n\n\n#line 3 \"test/judge.yosupo.jp/Shortest_Path.0.test.cpp\"\
     \n\nint main() {\n    int n, m, s, t;\n    cin >> n >> m >> s >> t;\n    dijkstra<ll_dij>\
     \ dij(n);\n    while (m--) {\n        int a, b, c;\n        cin >> a >> b >> c;\n\
     \        dij.add_edge(a, b, c);\n    }\n    auto [dist, prev] = dij.get(s, 0);\n\
@@ -69,15 +69,15 @@ data:
   - graph/dijkstra.hpp
   - template.hpp
   isVerificationFile: true
-  path: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
+  path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-05-12 10:17:39+09:00'
+  timestamp: '2021-05-12 11:07:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
+documentation_of: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
 layout: document
 redirect_from:
-- /verify/test/judge.yosupo.jp/Shortest_Path_0.test.cpp
-- /verify/test/judge.yosupo.jp/Shortest_Path_0.test.cpp.html
-title: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
+- /verify/test/judge.yosupo.jp/Shortest_Path.0.test.cpp
+- /verify/test/judge.yosupo.jp/Shortest_Path.0.test.cpp.html
+title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
 ---

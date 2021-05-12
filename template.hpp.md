@@ -11,43 +11,43 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':warning:'
-    path: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
-    title: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
-    title: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
+    path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
+    title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp
+    path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
+    title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ_0.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ_0.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ_0.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_1.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_1.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_3.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_3.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I_2.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I_2.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -85,21 +85,21 @@ data:
   - math/modint.hpp
   - math/matrix.hpp
   - graph/dijkstra.hpp
-  - test/judge.yosupo.jp/Determinant_of_Matrix.cpp
   - data_structure/segtree.hpp
   - data_structure/lazy_segtree.hpp
   timestamp: '2021-05-12 10:03:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_1.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I_2.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ_0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ_0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ_0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_3.test.cpp
-  - test/judge.yosupo.jp/Shortest_Path_0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+  - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
+  - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

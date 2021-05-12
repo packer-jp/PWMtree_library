@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
-    title: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
+    path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
+    title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -69,7 +69,7 @@ data:
   timestamp: '2021-05-12 10:17:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/judge.yosupo.jp/Shortest_Path_0.test.cpp
+  - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
 redirect_from:

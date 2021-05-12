@@ -17,7 +17,7 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A
-  bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp\"\
+  bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\
     \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A\"\
     \n#line 1 \"data_structure/segtree.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\
     \n#include <bits/stdc++.h>\nusing namespace std;\n\n#define rep(i, n) for (int\
@@ -61,8 +61,8 @@ data:
     \ op(val_t a, val_t b) { return min(a, b); }\n    static val_t e() { return LLONG_MAX;\
     \ }\n};\n\nstruct sum_monoid {\n    using val_t = ll;\n    static val_t op(val_t\
     \ a, val_t b) { return a + b; }\n    static val_t e() { return 0; }\n};\n\n\n\
-    #line 3 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp\"\n\n\
-    #line 5 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp\"\nusing\
+    #line 3 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\n\n\
+    #line 5 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\nusing\
     \ namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n    vector<ll>\
     \ a(n);\n    rep(i, n) cin >> a[i];\n    segtree<sum_monoid> st(a);\n    ll ans\
     \ = LLONG_MAX;\n    rep(l, n) {\n        ll r = st.max_right(l, [&](ll x) { return\
@@ -81,15 +81,15 @@ data:
   - data_structure/segtree.hpp
   - template.hpp
   isVerificationFile: true
-  path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
+  path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
   requiredBy: []
-  timestamp: '2021-05-12 10:17:39+09:00'
+  timestamp: '2021-05-12 11:07:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
+documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
 layout: document
 redirect_from:
-- /verify/test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
-- /verify/test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp.html
-title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
+- /verify/test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
+- /verify/test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp.html
+title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
 ---

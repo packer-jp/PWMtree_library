@@ -7,23 +7,23 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ_0.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ_0.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ_0.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_3.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_3.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I_2.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I_2.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -174,12 +174,12 @@ data:
   timestamp: '2021-05-12 10:57:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I_2.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ_0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ_0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ_0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_3.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
 documentation_of: data_structure/lazy_segtree.hpp
 layout: document
 redirect_from:
