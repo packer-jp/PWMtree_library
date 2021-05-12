@@ -75,26 +75,26 @@ data:
     \       }\n                return l - size;\n            }\n            a = S::op(a,\
     \ reflect(l++));\n        } while ((l & -l) != l);\n        return n;\n    }\n\
     \    template <typename G> int min_left(int r, G g) {\n        if (r == 0) return\
-    \ 0;\n        thrust(r += size);\n        V a = S::e();\n        do {\n      \
-    \      r--;\n            while (r > 1 && r & 1) r >>= 1;\n            if (!g(S::op(reflect(r),\
-    \ a))) {\n                while (r < size) {\n                    push(r);\n \
-    \                   r = r << 1 | 1;\n                    if (g(S::op(reflect(r),\
-    \ a))) a = S::op(reflect(r--), a);\n                }\n                return\
-    \ r + 1 - size;\n            }\n            a = S::op(reflect(r), a);\n      \
-    \  } while ((r & -r) != r);\n        return 0;\n    }\n};\n\nstruct min_monoid_with_addition\
-    \ {\n    using val_t = ll;\n    using fn_t = ll;\n    static val_t op(val_t a,\
-    \ val_t b) { return min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n\
-    \    static val_t mapping(fn_t f, val_t a) { return f + a; }\n    static fn_t\
-    \ composition(fn_t f, fn_t g) { return f + g; }\n    static fn_t id() { return\
-    \ 0; }\n};\n\nstruct min_monoid_with_update {\n    using val_t = ll;\n    using\
-    \ fn_t = ll;\n    static val_t op(val_t a, val_t b) { return min(a, b); }\n  \
-    \  static val_t e() { return LLONG_MAX; }\n    static val_t mapping(fn_t f, val_t\
-    \ a) { return f == id() ? a : f; }\n    static fn_t composition(fn_t f, fn_t g)\
-    \ { return f == id() ? g : f; }\n    static fn_t id() { return -1; };\n};\n\n\
-    struct sum_monoid_with_addition {\n    using val_t = pair<ll, ll>;\n    using\
-    \ fn_t = ll;\n    static val_t op(val_t a, val_t b) { return {a.first + b.first,\
-    \ a.second + b.second}; }\n    static val_t e() { return {0, 0}; }\n    static\
-    \ val_t mapping(fn_t f, val_t a) { return {a.first + f * a.second, a.second};\
+    \ 0;\n        thrust((r += size) - 1);\n        V a = S::e();\n        do {\n\
+    \            r--;\n            while (r > 1 && r & 1) r >>= 1;\n            if\
+    \ (!g(S::op(reflect(r), a))) {\n                while (r < size) {\n         \
+    \           push(r);\n                    r = r << 1 | 1;\n                  \
+    \  if (g(S::op(reflect(r), a))) a = S::op(reflect(r--), a);\n                }\n\
+    \                return r + 1 - size;\n            }\n            a = S::op(reflect(r),\
+    \ a);\n        } while ((r & -r) != r);\n        return 0;\n    }\n};\n\nstruct\
+    \ min_monoid_with_addition {\n    using val_t = ll;\n    using fn_t = ll;\n  \
+    \  static val_t op(val_t a, val_t b) { return min(a, b); }\n    static val_t e()\
+    \ { return LLONG_MAX; }\n    static val_t mapping(fn_t f, val_t a) { return f\
+    \ + a; }\n    static fn_t composition(fn_t f, fn_t g) { return f + g; }\n    static\
+    \ fn_t id() { return 0; }\n};\n\nstruct min_monoid_with_update {\n    using val_t\
+    \ = ll;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t b) { return\
+    \ min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n    static val_t mapping(fn_t\
+    \ f, val_t a) { return f == id() ? a : f; }\n    static fn_t composition(fn_t\
+    \ f, fn_t g) { return f == id() ? g : f; }\n    static fn_t id() { return -1;\
+    \ };\n};\n\nstruct sum_monoid_with_addition {\n    using val_t = pair<ll, ll>;\n\
+    \    using fn_t = ll;\n    static val_t op(val_t a, val_t b) { return {a.first\
+    \ + b.first, a.second + b.second}; }\n    static val_t e() { return {0, 0}; }\n\
+    \    static val_t mapping(fn_t f, val_t a) { return {a.first + f * a.second, a.second};\
     \ }\n    static fn_t composition(fn_t f, fn_t g) { return f + g; }\n    static\
     \ fn_t id() { return 0; };\n};\n\nstruct sum_monoid_with_update {\n    using val_t\
     \ = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t b)\
@@ -138,26 +138,26 @@ data:
     \       }\n                return l - size;\n            }\n            a = S::op(a,\
     \ reflect(l++));\n        } while ((l & -l) != l);\n        return n;\n    }\n\
     \    template <typename G> int min_left(int r, G g) {\n        if (r == 0) return\
-    \ 0;\n        thrust(r += size);\n        V a = S::e();\n        do {\n      \
-    \      r--;\n            while (r > 1 && r & 1) r >>= 1;\n            if (!g(S::op(reflect(r),\
-    \ a))) {\n                while (r < size) {\n                    push(r);\n \
-    \                   r = r << 1 | 1;\n                    if (g(S::op(reflect(r),\
-    \ a))) a = S::op(reflect(r--), a);\n                }\n                return\
-    \ r + 1 - size;\n            }\n            a = S::op(reflect(r), a);\n      \
-    \  } while ((r & -r) != r);\n        return 0;\n    }\n};\n\nstruct min_monoid_with_addition\
-    \ {\n    using val_t = ll;\n    using fn_t = ll;\n    static val_t op(val_t a,\
-    \ val_t b) { return min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n\
-    \    static val_t mapping(fn_t f, val_t a) { return f + a; }\n    static fn_t\
-    \ composition(fn_t f, fn_t g) { return f + g; }\n    static fn_t id() { return\
-    \ 0; }\n};\n\nstruct min_monoid_with_update {\n    using val_t = ll;\n    using\
-    \ fn_t = ll;\n    static val_t op(val_t a, val_t b) { return min(a, b); }\n  \
-    \  static val_t e() { return LLONG_MAX; }\n    static val_t mapping(fn_t f, val_t\
-    \ a) { return f == id() ? a : f; }\n    static fn_t composition(fn_t f, fn_t g)\
-    \ { return f == id() ? g : f; }\n    static fn_t id() { return -1; };\n};\n\n\
-    struct sum_monoid_with_addition {\n    using val_t = pair<ll, ll>;\n    using\
-    \ fn_t = ll;\n    static val_t op(val_t a, val_t b) { return {a.first + b.first,\
-    \ a.second + b.second}; }\n    static val_t e() { return {0, 0}; }\n    static\
-    \ val_t mapping(fn_t f, val_t a) { return {a.first + f * a.second, a.second};\
+    \ 0;\n        thrust((r += size) - 1);\n        V a = S::e();\n        do {\n\
+    \            r--;\n            while (r > 1 && r & 1) r >>= 1;\n            if\
+    \ (!g(S::op(reflect(r), a))) {\n                while (r < size) {\n         \
+    \           push(r);\n                    r = r << 1 | 1;\n                  \
+    \  if (g(S::op(reflect(r), a))) a = S::op(reflect(r--), a);\n                }\n\
+    \                return r + 1 - size;\n            }\n            a = S::op(reflect(r),\
+    \ a);\n        } while ((r & -r) != r);\n        return 0;\n    }\n};\n\nstruct\
+    \ min_monoid_with_addition {\n    using val_t = ll;\n    using fn_t = ll;\n  \
+    \  static val_t op(val_t a, val_t b) { return min(a, b); }\n    static val_t e()\
+    \ { return LLONG_MAX; }\n    static val_t mapping(fn_t f, val_t a) { return f\
+    \ + a; }\n    static fn_t composition(fn_t f, fn_t g) { return f + g; }\n    static\
+    \ fn_t id() { return 0; }\n};\n\nstruct min_monoid_with_update {\n    using val_t\
+    \ = ll;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t b) { return\
+    \ min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n    static val_t mapping(fn_t\
+    \ f, val_t a) { return f == id() ? a : f; }\n    static fn_t composition(fn_t\
+    \ f, fn_t g) { return f == id() ? g : f; }\n    static fn_t id() { return -1;\
+    \ };\n};\n\nstruct sum_monoid_with_addition {\n    using val_t = pair<ll, ll>;\n\
+    \    using fn_t = ll;\n    static val_t op(val_t a, val_t b) { return {a.first\
+    \ + b.first, a.second + b.second}; }\n    static val_t e() { return {0, 0}; }\n\
+    \    static val_t mapping(fn_t f, val_t a) { return {a.first + f * a.second, a.second};\
     \ }\n    static fn_t composition(fn_t f, fn_t g) { return f + g; }\n    static\
     \ fn_t id() { return 0; };\n};\n\nstruct sum_monoid_with_update {\n    using val_t\
     \ = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t b)\
@@ -171,7 +171,7 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2021-05-12 10:17:39+09:00'
+  timestamp: '2021-05-12 10:57:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp

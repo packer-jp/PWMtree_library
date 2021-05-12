@@ -63,20 +63,20 @@ data:
     \ *this *= a.inv(); }\n    matrix &operator^=(ll p) {\n        matrix res = matrix::id(height());\n\
     \        while (p) {\n            if (p & 1) res *= *this;\n            *this\
     \ *= *this;\n            p >>= 1;\n        }\n        val.swap(res.val);\n   \
-    \     return *this;\n    }\n    matrix operator+() const { return *this; }\n \
-    \   matrix operator-() const { return matrix(height(), width()) -= *this; }\n\
-    \    bool operator==(const matrix &a) const { return val == a.val; }\n    bool\
-    \ operator!=(const matrix &a) const { return rel_ops::operator!=(*this, a); }\n\
-    \    matrix operator+(const matrix &a) const { return matrix(*this) += a; }\n\
-    \    matrix operator-(const matrix &a) const { return matrix(*this) -= a; }\n\
-    \    matrix operator*(const matrix &a) const { return matrix(*this) *= a; }\n\
-    \    matrix operator/(const matrix &a) const { return matrix(*this) /= a; }\n\
-    };\n\nstruct double_field {\n    using val_t = double;\n    static val_t zero()\
-    \ { return 0.0; }\n    static val_t one() { return 1.0; }\n};\n\ntemplate <> bool\
-    \ matrix<double_field>::place_nonzero(int i, int j) {\n    static constexpr double\
-    \ EPS = 1e-12;\n    for (int k = i + 1; k < height(); k++) {\n        if (abs(val[k][j])\
-    \ > abs(val[i][j])) {\n            val[i].swap(val[k]);\n            row_add(i,\
-    \ i, -2.0);\n        }\n    }\n    return abs(val[i][j]) > EPS;\n};\n\n\n"
+    \     return *this;\n    }\n    bool operator==(const matrix &a) const { return\
+    \ val == a.val; }\n    bool operator!=(const matrix &a) const { return rel_ops::operator!=(*this,\
+    \ a); }\n    matrix operator+() const { return *this; }\n    matrix operator-()\
+    \ const { return matrix(height(), width()) -= *this; }\n    matrix operator+(const\
+    \ matrix &a) const { return matrix(*this) += a; }\n    matrix operator-(const\
+    \ matrix &a) const { return matrix(*this) -= a; }\n    matrix operator*(const\
+    \ matrix &a) const { return matrix(*this) *= a; }\n    matrix operator/(const\
+    \ matrix &a) const { return matrix(*this) /= a; }\n};\n\nstruct double_field {\n\
+    \    using val_t = double;\n    static val_t zero() { return 0.0; }\n    static\
+    \ val_t one() { return 1.0; }\n};\n\ntemplate <> bool matrix<double_field>::place_nonzero(int\
+    \ i, int j) {\n    static constexpr double EPS = 1e-12;\n    for (int k = i +\
+    \ 1; k < height(); k++) {\n        if (abs(val[k][j]) > abs(val[i][j])) {\n  \
+    \          val[i].swap(val[k]);\n            row_add(i, i, -2.0);\n        }\n\
+    \    }\n    return abs(val[i][j]) > EPS;\n};\n\n\n"
   code: "#ifndef PWMTREE_MATRIX_HPP\n#define PWMTREE_MATRIX_HPP 1\n\n#include \"../template.hpp\"\
     \n\ntemplate <typename S> struct matrix {\n    using V = typename S::val_t;\n\
     \    vector<vector<V>> val;\n    matrix(int n, int m) : matrix(vector(n, vector(m,\
@@ -115,27 +115,27 @@ data:
     \ *= a.inv(); }\n    matrix &operator^=(ll p) {\n        matrix res = matrix::id(height());\n\
     \        while (p) {\n            if (p & 1) res *= *this;\n            *this\
     \ *= *this;\n            p >>= 1;\n        }\n        val.swap(res.val);\n   \
-    \     return *this;\n    }\n    matrix operator+() const { return *this; }\n \
-    \   matrix operator-() const { return matrix(height(), width()) -= *this; }\n\
-    \    bool operator==(const matrix &a) const { return val == a.val; }\n    bool\
-    \ operator!=(const matrix &a) const { return rel_ops::operator!=(*this, a); }\n\
-    \    matrix operator+(const matrix &a) const { return matrix(*this) += a; }\n\
-    \    matrix operator-(const matrix &a) const { return matrix(*this) -= a; }\n\
-    \    matrix operator*(const matrix &a) const { return matrix(*this) *= a; }\n\
-    \    matrix operator/(const matrix &a) const { return matrix(*this) /= a; }\n\
-    };\n\nstruct double_field {\n    using val_t = double;\n    static val_t zero()\
-    \ { return 0.0; }\n    static val_t one() { return 1.0; }\n};\n\ntemplate <> bool\
-    \ matrix<double_field>::place_nonzero(int i, int j) {\n    static constexpr double\
-    \ EPS = 1e-12;\n    for (int k = i + 1; k < height(); k++) {\n        if (abs(val[k][j])\
-    \ > abs(val[i][j])) {\n            val[i].swap(val[k]);\n            row_add(i,\
-    \ i, -2.0);\n        }\n    }\n    return abs(val[i][j]) > EPS;\n};\n\n#endif"
+    \     return *this;\n    }\n    bool operator==(const matrix &a) const { return\
+    \ val == a.val; }\n    bool operator!=(const matrix &a) const { return rel_ops::operator!=(*this,\
+    \ a); }\n    matrix operator+() const { return *this; }\n    matrix operator-()\
+    \ const { return matrix(height(), width()) -= *this; }\n    matrix operator+(const\
+    \ matrix &a) const { return matrix(*this) += a; }\n    matrix operator-(const\
+    \ matrix &a) const { return matrix(*this) -= a; }\n    matrix operator*(const\
+    \ matrix &a) const { return matrix(*this) *= a; }\n    matrix operator/(const\
+    \ matrix &a) const { return matrix(*this) /= a; }\n};\n\nstruct double_field {\n\
+    \    using val_t = double;\n    static val_t zero() { return 0.0; }\n    static\
+    \ val_t one() { return 1.0; }\n};\n\ntemplate <> bool matrix<double_field>::place_nonzero(int\
+    \ i, int j) {\n    static constexpr double EPS = 1e-12;\n    for (int k = i +\
+    \ 1; k < height(); k++) {\n        if (abs(val[k][j]) > abs(val[i][j])) {\n  \
+    \          val[i].swap(val[k]);\n            row_add(i, i, -2.0);\n        }\n\
+    \    }\n    return abs(val[i][j]) > EPS;\n};\n\n#endif"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy:
   - test/judge.yosupo.jp/Determinant_of_Matrix.cpp
-  timestamp: '2021-05-12 10:19:30+09:00'
+  timestamp: '2021-05-12 10:57:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/matrix.hpp

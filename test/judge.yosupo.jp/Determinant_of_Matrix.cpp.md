@@ -69,37 +69,37 @@ data:
     \ *= a.inv(); }\n    matrix &operator^=(ll p) {\n        matrix res = matrix::id(height());\n\
     \        while (p) {\n            if (p & 1) res *= *this;\n            *this\
     \ *= *this;\n            p >>= 1;\n        }\n        val.swap(res.val);\n   \
-    \     return *this;\n    }\n    matrix operator+() const { return *this; }\n \
-    \   matrix operator-() const { return matrix(height(), width()) -= *this; }\n\
-    \    bool operator==(const matrix &a) const { return val == a.val; }\n    bool\
-    \ operator!=(const matrix &a) const { return rel_ops::operator!=(*this, a); }\n\
-    \    matrix operator+(const matrix &a) const { return matrix(*this) += a; }\n\
-    \    matrix operator-(const matrix &a) const { return matrix(*this) -= a; }\n\
-    \    matrix operator*(const matrix &a) const { return matrix(*this) *= a; }\n\
-    \    matrix operator/(const matrix &a) const { return matrix(*this) /= a; }\n\
-    };\n\nstruct double_field {\n    using val_t = double;\n    static val_t zero()\
-    \ { return 0.0; }\n    static val_t one() { return 1.0; }\n};\n\ntemplate <> bool\
-    \ matrix<double_field>::place_nonzero(int i, int j) {\n    static constexpr double\
-    \ EPS = 1e-12;\n    for (int k = i + 1; k < height(); k++) {\n        if (abs(val[k][j])\
-    \ > abs(val[i][j])) {\n            val[i].swap(val[k]);\n            row_add(i,\
-    \ i, -2.0);\n        }\n    }\n    return abs(val[i][j]) > EPS;\n};\n\n\n#line\
-    \ 1 \"math/modint.hpp\"\n\n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate <ll MOD\
-    \ = 1000000007> struct modint {\n    ll val;\n    modint() {}\n    modint(ll val)\
-    \ : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    modint inv()\
-    \ const {\n        ll a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0)\
-    \ {\n            t = a / b;\n            swap(a -= t * b, b);\n            swap(u\
-    \ -= t * v, v);\n        }\n        return modint(u);\n    }\n    modint &operator+=(const\
-    \ modint &a) {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return\
-    \ *this;\n    }\n    modint &operator-=(const modint &a) {\n        if ((val +=\
-    \ MOD - a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
+    \     return *this;\n    }\n    bool operator==(const matrix &a) const { return\
+    \ val == a.val; }\n    bool operator!=(const matrix &a) const { return rel_ops::operator!=(*this,\
+    \ a); }\n    matrix operator+() const { return *this; }\n    matrix operator-()\
+    \ const { return matrix(height(), width()) -= *this; }\n    matrix operator+(const\
+    \ matrix &a) const { return matrix(*this) += a; }\n    matrix operator-(const\
+    \ matrix &a) const { return matrix(*this) -= a; }\n    matrix operator*(const\
+    \ matrix &a) const { return matrix(*this) *= a; }\n    matrix operator/(const\
+    \ matrix &a) const { return matrix(*this) /= a; }\n};\n\nstruct double_field {\n\
+    \    using val_t = double;\n    static val_t zero() { return 0.0; }\n    static\
+    \ val_t one() { return 1.0; }\n};\n\ntemplate <> bool matrix<double_field>::place_nonzero(int\
+    \ i, int j) {\n    static constexpr double EPS = 1e-12;\n    for (int k = i +\
+    \ 1; k < height(); k++) {\n        if (abs(val[k][j]) > abs(val[i][j])) {\n  \
+    \          val[i].swap(val[k]);\n            row_add(i, i, -2.0);\n        }\n\
+    \    }\n    return abs(val[i][j]) > EPS;\n};\n\n\n#line 1 \"math/modint.hpp\"\n\
+    \n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007> struct modint\
+    \ {\n    ll val;\n    modint() {}\n    modint(ll val) : val(val >= 0 ? val % MOD\
+    \ : (MOD - (-val) % MOD) % MOD) {}\n    modint inv() const {\n        ll a = val,\
+    \ b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n\
+    \            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
+    \        return modint(u);\n    }\n    modint &operator+=(const modint &a) {\n\
+    \        if ((val += a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n\
+    \    modint &operator-=(const modint &a) {\n        if ((val += MOD - a.val) >=\
+    \ MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
     \ modint &a) {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n\
     \    modint &operator/=(const modint &a) { return *this *= a.inv(); }\n    modint\
     \ &operator^=(ll p) {\n        modint res = 1;\n        while (p) {\n        \
     \    if (p & 1) res *= *this;\n            *this *= *this;\n            p >>=\
-    \ 1;\n        }\n        val = res.val;\n        return *this;\n    }\n    modint\
-    \ operator+() const { return *this; }\n    modint operator-() const { return modint(-val);\
-    \ }\n    bool operator==(const modint &a) const { return val == a.val; }\n   \
-    \ bool operator!=(const modint &a) const { return rel_ops::operator!=(*this, a);\
+    \ 1;\n        }\n        val = res.val;\n        return *this;\n    }\n    bool\
+    \ operator==(const modint &a) const { return val == a.val; }\n    bool operator!=(const\
+    \ modint &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+()\
+    \ const { return *this; }\n    modint operator-() const { return modint(-val);\
     \ }\n    modint operator+(const modint &a) const { return modint(*this) += a;\
     \ }\n    modint operator-(const modint &a) const { return modint(*this) -= a;\
     \ }\n    modint operator*(const modint &a) const { return modint(*this) *= a;\
@@ -127,7 +127,7 @@ data:
   isVerificationFile: false
   path: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
   requiredBy: []
-  timestamp: '2021-05-12 10:27:18+09:00'
+  timestamp: '2021-05-12 10:57:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.cpp

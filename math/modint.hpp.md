@@ -39,10 +39,10 @@ data:
     \    modint &operator/=(const modint &a) { return *this *= a.inv(); }\n    modint\
     \ &operator^=(ll p) {\n        modint res = 1;\n        while (p) {\n        \
     \    if (p & 1) res *= *this;\n            *this *= *this;\n            p >>=\
-    \ 1;\n        }\n        val = res.val;\n        return *this;\n    }\n    modint\
-    \ operator+() const { return *this; }\n    modint operator-() const { return modint(-val);\
-    \ }\n    bool operator==(const modint &a) const { return val == a.val; }\n   \
-    \ bool operator!=(const modint &a) const { return rel_ops::operator!=(*this, a);\
+    \ 1;\n        }\n        val = res.val;\n        return *this;\n    }\n    bool\
+    \ operator==(const modint &a) const { return val == a.val; }\n    bool operator!=(const\
+    \ modint &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+()\
+    \ const { return *this; }\n    modint operator-() const { return modint(-val);\
     \ }\n    modint operator+(const modint &a) const { return modint(*this) += a;\
     \ }\n    modint operator-(const modint &a) const { return modint(*this) -= a;\
     \ }\n    modint operator*(const modint &a) const { return modint(*this) *= a;\
@@ -65,15 +65,15 @@ data:
     \ modint &a) { return *this *= a.inv(); }\n    modint &operator^=(ll p) {\n  \
     \      modint res = 1;\n        while (p) {\n            if (p & 1) res *= *this;\n\
     \            *this *= *this;\n            p >>= 1;\n        }\n        val = res.val;\n\
-    \        return *this;\n    }\n    modint operator+() const { return *this; }\n\
-    \    modint operator-() const { return modint(-val); }\n    bool operator==(const\
-    \ modint &a) const { return val == a.val; }\n    bool operator!=(const modint\
-    \ &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+(const\
-    \ modint &a) const { return modint(*this) += a; }\n    modint operator-(const\
-    \ modint &a) const { return modint(*this) -= a; }\n    modint operator*(const\
-    \ modint &a) const { return modint(*this) *= a; }\n    modint operator/(const\
-    \ modint &a) const { return modint(*this) /= a; }\n    friend istream &operator>>(istream\
-    \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
+    \        return *this;\n    }\n    bool operator==(const modint &a) const { return\
+    \ val == a.val; }\n    bool operator!=(const modint &a) const { return rel_ops::operator!=(*this,\
+    \ a); }\n    modint operator+() const { return *this; }\n    modint operator-()\
+    \ const { return modint(-val); }\n    modint operator+(const modint &a) const\
+    \ { return modint(*this) += a; }\n    modint operator-(const modint &a) const\
+    \ { return modint(*this) -= a; }\n    modint operator*(const modint &a) const\
+    \ { return modint(*this) *= a; }\n    modint operator/(const modint &a) const\
+    \ { return modint(*this) /= a; }\n    friend istream &operator>>(istream &is,\
+    \ modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\n\n#endif"
   dependsOn:
@@ -82,7 +82,7 @@ data:
   path: math/modint.hpp
   requiredBy:
   - test/judge.yosupo.jp/Determinant_of_Matrix.cpp
-  timestamp: '2021-05-12 10:03:54+09:00'
+  timestamp: '2021-05-12 10:57:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/modint.hpp
