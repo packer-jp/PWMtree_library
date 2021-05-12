@@ -16,25 +16,30 @@ data:
       title: graph/dijkstra.hpp
   - name: math
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
       path: math/matrix.hpp
       title: math/matrix.hpp
+    - icon: ':warning:'
+      path: math/modint.hpp
+      title: math/modint.hpp
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
+  - name: test/judge.yosupo.jp
+    pages:
+    - icon: ':warning:'
+      path: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
+      title: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
   verificationCategories:
   - name: test/judge.yosupo.jp
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/judge.yosupo.jp/shortest_path_0.test.cpp
-      title: test/judge.yosupo.jp/shortest_path_0.test.cpp
+      path: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
+      title: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
   - name: test/onlinejudge.u-aizu.ac.jp
     pages:
-    - icon: ':x:'
-      path: test/onlinejudge.u-aizu.ac.jp/Nd_Explosion_0.test.cpp
-      title: test/onlinejudge.u-aizu.ac.jp/Nd_Explosion_0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp

@@ -1,0 +1,94 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: template.hpp
+    title: template.hpp
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
+    title: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: hpp
+  _verificationStatusIcon: ':warning:'
+  attributes:
+    links: []
+  bundledCode: "#line 1 \"math/modint.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\n\
+    #include <bits/stdc++.h>\nusing namespace std;\n\n#define rep(i, n) for (int i\
+    \ = 0; i < (int)(n); i++)\n#define all(a) (a).begin(), (a).end()\n#define bit(n)\
+    \ (1LL << (n))\nusing ll = long long;\ntemplate <typename T> using priority_queue_rev\
+    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T> T sq(T a)\
+    \ { return a * a; }\ntemplate <typename T, typename U> bool chmax(T &a, const\
+    \ U &b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n   \
+    \ return false;\n}\ntemplate <typename T, typename U> bool chmin(T &a, const U\
+    \ &b) {\n    if (b < a) {\n        a = b;\n        return true;\n    }\n    return\
+    \ false;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, vector<T>\
+    \ a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++)\
+    \ { os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n\
+    \    return os;\n}\n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007>\
+    \ struct modint {\n    ll val;\n    modint() {}\n    modint(ll val) : val(val\
+    \ >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    modint inv() const {\n\
+    \        ll a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n    \
+    \        t = a / b;\n            swap(a -= t * b, b);\n            swap(u -= t\
+    \ * v, v);\n        }\n        return modint(u);\n    }\n    modint &operator+=(const\
+    \ modint &a) {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return\
+    \ *this;\n    }\n    modint &operator-=(const modint &a) {\n        if ((val +=\
+    \ MOD - a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
+    \ modint &a) {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n\
+    \    modint &operator/=(const modint &a) { return *this *= a.inv(); }\n    modint\
+    \ &operator^=(ll p) {\n        modint res = 1;\n        while (p) {\n        \
+    \    if (p & 1) res *= *this;\n            *this *= *this;\n            p >>=\
+    \ 1;\n        }\n        val = res.val;\n        return *this;\n    }\n    modint\
+    \ operator+() const { return *this; }\n    modint operator-() const { return modint(-val);\
+    \ }\n    bool operator==(const modint &a) const { return val == a.val; }\n   \
+    \ bool operator!=(const modint &a) const { return rel_ops::operator!=(*this, a);\
+    \ }\n    modint operator+(const modint &a) const { return modint(*this) += a;\
+    \ }\n    modint operator-(const modint &a) const { return modint(*this) -= a;\
+    \ }\n    modint operator*(const modint &a) const { return modint(*this) *= a;\
+    \ }\n    modint operator/(const modint &a) const { return modint(*this) /= a;\
+    \ }\n    friend istream &operator>>(istream &is, modint &a) {\n        ll val;\n\
+    \        is >> val;\n        a = modint(val);\n        return is;\n    }\n   \
+    \ friend ostream &operator<<(ostream &os, const modint &a) { return os << a.val;\
+    \ }\n};\n\n\n"
+  code: "#ifndef PWMTREE_MODINT_HPP\n#define PWMTREE_MODINT_HPP 1\n\n#include \"../template.hpp\"\
+    \n\ntemplate <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint()\
+    \ {}\n    modint(ll val) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD)\
+    \ {}\n    modint inv() const {\n        ll a = val, b = MOD, u = 1, v = 0, t;\n\
+    \        while (b > 0) {\n            t = a / b;\n            swap(a -= t * b,\
+    \ b);\n            swap(u -= t * v, v);\n        }\n        return modint(u);\n\
+    \    }\n    modint &operator+=(const modint &a) {\n        if ((val += a.val)\
+    \ >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator-=(const\
+    \ modint &a) {\n        if ((val += MOD - a.val) >= MOD) val -= MOD;\n       \
+    \ return *this;\n    }\n    modint &operator*=(const modint &a) {\n        (val\
+    \ *= a.val) %= MOD;\n        return *this;\n    }\n    modint &operator/=(const\
+    \ modint &a) { return *this *= a.inv(); }\n    modint &operator^=(ll p) {\n  \
+    \      modint res = 1;\n        while (p) {\n            if (p & 1) res *= *this;\n\
+    \            *this *= *this;\n            p >>= 1;\n        }\n        val = res.val;\n\
+    \        return *this;\n    }\n    modint operator+() const { return *this; }\n\
+    \    modint operator-() const { return modint(-val); }\n    bool operator==(const\
+    \ modint &a) const { return val == a.val; }\n    bool operator!=(const modint\
+    \ &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+(const\
+    \ modint &a) const { return modint(*this) += a; }\n    modint operator-(const\
+    \ modint &a) const { return modint(*this) -= a; }\n    modint operator*(const\
+    \ modint &a) const { return modint(*this) *= a; }\n    modint operator/(const\
+    \ modint &a) const { return modint(*this) /= a; }\n    friend istream &operator>>(istream\
+    \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
+    \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
+    \ modint &a) { return os << a.val; }\n};\n\n#endif"
+  dependsOn:
+  - template.hpp
+  isVerificationFile: false
+  path: math/modint.hpp
+  requiredBy:
+  - test/judge.yosupo.jp/Determinant_of_Matrix.cpp
+  timestamp: '2021-05-12 10:03:54+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: math/modint.hpp
+layout: document
+redirect_from:
+- /library/math/modint.hpp
+- /library/math/modint.hpp.html
+title: math/modint.hpp
+---

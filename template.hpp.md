@@ -11,16 +11,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
-  - icon: ':x:'
+  - icon: ':warning:'
     path: math/matrix.hpp
     title: math/matrix.hpp
+  - icon: ':warning:'
+    path: math/modint.hpp
+    title: math/modint.hpp
+  - icon: ':warning:'
+    path: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
+    title: test/judge.yosupo.jp/Determinant_of_Matrix.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/shortest_path_0.test.cpp
-    title: test/judge.yosupo.jp/shortest_path_0.test.cpp
-  - icon: ':x:'
-    path: test/onlinejudge.u-aizu.ac.jp/Nd_Explosion_0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/Nd_Explosion_0.test.cpp
+    path: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
+    title: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp
@@ -45,12 +48,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I_2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I_2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+  bundledCode: "#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\n#define rep(i, n) for (int i = 0; i < (int)(n); i++)\n#define all(a)\
     \ (a).begin(), (a).end()\n#define bit(n) (1LL << (n))\nusing ll = long long;\n\
     template <typename T> using priority_queue_rev = priority_queue<T, vector<T>,\
@@ -61,10 +64,11 @@ data:
     \        return true;\n    }\n    return false;\n}\ntemplate <typename T> ostream\
     \ &operator<<(ostream &os, vector<T> a) {\n    os << \"(\";\n    for (auto itr\
     \ = a.begin(); itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ?\
-    \ \", \" : \"\"); }\n    os << \")\";\n    return os;\n}\n"
-  code: "#include <bits/stdc++.h>\nusing namespace std;\n\n#define rep(i, n) for (int\
-    \ i = 0; i < (int)(n); i++)\n#define all(a) (a).begin(), (a).end()\n#define bit(n)\
-    \ (1LL << (n))\nusing ll = long long;\ntemplate <typename T> using priority_queue_rev\
+    \ \", \" : \"\"); }\n    os << \")\";\n    return os;\n}\n\n\n"
+  code: "#ifndef PWMTREE_TEMPLATE_HPP\n#define PWMTREE_TEMPLATE_HPP 1\n\n#include\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#define rep(i, n) for (int i = 0; i\
+    \ < (int)(n); i++)\n#define all(a) (a).begin(), (a).end()\n#define bit(n) (1LL\
+    \ << (n))\nusing ll = long long;\ntemplate <typename T> using priority_queue_rev\
     \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T> T sq(T a)\
     \ { return a * a; }\ntemplate <typename T, typename U> bool chmax(T &a, const\
     \ U &b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n   \
@@ -73,28 +77,29 @@ data:
     \ false;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, vector<T>\
     \ a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++)\
     \ { os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n\
-    \    return os;\n}\n"
+    \    return os;\n}\n\n#endif"
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
   requiredBy:
+  - math/modint.hpp
   - math/matrix.hpp
   - graph/dijkstra.hpp
+  - test/judge.yosupo.jp/Determinant_of_Matrix.cpp
   - data_structure/segtree.hpp
   - data_structure/lazy_segtree.hpp
-  timestamp: '2021-05-11 17:03:13+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-05-12 10:03:54+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_1.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ_0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I_2.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ_0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ_0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/Nd_Explosion_0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ_0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_3.test.cpp
-  - test/judge.yosupo.jp/shortest_path_0.test.cpp
+  - test/judge.yosupo.jp/Shortest_Path_0.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:
