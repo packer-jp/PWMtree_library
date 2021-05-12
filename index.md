@@ -5,7 +5,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segtree.hpp
-      title: data_structure/lazy_segtree.hpp
+      title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree.hpp
       title: data_structure/segtree.hpp

@@ -17,21 +17,21 @@ data:
   bundledCode: "#line 1 \"math/modint.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\n\
     #include <bits/stdc++.h>\nusing namespace std;\n\n#define rep(i, n) for (int i\
     \ = 0; i < (int)(n); i++)\n#define all(a) (a).begin(), (a).end()\n#define bit(n)\
-    \ (1LL << (n))\nusing ll = long long;\ntemplate <typename T> using priority_queue_rev\
-    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T> T sq(T a)\
-    \ { return a * a; }\ntemplate <typename T, typename U> bool chmax(T &a, const\
-    \ U &b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n   \
-    \ return false;\n}\ntemplate <typename T, typename U> bool chmin(T &a, const U\
-    \ &b) {\n    if (b < a) {\n        a = b;\n        return true;\n    }\n    return\
-    \ false;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, vector<T>\
-    \ a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++)\
-    \ { os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n\
-    \    return os;\n}\n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007>\
-    \ struct modint {\n    ll val;\n    modint() {}\n    modint(ll val) : val(val\
-    \ >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    modint inv() const {\n\
-    \        ll a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n    \
-    \        t = a / b;\n            swap(a -= t * b, b);\n            swap(u -= t\
-    \ * v, v);\n        }\n        return modint(u);\n    }\n    modint &operator+=(const\
+    \ (1ull << (n))\nusing ll = long long;\ntemplate <typename T> using priority_queue_rev\
+    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T> T sq(const\
+    \ T &a) { return a * a; }\ntemplate <typename T, typename U> bool chmax(T &a,\
+    \ const U &b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n\
+    \    return false;\n}\ntemplate <typename T, typename U> bool chmin(T &a, const\
+    \ U &b) {\n    if (b < a) {\n        a = b;\n        return true;\n    }\n   \
+    \ return false;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
+    \ vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
+    \ itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os <<\
+    \ \")\";\n    return os;\n}\n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate <ll MOD\
+    \ = 1000000007> struct modint {\n    ll val;\n    modint() {}\n    modint(ll val)\
+    \ : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    modint inv()\
+    \ const {\n        ll a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0)\
+    \ {\n            t = a / b;\n            swap(a -= t * b, b);\n            swap(u\
+    \ -= t * v, v);\n        }\n        return modint(u);\n    }\n    modint &operator+=(const\
     \ modint &a) {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return\
     \ *this;\n    }\n    modint &operator-=(const modint &a) {\n        if ((val +=\
     \ MOD - a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
@@ -81,7 +81,7 @@ data:
   isVerificationFile: false
   path: math/modint.hpp
   requiredBy: []
-  timestamp: '2021-05-12 10:57:52+09:00'
+  timestamp: '2021-05-12 23:06:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
