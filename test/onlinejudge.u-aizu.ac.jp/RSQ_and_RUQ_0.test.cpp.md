@@ -45,7 +45,7 @@ data:
     \ lazy[i << 1 | 1]);\n        lazy[i] = S::id();\n    }\n    void thrust(int i)\
     \ {\n        for (int j = log; j; j--) push(i >> j);\n    }\n    void recalc(int\
     \ i) {\n        while (i >>= 1) val[i] = S::op(reflect(i << 1 | 0), reflect(i\
-    \ << 1 | 1));\n    }\n    void set(int i, V a) {\n        thrust(i += size);\n\
+    \ << 1 | 1));\n    }\n    void set(int i, const V &a) {\n        thrust(i += size);\n\
     \        val[i] = a;\n        lazy[i] = S::id();\n        recalc(i);\n    }\n\
     \    void apply(int l, int r, F f) {\n        thrust(l += size);\n        thrust(r\
     \ += size - 1);\n        for (int i = l, j = r + 1; i < j; i >>= 1, j >>= 1) {\n\
@@ -116,7 +116,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ_0.test.cpp
   requiredBy: []
-  timestamp: '2021-05-12 10:03:54+09:00'
+  timestamp: '2021-05-12 10:17:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ_0.test.cpp

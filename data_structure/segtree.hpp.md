@@ -35,22 +35,22 @@ data:
     \ src) : n(src.size()) {\n        for (size = 1; size < n; size <<= 1) {}\n  \
     \      val.resize(size << 1);\n        copy(all(src), val.begin() + size);\n \
     \       for (int i = size - 1; i > 0; i--) val[i] = S::op(val[i << 1 | 0], val[i\
-    \ << 1 | 1]);\n    }\n    void set(int i, V a) {\n        val[i += size] = a;\n\
-    \        while (i >>= 1) val[i] = S::op(val[i << 1 | 0], val[i << 1 | 1]);\n \
-    \   }\n    V get(int i) { return val[i + size]; }\n    V prod(int l, int r) {\n\
-    \        V a = S::e(), b = S::e();\n        for (l += size, r += size; l < r;\
-    \ l >>= 1, r >>= 1) {\n            if (l & 1) a = S::op(a, val[l++]);\n      \
-    \      if (r & 1) b = S::op(val[--r], b);\n        }\n        return S::op(a,\
-    \ b);\n    }\n    template <typename F> int max_right(int l, F f) {\n        if\
-    \ (l == n) return n;\n        V a = S::e();\n        l += size;\n        do {\n\
-    \            while (~l & 1) l >>= 1;\n            if (!f(S::op(a, val[l]))) {\n\
-    \                while (l < size) {\n                    l = l << 1;\n       \
-    \             if (f(S::op(a, val[l]))) a = S::op(a, val[l++]);\n             \
-    \   }\n                return l - size;\n            }\n            a = S::op(a,\
+    \ << 1 | 1]);\n    }\n    void set(int i, const V &a) {\n        val[i += size]\
+    \ = a;\n        while (i >>= 1) val[i] = S::op(val[i << 1 | 0], val[i << 1 | 1]);\n\
+    \    }\n    V get(int i) const { return val[i + size]; }\n    V prod(int l, int\
+    \ r) const {\n        V a = S::e(), b = S::e();\n        for (l += size, r +=\
+    \ size; l < r; l >>= 1, r >>= 1) {\n            if (l & 1) a = S::op(a, val[l++]);\n\
+    \            if (r & 1) b = S::op(val[--r], b);\n        }\n        return S::op(a,\
+    \ b);\n    }\n    template <typename F> int max_right(int l, F f) const {\n  \
+    \      if (l == n) return n;\n        V a = S::e();\n        l += size;\n    \
+    \    do {\n            while (~l & 1) l >>= 1;\n            if (!f(S::op(a, val[l])))\
+    \ {\n                while (l < size) {\n                    l = l << 1;\n   \
+    \                 if (f(S::op(a, val[l]))) a = S::op(a, val[l++]);\n         \
+    \       }\n                return l - size;\n            }\n            a = S::op(a,\
     \ val[l++]);\n        } while ((l & -l) != l);\n        return n;\n    }\n   \
-    \ template <typename F> int min_left(int r, F f) {\n        if (r == 0) return\
-    \ 0;\n        V a = S::e();\n        r += size;\n        do {\n            r--;\n\
-    \            while (r > 1 && r & 1) r >>= 1;\n            if (!f(S::op(val[r],\
+    \ template <typename F> int min_left(int r, F f) const {\n        if (r == 0)\
+    \ return 0;\n        V a = S::e();\n        r += size;\n        do {\n       \
+    \     r--;\n            while (r > 1 && r & 1) r >>= 1;\n            if (!f(S::op(val[r],\
     \ a))) {\n                while (r < size) {\n                    r = r << 1 |\
     \ 1;\n                    if (f(S::op(val[r], a))) a = S::op(val[r--], a);\n \
     \               }\n                return r + 1 - size;\n            }\n     \
@@ -65,36 +65,37 @@ data:
     \ S::e())) {}\n    segtree(vector<V> src) : n(src.size()) {\n        for (size\
     \ = 1; size < n; size <<= 1) {}\n        val.resize(size << 1);\n        copy(all(src),\
     \ val.begin() + size);\n        for (int i = size - 1; i > 0; i--) val[i] = S::op(val[i\
-    \ << 1 | 0], val[i << 1 | 1]);\n    }\n    void set(int i, V a) {\n        val[i\
-    \ += size] = a;\n        while (i >>= 1) val[i] = S::op(val[i << 1 | 0], val[i\
-    \ << 1 | 1]);\n    }\n    V get(int i) { return val[i + size]; }\n    V prod(int\
-    \ l, int r) {\n        V a = S::e(), b = S::e();\n        for (l += size, r +=\
-    \ size; l < r; l >>= 1, r >>= 1) {\n            if (l & 1) a = S::op(a, val[l++]);\n\
-    \            if (r & 1) b = S::op(val[--r], b);\n        }\n        return S::op(a,\
-    \ b);\n    }\n    template <typename F> int max_right(int l, F f) {\n        if\
-    \ (l == n) return n;\n        V a = S::e();\n        l += size;\n        do {\n\
-    \            while (~l & 1) l >>= 1;\n            if (!f(S::op(a, val[l]))) {\n\
-    \                while (l < size) {\n                    l = l << 1;\n       \
-    \             if (f(S::op(a, val[l]))) a = S::op(a, val[l++]);\n             \
-    \   }\n                return l - size;\n            }\n            a = S::op(a,\
-    \ val[l++]);\n        } while ((l & -l) != l);\n        return n;\n    }\n   \
-    \ template <typename F> int min_left(int r, F f) {\n        if (r == 0) return\
-    \ 0;\n        V a = S::e();\n        r += size;\n        do {\n            r--;\n\
-    \            while (r > 1 && r & 1) r >>= 1;\n            if (!f(S::op(val[r],\
-    \ a))) {\n                while (r < size) {\n                    r = r << 1 |\
-    \ 1;\n                    if (f(S::op(val[r], a))) a = S::op(val[r--], a);\n \
-    \               }\n                return r + 1 - size;\n            }\n     \
-    \       a = S::op(val[r], a);\n        } while ((r & -r) != r);\n        return\
-    \ 0;\n    }\n};\n\nstruct min_monoid {\n    using val_t = ll;\n    static val_t\
-    \ op(val_t a, val_t b) { return min(a, b); }\n    static val_t e() { return LLONG_MAX;\
-    \ }\n};\n\nstruct sum_monoid {\n    using val_t = ll;\n    static val_t op(val_t\
-    \ a, val_t b) { return a + b; }\n    static val_t e() { return 0; }\n};\n\n#endif"
+    \ << 1 | 0], val[i << 1 | 1]);\n    }\n    void set(int i, const V &a) {\n   \
+    \     val[i += size] = a;\n        while (i >>= 1) val[i] = S::op(val[i << 1 |\
+    \ 0], val[i << 1 | 1]);\n    }\n    V get(int i) const { return val[i + size];\
+    \ }\n    V prod(int l, int r) const {\n        V a = S::e(), b = S::e();\n   \
+    \     for (l += size, r += size; l < r; l >>= 1, r >>= 1) {\n            if (l\
+    \ & 1) a = S::op(a, val[l++]);\n            if (r & 1) b = S::op(val[--r], b);\n\
+    \        }\n        return S::op(a, b);\n    }\n    template <typename F> int\
+    \ max_right(int l, F f) const {\n        if (l == n) return n;\n        V a =\
+    \ S::e();\n        l += size;\n        do {\n            while (~l & 1) l >>=\
+    \ 1;\n            if (!f(S::op(a, val[l]))) {\n                while (l < size)\
+    \ {\n                    l = l << 1;\n                    if (f(S::op(a, val[l])))\
+    \ a = S::op(a, val[l++]);\n                }\n                return l - size;\n\
+    \            }\n            a = S::op(a, val[l++]);\n        } while ((l & -l)\
+    \ != l);\n        return n;\n    }\n    template <typename F> int min_left(int\
+    \ r, F f) const {\n        if (r == 0) return 0;\n        V a = S::e();\n    \
+    \    r += size;\n        do {\n            r--;\n            while (r > 1 && r\
+    \ & 1) r >>= 1;\n            if (!f(S::op(val[r], a))) {\n                while\
+    \ (r < size) {\n                    r = r << 1 | 1;\n                    if (f(S::op(val[r],\
+    \ a))) a = S::op(val[r--], a);\n                }\n                return r +\
+    \ 1 - size;\n            }\n            a = S::op(val[r], a);\n        } while\
+    \ ((r & -r) != r);\n        return 0;\n    }\n};\n\nstruct min_monoid {\n    using\
+    \ val_t = ll;\n    static val_t op(val_t a, val_t b) { return min(a, b); }\n \
+    \   static val_t e() { return LLONG_MAX; }\n};\n\nstruct sum_monoid {\n    using\
+    \ val_t = ll;\n    static val_t op(val_t a, val_t b) { return a + b; }\n    static\
+    \ val_t e() { return 0; }\n};\n\n#endif"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: data_structure/segtree.hpp
   requiredBy: []
-  timestamp: '2021-05-12 10:03:54+09:00'
+  timestamp: '2021-05-12 10:17:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I_1.test.cpp

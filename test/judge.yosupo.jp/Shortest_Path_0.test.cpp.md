@@ -35,10 +35,10 @@ data:
     \    using C = typename S::cost_t;\n    struct edge {\n        int to;\n     \
     \   C cost;\n        edge(int to, C cost) : to(to), cost(cost) {}\n    };\n  \
     \  vector<vector<edge>> adj;\n    dijkstra(int n) : adj(n) {}\n    void add_edge(int\
-    \ from, int to, C cost) { adj[from].emplace_back(to, cost); }\n    pair<vector<D>,\
-    \ vector<int>> get(int s, D base) {\n        vector<D> dist(adj.size(), S::inf());\n\
-    \        vector<int> prev(adj.size(), -1);\n        using P = pair<D, int>;\n\
-    \        priority_queue_rev<P> pq;\n        dist[s] = base;\n        pq.emplace(base,\
+    \ from, int to, const C &cost) { adj[from].emplace_back(to, cost); }\n    pair<vector<D>,\
+    \ vector<int>> get(int s, const D &base) const {\n        vector<D> dist(adj.size(),\
+    \ S::inf());\n        vector<int> prev(adj.size(), -1);\n        using P = pair<D,\
+    \ int>;\n        priority_queue_rev<P> pq;\n        dist[s] = base;\n        pq.emplace(base,\
     \ s);\n        while (!pq.empty()) {\n            auto [d, i] = pq.top();\n  \
     \          pq.pop();\n            if (dist[i] < d) continue;\n            for\
     \ (auto [to, cost] : adj[i]) {\n                D nd = d + cost;\n           \
@@ -71,7 +71,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Shortest_Path_0.test.cpp
   requiredBy: []
-  timestamp: '2021-05-12 10:03:54+09:00'
+  timestamp: '2021-05-12 10:17:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Shortest_Path_0.test.cpp

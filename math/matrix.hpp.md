@@ -73,8 +73,8 @@ data:
     \    matrix operator/(const matrix &a) const { return matrix(*this) /= a; }\n\
     };\n\nstruct double_field {\n    using val_t = double;\n    static val_t zero()\
     \ { return 0.0; }\n    static val_t one() { return 1.0; }\n};\n\ntemplate <> bool\
-    \ matrix<double_field>::place_nonzero(int i, int j) {\n    static double EPS =\
-    \ 1e-12;\n    for (int k = i + 1; k < height(); k++) {\n        if (abs(val[k][j])\
+    \ matrix<double_field>::place_nonzero(int i, int j) {\n    static constexpr double\
+    \ EPS = 1e-12;\n    for (int k = i + 1; k < height(); k++) {\n        if (abs(val[k][j])\
     \ > abs(val[i][j])) {\n            val[i].swap(val[k]);\n            row_add(i,\
     \ i, -2.0);\n        }\n    }\n    return abs(val[i][j]) > EPS;\n};\n\n\n"
   code: "#ifndef PWMTREE_MATRIX_HPP\n#define PWMTREE_MATRIX_HPP 1\n\n#include \"../template.hpp\"\
@@ -125,8 +125,8 @@ data:
     \    matrix operator/(const matrix &a) const { return matrix(*this) /= a; }\n\
     };\n\nstruct double_field {\n    using val_t = double;\n    static val_t zero()\
     \ { return 0.0; }\n    static val_t one() { return 1.0; }\n};\n\ntemplate <> bool\
-    \ matrix<double_field>::place_nonzero(int i, int j) {\n    static double EPS =\
-    \ 1e-12;\n    for (int k = i + 1; k < height(); k++) {\n        if (abs(val[k][j])\
+    \ matrix<double_field>::place_nonzero(int i, int j) {\n    static constexpr double\
+    \ EPS = 1e-12;\n    for (int k = i + 1; k < height(); k++) {\n        if (abs(val[k][j])\
     \ > abs(val[i][j])) {\n            val[i].swap(val[k]);\n            row_add(i,\
     \ i, -2.0);\n        }\n    }\n    return abs(val[i][j]) > EPS;\n};\n\n#endif"
   dependsOn:
@@ -135,7 +135,7 @@ data:
   path: math/matrix.hpp
   requiredBy:
   - test/judge.yosupo.jp/Determinant_of_Matrix.cpp
-  timestamp: '2021-05-12 10:03:54+09:00'
+  timestamp: '2021-05-12 10:19:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/matrix.hpp
