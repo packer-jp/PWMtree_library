@@ -85,18 +85,18 @@ data:
     \     return 0;\n    }\n};\n\nstruct min_monoid_with_addition {\n    using val_t\
     \ = ll;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t b) { return\
     \ min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n    static val_t mapping(fn_t\
-    \ f, val_t a) { return f + a; }\n    static fn_t composition(fn_t f, fn_t g) {\
-    \ return f + g; }\n    static fn_t id() { return 0; }\n};\n\nstruct min_monoid_with_update\
-    \ {\n    using val_t = ll;\n    using fn_t = ll;\n    static val_t op(val_t a,\
-    \ val_t b) { return min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n\
-    \    static val_t mapping(fn_t f, val_t a) { return f == id() ? a : f; }\n   \
-    \ static fn_t composition(fn_t f, fn_t g) { return f == id() ? g : f; }\n    static\
-    \ fn_t id() { return -1; };\n};\n\nstruct sum_monoid_with_addition {\n    using\
-    \ val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t\
-    \ b) { return {a.first + b.first, a.second + b.second}; }\n    static val_t e()\
-    \ { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return {a.first\
-    \ + f * a.second, a.second}; }\n    static fn_t composition(fn_t f, fn_t g) {\
-    \ return f + g; }\n    static fn_t id() { return 0; };\n};\n\nstruct sum_monoid_with_update\
+    \ f, val_t a) { return a == e() ? a : f + a; }\n    static fn_t composition(fn_t\
+    \ f, fn_t g) { return f + g; }\n    static fn_t id() { return 0; }\n};\n\nstruct\
+    \ min_monoid_with_update {\n    using val_t = ll;\n    using fn_t = ll;\n    static\
+    \ val_t op(val_t a, val_t b) { return min(a, b); }\n    static val_t e() { return\
+    \ LLONG_MAX; }\n    static val_t mapping(fn_t f, val_t a) { return f == id() ?\
+    \ a : f; }\n    static fn_t composition(fn_t f, fn_t g) { return f == id() ? g\
+    \ : f; }\n    static fn_t id() { return -1; };\n};\n\nstruct sum_monoid_with_addition\
+    \ {\n    using val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t\
+    \ a, val_t b) { return {a.first + b.first, a.second + b.second}; }\n    static\
+    \ val_t e() { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return\
+    \ {a.first + f * a.second, a.second}; }\n    static fn_t composition(fn_t f, fn_t\
+    \ g) { return f + g; }\n    static fn_t id() { return 0; };\n};\n\nstruct sum_monoid_with_update\
     \ {\n    using val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t\
     \ a, val_t b) { return {a.first + b.first, a.second + b.second}; }\n    static\
     \ val_t e() { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return\
@@ -147,23 +147,23 @@ data:
     \ a);\n        } while ((r & -r) != r);\n        return 0;\n    }\n};\n\nstruct\
     \ min_monoid_with_addition {\n    using val_t = ll;\n    using fn_t = ll;\n  \
     \  static val_t op(val_t a, val_t b) { return min(a, b); }\n    static val_t e()\
-    \ { return LLONG_MAX; }\n    static val_t mapping(fn_t f, val_t a) { return f\
-    \ + a; }\n    static fn_t composition(fn_t f, fn_t g) { return f + g; }\n    static\
-    \ fn_t id() { return 0; }\n};\n\nstruct min_monoid_with_update {\n    using val_t\
-    \ = ll;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t b) { return\
-    \ min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n    static val_t mapping(fn_t\
-    \ f, val_t a) { return f == id() ? a : f; }\n    static fn_t composition(fn_t\
-    \ f, fn_t g) { return f == id() ? g : f; }\n    static fn_t id() { return -1;\
-    \ };\n};\n\nstruct sum_monoid_with_addition {\n    using val_t = pair<ll, ll>;\n\
-    \    using fn_t = ll;\n    static val_t op(val_t a, val_t b) { return {a.first\
-    \ + b.first, a.second + b.second}; }\n    static val_t e() { return {0, 0}; }\n\
-    \    static val_t mapping(fn_t f, val_t a) { return {a.first + f * a.second, a.second};\
-    \ }\n    static fn_t composition(fn_t f, fn_t g) { return f + g; }\n    static\
-    \ fn_t id() { return 0; };\n};\n\nstruct sum_monoid_with_update {\n    using val_t\
-    \ = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t b)\
-    \ { return {a.first + b.first, a.second + b.second}; }\n    static val_t e() {\
-    \ return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return f == id()\
-    \ ? a : make_pair(f * a.second, a.second); }\n    static fn_t composition(fn_t\
+    \ { return LLONG_MAX; }\n    static val_t mapping(fn_t f, val_t a) { return a\
+    \ == e() ? a : f + a; }\n    static fn_t composition(fn_t f, fn_t g) { return\
+    \ f + g; }\n    static fn_t id() { return 0; }\n};\n\nstruct min_monoid_with_update\
+    \ {\n    using val_t = ll;\n    using fn_t = ll;\n    static val_t op(val_t a,\
+    \ val_t b) { return min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n\
+    \    static val_t mapping(fn_t f, val_t a) { return f == id() ? a : f; }\n   \
+    \ static fn_t composition(fn_t f, fn_t g) { return f == id() ? g : f; }\n    static\
+    \ fn_t id() { return -1; };\n};\n\nstruct sum_monoid_with_addition {\n    using\
+    \ val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t\
+    \ b) { return {a.first + b.first, a.second + b.second}; }\n    static val_t e()\
+    \ { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return {a.first\
+    \ + f * a.second, a.second}; }\n    static fn_t composition(fn_t f, fn_t g) {\
+    \ return f + g; }\n    static fn_t id() { return 0; };\n};\n\nstruct sum_monoid_with_update\
+    \ {\n    using val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t\
+    \ a, val_t b) { return {a.first + b.first, a.second + b.second}; }\n    static\
+    \ val_t e() { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return\
+    \ f == id() ? a : make_pair(f * a.second, a.second); }\n    static fn_t composition(fn_t\
     \ f, fn_t g) { return f == id() ? g : f; }\n    static fn_t id() { return LLONG_MIN;\
     \ };\n};\n\n#endif"
   dependsOn:
@@ -171,7 +171,7 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2021-05-12 23:06:51+09:00'
+  timestamp: '2021-05-15 23:16:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
@@ -186,17 +186,23 @@ title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
 ---
 
 - モノイド$V$と作用素モノイド$F$
-- mapping(op(v_0, v_1)) = op(mapping(v_0), mapping(v_1)))
+- $mapping(op(v_0, v_1)) = op(mapping(v_0), mapping(v_1)))$
 - $mapping(f_0, mapping(f_1, v)) = mapping(composition(f_0, f_1), v)$
-
+- 長さ$n$の$V$の元の列に対する処理を行う
 - $set(i, a)$  
+時間計算量: $O(log n)$  
+要素$i$を$a$に置き換える。
 
 - $apply(l, r, f)$
+時間計算量: $O(log n)$
+要素列$[l, r)$に$f$を$mapping$する。
 
 - $get(i)$
+$i$番目の要素を得る。
 
 - $prod(l, r)$
+要素列$[l, r)$について、順序を変えずに$op$したものを返す。
 
-- $max_right(l, g)$
+- $max\_right(l, g)$
 
-- $min_left(r, g)$
+- $min\_left(r, g)$

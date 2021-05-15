@@ -75,18 +75,18 @@ data:
     \     return 0;\n    }\n};\n\nstruct min_monoid_with_addition {\n    using val_t\
     \ = ll;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t b) { return\
     \ min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n    static val_t mapping(fn_t\
-    \ f, val_t a) { return f + a; }\n    static fn_t composition(fn_t f, fn_t g) {\
-    \ return f + g; }\n    static fn_t id() { return 0; }\n};\n\nstruct min_monoid_with_update\
-    \ {\n    using val_t = ll;\n    using fn_t = ll;\n    static val_t op(val_t a,\
-    \ val_t b) { return min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n\
-    \    static val_t mapping(fn_t f, val_t a) { return f == id() ? a : f; }\n   \
-    \ static fn_t composition(fn_t f, fn_t g) { return f == id() ? g : f; }\n    static\
-    \ fn_t id() { return -1; };\n};\n\nstruct sum_monoid_with_addition {\n    using\
-    \ val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t\
-    \ b) { return {a.first + b.first, a.second + b.second}; }\n    static val_t e()\
-    \ { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return {a.first\
-    \ + f * a.second, a.second}; }\n    static fn_t composition(fn_t f, fn_t g) {\
-    \ return f + g; }\n    static fn_t id() { return 0; };\n};\n\nstruct sum_monoid_with_update\
+    \ f, val_t a) { return a == e() ? a : f + a; }\n    static fn_t composition(fn_t\
+    \ f, fn_t g) { return f + g; }\n    static fn_t id() { return 0; }\n};\n\nstruct\
+    \ min_monoid_with_update {\n    using val_t = ll;\n    using fn_t = ll;\n    static\
+    \ val_t op(val_t a, val_t b) { return min(a, b); }\n    static val_t e() { return\
+    \ LLONG_MAX; }\n    static val_t mapping(fn_t f, val_t a) { return f == id() ?\
+    \ a : f; }\n    static fn_t composition(fn_t f, fn_t g) { return f == id() ? g\
+    \ : f; }\n    static fn_t id() { return -1; };\n};\n\nstruct sum_monoid_with_addition\
+    \ {\n    using val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t\
+    \ a, val_t b) { return {a.first + b.first, a.second + b.second}; }\n    static\
+    \ val_t e() { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return\
+    \ {a.first + f * a.second, a.second}; }\n    static fn_t composition(fn_t f, fn_t\
+    \ g) { return f + g; }\n    static fn_t id() { return 0; };\n};\n\nstruct sum_monoid_with_update\
     \ {\n    using val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t\
     \ a, val_t b) { return {a.first + b.first, a.second + b.second}; }\n    static\
     \ val_t e() { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return\
@@ -116,7 +116,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
   requiredBy: []
-  timestamp: '2021-05-12 23:06:51+09:00'
+  timestamp: '2021-05-15 23:16:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
