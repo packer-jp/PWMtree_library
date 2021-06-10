@@ -176,10 +176,10 @@ data:
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
 documentation_of: data_structure/lazy_segtree.hpp
 layout: document
 title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
