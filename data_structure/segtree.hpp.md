@@ -99,8 +99,8 @@ data:
   timestamp: '2021-05-12 23:06:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
 documentation_of: data_structure/segtree.hpp
 layout: document
 redirect_from:
