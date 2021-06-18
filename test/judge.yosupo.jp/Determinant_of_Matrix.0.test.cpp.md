@@ -47,7 +47,7 @@ data:
     \            if (val[k][j] != S::zero()) {\n                if (k > i) row_add(i,\
     \ k, S::one());\n                break;\n            }\n        }\n        return\
     \ val[i][j] != S::zero();\n    }\n    matrix upper_triangular() const {\n    \
-    \    matrix ret(val);\n        for (int i = 0, j = 0; i < height() && j < width();\
+    \    matrix ret(*this);\n        for (int i = 0, j = 0; i < height() && j < width();\
     \ j++) {\n            if (!ret.place_nonzero(i, j)) continue;\n            for\
     \ (int k = i + 1; k < height(); k++) { ret.row_add(k, i, -ret[k][j] / ret[i][j]);\
     \ }\n            i++;\n        }\n        return ret;\n    }\n    V det() const\
@@ -61,11 +61,11 @@ data:
     \ -ut[j][i] / ut[i][i]);\n        }\n        matrix ret(height(), width());\n\
     \        rep(i, height()) {\n            rep(j, width()) { ret[i][j] = ut[i][width()\
     \ + j]; }\n        }\n        return ret;\n    }\n    matrix pow(ll p) const {\n\
-    \        matrix res = matrix::id(height()), mul = matrix(*this);\n        while\
-    \ (p) {\n            if (p & 1) res *= mul;\n            mul *= mul;\n       \
-    \     p >>= 1;\n        }\n        return res;\n    }\n    matrix &operator+=(const\
-    \ matrix &a) {\n        rep(i, height()) {\n            rep(j, width()) { val[i][j]\
-    \ += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix &operator-=(const\
+    \        matrix res = matrix::id(height()), mul(*this);\n        while (p) {\n\
+    \            if (p & 1) res *= mul;\n            mul *= mul;\n            p >>=\
+    \ 1;\n        }\n        return res;\n    }\n    matrix &operator+=(const matrix\
+    \ &a) {\n        rep(i, height()) {\n            rep(j, width()) { val[i][j] +=\
+    \ a[i][j]; }\n        }\n        return *this;\n    }\n    matrix &operator-=(const\
     \ matrix &a) {\n        rep(i, height()) {\n            rep(j, width()) { val[i][j]\
     \ -= a[i][j]; }\n        }\n        return *this;\n    }\n    matrix &operator*=(const\
     \ matrix &a) {\n        matrix res(height(), a.width());\n        rep(i, height())\
@@ -129,7 +129,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   requiredBy: []
-  timestamp: '2021-06-18 11:19:28+09:00'
+  timestamp: '2021-06-18 11:22:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
