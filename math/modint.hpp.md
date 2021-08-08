@@ -1,11 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: math/convolution.hpp
+    title: math/convolution.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Convolution.0.test.cpp
+    title: test/judge.yosupo.jp/Convolution.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Convolution.0.test.cpp
+    title: test/judge.yosupo.jp/Convolution.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
@@ -28,38 +37,13 @@ data:
     \ itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os <<\
     \ \")\";\n    return os;\n}\n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate <ll MOD\
     \ = 1000000007> struct modint {\n    ll val;\n    modint(ll val = 0) : val(val\
-    \ >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    modint inv() const {\n\
-    \        ll a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n    \
-    \        t = a / b;\n            swap(a -= t * b, b);\n            swap(u -= t\
-    \ * v, v);\n        }\n        return modint(u);\n    }\n    modint pow(ll p)\
-    \ const {\n        modint res = 1, mul = val;\n        while (p) {\n         \
-    \   if (p & 1) res *= mul;\n            mul *= mul;\n            p >>= 1;\n  \
-    \      }\n        return res;\n    }\n    modint &operator+=(const modint &a)\
-    \ {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return *this;\n \
-    \   }\n    modint &operator-=(const modint &a) {\n        if ((val += MOD - a.val)\
-    \ >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
-    \ modint &a) {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n\
-    \    modint &operator/=(const modint &a) { return *this *= a.inv(); }\n    bool\
-    \ operator==(const modint &a) const { return val == a.val; }\n    bool operator!=(const\
-    \ modint &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+()\
-    \ const { return *this; }\n    modint operator-() const { return modint(-val);\
-    \ }\n    modint operator+(const modint &a) const { return modint(*this) += a;\
-    \ }\n    modint operator-(const modint &a) const { return modint(*this) -= a;\
-    \ }\n    modint operator*(const modint &a) const { return modint(*this) *= a;\
-    \ }\n    modint operator/(const modint &a) const { return modint(*this) /= a;\
-    \ }\n    friend istream &operator>>(istream &is, modint &a) {\n        ll val;\n\
-    \        is >> val;\n        a = modint(val);\n        return is;\n    }\n   \
-    \ friend ostream &operator<<(ostream &os, const modint &a) { return os << a.val;\
-    \ }\n};\n\n\n"
-  code: "#ifndef PWMTREE_MODINT_HPP\n#define PWMTREE_MODINT_HPP 1\n\n#include \"../template.hpp\"\
-    \n\ntemplate <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll\
-    \ val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    modint\
-    \ inv() const {\n        ll a = val, b = MOD, u = 1, v = 0, t;\n        while\
-    \ (b > 0) {\n            t = a / b;\n            swap(a -= t * b, b);\n      \
-    \      swap(u -= t * v, v);\n        }\n        return modint(u);\n    }\n   \
-    \ modint pow(ll p) const {\n        modint res = 1, mul = val;\n        while\
-    \ (p) {\n            if (p & 1) res *= mul;\n            mul *= mul;\n       \
-    \     p >>= 1;\n        }\n        return res;\n    }\n    modint &operator+=(const\
+    \ >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static ll mod() { return\
+    \ MOD; }\n    modint inv() const {\n        ll a = val, b = MOD, u = 1, v = 0,\
+    \ t;\n        while (b > 0) {\n            t = a / b;\n            swap(a -= t\
+    \ * b, b);\n            swap(u -= t * v, v);\n        }\n        return modint(u);\n\
+    \    }\n    modint pow(ll p) const {\n        modint res = 1, mul = val;\n   \
+    \     while (p) {\n            if (p & 1) res *= mul;\n            mul *= mul;\n\
+    \            p >>= 1;\n        }\n        return res;\n    }\n    modint &operator+=(const\
     \ modint &a) {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return\
     \ *this;\n    }\n    modint &operator-=(const modint &a) {\n        if ((val +=\
     \ MOD - a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
@@ -75,16 +59,44 @@ data:
     \ }\n    friend istream &operator>>(istream &is, modint &a) {\n        ll val;\n\
     \        is >> val;\n        a = modint(val);\n        return is;\n    }\n   \
     \ friend ostream &operator<<(ostream &os, const modint &a) { return os << a.val;\
-    \ }\n};\n\n#endif"
+    \ }\n};\n\n\n"
+  code: "#ifndef PWMTREE_MODINT_HPP\n#define PWMTREE_MODINT_HPP 1\n\n#include \"../template.hpp\"\
+    \n\ntemplate <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll\
+    \ val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static\
+    \ ll mod() { return MOD; }\n    modint inv() const {\n        ll a = val, b =\
+    \ MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n   \
+    \         swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
+    \        return modint(u);\n    }\n    modint pow(ll p) const {\n        modint\
+    \ res = 1, mul = val;\n        while (p) {\n            if (p & 1) res *= mul;\n\
+    \            mul *= mul;\n            p >>= 1;\n        }\n        return res;\n\
+    \    }\n    modint &operator+=(const modint &a) {\n        if ((val += a.val)\
+    \ >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator-=(const\
+    \ modint &a) {\n        if ((val += MOD - a.val) >= MOD) val -= MOD;\n       \
+    \ return *this;\n    }\n    modint &operator*=(const modint &a) {\n        (val\
+    \ *= a.val) %= MOD;\n        return *this;\n    }\n    modint &operator/=(const\
+    \ modint &a) { return *this *= a.inv(); }\n    bool operator==(const modint &a)\
+    \ const { return val == a.val; }\n    bool operator!=(const modint &a) const {\
+    \ return rel_ops::operator!=(*this, a); }\n    modint operator+() const { return\
+    \ *this; }\n    modint operator-() const { return modint(-val); }\n    modint\
+    \ operator+(const modint &a) const { return modint(*this) += a; }\n    modint\
+    \ operator-(const modint &a) const { return modint(*this) -= a; }\n    modint\
+    \ operator*(const modint &a) const { return modint(*this) *= a; }\n    modint\
+    \ operator/(const modint &a) const { return modint(*this) /= a; }\n    friend\
+    \ istream &operator>>(istream &is, modint &a) {\n        ll val;\n        is >>\
+    \ val;\n        a = modint(val);\n        return is;\n    }\n    friend ostream\
+    \ &operator<<(ostream &os, const modint &a) { return os << a.val; }\n};\n\n#endif"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: math/modint.hpp
-  requiredBy: []
-  timestamp: '2021-06-18 11:19:28+09:00'
+  requiredBy:
+  - math/convolution.hpp
+  timestamp: '2021-08-08 16:58:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
+  - test/judge.yosupo.jp/Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Convolution.0.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 redirect_from:

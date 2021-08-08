@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
@@ -31,11 +31,11 @@ data:
     \ ostream &operator<<(ostream &os, const vector<T> &a) {\n    os << \"(\";\n \
     \   for (auto itr = a.begin(); itr != a.end(); itr++) { os << *itr << (next(itr)\
     \ != a.end() ? \", \" : \"\"); }\n    os << \")\";\n    return os;\n}\n\n\n#line\
-    \ 5 \"graph/dijkstra.hpp\"\n\ntemplate <typename S> struct dijkstra {\n    using\
-    \ D = typename S::dist_t;\n    using C = typename S::cost_t;\n    struct edge\
-    \ {\n        int to;\n        C cost;\n        edge(int to, C cost) : to(to),\
-    \ cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n    dijkstra(int n) :\
-    \ adj(n) {}\n    void add_edge(int from, int to, const C &cost) { adj[from].emplace_back(to,\
+    \ 5 \"graph/dijkstra.hpp\"\n\ntemplate <class S> struct dijkstra {\n    using\
+    \ D = class S::dist_t;\n    using C = class S::cost_t;\n    struct edge {\n  \
+    \      int to;\n        C cost;\n        edge(int to, C cost) : to(to), cost(cost)\
+    \ {}\n    };\n    vector<vector<edge>> adj;\n    dijkstra(int n) : adj(n) {}\n\
+    \    void add_edge(int from, int to, const C &cost) { adj[from].emplace_back(to,\
     \ cost); }\n    pair<vector<D>, vector<int>> get(int s, const D &base) const {\n\
     \        vector<D> dist(adj.size(), S::inf());\n        vector<int> prev(adj.size(),\
     \ -1);\n        using P = pair<D, int>;\n        priority_queue_rev<P> pq;\n \
@@ -72,8 +72,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-05-12 23:06:51+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-08-08 17:00:54+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
 layout: document
