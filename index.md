@@ -3,15 +3,15 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segtree.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segtree.hpp
       title: data_structure/segtree.hpp
   - name: graph
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
   - name: math
@@ -30,7 +30,7 @@ data:
       title: math/modint.hpp
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   verificationCategories:
@@ -47,28 +47,28 @@ data:
       title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   - name: test/onlinejudge.u-aizu.ac.jp
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
 layout: toppage

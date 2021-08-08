@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -28,7 +28,7 @@ data:
     \ {\n        ll e_ = e;\n        for (ll b : basis) chmin(e, e ^ b);\n       \
     \ if (e) basis.push_back(e), ret.push_back(e_);\n    }\n    return ret;\n}\n\n\
     \n"
-  code: "#ifndef PWMTREE_XOR_BASIS_HPP\n#define PWMTREE_XOR_BASIS_HPP 1\n\n#include\
+  code: "#ifndef PWMTREE_INNER_BASIS_HPP\n#define PWMTREE_INNER_BASIS_HPP 1\n\n#include\
     \ \"../template.hpp\"\n\nvector<ll> inner_basis(vector<ll> a) {\n    vector<ll>\
     \ basis, ret;\n    for (ll e : a) {\n        ll e_ = e;\n        for (ll b : basis)\
     \ chmin(e, e ^ b);\n        if (e) basis.push_back(e), ret.push_back(e_);\n  \
@@ -38,7 +38,7 @@ data:
   isVerificationFile: false
   path: math/inner_basis.hpp
   requiredBy: []
-  timestamp: '2021-08-08 16:58:14+09:00'
+  timestamp: '2021-08-08 17:11:33+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/inner_basis.hpp

@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -61,22 +61,23 @@ data:
     \ }\n    friend istream &operator>>(istream &is, modint &a) {\n        ll val;\n\
     \        is >> val;\n        a = modint(val);\n        return is;\n    }\n   \
     \ friend ostream &operator<<(ostream &os, const modint &a) { return os << a.val;\
-    \ }\n};\n\n\n#line 6 \"math/convolution.hpp\"\n\ntemplate <class mint> void fft(vector<mint>\
-    \ &a, mint wn) {\n    ll n = a.size(), m = n >> 1;\n    vector<mint> b(n);\n \
-    \   for (ll i = 1; i < n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint wj =\
-    \ 1;\n        for (ll j = 0; j < m; j += i, wj *= wn) {\n            rep(k, i)\
-    \ {\n                b[(j << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n      \
-    \          b[(j << 1) + k + i] = (a[j + k] - a[j + k + m]) * wj;\n           \
-    \ }\n        }\n    }\n}\n\ntemplate <class mint, ll ROOT> vector<mint> convolution_friendly(vector<mint>\
-    \ a, vector<mint> b) {\n    ll n_ = a.size() + b.size() - 1, n;\n    for (n =\
-    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    mint wn = mint(ROOT).pow((mint::mod()\
-    \ - 1) / n);\n    fft(a, wn), fft(b, wn);\n    rep(i, n) a[i] *= b[i];\n    fft(a,\
-    \ wn.inv());\n    mint ninv = mint(n).inv();\n    a.resize(n_);\n    rep(i, n_)\
-    \ a[i] *= ninv;\n    return a;\n}\n\n\n#line 4 \"test/judge.yosupo.jp/Convolution.0.test.cpp\"\
-    \n\nint main() {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >>\
-    \ n >> m;\n    vector<mint> a(n), b(m);\n    rep(i, n) cin >> a[i];\n    rep(i,\
-    \ m) cin >> b[i];\n    vector<mint> c = convolution_friendly<mint, 3>(a, b);\n\
-    \    for (mint ci : c) { cout << ci << '\\n'; }\n}\n"
+    \ }\n};\n\n\n#line 6 \"math/convolution.hpp\"\n\ntemplate <typename mint> void\
+    \ fft(vector<mint> &a, mint wn) {\n    ll n = a.size(), m = n >> 1;\n    vector<mint>\
+    \ b(n);\n    for (ll i = 1; i < n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint\
+    \ wj = 1;\n        for (ll j = 0; j < m; j += i, wj *= wn) {\n            rep(k,\
+    \ i) {\n                b[(j << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n   \
+    \             b[(j << 1) + k + i] = (a[j + k] - a[j + k + m]) * wj;\n        \
+    \    }\n        }\n    }\n}\n\ntemplate <typename mint, ll ROOT> vector<mint>\
+    \ convolution_friendly(vector<mint> a, vector<mint> b) {\n    ll n_ = a.size()\
+    \ + b.size() - 1, n;\n    for (n = 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n\
+    \    mint wn = mint(ROOT).pow((mint::mod() - 1) / n);\n    fft(a, wn), fft(b,\
+    \ wn);\n    rep(i, n) a[i] *= b[i];\n    fft(a, wn.inv());\n    mint ninv = mint(n).inv();\n\
+    \    a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n    return a;\n}\n\n\n#line\
+    \ 4 \"test/judge.yosupo.jp/Convolution.0.test.cpp\"\n\nint main() {\n    using\
+    \ mint = modint<998244353>;\n    ll n, m;\n    cin >> n >> m;\n    vector<mint>\
+    \ a(n), b(m);\n    rep(i, n) cin >> a[i];\n    rep(i, m) cin >> b[i];\n    vector<mint>\
+    \ c = convolution_friendly<mint, 3>(a, b);\n    for (mint ci : c) { cout << ci\
+    \ << '\\n'; }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n#include\
     \ \"../../math/convolution.hpp\"\n#include \"../../math/modint.hpp\"\n\nint main()\
     \ {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >> n >> m;\n \
@@ -91,7 +92,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-08 16:58:14+09:00'
+  timestamp: '2021-08-08 17:11:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Convolution.0.test.cpp
