@@ -8,35 +8,31 @@ data:
     path: math/modint.hpp
     title: math/modint.hpp
   - icon: ':question:'
-    path: math/modint.hpp
-    title: math/modint.hpp
-  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+    title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  _isVerificationFailed: true
+  _pathExtension: hpp
+  _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
-    links:
-    - https://judge.yosupo.jp/problem/convolution_mod
-  bundledCode: "#line 1 \"test/judge.yosupo.jp/Convolution.0.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/convolution_mod\"\n#line 1 \"math/convolution.hpp\"\
-    \n\n\n\n#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\n\n#define rep(i, n) for (int i = 0; i < (int)(n); i++)\n#define all(a)\
-    \ (a).begin(), (a).end()\n#define bit(n) (1ull << (n))\nusing ll = long long;\n\
-    template <typename T> using priority_queue_rev = priority_queue<T, vector<T>,\
-    \ greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a * a; }\ntemplate\
-    \ <typename T, typename U> bool chmax(T &a, const U &b) {\n    if (a < b) {\n\
-    \        a = b;\n        return true;\n    }\n    return false;\n}\ntemplate <typename\
-    \ T, typename U> bool chmin(T &a, const U &b) {\n    if (b < a) {\n        a =\
-    \ b;\n        return true;\n    }\n    return false;\n}\ntemplate <typename T>\
-    \ ostream &operator<<(ostream &os, const vector<T> &a) {\n    os << \"(\";\n \
-    \   for (auto itr = a.begin(); itr != a.end(); itr++) { os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \"\"); }\n    os << \")\";\n    return os;\n}\n\n\n#line\
+    links: []
+  bundledCode: "#line 1 \"math/fps.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\n#include\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#define rep(i, n) for (int i = 0; i\
+    \ < (int)(n); i++)\n#define all(a) (a).begin(), (a).end()\n#define bit(n) (1ull\
+    \ << (n))\nusing ll = long long;\ntemplate <typename T> using priority_queue_rev\
+    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T> T sq(const\
+    \ T &a) { return a * a; }\ntemplate <typename T, typename U> bool chmax(T &a,\
+    \ const U &b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n\
+    \    return false;\n}\ntemplate <typename T, typename U> bool chmin(T &a, const\
+    \ U &b) {\n    if (b < a) {\n        a = b;\n        return true;\n    }\n   \
+    \ return false;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
+    \ vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
+    \ itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os <<\
+    \ \")\";\n    return os;\n}\n\n\n#line 1 \"math/convolution.hpp\"\n\n\n\n#line\
     \ 1 \"math/modint.hpp\"\n\n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate <ll MOD\
     \ = 1000000007> struct modint {\n    ll val;\n    modint(ll val = 0) : val(val\
     \ >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static ll mod() { return\
@@ -73,32 +69,39 @@ data:
     \    mint wn = mint(ROOT).pow((mint::mod() - 1) / n);\n    fft(a, wn), fft(b,\
     \ wn);\n    rep(i, n) a[i] *= b[i];\n    fft(a, wn.inv());\n    mint ninv = mint(n).inv();\n\
     \    a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n    return a;\n}\n\n\n#line\
-    \ 4 \"test/judge.yosupo.jp/Convolution.0.test.cpp\"\n\nint main() {\n    using\
-    \ mint = modint<998244353>;\n    ll n, m;\n    cin >> n >> m;\n    vector<mint>\
-    \ a(n), b(m);\n    rep(i, n) cin >> a[i];\n    rep(i, m) cin >> b[i];\n    vector<mint>\
-    \ c = convolution_friendly<mint, 3>(a, b);\n    for (mint ci : c) { cout << ci\
-    \ << '\\n'; }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n#include\
-    \ \"../../math/convolution.hpp\"\n#include \"../../math/modint.hpp\"\n\nint main()\
-    \ {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >> n >> m;\n \
-    \   vector<mint> a(n), b(m);\n    rep(i, n) cin >> a[i];\n    rep(i, m) cin >>\
-    \ b[i];\n    vector<mint> c = convolution_friendly<mint, 3>(a, b);\n    for (mint\
-    \ ci : c) { cout << ci << '\\n'; }\n}"
+    \ 7 \"math/fps.hpp\"\n\ntemplate <typename mint> struct fps : vector<mint> {\n\
+    \    fps(mint a) {\n        this->resize(1);\n        *(this)[0] = a;\n    }\n\
+    \    fps &operator+=(const fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n\
+    \        rep(i, a.size())(*this)[i] += a[i];\n        return *this;\n    }\n \
+    \   fps &operator-=(const fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n\
+    \        rep(i, a.size())(*this)[i] -= a[i];\n        return *this;\n    }\n \
+    \   fps &operator*=(const fps &a) {\n        *this = convolution_friendly();\n\
+    \        return *this;\n    }\n};\n\n\n"
+  code: "#ifndef PWMTREE_FPS_HPP\n#define PWMTREE_FPS_HPP 1\n\n#include \"../template.hpp\"\
+    \n#include \"convolution.hpp\"\n#include \"modint.hpp\"\n\ntemplate <typename\
+    \ mint> struct fps : vector<mint> {\n    fps(mint a) {\n        this->resize(1);\n\
+    \        *(this)[0] = a;\n    }\n    fps &operator+=(const fps &a) {\n       \
+    \ if (a.size() > this->size()) this->resize(a.size());\n        rep(i, a.size())(*this)[i]\
+    \ += a[i];\n        return *this;\n    }\n    fps &operator-=(const fps &a) {\n\
+    \        if (a.size() > this->size()) this->resize(a.size());\n        rep(i,\
+    \ a.size())(*this)[i] -= a[i];\n        return *this;\n    }\n    fps &operator*=(const\
+    \ fps &a) {\n        *this = convolution_friendly();\n        return *this;\n\
+    \    }\n};\n\n#endif"
   dependsOn:
-  - math/convolution.hpp
   - template.hpp
+  - math/convolution.hpp
   - math/modint.hpp
-  - math/modint.hpp
-  isVerificationFile: true
-  path: test/judge.yosupo.jp/Convolution.0.test.cpp
+  isVerificationFile: false
+  path: math/fps.hpp
   requiredBy: []
-  timestamp: '2021-08-08 17:11:33+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: test/judge.yosupo.jp/Convolution.0.test.cpp
+  timestamp: '2021-08-09 10:36:45+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+documentation_of: math/fps.hpp
 layout: document
 redirect_from:
-- /verify/test/judge.yosupo.jp/Convolution.0.test.cpp
-- /verify/test/judge.yosupo.jp/Convolution.0.test.cpp.html
-title: test/judge.yosupo.jp/Convolution.0.test.cpp
+- /library/math/fps.hpp
+- /library/math/fps.hpp.html
+title: math/fps.hpp
 ---

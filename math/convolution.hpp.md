@@ -1,20 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: math/fps.hpp
+    title: math/fps.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+    title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/convolution.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\
@@ -84,11 +90,13 @@ data:
   - math/modint.hpp
   isVerificationFile: false
   path: math/convolution.hpp
-  requiredBy: []
+  requiredBy:
+  - math/fps.hpp
   timestamp: '2021-08-08 17:11:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
 documentation_of: math/convolution.hpp
 layout: document
 redirect_from:

@@ -14,23 +14,29 @@ data:
     - icon: ':warning:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
+    - icon: ':warning:'
+      path: graph/zobfs.hpp
+      title: graph/zobfs.hpp
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/convolution.hpp
       title: math/convolution.hpp
+    - icon: ':x:'
+      path: math/fps.hpp
+      title: math/fps.hpp
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: math/inner_basis.hpp
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/modint.hpp
       title: math/modint.hpp
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   verificationCategories:
@@ -42,6 +48,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
       title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
+    - icon: ':x:'
+      path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+      title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     - icon: ':x:'
       path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
       title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
