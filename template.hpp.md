@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: data_structure/segtree.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
   - icon: ':warning:'
@@ -39,6 +39,9 @@ data:
   - icon: ':x:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
+    title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
@@ -117,6 +120,7 @@ data:
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+  - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp

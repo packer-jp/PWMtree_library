@@ -11,7 +11,7 @@ data:
       title: data_structure/segtree.hpp
   - name: graph
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
     - icon: ':warning:'
@@ -51,7 +51,7 @@ data:
     - icon: ':x:'
       path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
       title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   - name: test/onlinejudge.u-aizu.ac.jp
