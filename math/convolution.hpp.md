@@ -11,6 +11,9 @@ data:
   - icon: ':x:'
     path: math/fps.hpp
     title: math/fps.hpp
+  - icon: ':x:'
+    path: math/fps_friendly.hpp
+    title: math/fps_friendly.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
@@ -91,6 +94,7 @@ data:
   isVerificationFile: false
   path: math/convolution.hpp
   requiredBy:
+  - math/fps_friendly.hpp
   - math/fps.hpp
   timestamp: '2021-08-08 17:11:33+09:00'
   verificationStatus: LIBRARY_SOME_WA

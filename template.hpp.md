@@ -20,6 +20,9 @@ data:
   - icon: ':x:'
     path: math/fps.hpp
     title: math/fps.hpp
+  - icon: ':x:'
+    path: math/fps_friendly.hpp
+    title: math/fps_friendly.hpp
   - icon: ':warning:'
     path: math/inner_basis.hpp
     title: math/inner_basis.hpp
@@ -102,6 +105,7 @@ data:
   requiredBy:
   - math/convolution.hpp
   - math/modint.hpp
+  - math/fps_friendly.hpp
   - math/matrix.hpp
   - math/fps.hpp
   - math/inner_basis.hpp

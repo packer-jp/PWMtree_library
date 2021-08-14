@@ -25,6 +25,9 @@ data:
     - icon: ':x:'
       path: math/fps.hpp
       title: math/fps.hpp
+    - icon: ':x:'
+      path: math/fps_friendly.hpp
+      title: math/fps_friendly.hpp
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: math/inner_basis.hpp

@@ -7,6 +7,9 @@ data:
   - icon: ':x:'
     path: math/fps.hpp
     title: math/fps.hpp
+  - icon: ':x:'
+    path: math/fps_friendly.hpp
+    title: math/fps_friendly.hpp
   - icon: ':question:'
     path: math/modint.hpp
     title: math/modint.hpp
@@ -25,7 +28,7 @@ data:
     - https://judge.yosupo.jp/problem/convolution_mod
   bundledCode: "#line 1 \"test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n#line 1\
-    \ \"math/fps.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\n\
+    \ \"math/fps_friendly.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#define rep(i, n) for (int i = 0; i < (int)(n); i++)\n\
     #define all(a) (a).begin(), (a).end()\n#define bit(n) (1ull << (n))\nusing ll\
     \ = long long;\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
@@ -74,30 +77,54 @@ data:
     \    mint wn = mint(ROOT).pow((mint::mod() - 1) / n);\n    fft(a, wn), fft(b,\
     \ wn);\n    rep(i, n) a[i] *= b[i];\n    fft(a, wn.inv());\n    mint ninv = mint(n).inv();\n\
     \    a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n    return a;\n}\n\n\n#line\
-    \ 7 \"math/fps.hpp\"\n\ntemplate <typename mint> struct fps : vector<mint> {\n\
-    \    fps(mint a) {\n        this->resize(1);\n        *(this)[0] = a;\n    }\n\
+    \ 1 \"math/fps.hpp\"\n\n\n\n#line 7 \"math/fps.hpp\"\n\ntemplate <typename mint>\
+    \ struct fps : vector<mint> {\n    using vector<mint>::vector;\n    using vector<mint>::operator=;\n\
     \    fps &operator+=(const fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n\
     \        rep(i, a.size())(*this)[i] += a[i];\n        return *this;\n    }\n \
-    \   fps &operator-=(const fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n\
-    \        rep(i, a.size())(*this)[i] -= a[i];\n        return *this;\n    }\n \
-    \   fps &operator*=(const fps &a) {\n        *this = convolution_friendly();\n\
-    \        return *this;\n    }\n};\n\n\n#line 3 \"test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp\"\
-    \n\nint main() { using mint = modint<998244353>; }\n"
-  code: '#define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod"
-
-    #include "../../math/fps.hpp"
-
-
-    int main() { using mint = modint<998244353>; }'
+    \   fps &operator+=(const mint &a) {\n        if (this->empty()) this->resize(1);\n\
+    \        (*this)[0] += a;\n        return *this;\n    }\n    fps &operator-=(const\
+    \ fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n  \
+    \      rep(i, a.size())(*this)[i] -= a[i];\n        return *this;\n    }\n   \
+    \ fps &operator-=(const mint &a) {\n        if (this->empty()) this->resize(1);\n\
+    \        (*this)[0] -= a;\n        return *this;\n    }\n    fps &operator*=(const\
+    \ mint &a) {\n        rep(i, this->size())(*this)[i] *= a;\n        return *this;\n\
+    \    }\n    friend fps operator+(const fps &a, const fps &b) { return fps(a) +=\
+    \ b; }\n    friend fps operator+(const fps &a, const mint &b) { return fps(a)\
+    \ += b; }\n    friend fps operator+(const mint &a, const fps &b) { return fps(b)\
+    \ += a; }\n    friend fps operator-(const fps &a, const fps &b) { return fps(a)\
+    \ -= b; }\n    friend fps operator-(const fps &a, const mint &b) { return fps(a)\
+    \ -= b; }\n    friend fps operator-(const mint &a, const fps &b) { return fps(b)\
+    \ -= a; }\n    friend fps operator*(const fps &a, const mint &b) { return fps(a)\
+    \ *= b; }\n    friend fps operator*(const mint &a, const fps &b) { return fps(b)\
+    \ *= a; }\n};\n\n\n#line 8 \"math/fps_friendly.hpp\"\n\ntemplate <typename mint,\
+    \ ll ROOT> struct fps_friendly : fps<mint> {\n    using fps<mint>::fps;\n    using\
+    \ fps<mint>::operator=;\n    fps_friendly &operator*=(const fps_friendly &a) {\n\
+    \        *this = convolution_friendly<mint, ROOT>(*this, a);\n        return *this;\n\
+    \    }\n    friend fps_friendly operator*(const fps_friendly &a, const fps_friendly\
+    \ &b) { return fps_friendly(a) *= b; }\n    fps_friendly inv(ll d) {\n       \
+    \ fps_friendly ret{(*this)[0].inv()};\n        while (ret.size() < d) {\n    \
+    \        ll m = ret.size();\n            ret = 2 * ret - *this * ret * ret;\n\
+    \            ret.resize(2 * m);\n        }\n        ret.resize(d);\n        return\
+    \ ret;\n    }\n};\n\n\n#line 3 \"test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp\"\
+    \n\nint main() {\n    using mint = modint<998244353>;\n    using fps = fps_friendly<mint,\
+    \ 3>;\n    ll n;\n    cin >> n;\n    fps a(n);\n    rep(i, n) cin >> a[i];\n \
+    \   fps a_inv = a.inv(n);\n    rep(i, n) cout << a_inv[i] << \" \";\n    cout\
+    \ << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n#include\
+    \ \"../../math/fps_friendly.hpp\"\n\nint main() {\n    using mint = modint<998244353>;\n\
+    \    using fps = fps_friendly<mint, 3>;\n    ll n;\n    cin >> n;\n    fps a(n);\n\
+    \    rep(i, n) cin >> a[i];\n    fps a_inv = a.inv(n);\n    rep(i, n) cout <<\
+    \ a_inv[i] << \" \";\n    cout << endl;\n}"
   dependsOn:
-  - math/fps.hpp
+  - math/fps_friendly.hpp
   - template.hpp
   - math/convolution.hpp
   - math/modint.hpp
+  - math/fps.hpp
   isVerificationFile: true
   path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-09 10:36:45+09:00'
+  timestamp: '2021-08-14 12:15:18+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
