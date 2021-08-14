@@ -19,13 +19,13 @@ data:
       title: graph/zobfs.hpp
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/convolution.hpp
       title: math/convolution.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/fps.hpp
       title: math/fps.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/fps_friendly.hpp
       title: math/fps_friendly.hpp
     - icon: ':warning:'
@@ -34,12 +34,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/modint.hpp
       title: math/modint.hpp
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   verificationCategories:
@@ -51,7 +51,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
       title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     - icon: ':heavy_check_mark:'
