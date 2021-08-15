@@ -68,11 +68,11 @@ data:
     \ m; j += i, wj *= wn) {\n            rep(k, i) {\n                b[(j << 1)\
     \ + k + 0] = (a[j + k] + a[j + k + m]);\n                b[(j << 1) + k + i] =\
     \ (a[j + k] - a[j + k + m]) * wj;\n            }\n        }\n    }\n}\n\ntemplate\
-    \ <typename mint> mint get_w(ll n) {\n    mint root = 2;\n    while (root.pow((mint::mod()\
+    \ <typename mint> mint getw(ll n) {\n    mint root = 2;\n    while (root.pow((mint::mod()\
     \ - 1) >> 1) == 1) root += 1;\n    return root.pow((mint::mod() - 1) / n);\n}\n\
     \ntemplate <typename mint> vector<mint> convolution_friendly(vector<mint> a, vector<mint>\
     \ b) {\n    ll n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<=\
-    \ 1) {}\n    a.resize(n), b.resize(n);\n    mint wn = get_w<mint>(n);\n    ntt(a,\
+    \ 1) {}\n    a.resize(n), b.resize(n);\n    mint wn = getw<mint>(n);\n    ntt(a,\
     \ wn), ntt(b, wn);\n    rep(i, n) a[i] *= b[i];\n    ntt(a, wn.inv());\n    mint\
     \ ninv = mint(n).inv();\n    a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n   \
     \ return a;\n}\n\n\n#line 4 \"test/judge.yosupo.jp/Convolution.0.test.cpp\"\n\n\
@@ -94,7 +94,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-15 14:49:56+09:00'
+  timestamp: '2021-08-15 15:22:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Convolution.0.test.cpp

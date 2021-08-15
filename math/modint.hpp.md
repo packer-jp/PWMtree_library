@@ -22,6 +22,9 @@ data:
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
+    title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -110,6 +113,7 @@ data:
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 redirect_from:
