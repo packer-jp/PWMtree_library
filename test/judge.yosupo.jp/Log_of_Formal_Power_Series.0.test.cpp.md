@@ -20,11 +20,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
     links:
-    - https://judge.yosupo.jp/problem/inv_of_formal_power_series
-  bundledCode: "#line 1 \"test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+    - https://judge.yosupo.jp/problem/log_of_formal_power_series
+  bundledCode: "#line 1 \"test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \n#line 1 \"math/fps.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#define rep(i, n) for (int i = 0; i < (int)(n); i++)\n\
     #define all(a) (a).begin(), (a).end()\n#define bit(n) (1ull << (n))\nusing ll\
@@ -109,14 +109,14 @@ data:
     \ d) const {\n    if (d == -1) d = this->size();\n    fps ret{(*this)[0].inv()};\n\
     \    while (ret.size() < d) {\n        ll m = ret.size();\n        ret = modint<998244353>(2)\
     \ * ret - *this * ret * ret;\n        ret.resize(m << 1);\n    }\n    ret.resize(d);\n\
-    \    return ret;\n}\n\n\n#line 3 \"test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp\"\
+    \    return ret;\n}\n\n\n#line 3 \"test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp\"\
     \n\nint main() {\n    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n\
-    \    fps<mint> a(n);\n    rep(i, n) cin >> a[i];\n    fps<mint> b = a.inv();\n\
+    \    fps<mint> a(n);\n    rep(i, n) cin >> a[i];\n    fps<mint> b = a.log();\n\
     \    rep(i, n) cout << b[i] << \" \";\n    cout << endl;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \n#include \"../../math/fps.hpp\"\n\nint main() {\n    using mint = modint<998244353>;\n\
     \    ll n;\n    cin >> n;\n    fps<mint> a(n);\n    rep(i, n) cin >> a[i];\n \
-    \   fps<mint> b = a.inv();\n    rep(i, n) cout << b[i] << \" \";\n    cout <<\
+    \   fps<mint> b = a.log();\n    rep(i, n) cout << b[i] << \" \";\n    cout <<\
     \ endl;\n}"
   dependsOn:
   - math/fps.hpp
@@ -124,15 +124,15 @@ data:
   - math/convolution.hpp
   - math/modint.hpp
   isVerificationFile: true
-  path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
   timestamp: '2021-08-15 12:37:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+documentation_of: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
 layout: document
 redirect_from:
-- /verify/test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-- /verify/test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp.html
-title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+- /verify/test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+- /verify/test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp.html
+title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
 ---

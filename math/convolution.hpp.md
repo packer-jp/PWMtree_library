@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: math/fps.hpp
-  - icon: ':heavy_check_mark:'
-    path: math/fps_friendly.hpp
-    title: math/fps_friendly.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+    title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/convolution.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\
@@ -56,51 +56,54 @@ data:
     \ modint &a) const { return val == a.val; }\n    bool operator!=(const modint\
     \ &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+()\
     \ const { return *this; }\n    modint operator-() const { return modint(-val);\
-    \ }\n    modint operator+(const modint &a) const { return modint(*this) += a;\
-    \ }\n    modint operator-(const modint &a) const { return modint(*this) -= a;\
-    \ }\n    modint operator*(const modint &a) const { return modint(*this) *= a;\
-    \ }\n    modint operator/(const modint &a) const { return modint(*this) /= a;\
-    \ }\n    friend istream &operator>>(istream &is, modint &a) {\n        ll val;\n\
-    \        is >> val;\n        a = modint(val);\n        return is;\n    }\n   \
-    \ friend ostream &operator<<(ostream &os, const modint &a) { return os << a.val;\
-    \ }\n};\n\n\n#line 6 \"math/convolution.hpp\"\n\ntemplate <typename mint> void\
-    \ fft(vector<mint> &a, mint wn) {\n    ll n = a.size(), m = n >> 1;\n    vector<mint>\
-    \ b(n);\n    for (ll i = 1; i < n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint\
-    \ wj = 1;\n        for (ll j = 0; j < m; j += i, wj *= wn) {\n            rep(k,\
-    \ i) {\n                b[(j << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n   \
-    \             b[(j << 1) + k + i] = (a[j + k] - a[j + k + m]) * wj;\n        \
-    \    }\n        }\n    }\n}\n\ntemplate <typename mint, ll ROOT> vector<mint>\
-    \ convolution_friendly(vector<mint> a, vector<mint> b) {\n    ll n_ = a.size()\
-    \ + b.size() - 1, n;\n    for (n = 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n\
-    \    mint wn = mint(ROOT).pow((mint::mod() - 1) / n);\n    fft(a, wn), fft(b,\
-    \ wn);\n    rep(i, n) a[i] *= b[i];\n    fft(a, wn.inv());\n    mint ninv = mint(n).inv();\n\
-    \    a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n    return a;\n}\n\n\n"
+    \ }\n    friend modint operator+(const modint &a, const modint &b) { return modint(a)\
+    \ += b; }\n    friend modint operator-(const modint &a, const modint &b) { return\
+    \ modint(a) -= b; }\n    friend modint operator*(const modint &a, const modint\
+    \ &b) { return modint(a) *= b; }\n    friend modint operator/(const modint &a,\
+    \ const modint &b) { return modint(a) /= b; }\n    friend istream &operator>>(istream\
+    \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
+    \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
+    \ modint &a) { return os << a.val; }\n};\n\n\n#line 6 \"math/convolution.hpp\"\
+    \n\ntemplate <typename mint> void ntt(vector<mint> &a, mint wn) {\n    ll n =\
+    \ a.size(), m = n >> 1;\n    vector<mint> b(n);\n    for (ll i = 1; i < n; i <<=\
+    \ 1, wn *= wn, swap(a, b)) {\n        mint wj = 1;\n        for (ll j = 0; j <\
+    \ m; j += i, wj *= wn) {\n            rep(k, i) {\n                b[(j << 1)\
+    \ + k + 0] = (a[j + k] + a[j + k + m]);\n                b[(j << 1) + k + i] =\
+    \ (a[j + k] - a[j + k + m]) * wj;\n            }\n        }\n    }\n}\n\ntemplate\
+    \ <typename mint> vector<mint> convolution_friendly(vector<mint> a, vector<mint>\
+    \ b) {\n    ll n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<=\
+    \ 1) {}\n    a.resize(n), b.resize(n);\n    ll mod = mint::mod();\n    mint root\
+    \ = 2;\n    while (root.pow((mod - 1) >> 1) == 1) root += 1;\n    mint wn = root.pow((mod\
+    \ - 1) / n);\n    ntt(a, wn), ntt(b, wn);\n    rep(i, n) a[i] *= b[i];\n    ntt(a,\
+    \ wn.inv());\n    mint ninv = mint(n).inv();\n    a.resize(n_);\n    rep(i, n_)\
+    \ a[i] *= ninv;\n    return a;\n}\n\n\n"
   code: "#ifndef PWMTREE_CONVOLUTION_HPP\n#define PWMTREE_CONVOLUTION_HPP 1\n\n#include\
     \ \"../template.hpp\"\n#include \"modint.hpp\"\n\ntemplate <typename mint> void\
-    \ fft(vector<mint> &a, mint wn) {\n    ll n = a.size(), m = n >> 1;\n    vector<mint>\
+    \ ntt(vector<mint> &a, mint wn) {\n    ll n = a.size(), m = n >> 1;\n    vector<mint>\
     \ b(n);\n    for (ll i = 1; i < n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint\
     \ wj = 1;\n        for (ll j = 0; j < m; j += i, wj *= wn) {\n            rep(k,\
     \ i) {\n                b[(j << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n   \
     \             b[(j << 1) + k + i] = (a[j + k] - a[j + k + m]) * wj;\n        \
-    \    }\n        }\n    }\n}\n\ntemplate <typename mint, ll ROOT> vector<mint>\
-    \ convolution_friendly(vector<mint> a, vector<mint> b) {\n    ll n_ = a.size()\
-    \ + b.size() - 1, n;\n    for (n = 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n\
-    \    mint wn = mint(ROOT).pow((mint::mod() - 1) / n);\n    fft(a, wn), fft(b,\
-    \ wn);\n    rep(i, n) a[i] *= b[i];\n    fft(a, wn.inv());\n    mint ninv = mint(n).inv();\n\
-    \    a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n    return a;\n}\n\n#endif"
+    \    }\n        }\n    }\n}\n\ntemplate <typename mint> vector<mint> convolution_friendly(vector<mint>\
+    \ a, vector<mint> b) {\n    ll n_ = a.size() + b.size() - 1, n;\n    for (n =\
+    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ll mod = mint::mod();\n\
+    \    mint root = 2;\n    while (root.pow((mod - 1) >> 1) == 1) root += 1;\n  \
+    \  mint wn = root.pow((mod - 1) / n);\n    ntt(a, wn), ntt(b, wn);\n    rep(i,\
+    \ n) a[i] *= b[i];\n    ntt(a, wn.inv());\n    mint ninv = mint(n).inv();\n  \
+    \  a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n    return a;\n}\n\n#endif"
   dependsOn:
   - template.hpp
   - math/modint.hpp
   isVerificationFile: false
   path: math/convolution.hpp
   requiredBy:
-  - math/fps_friendly.hpp
   - math/fps.hpp
-  timestamp: '2021-08-08 17:11:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-08-15 12:37:06+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
 documentation_of: math/convolution.hpp
 layout: document
 redirect_from:

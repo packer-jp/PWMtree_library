@@ -14,26 +14,23 @@ data:
   - icon: ':warning:'
     path: graph/zobfs.hpp
     title: graph/zobfs.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/convolution.hpp
     title: math/convolution.hpp
   - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: math/fps.hpp
-  - icon: ':heavy_check_mark:'
-    path: math/fps_friendly.hpp
-    title: math/fps_friendly.hpp
   - icon: ':warning:'
     path: math/inner_basis.hpp
     title: math/inner_basis.hpp
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: math/modint.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -42,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+    title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
     title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
@@ -69,9 +69,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\nusing namespace\
@@ -105,7 +105,6 @@ data:
   requiredBy:
   - math/convolution.hpp
   - math/modint.hpp
-  - math/fps_friendly.hpp
   - math/matrix.hpp
   - math/fps.hpp
   - math/inner_basis.hpp
@@ -114,7 +113,7 @@ data:
   - data_structure/lazy_segtree.hpp
   - data_structure/segtree.hpp
   timestamp: '2021-05-12 23:06:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
@@ -128,6 +127,7 @@ data:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

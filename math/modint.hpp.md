@@ -1,24 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/convolution.hpp
     title: math/convolution.hpp
   - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: math/fps.hpp
-  - icon: ':heavy_check_mark:'
-    path: math/fps_friendly.hpp
-    title: math/fps_friendly.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -27,9 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+    title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/modint.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\n\
@@ -61,14 +61,14 @@ data:
     \ operator==(const modint &a) const { return val == a.val; }\n    bool operator!=(const\
     \ modint &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+()\
     \ const { return *this; }\n    modint operator-() const { return modint(-val);\
-    \ }\n    modint operator+(const modint &a) const { return modint(*this) += a;\
-    \ }\n    modint operator-(const modint &a) const { return modint(*this) -= a;\
-    \ }\n    modint operator*(const modint &a) const { return modint(*this) *= a;\
-    \ }\n    modint operator/(const modint &a) const { return modint(*this) /= a;\
-    \ }\n    friend istream &operator>>(istream &is, modint &a) {\n        ll val;\n\
-    \        is >> val;\n        a = modint(val);\n        return is;\n    }\n   \
-    \ friend ostream &operator<<(ostream &os, const modint &a) { return os << a.val;\
-    \ }\n};\n\n\n"
+    \ }\n    friend modint operator+(const modint &a, const modint &b) { return modint(a)\
+    \ += b; }\n    friend modint operator-(const modint &a, const modint &b) { return\
+    \ modint(a) -= b; }\n    friend modint operator*(const modint &a, const modint\
+    \ &b) { return modint(a) *= b; }\n    friend modint operator/(const modint &a,\
+    \ const modint &b) { return modint(a) /= b; }\n    friend istream &operator>>(istream\
+    \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
+    \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
+    \ modint &a) { return os << a.val; }\n};\n\n\n"
   code: "#ifndef PWMTREE_MODINT_HPP\n#define PWMTREE_MODINT_HPP 1\n\n#include \"../template.hpp\"\
     \n\ntemplate <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll\
     \ val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static\
@@ -86,29 +86,30 @@ data:
     \ modint &a) { return *this *= a.inv(); }\n    bool operator==(const modint &a)\
     \ const { return val == a.val; }\n    bool operator!=(const modint &a) const {\
     \ return rel_ops::operator!=(*this, a); }\n    modint operator+() const { return\
-    \ *this; }\n    modint operator-() const { return modint(-val); }\n    modint\
-    \ operator+(const modint &a) const { return modint(*this) += a; }\n    modint\
-    \ operator-(const modint &a) const { return modint(*this) -= a; }\n    modint\
-    \ operator*(const modint &a) const { return modint(*this) *= a; }\n    modint\
-    \ operator/(const modint &a) const { return modint(*this) /= a; }\n    friend\
-    \ istream &operator>>(istream &is, modint &a) {\n        ll val;\n        is >>\
-    \ val;\n        a = modint(val);\n        return is;\n    }\n    friend ostream\
-    \ &operator<<(ostream &os, const modint &a) { return os << a.val; }\n};\n\n#endif"
+    \ *this; }\n    modint operator-() const { return modint(-val); }\n    friend\
+    \ modint operator+(const modint &a, const modint &b) { return modint(a) += b;\
+    \ }\n    friend modint operator-(const modint &a, const modint &b) { return modint(a)\
+    \ -= b; }\n    friend modint operator*(const modint &a, const modint &b) { return\
+    \ modint(a) *= b; }\n    friend modint operator/(const modint &a, const modint\
+    \ &b) { return modint(a) /= b; }\n    friend istream &operator>>(istream &is,\
+    \ modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
+    \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
+    \ modint &a) { return os << a.val; }\n};\n\n#endif"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: math/modint.hpp
   requiredBy:
   - math/convolution.hpp
-  - math/fps_friendly.hpp
   - math/fps.hpp
-  timestamp: '2021-08-08 16:58:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-08-15 12:37:06+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 redirect_from:

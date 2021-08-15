@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -76,8 +76,8 @@ data:
     \ val_t one() { return 1.0; }\n};\n\ntemplate <> bool matrix<double_field>::place_nonzero(int\
     \ i, int j) {\n    static constexpr double EPS = 1e-12;\n    for (int k = i +\
     \ 1; k < height(); k++) {\n        if (abs(val[k][j]) > abs(val[i][j])) {\n  \
-    \          val[i].swap(val[k]);\n            row_add(i, i, -2.0);\n        }\n\
-    \    }\n    return abs(val[i][j]) > EPS;\n};\n\n\n"
+    \          swap(val[i], val[k]);\n            row_add(i, i, -2.0);\n        }\n\
+    \    }\n    return abs(val[i][j]) > EPS;\n}\n\n\n"
   code: "#ifndef PWMTREE_MATRIX_HPP\n#define PWMTREE_MATRIX_HPP 1\n\n#include \"../template.hpp\"\
     \n\ntemplate <typename S> struct matrix {\n    using V = typename S::val_t;\n\
     \    vector<vector<V>> val;\n    matrix(int n, int m) : matrix(vector(n, vector(m,\
@@ -129,14 +129,14 @@ data:
     \ val_t one() { return 1.0; }\n};\n\ntemplate <> bool matrix<double_field>::place_nonzero(int\
     \ i, int j) {\n    static constexpr double EPS = 1e-12;\n    for (int k = i +\
     \ 1; k < height(); k++) {\n        if (abs(val[k][j]) > abs(val[i][j])) {\n  \
-    \          val[i].swap(val[k]);\n            row_add(i, i, -2.0);\n        }\n\
-    \    }\n    return abs(val[i][j]) > EPS;\n};\n\n#endif"
+    \          swap(val[i], val[k]);\n            row_add(i, i, -2.0);\n        }\n\
+    \    }\n    return abs(val[i][j]) > EPS;\n}\n\n#endif"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2021-06-18 11:22:31+09:00'
+  timestamp: '2021-08-15 12:37:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp

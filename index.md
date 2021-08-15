@@ -19,33 +19,30 @@ data:
       title: graph/zobfs.hpp
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/convolution.hpp
       title: math/convolution.hpp
     - icon: ':heavy_check_mark:'
       path: math/fps.hpp
       title: math/fps.hpp
-    - icon: ':heavy_check_mark:'
-      path: math/fps_friendly.hpp
-      title: math/fps_friendly.hpp
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: math/inner_basis.hpp
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/modint.hpp
       title: math/modint.hpp
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   verificationCategories:
   - name: test/judge.yosupo.jp
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Convolution.0.test.cpp
     - icon: ':heavy_check_mark:'
@@ -54,6 +51,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+      title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
       title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp

@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -84,8 +84,8 @@ data:
     \ val_t one() { return 1.0; }\n};\n\ntemplate <> bool matrix<double_field>::place_nonzero(int\
     \ i, int j) {\n    static constexpr double EPS = 1e-12;\n    for (int k = i +\
     \ 1; k < height(); k++) {\n        if (abs(val[k][j]) > abs(val[i][j])) {\n  \
-    \          val[i].swap(val[k]);\n            row_add(i, i, -2.0);\n        }\n\
-    \    }\n    return abs(val[i][j]) > EPS;\n};\n\n\n#line 1 \"math/modint.hpp\"\n\
+    \          swap(val[i], val[k]);\n            row_add(i, i, -2.0);\n        }\n\
+    \    }\n    return abs(val[i][j]) > EPS;\n}\n\n\n#line 1 \"math/modint.hpp\"\n\
     \n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007> struct modint\
     \ {\n    ll val;\n    modint(ll val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val)\
     \ % MOD) % MOD) {}\n    static ll mod() { return MOD; }\n    modint inv() const\
@@ -103,14 +103,14 @@ data:
     \ operator==(const modint &a) const { return val == a.val; }\n    bool operator!=(const\
     \ modint &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+()\
     \ const { return *this; }\n    modint operator-() const { return modint(-val);\
-    \ }\n    modint operator+(const modint &a) const { return modint(*this) += a;\
-    \ }\n    modint operator-(const modint &a) const { return modint(*this) -= a;\
-    \ }\n    modint operator*(const modint &a) const { return modint(*this) *= a;\
-    \ }\n    modint operator/(const modint &a) const { return modint(*this) /= a;\
-    \ }\n    friend istream &operator>>(istream &is, modint &a) {\n        ll val;\n\
-    \        is >> val;\n        a = modint(val);\n        return is;\n    }\n   \
-    \ friend ostream &operator<<(ostream &os, const modint &a) { return os << a.val;\
-    \ }\n};\n\n\n#line 4 \"test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp\"\
+    \ }\n    friend modint operator+(const modint &a, const modint &b) { return modint(a)\
+    \ += b; }\n    friend modint operator-(const modint &a, const modint &b) { return\
+    \ modint(a) -= b; }\n    friend modint operator*(const modint &a, const modint\
+    \ &b) { return modint(a) *= b; }\n    friend modint operator/(const modint &a,\
+    \ const modint &b) { return modint(a) /= b; }\n    friend istream &operator>>(istream\
+    \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
+    \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
+    \ modint &a) { return os << a.val; }\n};\n\n\n#line 4 \"test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp\"\
     \n\nint main() {\n    using mint = modint<998244353>;\n    struct mint_field {\n\
     \        using val_t = mint;\n        static val_t zero() { return mint(0); }\n\
     \        static val_t one() { return mint(1); }\n    };\n    ll n;\n    cin >>\
@@ -130,7 +130,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-08 16:58:14+09:00'
+  timestamp: '2021-08-15 12:37:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
