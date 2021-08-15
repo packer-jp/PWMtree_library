@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -12,7 +12,7 @@ data:
     path: math/fps.hpp
     title: math/fps.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -21,9 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/convolution.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\
@@ -70,13 +70,14 @@ data:
     \ m; j += i, wj *= wn) {\n            rep(k, i) {\n                b[(j << 1)\
     \ + k + 0] = (a[j + k] + a[j + k + m]);\n                b[(j << 1) + k + i] =\
     \ (a[j + k] - a[j + k + m]) * wj;\n            }\n        }\n    }\n}\n\ntemplate\
-    \ <typename mint> vector<mint> convolution_friendly(vector<mint> a, vector<mint>\
+    \ <typename mint> mint get_w(ll n) {\n    mint root = 2;\n    while (root.pow((mint::mod()\
+    \ - 1) >> 1) == 1) root += 1;\n    return root.pow((mint::mod() - 1) / n);\n}\n\
+    \ntemplate <typename mint> vector<mint> convolution_friendly(vector<mint> a, vector<mint>\
     \ b) {\n    ll n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<=\
-    \ 1) {}\n    a.resize(n), b.resize(n);\n    ll mod = mint::mod();\n    mint root\
-    \ = 2;\n    while (root.pow((mod - 1) >> 1) == 1) root += 1;\n    mint wn = root.pow((mod\
-    \ - 1) / n);\n    ntt(a, wn), ntt(b, wn);\n    rep(i, n) a[i] *= b[i];\n    ntt(a,\
-    \ wn.inv());\n    mint ninv = mint(n).inv();\n    a.resize(n_);\n    rep(i, n_)\
-    \ a[i] *= ninv;\n    return a;\n}\n\n\n"
+    \ 1) {}\n    a.resize(n), b.resize(n);\n    mint wn = get_w<mint>(n);\n    ntt(a,\
+    \ wn), ntt(b, wn);\n    rep(i, n) a[i] *= b[i];\n    ntt(a, wn.inv());\n    mint\
+    \ ninv = mint(n).inv();\n    a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n   \
+    \ return a;\n}\n\n\n"
   code: "#ifndef PWMTREE_CONVOLUTION_HPP\n#define PWMTREE_CONVOLUTION_HPP 1\n\n#include\
     \ \"../template.hpp\"\n#include \"modint.hpp\"\n\ntemplate <typename mint> void\
     \ ntt(vector<mint> &a, mint wn) {\n    ll n = a.size(), m = n >> 1;\n    vector<mint>\
@@ -84,13 +85,14 @@ data:
     \ wj = 1;\n        for (ll j = 0; j < m; j += i, wj *= wn) {\n            rep(k,\
     \ i) {\n                b[(j << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n   \
     \             b[(j << 1) + k + i] = (a[j + k] - a[j + k + m]) * wj;\n        \
-    \    }\n        }\n    }\n}\n\ntemplate <typename mint> vector<mint> convolution_friendly(vector<mint>\
-    \ a, vector<mint> b) {\n    ll n_ = a.size() + b.size() - 1, n;\n    for (n =\
-    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ll mod = mint::mod();\n\
-    \    mint root = 2;\n    while (root.pow((mod - 1) >> 1) == 1) root += 1;\n  \
-    \  mint wn = root.pow((mod - 1) / n);\n    ntt(a, wn), ntt(b, wn);\n    rep(i,\
-    \ n) a[i] *= b[i];\n    ntt(a, wn.inv());\n    mint ninv = mint(n).inv();\n  \
-    \  a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n    return a;\n}\n\n#endif"
+    \    }\n        }\n    }\n}\n\ntemplate <typename mint> mint get_w(ll n) {\n \
+    \   mint root = 2;\n    while (root.pow((mint::mod() - 1) >> 1) == 1) root +=\
+    \ 1;\n    return root.pow((mint::mod() - 1) / n);\n}\n\ntemplate <typename mint>\
+    \ vector<mint> convolution_friendly(vector<mint> a, vector<mint> b) {\n    ll\
+    \ n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<= 1) {}\n    a.resize(n),\
+    \ b.resize(n);\n    mint wn = get_w<mint>(n);\n    ntt(a, wn), ntt(b, wn);\n \
+    \   rep(i, n) a[i] *= b[i];\n    ntt(a, wn.inv());\n    mint ninv = mint(n).inv();\n\
+    \    a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n    return a;\n}\n\n#endif"
   dependsOn:
   - template.hpp
   - math/modint.hpp
@@ -98,8 +100,8 @@ data:
   path: math/convolution.hpp
   requiredBy:
   - math/fps.hpp
-  timestamp: '2021-08-15 12:37:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-08-15 14:49:56+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp

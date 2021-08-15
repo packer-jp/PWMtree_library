@@ -19,7 +19,7 @@ data:
       title: graph/zobfs.hpp
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/convolution.hpp
       title: math/convolution.hpp
     - icon: ':heavy_check_mark:'
@@ -31,18 +31,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/modint.hpp
       title: math/modint.hpp
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   verificationCategories:
   - name: test/judge.yosupo.jp
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Convolution.0.test.cpp
     - icon: ':heavy_check_mark:'

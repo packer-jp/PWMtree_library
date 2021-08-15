@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
@@ -68,22 +68,23 @@ data:
     \ m; j += i, wj *= wn) {\n            rep(k, i) {\n                b[(j << 1)\
     \ + k + 0] = (a[j + k] + a[j + k + m]);\n                b[(j << 1) + k + i] =\
     \ (a[j + k] - a[j + k + m]) * wj;\n            }\n        }\n    }\n}\n\ntemplate\
-    \ <typename mint> vector<mint> convolution_friendly(vector<mint> a, vector<mint>\
+    \ <typename mint> mint get_w(ll n) {\n    mint root = 2;\n    while (root.pow((mint::mod()\
+    \ - 1) >> 1) == 1) root += 1;\n    return root.pow((mint::mod() - 1) / n);\n}\n\
+    \ntemplate <typename mint> vector<mint> convolution_friendly(vector<mint> a, vector<mint>\
     \ b) {\n    ll n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<=\
-    \ 1) {}\n    a.resize(n), b.resize(n);\n    ll mod = mint::mod();\n    mint root\
-    \ = 2;\n    while (root.pow((mod - 1) >> 1) == 1) root += 1;\n    mint wn = root.pow((mod\
-    \ - 1) / n);\n    ntt(a, wn), ntt(b, wn);\n    rep(i, n) a[i] *= b[i];\n    ntt(a,\
-    \ wn.inv());\n    mint ninv = mint(n).inv();\n    a.resize(n_);\n    rep(i, n_)\
-    \ a[i] *= ninv;\n    return a;\n}\n\n\n#line 4 \"test/judge.yosupo.jp/Convolution.0.test.cpp\"\
-    \n\nint main() {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >>\
-    \ n >> m;\n    vector<mint> a(n), b(m);\n    rep(i, n) cin >> a[i];\n    rep(i,\
-    \ m) cin >> b[i];\n    vector<mint> c = convolution_friendly<mint, 3>(a, b);\n\
-    \    for (mint ci : c) { cout << ci << '\\n'; }\n}\n"
+    \ 1) {}\n    a.resize(n), b.resize(n);\n    mint wn = get_w<mint>(n);\n    ntt(a,\
+    \ wn), ntt(b, wn);\n    rep(i, n) a[i] *= b[i];\n    ntt(a, wn.inv());\n    mint\
+    \ ninv = mint(n).inv();\n    a.resize(n_);\n    rep(i, n_) a[i] *= ninv;\n   \
+    \ return a;\n}\n\n\n#line 4 \"test/judge.yosupo.jp/Convolution.0.test.cpp\"\n\n\
+    int main() {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >> n\
+    \ >> m;\n    vector<mint> a(n), b(m);\n    rep(i, n) cin >> a[i];\n    rep(i,\
+    \ m) cin >> b[i];\n    vector<mint> c = convolution_friendly<mint>(a, b);\n  \
+    \  for (mint ci : c) { cout << ci << '\\n'; }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n#include\
     \ \"../../math/convolution.hpp\"\n#include \"../../math/modint.hpp\"\n\nint main()\
     \ {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >> n >> m;\n \
     \   vector<mint> a(n), b(m);\n    rep(i, n) cin >> a[i];\n    rep(i, m) cin >>\
-    \ b[i];\n    vector<mint> c = convolution_friendly<mint, 3>(a, b);\n    for (mint\
+    \ b[i];\n    vector<mint> c = convolution_friendly<mint>(a, b);\n    for (mint\
     \ ci : c) { cout << ci << '\\n'; }\n}"
   dependsOn:
   - math/convolution.hpp
@@ -93,8 +94,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-15 12:37:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-08-15 14:49:56+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Convolution.0.test.cpp
 layout: document
