@@ -9,24 +9,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"data_structure/lazy_segtree.hpp\"\n\n\n\n#line 1 \"template.hpp\"\
@@ -49,7 +49,7 @@ data:
     \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
     \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
     \    range(int start, int stop) : start(0), stop(stop), step(1) {}\n    range(int\
-    \ start, int stop, int step) : start(0), stop(stop), step(step) {}\n    iterator\
+    \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
     \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
     \ {stop, stop, step}; };\n};\n\n\n#line 5 \"data_structure/lazy_segtree.hpp\"\n\
     \ntemplate <typename S> struct lazy_segtree {\n    using V = typename S::val_t;\n\
@@ -181,8 +181,8 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2021-08-17 14:04:12+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-08-17 14:19:42+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp

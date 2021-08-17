@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: data_structure/segtree.hpp
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A
@@ -39,7 +39,7 @@ data:
     \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
     \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
     \    range(int start, int stop) : start(0), stop(stop), step(1) {}\n    range(int\
-    \ start, int stop, int step) : start(0), stop(stop), step(step) {}\n    iterator\
+    \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
     \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
     \ {stop, stop, step}; };\n};\n\n\n#line 5 \"data_structure/segtree.hpp\"\n\ntemplate\
     \ <typename S> struct segtree {\n    using V = typename S::val_t;\n    int n,\
@@ -93,8 +93,8 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   requiredBy: []
-  timestamp: '2021-08-17 14:04:12+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-08-17 14:19:42+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
 layout: document

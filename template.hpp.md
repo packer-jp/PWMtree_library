@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: data_structure/segtree.hpp
   - icon: ':heavy_check_mark:'
@@ -14,10 +14,10 @@ data:
   - icon: ':warning:'
     path: graph/zobfs.hpp
     title: graph/zobfs.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: math/fps.hpp
   - icon: ':warning:'
@@ -36,13 +36,13 @@ data:
   - icon: ':x:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -51,25 +51,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
   _isVerificationFailed: true
@@ -97,7 +97,7 @@ data:
     \ val; }\n        bool operator!=(const iterator &i) const { return val != i.val;\
     \ }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n    range(int\
     \ start, int stop) : start(0), stop(stop), step(1) {}\n    range(int start, int\
-    \ stop, int step) : start(0), stop(stop), step(step) {}\n    iterator begin()\
+    \ stop, int step) : start(start), stop(stop), step(step) {}\n    iterator begin()\
     \ const { return {start, stop, step}; };\n    iterator end() const { return {stop,\
     \ stop, step}; };\n};\n\n\n"
   code: "#ifndef PWMTREE_TEMPLATE_HPP\n#define PWMTREE_TEMPLATE_HPP 1\n\n#include\
@@ -120,7 +120,7 @@ data:
     \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
     \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
     \    range(int start, int stop) : start(0), stop(stop), step(1) {}\n    range(int\
-    \ start, int stop, int step) : start(0), stop(stop), step(step) {}\n    iterator\
+    \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
     \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
     \ {stop, stop, step}; };\n};\n\n#endif"
   dependsOn: []
@@ -136,7 +136,7 @@ data:
   - graph/zobfs.hpp
   - data_structure/lazy_segtree.hpp
   - data_structure/segtree.hpp
-  timestamp: '2021-08-17 14:04:12+09:00'
+  timestamp: '2021-08-17 14:19:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp

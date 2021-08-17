@@ -5,10 +5,10 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: math/fps.hpp
   _extendedVerifiedWith:
@@ -21,13 +21,13 @@ data:
   - icon: ':x:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   _isVerificationFailed: true
@@ -55,7 +55,7 @@ data:
     \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
     \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
     \    range(int start, int stop) : start(0), stop(stop), step(1) {}\n    range(int\
-    \ start, int stop, int step) : start(0), stop(stop), step(step) {}\n    iterator\
+    \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
     \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
     \ {stop, stop, step}; };\n};\n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate <ll\
     \ MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll val = 0) : val(val\
@@ -115,7 +115,7 @@ data:
   requiredBy:
   - math/convolution.hpp
   - math/fps.hpp
-  timestamp: '2021-08-17 14:04:12+09:00'
+  timestamp: '2021-08-17 14:19:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp

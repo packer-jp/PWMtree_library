@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: math/fps.hpp
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
@@ -45,7 +45,7 @@ data:
     \ val; }\n        bool operator!=(const iterator &i) const { return val != i.val;\
     \ }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n    range(int\
     \ start, int stop) : start(0), stop(stop), step(1) {}\n    range(int start, int\
-    \ stop, int step) : start(0), stop(stop), step(step) {}\n    iterator begin()\
+    \ stop, int step) : start(start), stop(stop), step(step) {}\n    iterator begin()\
     \ const { return {start, stop, step}; };\n    iterator end() const { return {stop,\
     \ stop, step}; };\n};\n\n\n#line 1 \"math/convolution.hpp\"\n\n\n\n#line 1 \"\
     math/modint.hpp\"\n\n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007>\
@@ -92,40 +92,40 @@ data:
     \ mint &a) : vector<mint>(1, a) {}\n    fps(const fps &a) : vector<mint>(a) {}\n\
     \    fps &operator=(const fps &a) {\n        *this = (vector<mint>)a;\n      \
     \  return *this;\n    }\n    fps &operator+=(const fps &a) {\n        if (a.size()\
-    \ > this->size()) this->resize(a.size());\n        rep(i, a.size())(*this)[i]\
-    \ += a[i];\n        return *this;\n    }\n    fps &operator-=(const fps &a) {\n\
-    \        if (a.size() > this->size()) this->resize(a.size());\n        rep(i,\
-    \ a.size())(*this)[i] -= a[i];\n        return *this;\n    }\n    fps &operator*=(const\
-    \ fps &a);\n    fps &operator>>=(ll d) {\n        if (this->size() <= d) {\n \
-    \           *this = {};\n        } else {\n            this->erase(this->begin(),\
-    \ this->begin() + d);\n        }\n        return *this;\n    }\n    fps &operator<<=(ll\
-    \ d) {\n        this->insert(this->begin(), d, mint(0));\n        return *this;\n\
-    \    }\n    fps prefix(ll d) const { return fps(this->begin(), this->begin() +\
-    \ min((ll)this->size(), d)); }\n    fps differential() const {\n        ll n =\
-    \ this->size();\n        fps ret(max(0ll, n - 1));\n        for (int i = 1; i\
-    \ < n; i++) { ret[i - 1] = i * (*this)[i]; }\n        return ret;\n    }\n   \
-    \ fps integral() const {\n        ll n = this->size();\n        fps ret(n + 1);\n\
-    \        ret[0] = mint(0);\n        if (n > 0) ret[1] = mint(1);\n        ll mod\
-    \ = mint::mod();\n        for (int i = 2; i <= n; i++) ret[i] = (-ret[mod % i])\
-    \ * (mod / i);\n        rep(i, n) ret[i + 1] *= (*this)[i];\n        return ret;\n\
-    \    }\n    fps inv(ll d = -1) const {\n        if (d == -1) d = this->size();\n\
-    \        fps ret{(*this)[0].inv()};\n        for (ll m = 1; m < d; m <<= 1) ret\
-    \ = (mint(2) * ret - ret * ret * this->prefix(m << 1)).prefix(m << 1);\n     \
-    \   return ret.prefix(d);\n    };\n    fps log(ll d = -1) const {\n        assert((*this)[0]\
-    \ == mint(1));\n        if (d == -1) d = this->size();\n        return (this->differential()\
-    \ * this->inv(d)).prefix(d - 1).integral();\n    }\n    fps exp(ll d = -1) const\
-    \ {\n        assert(this->size() == 0 || (*this)[0] == mint(0));\n        if (d\
-    \ == -1) d = this->size();\n        fps ret{1};\n        for (ll m = 1; m < d;\
-    \ m <<= 1) ret = (ret * (prefix(m << 1) + mint(1) - ret.log(m << 1))).prefix(m\
-    \ << 1);\n        return ret.prefix(d);\n    }\n    friend fps operator-(const\
-    \ fps &a) { return fps() -= a; }\n    friend fps operator+(const fps &a, const\
-    \ fps &b) { return fps(a) += b; }\n    friend fps operator-(const fps &a, const\
-    \ fps &b) { return fps(a) -= b; }\n    friend fps operator*(const fps &a, const\
-    \ fps &b) { return fps(a) *= b; }\n    friend fps operator>>(const fps &a, ll\
-    \ d) { return fps(a) >>= d; }\n    friend fps operator<<(const fps &a, ll d) {\
-    \ return fps(a) <<= d; }\n};\n\nusing m9 = modint<998244353>;\n\ntemplate <> fps<m9>\
-    \ &fps<m9>::operator*=(const fps<m9> &a) {\n    *this = convolution_friendly<m9>(*this,\
-    \ a);\n    return *this;\n}\ntemplate <> fps<m9> fps<m9>::inv(ll d) const {\n\
+    \ > this->size()) this->resize(a.size());\n        for (int i : range(a.size()))\
+    \ (*this)[i] += a[i];\n        return *this;\n    }\n    fps &operator-=(const\
+    \ fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n  \
+    \      for (int i : range(a.size())) (*this)[i] -= a[i];\n        return *this;\n\
+    \    }\n    fps &operator*=(const fps &a);\n    fps &operator>>=(int d) {\n  \
+    \      if (this->size() <= d) {\n            *this = {};\n        } else {\n \
+    \           this->erase(this->begin(), this->begin() + d);\n        }\n      \
+    \  return *this;\n    }\n    fps &operator<<=(int d) {\n        this->insert(this->begin(),\
+    \ d, mint(0));\n        return *this;\n    }\n    fps prefix(int d) const { return\
+    \ fps(this->begin(), this->begin() + min((int)this->size(), d)); }\n    fps differential()\
+    \ const {\n        int n = this->size();\n        fps ret(max(0, n - 1));\n  \
+    \      for (int i = 1; i < n; i++) { ret[i - 1] = i * (*this)[i]; }\n        return\
+    \ ret;\n    }\n    fps integral() const {\n        int n = this->size();\n   \
+    \     fps ret(n + 1);\n        ret[0] = mint(0);\n        if (n > 0) ret[1] =\
+    \ mint(1);\n        ll mod = mint::mod();\n        for (int i = 2; i <= n; i++)\
+    \ ret[i] = (-ret[mod % i]) * (mod / i);\n        for (int i : range(n)) ret[i\
+    \ + 1] *= (*this)[i];\n        return ret;\n    }\n    fps inv(int d = -1) const\
+    \ {\n        if (d == -1) d = this->size();\n        fps ret{(*this)[0].inv()};\n\
+    \        for (int m = 1; m < d; m <<= 1) ret = (mint(2) * ret - ret * ret * this->prefix(m\
+    \ << 1)).prefix(m << 1);\n        return ret.prefix(d);\n    };\n    fps log(int\
+    \ d = -1) const {\n        assert((*this)[0] == mint(1));\n        if (d == -1)\
+    \ d = this->size();\n        return (this->differential() * this->inv(d)).prefix(d\
+    \ - 1).integral();\n    }\n    fps exp(int d = -1) const {\n        assert(this->size()\
+    \ == 0 || (*this)[0] == mint(0));\n        if (d == -1) d = this->size();\n  \
+    \      fps ret{1};\n        for (int m = 1; m < d; m <<= 1) ret = (ret * (prefix(m\
+    \ << 1) + mint(1) - ret.log(m << 1))).prefix(m << 1);\n        return ret.prefix(d);\n\
+    \    }\n    friend fps operator-(const fps &a) { return fps() -= a; }\n    friend\
+    \ fps operator+(const fps &a, const fps &b) { return fps(a) += b; }\n    friend\
+    \ fps operator-(const fps &a, const fps &b) { return fps(a) -= b; }\n    friend\
+    \ fps operator*(const fps &a, const fps &b) { return fps(a) *= b; }\n    friend\
+    \ fps operator>>(const fps &a, int d) { return fps(a) >>= d; }\n    friend fps\
+    \ operator<<(const fps &a, int d) { return fps(a) <<= d; }\n};\n\nusing m9 = modint<998244353>;\n\
+    \ntemplate <> fps<m9> &fps<m9>::operator*=(const fps<m9> &a) {\n    *this = convolution_friendly<m9>(*this,\
+    \ a);\n    return *this;\n}\ntemplate <> fps<m9> fps<m9>::inv(int d) const {\n\
     \    if (d == -1) d = this->size();\n    fps ret{(*this)[0].inv()};\n    for (int\
     \ m = 1; m < d; m <<= 1) {\n        m9 wn = getw<m9>(m << 1);\n        fps f =\
     \ this->prefix(m << 1);\n        fps g = ret;\n        f.resize(m << 1), ntt(f,\
@@ -152,8 +152,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-17 14:04:12+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-08-17 14:19:42+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
 layout: document

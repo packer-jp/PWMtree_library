@@ -42,7 +42,7 @@ data:
     \ val; }\n        bool operator!=(const iterator &i) const { return val != i.val;\
     \ }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n    range(int\
     \ start, int stop) : start(0), stop(stop), step(1) {}\n    range(int start, int\
-    \ stop, int step) : start(0), stop(stop), step(step) {}\n    iterator begin()\
+    \ stop, int step) : start(start), stop(stop), step(step) {}\n    iterator begin()\
     \ const { return {start, stop, step}; };\n    iterator end() const { return {stop,\
     \ stop, step}; };\n};\n\n\n#line 5 \"math/matrix.hpp\"\n\ntemplate <typename S>\
     \ struct matrix {\n    using V = typename S::val_t;\n    vector<vector<V>> val;\n\
@@ -144,7 +144,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-17 14:04:12+09:00'
+  timestamp: '2021-08-17 14:19:42+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp

@@ -34,7 +34,7 @@ data:
     \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
     \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
     \    range(int start, int stop) : start(0), stop(stop), step(1) {}\n    range(int\
-    \ start, int stop, int step) : start(0), stop(stop), step(step) {}\n    iterator\
+    \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
     \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
     \ {stop, stop, step}; };\n};\n\n\n#line 5 \"graph/dijkstra.hpp\"\n\ntemplate <typename\
     \ S> struct dijkstra {\n    using D = typename S::dist_t;\n    using C = typename\
@@ -76,7 +76,7 @@ data:
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2021-08-17 14:04:12+09:00'
+  timestamp: '2021-08-17 14:19:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
