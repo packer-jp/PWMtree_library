@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -20,29 +20,39 @@ data:
   bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H\"\
     \n#line 1 \"data_structure/lazy_segtree.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\
-    \n\n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define rep(i, n) for\
-    \ (int i = 0; i < (int)(n); i++)\n#define all(a) (a).begin(), (a).end()\n#define\
-    \ bit(n) (1ull << (n))\nusing ll = long long;\ntemplate <typename T> using priority_queue_rev\
-    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T> T sq(const\
-    \ T &a) { return a * a; }\ntemplate <typename T, typename U> bool chmax(T &a,\
-    \ const U &b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n\
-    \    return false;\n}\ntemplate <typename T, typename U> bool chmin(T &a, const\
-    \ U &b) {\n    if (b < a) {\n        a = b;\n        return true;\n    }\n   \
-    \ return false;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
-    \ vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
-    \ itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os <<\
-    \ \")\";\n    return os;\n}\n\n\n#line 5 \"data_structure/lazy_segtree.hpp\"\n\
+    \n\n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
+    \ (a).end()\n#define bit(n) (1ull << (n))\nusing ll = long long;\ntemplate <typename\
+    \ T> using priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
+    \ <typename T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename\
+    \ U> bool chmax(T &a, const U &b) {\n    if (a < b) {\n        a = b;\n      \
+    \  return true;\n    }\n    return false;\n}\ntemplate <typename T, typename U>\
+    \ bool chmin(T &a, const U &b) {\n    if (b < a) {\n        a = b;\n        return\
+    \ true;\n    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+    \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
+    ); }\n    os << \")\";\n    return os;\n}\nstruct range {\n    int start, stop,\
+    \ step;\n    struct iterator {\n        int val, stop, step;\n        iterator(int\
+    \ val, int stop, int step) : val(val), stop(stop), step(step) {}\n        iterator\
+    \ &operator++() {\n            val += step;\n            if (step > 0) {\n   \
+    \             chmin(val, stop);\n            } else {\n                chmax(val,\
+    \ stop);\n            }\n            return *this;\n        }\n        int operator*()\
+    \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
+    \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
+    \    range(int start, int stop) : start(0), stop(stop), step(1) {}\n    range(int\
+    \ start, int stop, int step) : start(0), stop(stop), step(step) {}\n    iterator\
+    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
+    \ {stop, stop, step}; };\n};\n\n\n#line 5 \"data_structure/lazy_segtree.hpp\"\n\
     \ntemplate <typename S> struct lazy_segtree {\n    using V = typename S::val_t;\n\
     \    using F = typename S::fn_t;\n    int n, size, log;\n    vector<V> val;\n\
     \    vector<F> lazy;\n    lazy_segtree(int n) : lazy_segtree(vector(n, S::e()))\
     \ {}\n    lazy_segtree(vector<V> src) : n(src.size()) {\n        for (size = 1,\
     \ log = 0; size < n; size <<= 1, log++) {}\n        val.resize(size << 1);\n \
     \       copy(all(src), val.begin() + size);\n        lazy.resize(size << 1, S::id());\n\
-    \        for (int i = size - 1; i > 0; i--) val[i] = S::op(val[i << 1 | 0], val[i\
-    \ << 1 | 1]);\n    }\n    V reflect(int i) { return S::mapping(lazy[i], val[i]);\
-    \ }\n    void push(int i) {\n        val[i] = S::mapping(lazy[i], val[i]);\n \
-    \       lazy[i << 1 | 0] = S::composition(lazy[i], lazy[i << 1 | 0]);\n      \
-    \  lazy[i << 1 | 1] = S::composition(lazy[i], lazy[i << 1 | 1]);\n        lazy[i]\
+    \        for (int i : range(size - 1, 0, -1)) val[i] = S::op(val[i << 1 | 0],\
+    \ val[i << 1 | 1]);\n    }\n    V reflect(int i) { return S::mapping(lazy[i],\
+    \ val[i]); }\n    void push(int i) {\n        val[i] = S::mapping(lazy[i], val[i]);\n\
+    \        lazy[i << 1 | 0] = S::composition(lazy[i], lazy[i << 1 | 0]);\n     \
+    \   lazy[i << 1 | 1] = S::composition(lazy[i], lazy[i << 1 | 1]);\n        lazy[i]\
     \ = S::id();\n    }\n    void thrust(int i) {\n        for (int j = log; j; j--)\
     \ push(i >> j);\n    }\n    void recalc(int i) {\n        while (i >>= 1) val[i]\
     \ = S::op(reflect(i << 1 | 0), reflect(i << 1 | 1));\n    }\n    void set(int\
@@ -115,7 +125,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-08 17:11:33+09:00'
+  timestamp: '2021-08-17 14:04:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp

@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/segtree.hpp
     title: data_structure/segtree.hpp
   - icon: ':heavy_check_mark:'
@@ -14,35 +14,35 @@ data:
   - icon: ':warning:'
     path: graph/zobfs.hpp
     title: graph/zobfs.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/fps.hpp
     title: math/fps.hpp
   - icon: ':warning:'
     path: math/inner_basis.hpp
     title: math/inner_basis.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: math/modint.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -51,57 +51,78 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\n\n#define rep(i, n) for (int i = 0; i < (int)(n); i++)\n#define all(a)\
-    \ (a).begin(), (a).end()\n#define bit(n) (1ull << (n))\nusing ll = long long;\n\
-    template <typename T> using priority_queue_rev = priority_queue<T, vector<T>,\
-    \ greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a * a; }\ntemplate\
-    \ <typename T, typename U> bool chmax(T &a, const U &b) {\n    if (a < b) {\n\
-    \        a = b;\n        return true;\n    }\n    return false;\n}\ntemplate <typename\
-    \ T, typename U> bool chmin(T &a, const U &b) {\n    if (b < a) {\n        a =\
-    \ b;\n        return true;\n    }\n    return false;\n}\ntemplate <typename T>\
-    \ ostream &operator<<(ostream &os, const vector<T> &a) {\n    os << \"(\";\n \
-    \   for (auto itr = a.begin(); itr != a.end(); itr++) { os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \"\"); }\n    os << \")\";\n    return os;\n}\n\n\n"
+    \ std;\n\n#define all(a) (a).begin(), (a).end()\n#define bit(n) (1ull << (n))\n\
+    using ll = long long;\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+    \ vector<T>, greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a *\
+    \ a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) {\n   \
+    \ if (a < b) {\n        a = b;\n        return true;\n    }\n    return false;\n\
+    }\ntemplate <typename T, typename U> bool chmin(T &a, const U &b) {\n    if (b\
+    \ < a) {\n        a = b;\n        return true;\n    }\n    return false;\n}\n\
+    template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
+    \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os\
+    \ << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n   \
+    \ return os;\n}\nstruct range {\n    int start, stop, step;\n    struct iterator\
+    \ {\n        int val, stop, step;\n        iterator(int val, int stop, int step)\
+    \ : val(val), stop(stop), step(step) {}\n        iterator &operator++() {\n  \
+    \          val += step;\n            if (step > 0) {\n                chmin(val,\
+    \ stop);\n            } else {\n                chmax(val, stop);\n          \
+    \  }\n            return *this;\n        }\n        int operator*() const { return\
+    \ val; }\n        bool operator!=(const iterator &i) const { return val != i.val;\
+    \ }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n    range(int\
+    \ start, int stop) : start(0), stop(stop), step(1) {}\n    range(int start, int\
+    \ stop, int step) : start(0), stop(stop), step(step) {}\n    iterator begin()\
+    \ const { return {start, stop, step}; };\n    iterator end() const { return {stop,\
+    \ stop, step}; };\n};\n\n\n"
   code: "#ifndef PWMTREE_TEMPLATE_HPP\n#define PWMTREE_TEMPLATE_HPP 1\n\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n#define rep(i, n) for (int i = 0; i\
-    \ < (int)(n); i++)\n#define all(a) (a).begin(), (a).end()\n#define bit(n) (1ull\
-    \ << (n))\nusing ll = long long;\ntemplate <typename T> using priority_queue_rev\
-    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T> T sq(const\
-    \ T &a) { return a * a; }\ntemplate <typename T, typename U> bool chmax(T &a,\
-    \ const U &b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n\
-    \    return false;\n}\ntemplate <typename T, typename U> bool chmin(T &a, const\
-    \ U &b) {\n    if (b < a) {\n        a = b;\n        return true;\n    }\n   \
-    \ return false;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
-    \ vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
-    \ itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os <<\
-    \ \")\";\n    return os;\n}\n\n#endif"
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
+    #define bit(n) (1ull << (n))\nusing ll = long long;\ntemplate <typename T> using\
+    \ priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename\
+    \ T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename U> bool\
+    \ chmax(T &a, const U &b) {\n    if (a < b) {\n        a = b;\n        return\
+    \ true;\n    }\n    return false;\n}\ntemplate <typename T, typename U> bool chmin(T\
+    \ &a, const U &b) {\n    if (b < a) {\n        a = b;\n        return true;\n\
+    \    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+    \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
+    ); }\n    os << \")\";\n    return os;\n}\nstruct range {\n    int start, stop,\
+    \ step;\n    struct iterator {\n        int val, stop, step;\n        iterator(int\
+    \ val, int stop, int step) : val(val), stop(stop), step(step) {}\n        iterator\
+    \ &operator++() {\n            val += step;\n            if (step > 0) {\n   \
+    \             chmin(val, stop);\n            } else {\n                chmax(val,\
+    \ stop);\n            }\n            return *this;\n        }\n        int operator*()\
+    \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
+    \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
+    \    range(int start, int stop) : start(0), stop(stop), step(1) {}\n    range(int\
+    \ start, int stop, int step) : start(0), stop(stop), step(step) {}\n    iterator\
+    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
+    \ {stop, stop, step}; };\n};\n\n#endif"
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
@@ -115,8 +136,8 @@ data:
   - graph/zobfs.hpp
   - data_structure/lazy_segtree.hpp
   - data_structure/segtree.hpp
-  timestamp: '2021-05-12 23:06:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-08-17 14:04:12+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp

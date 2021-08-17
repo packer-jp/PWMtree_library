@@ -3,10 +3,10 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/lazy_segtree.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/segtree.hpp
       title: data_structure/segtree.hpp
   - name: graph
@@ -19,24 +19,24 @@ data:
       title: graph/zobfs.hpp
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/convolution.hpp
       title: math/convolution.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/fps.hpp
       title: math/fps.hpp
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: math/inner_basis.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/modint.hpp
       title: math/modint.hpp
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   verificationCategories:
@@ -45,16 +45,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Convolution.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
       title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     - icon: ':heavy_check_mark:'
@@ -65,25 +65,25 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
 layout: toppage
