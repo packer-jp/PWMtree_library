@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -38,10 +38,10 @@ data:
     \  }\n            return *this;\n        }\n        int operator*() const { return\
     \ val; }\n        bool operator!=(const iterator &i) const { return val != i.val;\
     \ }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n    range(int\
-    \ start, int stop) : start(0), stop(stop), step(1) {}\n    range(int start, int\
-    \ stop, int step) : start(start), stop(stop), step(step) {}\n    iterator begin()\
-    \ const { return {start, stop, step}; };\n    iterator end() const { return {stop,\
-    \ stop, step}; };\n};\n\n\n#line 5 \"graph/dijkstra.hpp\"\n\ntemplate <typename\
+    \ start, int stop) : start(start), stop(stop), step(1) {}\n    range(int start,\
+    \ int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
+    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
+    \ {stop, stop, step}; };\n};\n\n\n#line 5 \"graph/dijkstra.hpp\"\n\ntemplate <typename\
     \ S> struct dijkstra {\n    using D = typename S::dist_t;\n    using C = typename\
     \ S::cost_t;\n    struct edge {\n        int to;\n        C cost;\n        edge(int\
     \ to, C cost) : to(to), cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n\
@@ -82,7 +82,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-17 14:19:42+09:00'
+  timestamp: '2021-08-17 14:49:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Shortest_Path.0.test.cpp

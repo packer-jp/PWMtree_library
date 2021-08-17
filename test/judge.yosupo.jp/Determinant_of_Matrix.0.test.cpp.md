@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_det
@@ -41,46 +41,47 @@ data:
     \  }\n            return *this;\n        }\n        int operator*() const { return\
     \ val; }\n        bool operator!=(const iterator &i) const { return val != i.val;\
     \ }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n    range(int\
-    \ start, int stop) : start(0), stop(stop), step(1) {}\n    range(int start, int\
-    \ stop, int step) : start(start), stop(stop), step(step) {}\n    iterator begin()\
-    \ const { return {start, stop, step}; };\n    iterator end() const { return {stop,\
-    \ stop, step}; };\n};\n\n\n#line 5 \"math/matrix.hpp\"\n\ntemplate <typename S>\
-    \ struct matrix {\n    using V = typename S::val_t;\n    vector<vector<V>> val;\n\
-    \    matrix(int n, int m) : matrix(vector(n, vector(m, S::zero()))) {}\n    matrix(vector<vector<V>>\
-    \ src) : val(src) {}\n    vector<V> &operator[](int i) { return val[i]; }\n  \
-    \  const vector<V> &operator[](int i) const { return val[i]; }\n    int height()\
-    \ const { return val.size(); }\n    int width() const { return val[0].size();\
-    \ }\n    static matrix id(int n) {\n        matrix ret(n, n);\n        for (int\
-    \ i : range(n)) ret[i][i] = S::one();\n        return ret;\n    }\n    void row_add(int\
-    \ i, int j, V a) {\n        for (int k : range(width())) { val[i][k] += val[j][k]\
-    \ * a; }\n    }\n    bool place_nonzero(int i, int j) {\n        for (int k :\
-    \ range(i, height())) {\n            if (val[k][j] != S::zero()) {\n         \
-    \       if (k > i) row_add(i, k, S::one());\n                break;\n        \
-    \    }\n        }\n        return val[i][j] != S::zero();\n    }\n    matrix upper_triangular()\
-    \ const {\n        matrix ret(*this);\n        for (int i = 0, j = 0; i < height()\
-    \ && j < width(); j++) {\n            if (!ret.place_nonzero(i, j)) continue;\n\
-    \            for (int k : range(i + 1, height())) { ret.row_add(k, i, -ret[k][j]\
-    \ / ret[i][j]); }\n            i++;\n        }\n        return ret;\n    }\n \
-    \   V det() const {\n        V ret = S::one();\n        matrix ut = upper_triangular();\n\
-    \        for (int i : range(height())) ret *= ut[i][i];\n        return ret;\n\
-    \    }\n    matrix inv() const {\n        matrix ex(height(), width() << 1);\n\
-    \        for (int i : range(height())) {\n            for (int j : range(width()))\
-    \ { ex[i][j] = val[i][j]; }\n        }\n        for (int i : range(height()))\
-    \ ex[i][width() + i] = S::one();\n        matrix ut = ex.upper_triangular();\n\
-    \        for (int i : range(height() - 1, -1, -1)) {\n            ut.row_add(i,\
-    \ i, S::one() / ut[i][i] - S::one());\n            for (int j : range(i)) ut.row_add(j,\
-    \ i, -ut[j][i] / ut[i][i]);\n        }\n        matrix ret(height(), width());\n\
-    \        for (int i : range(height())) {\n            for (int j : range(width()))\
-    \ { ret[i][j] = ut[i][width() + j]; }\n        }\n        return ret;\n    }\n\
-    \    matrix pow(ll p) const {\n        matrix res = matrix::id(height()), mul(*this);\n\
-    \        while (p) {\n            if (p & 1) res *= mul;\n            mul *= mul;\n\
-    \            p >>= 1;\n        }\n        return res;\n    }\n    matrix &operator+=(const\
-    \ matrix &a) {\n        for (int i : range(height())) {\n            for (int\
-    \ j : range(width())) { val[i][j] += a[i][j]; }\n        }\n        return *this;\n\
-    \    }\n    matrix &operator-=(const matrix &a) {\n        for (int i : range(height()))\
-    \ {\n            for (int j : range(width())) { val[i][j] -= a[i][j]; }\n    \
-    \    }\n        return *this;\n    }\n    matrix &operator*=(const matrix &a)\
-    \ {\n        matrix res(height(), a.width());\n        for (int i : range(height()))\
+    \ start, int stop) : start(start), stop(stop), step(1) {}\n    range(int start,\
+    \ int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
+    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
+    \ {stop, stop, step}; };\n};\n\n\n#line 5 \"math/matrix.hpp\"\n\ntemplate <typename\
+    \ S> struct matrix {\n    using V = typename S::val_t;\n    vector<vector<V>>\
+    \ val;\n    matrix(int n, int m) : matrix(vector(n, vector(m, S::zero()))) {}\n\
+    \    matrix(vector<vector<V>> src) : val(src) {}\n    vector<V> &operator[](int\
+    \ i) { return val[i]; }\n    const vector<V> &operator[](int i) const { return\
+    \ val[i]; }\n    int height() const { return val.size(); }\n    int width() const\
+    \ { return val[0].size(); }\n    static matrix id(int n) {\n        matrix ret(n,\
+    \ n);\n        for (int i : range(n)) ret[i][i] = S::one();\n        return ret;\n\
+    \    }\n    void row_add(int i, int j, V a) {\n        for (int k : range(width()))\
+    \ { val[i][k] += val[j][k] * a; }\n    }\n    bool place_nonzero(int i, int j)\
+    \ {\n        for (int k : range(i, height())) {\n            if (val[k][j] !=\
+    \ S::zero()) {\n                if (k > i) row_add(i, k, S::one());\n        \
+    \        break;\n            }\n        }\n        return val[i][j] != S::zero();\n\
+    \    }\n    matrix upper_triangular() const {\n        matrix ret(*this);\n  \
+    \      for (int i = 0, j = 0; i < height() && j < width(); j++) {\n          \
+    \  if (!ret.place_nonzero(i, j)) continue;\n            for (int k : range(i +\
+    \ 1, height())) ret.row_add(k, i, -ret[k][j] / ret[i][j]);\n            i++;\n\
+    \        }\n        return ret;\n    }\n    V det() const {\n        V ret = S::one();\n\
+    \        matrix ut = upper_triangular();\n        for (int i : range(height()))\
+    \ ret *= ut[i][i];\n        return ret;\n    }\n    matrix inv() const {\n   \
+    \     matrix ex(height(), width() << 1);\n        for (int i : range(height()))\
+    \ {\n            for (int j : range(width())) { ex[i][j] = val[i][j]; }\n    \
+    \    }\n        for (int i : range(height())) ex[i][width() + i] = S::one();\n\
+    \        matrix ut = ex.upper_triangular();\n        for (int i : range(height()\
+    \ - 1, -1, -1)) {\n            ut.row_add(i, i, S::one() / ut[i][i] - S::one());\n\
+    \            for (int j : range(i)) ut.row_add(j, i, -ut[j][i] / ut[i][i]);\n\
+    \        }\n        matrix ret(height(), width());\n        for (int i : range(height()))\
+    \ {\n            for (int j : range(width())) { ret[i][j] = ut[i][width() + j];\
+    \ }\n        }\n        return ret;\n    }\n    matrix pow(ll p) const {\n   \
+    \     matrix res = matrix::id(height()), mul(*this);\n        while (p) {\n  \
+    \          if (p & 1) res *= mul;\n            mul *= mul;\n            p >>=\
+    \ 1;\n        }\n        return res;\n    }\n    matrix &operator+=(const matrix\
+    \ &a) {\n        for (int i : range(height())) {\n            for (int j : range(width()))\
+    \ { val[i][j] += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix\
+    \ &operator-=(const matrix &a) {\n        for (int i : range(height())) {\n  \
+    \          for (int j : range(width())) { val[i][j] -= a[i][j]; }\n        }\n\
+    \        return *this;\n    }\n    matrix &operator*=(const matrix &a) {\n   \
+    \     matrix res(height(), a.width());\n        for (int i : range(height()))\
     \ {\n            for (int j : range(a.width())) {\n                for (int k\
     \ : range(width())) { res[i][j] += val[i][k] * a[k][j]; }\n            }\n   \
     \     }\n        val.swap(res.val);\n        return *this;\n    }\n    matrix\
@@ -144,8 +145,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-17 14:19:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-08-17 14:49:43+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 layout: document

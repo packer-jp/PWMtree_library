@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/matrix.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\n\
@@ -33,7 +33,7 @@ data:
     \ stop);\n            }\n            return *this;\n        }\n        int operator*()\
     \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
     \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
-    \    range(int start, int stop) : start(0), stop(stop), step(1) {}\n    range(int\
+    \    range(int start, int stop) : start(start), stop(stop), step(1) {}\n    range(int\
     \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
     \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
     \ {stop, stop, step}; };\n};\n\n\n#line 5 \"math/matrix.hpp\"\n\ntemplate <typename\
@@ -52,7 +52,7 @@ data:
     \    }\n    matrix upper_triangular() const {\n        matrix ret(*this);\n  \
     \      for (int i = 0, j = 0; i < height() && j < width(); j++) {\n          \
     \  if (!ret.place_nonzero(i, j)) continue;\n            for (int k : range(i +\
-    \ 1, height())) { ret.row_add(k, i, -ret[k][j] / ret[i][j]); }\n            i++;\n\
+    \ 1, height())) ret.row_add(k, i, -ret[k][j] / ret[i][j]);\n            i++;\n\
     \        }\n        return ret;\n    }\n    V det() const {\n        V ret = S::one();\n\
     \        matrix ut = upper_triangular();\n        for (int i : range(height()))\
     \ ret *= ut[i][i];\n        return ret;\n    }\n    matrix inv() const {\n   \
@@ -108,7 +108,7 @@ data:
     \    }\n    matrix upper_triangular() const {\n        matrix ret(*this);\n  \
     \      for (int i = 0, j = 0; i < height() && j < width(); j++) {\n          \
     \  if (!ret.place_nonzero(i, j)) continue;\n            for (int k : range(i +\
-    \ 1, height())) { ret.row_add(k, i, -ret[k][j] / ret[i][j]); }\n            i++;\n\
+    \ 1, height())) ret.row_add(k, i, -ret[k][j] / ret[i][j]);\n            i++;\n\
     \        }\n        return ret;\n    }\n    V det() const {\n        V ret = S::one();\n\
     \        matrix ut = upper_triangular();\n        for (int i : range(height()))\
     \ ret *= ut[i][i];\n        return ret;\n    }\n    matrix inv() const {\n   \
@@ -153,8 +153,8 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2021-08-17 14:19:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-08-17 14:49:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 documentation_of: math/matrix.hpp

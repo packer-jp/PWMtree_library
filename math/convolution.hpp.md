@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -48,7 +48,7 @@ data:
     \ stop);\n            }\n            return *this;\n        }\n        int operator*()\
     \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
     \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
-    \    range(int start, int stop) : start(0), stop(stop), step(1) {}\n    range(int\
+    \    range(int start, int stop) : start(start), stop(stop), step(1) {}\n    range(int\
     \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
     \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
     \ {stop, stop, step}; };\n};\n\n\n#line 1 \"math/modint.hpp\"\n\n\n\n#line 5 \"\
@@ -114,7 +114,7 @@ data:
   path: math/convolution.hpp
   requiredBy:
   - math/fps.hpp
-  timestamp: '2021-08-17 14:19:42+09:00'
+  timestamp: '2021-08-17 14:49:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Convolution.0.test.cpp

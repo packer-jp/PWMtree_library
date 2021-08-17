@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -44,33 +44,33 @@ data:
     \  }\n            return *this;\n        }\n        int operator*() const { return\
     \ val; }\n        bool operator!=(const iterator &i) const { return val != i.val;\
     \ }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n    range(int\
-    \ start, int stop) : start(0), stop(stop), step(1) {}\n    range(int start, int\
-    \ stop, int step) : start(start), stop(stop), step(step) {}\n    iterator begin()\
-    \ const { return {start, stop, step}; };\n    iterator end() const { return {stop,\
-    \ stop, step}; };\n};\n\n\n#line 1 \"math/modint.hpp\"\n\n\n\n#line 5 \"math/modint.hpp\"\
-    \n\ntemplate <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll\
-    \ val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static\
-    \ ll mod() { return MOD; }\n    modint inv() const {\n        ll a = val, b =\
-    \ MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n   \
-    \         swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
-    \        return modint(u);\n    }\n    modint pow(ll p) const {\n        modint\
-    \ res = 1, mul = val;\n        while (p) {\n            if (p & 1) res *= mul;\n\
-    \            mul *= mul;\n            p >>= 1;\n        }\n        return res;\n\
-    \    }\n    modint &operator+=(const modint &a) {\n        if ((val += a.val)\
-    \ >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator-=(const\
-    \ modint &a) {\n        if ((val += MOD - a.val) >= MOD) val -= MOD;\n       \
-    \ return *this;\n    }\n    modint &operator*=(const modint &a) {\n        (val\
-    \ *= a.val) %= MOD;\n        return *this;\n    }\n    modint &operator/=(const\
-    \ modint &a) { return *this *= a.inv(); }\n    bool operator==(const modint &a)\
-    \ const { return val == a.val; }\n    bool operator!=(const modint &a) const {\
-    \ return rel_ops::operator!=(*this, a); }\n    modint operator+() const { return\
-    \ *this; }\n    modint operator-() const { return modint(-val); }\n    friend\
-    \ modint operator+(const modint &a, const modint &b) { return modint(a) += b;\
-    \ }\n    friend modint operator-(const modint &a, const modint &b) { return modint(a)\
-    \ -= b; }\n    friend modint operator*(const modint &a, const modint &b) { return\
-    \ modint(a) *= b; }\n    friend modint operator/(const modint &a, const modint\
-    \ &b) { return modint(a) /= b; }\n    friend istream &operator>>(istream &is,\
-    \ modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
+    \ start, int stop) : start(start), stop(stop), step(1) {}\n    range(int start,\
+    \ int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
+    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
+    \ {stop, stop, step}; };\n};\n\n\n#line 1 \"math/modint.hpp\"\n\n\n\n#line 5 \"\
+    math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007> struct modint {\n    ll val;\n\
+    \    modint(ll val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD)\
+    \ {}\n    static ll mod() { return MOD; }\n    modint inv() const {\n        ll\
+    \ a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t =\
+    \ a / b;\n            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n\
+    \        }\n        return modint(u);\n    }\n    modint pow(ll p) const {\n \
+    \       modint res = 1, mul = val;\n        while (p) {\n            if (p & 1)\
+    \ res *= mul;\n            mul *= mul;\n            p >>= 1;\n        }\n    \
+    \    return res;\n    }\n    modint &operator+=(const modint &a) {\n        if\
+    \ ((val += a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint\
+    \ &operator-=(const modint &a) {\n        if ((val += MOD - a.val) >= MOD) val\
+    \ -= MOD;\n        return *this;\n    }\n    modint &operator*=(const modint &a)\
+    \ {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n    modint\
+    \ &operator/=(const modint &a) { return *this *= a.inv(); }\n    bool operator==(const\
+    \ modint &a) const { return val == a.val; }\n    bool operator!=(const modint\
+    \ &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+()\
+    \ const { return *this; }\n    modint operator-() const { return modint(-val);\
+    \ }\n    friend modint operator+(const modint &a, const modint &b) { return modint(a)\
+    \ += b; }\n    friend modint operator-(const modint &a, const modint &b) { return\
+    \ modint(a) -= b; }\n    friend modint operator*(const modint &a, const modint\
+    \ &b) { return modint(a) *= b; }\n    friend modint operator/(const modint &a,\
+    \ const modint &b) { return modint(a) /= b; }\n    friend istream &operator>>(istream\
+    \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\n\n\n#line 6 \"math/convolution.hpp\"\
     \n\ntemplate <typename mint> void ntt(vector<mint> &a, mint wn) {\n    int n =\
@@ -105,7 +105,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-17 14:19:42+09:00'
+  timestamp: '2021-08-17 14:49:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Convolution.0.test.cpp
