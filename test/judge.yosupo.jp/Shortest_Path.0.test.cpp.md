@@ -30,23 +30,22 @@ data:
     template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
     \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os\
     \ << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n   \
-    \ return os;\n}\nstruct range {\n    int start, stop, step;\n    struct iterator\
-    \ {\n        int val, stop, step;\n        iterator(int val, int stop, int step)\
-    \ : val(val), stop(stop), step(step) {}\n        iterator &operator++() {\n  \
-    \          val += step;\n            if (step > 0) {\n                chmin(val,\
-    \ stop);\n            } else {\n                chmax(val, stop);\n          \
-    \  }\n            return *this;\n        }\n        int operator*() const { return\
-    \ val; }\n        bool operator!=(const iterator &i) const { return val != i.val;\
-    \ }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n    range(int\
-    \ start, int stop) : start(start), stop(stop), step(1) {}\n    range(int start,\
-    \ int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
-    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
-    \ {stop, stop, step}; };\n};\n\n\n#line 5 \"graph/dijkstra.hpp\"\n\ntemplate <typename\
-    \ S> struct dijkstra {\n    using D = typename S::dist_t;\n    using C = typename\
-    \ S::cost_t;\n    struct edge {\n        int to;\n        C cost;\n        edge(int\
-    \ to, C cost) : to(to), cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n\
-    \    dijkstra(int n) : adj(n) {}\n    void add_edge(int from, int to, const C\
-    \ &cost) { adj[from].emplace_back(to, cost); }\n    pair<vector<D>, vector<int>>\
+    \ return os;\n}\nstruct rep {\n    struct itr {\n        int v;\n        itr(int\
+    \ v) : v(v) {}\n        void operator++() { v++; }\n        int operator*() const\
+    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
+    \ }\n    };\n    int l, r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int\
+    \ r) : l(l), r(r) {}\n    itr begin() const { return l; };\n    itr end() const\
+    \ { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n       \
+    \ itr(int v) : v(v) {}\n        void operator++() { v--; }\n        int operator*()\
+    \ const { return v; }\n        bool operator!=(const itr &i) const { return v\
+    \ != i.v; }\n    };\n    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int\
+    \ l, int r) : l(l), r(r) {}\n    itr begin() const { return r - 1; };\n    itr\
+    \ end() const { return l - 1; };\n};\n\n\n#line 5 \"graph/dijkstra.hpp\"\n\ntemplate\
+    \ <typename S> struct dijkstra {\n    using D = typename S::dist_t;\n    using\
+    \ C = typename S::cost_t;\n    struct edge {\n        int to;\n        C cost;\n\
+    \        edge(int to, C cost) : to(to), cost(cost) {}\n    };\n    vector<vector<edge>>\
+    \ adj;\n    dijkstra(int n) : adj(n) {}\n    void add_edge(int from, int to, const\
+    \ C &cost) { adj[from].emplace_back(to, cost); }\n    pair<vector<D>, vector<int>>\
     \ get(int s, const D &base) const {\n        vector<D> dist(adj.size(), S::inf());\n\
     \        vector<int> prev(adj.size(), -1);\n        using P = pair<D, int>;\n\
     \        priority_queue_rev<P> pq;\n        dist[s] = base;\n        pq.emplace(base,\
@@ -64,8 +63,8 @@ data:
     \    if (prev[t] == -1) {\n        cout << -1 << endl;\n        return 0;\n  \
     \  }\n    vector<ll> vs{t};\n    do {\n        ll back = vs.back();\n        vs.push_back(prev[back]);\n\
     \    } while (vs.back() != s);\n    reverse(all(vs));\n    cout << dist[t] <<\
-    \ \" \" << vs.size() - 1 << endl;\n    for (ll i : range(vs.size() - 1)) cout\
-    \ << vs[i] << \" \" << vs[i + 1] << endl;\n}\n"
+    \ \" \" << vs.size() - 1 << endl;\n    for (ll i : rep(vs.size() - 1)) cout <<\
+    \ vs[i] << \" \" << vs[i + 1] << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n#include\
     \ \"../../graph/dijkstra.hpp\"\n\nint main() {\n    ll n, m, s, t;\n    cin >>\
     \ n >> m >> s >> t;\n    dijkstra<ll_dij> dij(n);\n    while (m--) {\n       \
@@ -74,15 +73,15 @@ data:
     \     cout << -1 << endl;\n        return 0;\n    }\n    vector<ll> vs{t};\n \
     \   do {\n        ll back = vs.back();\n        vs.push_back(prev[back]);\n  \
     \  } while (vs.back() != s);\n    reverse(all(vs));\n    cout << dist[t] << \"\
-    \ \" << vs.size() - 1 << endl;\n    for (ll i : range(vs.size() - 1)) cout <<\
-    \ vs[i] << \" \" << vs[i + 1] << endl;\n}"
+    \ \" << vs.size() - 1 << endl;\n    for (ll i : rep(vs.size() - 1)) cout << vs[i]\
+    \ << \" \" << vs[i + 1] << endl;\n}"
   dependsOn:
   - graph/dijkstra.hpp
   - template.hpp
   isVerificationFile: true
   path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-17 14:49:22+09:00'
+  timestamp: '2021-08-17 16:49:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Shortest_Path.0.test.cpp

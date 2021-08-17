@@ -30,37 +30,36 @@ data:
     \ true;\n    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
     \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
-    ); }\n    os << \")\";\n    return os;\n}\nstruct range {\n    int start, stop,\
-    \ step;\n    struct iterator {\n        int val, stop, step;\n        iterator(int\
-    \ val, int stop, int step) : val(val), stop(stop), step(step) {}\n        iterator\
-    \ &operator++() {\n            val += step;\n            if (step > 0) {\n   \
-    \             chmin(val, stop);\n            } else {\n                chmax(val,\
-    \ stop);\n            }\n            return *this;\n        }\n        int operator*()\
-    \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
-    \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
-    \    range(int start, int stop) : start(start), stop(stop), step(1) {}\n    range(int\
-    \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
-    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
-    \ {stop, stop, step}; };\n};\n\n\n#line 5 \"data_structure/segtree.hpp\"\n\ntemplate\
-    \ <typename S> struct segtree {\n    using V = typename S::val_t;\n    int n,\
-    \ size;\n    vector<V> val;\n    segtree(int n) : segtree(vector(n, S::e())) {}\n\
-    \    segtree(vector<V> src) : n(src.size()) {\n        for (size = 1; size < n;\
-    \ size <<= 1) {}\n        val.resize(size << 1);\n        copy(all(src), val.begin()\
-    \ + size);\n        for (int i : range(size - 1, 0, -1)) val[i] = S::op(val[i\
-    \ << 1 | 0], val[i << 1 | 1]);\n    }\n    void set(int i, const V &a) {\n   \
-    \     val[i += size] = a;\n        while (i >>= 1) val[i] = S::op(val[i << 1 |\
-    \ 0], val[i << 1 | 1]);\n    }\n    V get(int i) const { return val[i + size];\
-    \ }\n    V prod(int l, int r) const {\n        V a = S::e(), b = S::e();\n   \
-    \     for (l += size, r += size; l < r; l >>= 1, r >>= 1) {\n            if (l\
-    \ & 1) a = S::op(a, val[l++]);\n            if (r & 1) b = S::op(val[--r], b);\n\
-    \        }\n        return S::op(a, b);\n    }\n    template <typename F> int\
-    \ max_right(int l, F f) const {\n        if (l == n) return n;\n        V a =\
-    \ S::e();\n        l += size;\n        do {\n            while (~l & 1) l >>=\
-    \ 1;\n            if (!f(S::op(a, val[l]))) {\n                while (l < size)\
-    \ {\n                    l = l << 1;\n                    if (f(S::op(a, val[l])))\
-    \ a = S::op(a, val[l++]);\n                }\n                return l - size;\n\
-    \            }\n            a = S::op(a, val[l++]);\n        } while ((l & -l)\
-    \ != l);\n        return n;\n    }\n    template <typename F> int min_left(int\
+    ); }\n    os << \")\";\n    return os;\n}\nstruct rep {\n    struct itr {\n  \
+    \      int v;\n        itr(int v) : v(v) {}\n        void operator++() { v++;\
+    \ }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    rep(int r) :\
+    \ l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        int v;\n        itr(int v) : v(v) {}\n        void operator++()\
+    \ { v--; }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    per(int r) :\
+    \ l(0), r(r) {}\n    per(int l, int r) : l(l), r(r) {}\n    itr begin() const\
+    \ { return r - 1; };\n    itr end() const { return l - 1; };\n};\n\n\n#line 5\
+    \ \"data_structure/segtree.hpp\"\n\ntemplate <typename S> struct segtree {\n \
+    \   using V = typename S::val_t;\n    int n, size;\n    vector<V> val;\n    segtree(int\
+    \ n) : segtree(vector(n, S::e())) {}\n    segtree(vector<V> src) : n(src.size())\
+    \ {\n        for (size = 1; size < n; size <<= 1) {}\n        val.resize(size\
+    \ << 1);\n        copy(all(src), val.begin() + size);\n        for (int i : per(1,\
+    \ size)) val[i] = S::op(val[i << 1 | 0], val[i << 1 | 1]);\n    }\n    void set(int\
+    \ i, const V &a) {\n        val[i += size] = a;\n        while (i >>= 1) val[i]\
+    \ = S::op(val[i << 1 | 0], val[i << 1 | 1]);\n    }\n    V get(int i) const {\
+    \ return val[i + size]; }\n    V prod(int l, int r) const {\n        V a = S::e(),\
+    \ b = S::e();\n        for (l += size, r += size; l < r; l >>= 1, r >>= 1) {\n\
+    \            if (l & 1) a = S::op(a, val[l++]);\n            if (r & 1) b = S::op(val[--r],\
+    \ b);\n        }\n        return S::op(a, b);\n    }\n    template <typename F>\
+    \ int max_right(int l, F f) const {\n        if (l == n) return n;\n        V\
+    \ a = S::e();\n        l += size;\n        do {\n            while (~l & 1) l\
+    \ >>= 1;\n            if (!f(S::op(a, val[l]))) {\n                while (l <\
+    \ size) {\n                    l = l << 1;\n                    if (f(S::op(a,\
+    \ val[l]))) a = S::op(a, val[l++]);\n                }\n                return\
+    \ l - size;\n            }\n            a = S::op(a, val[l++]);\n        } while\
+    \ ((l & -l) != l);\n        return n;\n    }\n    template <typename F> int min_left(int\
     \ r, F f) const {\n        if (r == 0) return 0;\n        V a = S::e();\n    \
     \    r += size;\n        do {\n            r--;\n            while (r > 1 && r\
     \ & 1) r >>= 1;\n            if (!f(S::op(val[r], a))) {\n                while\
@@ -74,16 +73,16 @@ data:
     \ val_t e() { return 0; }\n};\n\n\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\
     \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\
     \nusing namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n   \
-    \ vector<ll> a(n);\n    for (ll i : range(n)) cin >> a[i];\n    segtree<sum_monoid>\
-    \ st(a);\n    ll ans = LLONG_MAX;\n    for (ll l : range(n)) {\n        ll r =\
-    \ st.max_right(l, [&](ll x) { return x < s; });\n        if (r < n) chmin(ans,\
-    \ r - l + 1);\n    }\n    if (ans == LLONG_MAX) {\n        cout << 0 << endl;\n\
-    \    } else {\n        cout << ans << endl;\n    }\n}\n"
+    \ vector<ll> a(n);\n    for (ll i : rep(n)) cin >> a[i];\n    segtree<sum_monoid>\
+    \ st(a);\n    ll ans = LLONG_MAX;\n    for (ll l : rep(n)) {\n        ll r = st.max_right(l,\
+    \ [&](ll x) { return x < s; });\n        if (r < n) chmin(ans, r - l + 1);\n \
+    \   }\n    if (ans == LLONG_MAX) {\n        cout << 0 << endl;\n    } else {\n\
+    \        cout << ans << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A\"\
     \n#include \"../../data_structure/segtree.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n    vector<ll>\
-    \ a(n);\n    for (ll i : range(n)) cin >> a[i];\n    segtree<sum_monoid> st(a);\n\
-    \    ll ans = LLONG_MAX;\n    for (ll l : range(n)) {\n        ll r = st.max_right(l,\
+    \ a(n);\n    for (ll i : rep(n)) cin >> a[i];\n    segtree<sum_monoid> st(a);\n\
+    \    ll ans = LLONG_MAX;\n    for (ll l : rep(n)) {\n        ll r = st.max_right(l,\
     \ [&](ll x) { return x < s; });\n        if (r < n) chmin(ans, r - l + 1);\n \
     \   }\n    if (ans == LLONG_MAX) {\n        cout << 0 << endl;\n    } else {\n\
     \        cout << ans << endl;\n    }\n}"
@@ -93,7 +92,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-17 14:49:22+09:00'
+  timestamp: '2021-08-17 16:49:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp

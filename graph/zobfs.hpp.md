@@ -22,32 +22,31 @@ data:
     \ true;\n    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
     \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
-    ); }\n    os << \")\";\n    return os;\n}\nstruct range {\n    int start, stop,\
-    \ step;\n    struct iterator {\n        int val, stop, step;\n        iterator(int\
-    \ val, int stop, int step) : val(val), stop(stop), step(step) {}\n        iterator\
-    \ &operator++() {\n            val += step;\n            if (step > 0) {\n   \
-    \             chmin(val, stop);\n            } else {\n                chmax(val,\
-    \ stop);\n            }\n            return *this;\n        }\n        int operator*()\
-    \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
-    \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
-    \    range(int start, int stop) : start(start), stop(stop), step(1) {}\n    range(int\
-    \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
-    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
-    \ {stop, stop, step}; };\n};\n\n\n#line 5 \"graph/zobfs.hpp\"\n\nstruct zobfs\
-    \ {\n    struct edge {\n        ll to, cost;\n        edge(ll to, ll cost) : to(to),\
-    \ cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n    zobfs(ll n) : adj(n)\
-    \ {}\n    void add_edge(ll from, ll to, ll cost) { adj[from].emplace_back(to,\
-    \ cost); }\n    pair<vector<ll>, vector<ll>> get(int s) const {\n        vector<ll>\
-    \ dist(adj.size(), LLONG_MAX), prev(adj.size(), -1);\n        using P = pair<ll,\
-    \ ll>;\n        deque<P> deq;\n        dist[s] = 0;\n        deq.emplace_front(0,\
-    \ s);\n        while (!deq.empty()) {\n            auto [d, i] = deq.front();\n\
-    \            deq.pop_front();\n            if (dist[i] < d) continue;\n      \
-    \      for (auto [to, cost] : adj[i]) {\n                ll nd = dist[i] + cost;\n\
-    \                if (nd < dist[to]) {\n                    dist[to] = nd;\n  \
-    \                  prev[to] = i;\n                    if (cost == 0) deq.emplace_front(nd,\
-    \ to);\n                    if (cost == 1) deq.emplace_back(nd, to);\n       \
-    \         }\n            }\n        }\n        return {dist, prev};\n    }\n};\n\
-    \n\n"
+    ); }\n    os << \")\";\n    return os;\n}\nstruct rep {\n    struct itr {\n  \
+    \      int v;\n        itr(int v) : v(v) {}\n        void operator++() { v++;\
+    \ }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    rep(int r) :\
+    \ l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        int v;\n        itr(int v) : v(v) {}\n        void operator++()\
+    \ { v--; }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    per(int r) :\
+    \ l(0), r(r) {}\n    per(int l, int r) : l(l), r(r) {}\n    itr begin() const\
+    \ { return r - 1; };\n    itr end() const { return l - 1; };\n};\n\n\n#line 5\
+    \ \"graph/zobfs.hpp\"\n\nstruct zobfs {\n    struct edge {\n        ll to, cost;\n\
+    \        edge(ll to, ll cost) : to(to), cost(cost) {}\n    };\n    vector<vector<edge>>\
+    \ adj;\n    zobfs(ll n) : adj(n) {}\n    void add_edge(ll from, ll to, ll cost)\
+    \ { adj[from].emplace_back(to, cost); }\n    pair<vector<ll>, vector<ll>> get(int\
+    \ s) const {\n        vector<ll> dist(adj.size(), LLONG_MAX), prev(adj.size(),\
+    \ -1);\n        using P = pair<ll, ll>;\n        deque<P> deq;\n        dist[s]\
+    \ = 0;\n        deq.emplace_front(0, s);\n        while (!deq.empty()) {\n   \
+    \         auto [d, i] = deq.front();\n            deq.pop_front();\n         \
+    \   if (dist[i] < d) continue;\n            for (auto [to, cost] : adj[i]) {\n\
+    \                ll nd = dist[i] + cost;\n                if (nd < dist[to]) {\n\
+    \                    dist[to] = nd;\n                    prev[to] = i;\n     \
+    \               if (cost == 0) deq.emplace_front(nd, to);\n                  \
+    \  if (cost == 1) deq.emplace_back(nd, to);\n                }\n            }\n\
+    \        }\n        return {dist, prev};\n    }\n};\n\n\n"
   code: "#ifndef PWMTREE_ZOBFS_HPP\n#define PWMTREE_ZOBFS_HPP 1\n\n#include \"../template.hpp\"\
     \n\nstruct zobfs {\n    struct edge {\n        ll to, cost;\n        edge(ll to,\
     \ ll cost) : to(to), cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n  \
@@ -68,7 +67,7 @@ data:
   isVerificationFile: false
   path: graph/zobfs.hpp
   requiredBy: []
-  timestamp: '2021-08-17 14:49:22+09:00'
+  timestamp: '2021-08-17 16:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/zobfs.hpp

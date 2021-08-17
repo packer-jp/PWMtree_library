@@ -30,46 +30,45 @@ data:
     \ true;\n    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
     \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
-    ); }\n    os << \")\";\n    return os;\n}\nstruct range {\n    int start, stop,\
-    \ step;\n    struct iterator {\n        int val, stop, step;\n        iterator(int\
-    \ val, int stop, int step) : val(val), stop(stop), step(step) {}\n        iterator\
-    \ &operator++() {\n            val += step;\n            if (step > 0) {\n   \
-    \             chmin(val, stop);\n            } else {\n                chmax(val,\
-    \ stop);\n            }\n            return *this;\n        }\n        int operator*()\
-    \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
-    \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
-    \    range(int start, int stop) : start(start), stop(stop), step(1) {}\n    range(int\
-    \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
-    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
-    \ {stop, stop, step}; };\n};\n\n\n#line 5 \"data_structure/lazy_segtree.hpp\"\n\
-    \ntemplate <typename S> struct lazy_segtree {\n    using V = typename S::val_t;\n\
-    \    using F = typename S::fn_t;\n    int n, size, log;\n    vector<V> val;\n\
-    \    vector<F> lazy;\n    lazy_segtree(int n) : lazy_segtree(vector(n, S::e()))\
-    \ {}\n    lazy_segtree(vector<V> src) : n(src.size()) {\n        for (size = 1,\
-    \ log = 0; size < n; size <<= 1, log++) {}\n        val.resize(size << 1);\n \
-    \       copy(all(src), val.begin() + size);\n        lazy.resize(size << 1, S::id());\n\
-    \        for (int i : range(size - 1, 0, -1)) val[i] = S::op(val[i << 1 | 0],\
-    \ val[i << 1 | 1]);\n    }\n    V reflect(int i) { return S::mapping(lazy[i],\
-    \ val[i]); }\n    void push(int i) {\n        val[i] = S::mapping(lazy[i], val[i]);\n\
-    \        lazy[i << 1 | 0] = S::composition(lazy[i], lazy[i << 1 | 0]);\n     \
-    \   lazy[i << 1 | 1] = S::composition(lazy[i], lazy[i << 1 | 1]);\n        lazy[i]\
-    \ = S::id();\n    }\n    void thrust(int i) {\n        for (int j = log; j; j--)\
-    \ push(i >> j);\n    }\n    void recalc(int i) {\n        while (i >>= 1) val[i]\
-    \ = S::op(reflect(i << 1 | 0), reflect(i << 1 | 1));\n    }\n    void set(int\
-    \ i, const V &a) {\n        thrust(i += size);\n        val[i] = a;\n        lazy[i]\
-    \ = S::id();\n        recalc(i);\n    }\n    void apply(int l, int r, F f) {\n\
-    \        thrust(l += size);\n        thrust(r += size - 1);\n        for (int\
-    \ i = l, j = r + 1; i < j; i >>= 1, j >>= 1) {\n            if (i & 1) lazy[i++]\
-    \ = S::composition(f, lazy[i]);\n            if (j & 1) lazy[j] = S::composition(f,\
-    \ lazy[--j]);\n        }\n        recalc(l);\n        recalc(r);\n    }\n    V\
-    \ get(int i) {\n        thrust(i += size);\n        return reflect(i);\n    }\n\
-    \    V prod(int l, int r) {\n        thrust(l += size);\n        thrust(r += size\
-    \ - 1);\n        V a = S::e(), b = S::e();\n        for (r++; l < r; l >>= 1,\
-    \ r >>= 1) {\n            if (l & 1) a = S::op(a, reflect(l++));\n           \
-    \ if (r & 1) b = S::op(reflect(--r), b);\n        }\n        return S::op(a, b);\n\
-    \    }\n    template <typename G> int max_right(int l, G g) {\n        if (l ==\
-    \ n) return n;\n        thrust(l += size);\n        V a = S::e();\n        do\
-    \ {\n            while (~l & 1) l >>= 1;\n            if (!g(S::op(a, reflect(l))))\
+    ); }\n    os << \")\";\n    return os;\n}\nstruct rep {\n    struct itr {\n  \
+    \      int v;\n        itr(int v) : v(v) {}\n        void operator++() { v++;\
+    \ }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    rep(int r) :\
+    \ l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        int v;\n        itr(int v) : v(v) {}\n        void operator++()\
+    \ { v--; }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    per(int r) :\
+    \ l(0), r(r) {}\n    per(int l, int r) : l(l), r(r) {}\n    itr begin() const\
+    \ { return r - 1; };\n    itr end() const { return l - 1; };\n};\n\n\n#line 5\
+    \ \"data_structure/lazy_segtree.hpp\"\n\ntemplate <typename S> struct lazy_segtree\
+    \ {\n    using V = typename S::val_t;\n    using F = typename S::fn_t;\n    int\
+    \ n, size, log;\n    vector<V> val;\n    vector<F> lazy;\n    lazy_segtree(int\
+    \ n) : lazy_segtree(vector(n, S::e())) {}\n    lazy_segtree(vector<V> src) : n(src.size())\
+    \ {\n        for (size = 1, log = 0; size < n; size <<= 1, log++) {}\n       \
+    \ val.resize(size << 1);\n        copy(all(src), val.begin() + size);\n      \
+    \  lazy.resize(size << 1, S::id());\n        for (int i : per(1, size)) val[i]\
+    \ = S::op(val[i << 1 | 0], val[i << 1 | 1]);\n    }\n    V reflect(int i) { return\
+    \ S::mapping(lazy[i], val[i]); }\n    void push(int i) {\n        val[i] = S::mapping(lazy[i],\
+    \ val[i]);\n        lazy[i << 1 | 0] = S::composition(lazy[i], lazy[i << 1 | 0]);\n\
+    \        lazy[i << 1 | 1] = S::composition(lazy[i], lazy[i << 1 | 1]);\n     \
+    \   lazy[i] = S::id();\n    }\n    void thrust(int i) {\n        for (int j =\
+    \ log; j; j--) push(i >> j);\n    }\n    void recalc(int i) {\n        while (i\
+    \ >>= 1) val[i] = S::op(reflect(i << 1 | 0), reflect(i << 1 | 1));\n    }\n  \
+    \  void set(int i, const V &a) {\n        thrust(i += size);\n        val[i] =\
+    \ a;\n        lazy[i] = S::id();\n        recalc(i);\n    }\n    void apply(int\
+    \ l, int r, F f) {\n        thrust(l += size);\n        thrust(r += size - 1);\n\
+    \        for (int i = l, j = r + 1; i < j; i >>= 1, j >>= 1) {\n            if\
+    \ (i & 1) lazy[i++] = S::composition(f, lazy[i]);\n            if (j & 1) lazy[j]\
+    \ = S::composition(f, lazy[--j]);\n        }\n        recalc(l);\n        recalc(r);\n\
+    \    }\n    V get(int i) {\n        thrust(i += size);\n        return reflect(i);\n\
+    \    }\n    V prod(int l, int r) {\n        thrust(l += size);\n        thrust(r\
+    \ += size - 1);\n        V a = S::e(), b = S::e();\n        for (r++; l < r; l\
+    \ >>= 1, r >>= 1) {\n            if (l & 1) a = S::op(a, reflect(l++));\n    \
+    \        if (r & 1) b = S::op(reflect(--r), b);\n        }\n        return S::op(a,\
+    \ b);\n    }\n    template <typename G> int max_right(int l, G g) {\n        if\
+    \ (l == n) return n;\n        thrust(l += size);\n        V a = S::e();\n    \
+    \    do {\n            while (~l & 1) l >>= 1;\n            if (!g(S::op(a, reflect(l))))\
     \ {\n                while (l < size) {\n                    push(l);\n      \
     \              l = l << 1 | 0;\n                    if (g(S::op(a, reflect(l))))\
     \ a = S::op(a, reflect(l++));\n                }\n                return l - size;\n\
@@ -105,8 +104,8 @@ data:
     \ };\n};\n\n\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp\"\
     \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp\"\
     \nusing namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n   \
-    \ vector<pair<ll, ll>> a1(n);\n    for (ll i : range(n)) cin >> a1[i].first;\n\
-    \    lazy_segtree<sum_monoid_with_addition> lst(a1);\n    ll ans = LLONG_MAX;\n\
+    \ vector<pair<ll, ll>> a1(n);\n    for (ll i : rep(n)) cin >> a1[i].first;\n \
+    \   lazy_segtree<sum_monoid_with_addition> lst(a1);\n    ll ans = LLONG_MAX;\n\
     \    for (int r = 1; r <= n; r++) {\n        ll l = lst.min_left(r, [&](pair<ll,\
     \ ll> x) { return x.first < s; });\n        if (l > 0) chmin(ans, r - l + 1);\n\
     \    }\n    if (ans == LLONG_MAX) {\n        cout << 0 << endl;\n    } else {\n\
@@ -114,7 +113,7 @@ data:
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A\"\
     \n#include \"../../data_structure/lazy_segtree.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n    vector<pair<ll,\
-    \ ll>> a1(n);\n    for (ll i : range(n)) cin >> a1[i].first;\n    lazy_segtree<sum_monoid_with_addition>\
+    \ ll>> a1(n);\n    for (ll i : rep(n)) cin >> a1[i].first;\n    lazy_segtree<sum_monoid_with_addition>\
     \ lst(a1);\n    ll ans = LLONG_MAX;\n    for (int r = 1; r <= n; r++) {\n    \
     \    ll l = lst.min_left(r, [&](pair<ll, ll> x) { return x.first < s; });\n  \
     \      if (l > 0) chmin(ans, r - l + 1);\n    }\n    if (ans == LLONG_MAX) {\n\
@@ -126,7 +125,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   requiredBy: []
-  timestamp: '2021-08-17 14:49:22+09:00'
+  timestamp: '2021-08-17 16:51:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp

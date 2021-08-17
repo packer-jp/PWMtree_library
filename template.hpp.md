@@ -88,18 +88,17 @@ data:
     template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
     \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os\
     \ << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n   \
-    \ return os;\n}\nstruct range {\n    int start, stop, step;\n    struct iterator\
-    \ {\n        int val, stop, step;\n        iterator(int val, int stop, int step)\
-    \ : val(val), stop(stop), step(step) {}\n        iterator &operator++() {\n  \
-    \          val += step;\n            if (step > 0) {\n                chmin(val,\
-    \ stop);\n            } else {\n                chmax(val, stop);\n          \
-    \  }\n            return *this;\n        }\n        int operator*() const { return\
-    \ val; }\n        bool operator!=(const iterator &i) const { return val != i.val;\
-    \ }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n    range(int\
-    \ start, int stop) : start(start), stop(stop), step(1) {}\n    range(int start,\
-    \ int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
-    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
-    \ {stop, stop, step}; };\n};\n\n\n"
+    \ return os;\n}\nstruct rep {\n    struct itr {\n        int v;\n        itr(int\
+    \ v) : v(v) {}\n        void operator++() { v++; }\n        int operator*() const\
+    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
+    \ }\n    };\n    int l, r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int\
+    \ r) : l(l), r(r) {}\n    itr begin() const { return l; };\n    itr end() const\
+    \ { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n       \
+    \ itr(int v) : v(v) {}\n        void operator++() { v--; }\n        int operator*()\
+    \ const { return v; }\n        bool operator!=(const itr &i) const { return v\
+    \ != i.v; }\n    };\n    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int\
+    \ l, int r) : l(l), r(r) {}\n    itr begin() const { return r - 1; };\n    itr\
+    \ end() const { return l - 1; };\n};\n\n\n"
   code: "#ifndef PWMTREE_TEMPLATE_HPP\n#define PWMTREE_TEMPLATE_HPP 1\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     #define bit(n) (1ull << (n))\nusing ll = long long;\ntemplate <typename T> using\
@@ -111,18 +110,17 @@ data:
     \    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
     \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
-    ); }\n    os << \")\";\n    return os;\n}\nstruct range {\n    int start, stop,\
-    \ step;\n    struct iterator {\n        int val, stop, step;\n        iterator(int\
-    \ val, int stop, int step) : val(val), stop(stop), step(step) {}\n        iterator\
-    \ &operator++() {\n            val += step;\n            if (step > 0) {\n   \
-    \             chmin(val, stop);\n            } else {\n                chmax(val,\
-    \ stop);\n            }\n            return *this;\n        }\n        int operator*()\
-    \ const { return val; }\n        bool operator!=(const iterator &i) const { return\
-    \ val != i.val; }\n    };\n    range(int end) : start(0), stop(end), step(1) {}\n\
-    \    range(int start, int stop) : start(start), stop(stop), step(1) {}\n    range(int\
-    \ start, int stop, int step) : start(start), stop(stop), step(step) {}\n    iterator\
-    \ begin() const { return {start, stop, step}; };\n    iterator end() const { return\
-    \ {stop, stop, step}; };\n};\n\n#endif"
+    ); }\n    os << \")\";\n    return os;\n}\nstruct rep {\n    struct itr {\n  \
+    \      int v;\n        itr(int v) : v(v) {}\n        void operator++() { v++;\
+    \ }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    rep(int r) :\
+    \ l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        int v;\n        itr(int v) : v(v) {}\n        void operator++()\
+    \ { v--; }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    per(int r) :\
+    \ l(0), r(r) {}\n    per(int l, int r) : l(l), r(r) {}\n    itr begin() const\
+    \ { return r - 1; };\n    itr end() const { return l - 1; };\n};\n\n#endif"
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
@@ -136,7 +134,7 @@ data:
   - graph/zobfs.hpp
   - data_structure/lazy_segtree.hpp
   - data_structure/segtree.hpp
-  timestamp: '2021-08-17 14:49:22+09:00'
+  timestamp: '2021-08-17 16:49:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
