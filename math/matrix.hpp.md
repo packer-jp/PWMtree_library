@@ -26,39 +26,34 @@ data:
     template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
     \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os\
     \ << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n   \
-    \ return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n#else\nvoid\
-    \ debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail> void debug(Head\
-    \ &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail)) cerr\
-    \ << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__ << \"\
-    : \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\n\nstruct rep {\n\
-    \    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
-    \ operator++() { v++; }\n        int operator*() const { return v; }\n       \
-    \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n\
-    \    itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
-    struct per {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n\
-    \        void operator++() { v--; }\n        int operator*() const { return v;\
-    \ }\n        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n\
-    \    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int l, int r) : l(l),\
-    \ r(r) {}\n    itr begin() const { return r - 1; };\n    itr end() const { return\
-    \ l - 1; };\n};\n\n\n#line 5 \"math/matrix.hpp\"\n\ntemplate <typename S> struct\
-    \ matrix {\n    using V = typename S::val_t;\n    vector<vector<V>> val;\n   \
-    \ matrix(int n, int m) : matrix(vector(n, vector(m, S::zero()))) {}\n    matrix(vector<vector<V>>\
-    \ src) : val(src) {}\n    vector<V> &operator[](int i) { return val[i]; }\n  \
-    \  const vector<V> &operator[](int i) const { return val[i]; }\n    int height()\
-    \ const { return val.size(); }\n    int width() const { return val[0].size();\
-    \ }\n    static matrix id(int n) {\n        matrix ret(n, n);\n        for (int\
-    \ i : rep(n)) ret[i][i] = S::one();\n        return ret;\n    }\n    void row_add(int\
-    \ i, int j, V a) {\n        for (int k : rep(width())) { val[i][k] += val[j][k]\
-    \ * a; }\n    }\n    bool place_nonzero(int i, int j) {\n        for (int k :\
-    \ rep(i, height())) {\n            if (val[k][j] != S::zero()) {\n           \
-    \     if (k > i) row_add(i, k, S::one());\n                break;\n          \
-    \  }\n        }\n        return val[i][j] != S::zero();\n    }\n    matrix upper_triangular()\
-    \ const {\n        matrix ret(*this);\n        for (int i = 0, j = 0; i < height()\
-    \ && j < width(); j++) {\n            if (!ret.place_nonzero(i, j)) continue;\n\
-    \            for (int k : rep(i + 1, height())) ret.row_add(k, i, -ret[k][j] /\
-    \ ret[i][j]);\n            i++;\n        }\n        return ret;\n    }\n    V\
-    \ det() const {\n        V ret = S::one();\n        matrix ut = upper_triangular();\n\
+    \ return os;\n}\n\nstruct rep {\n    struct itr {\n        int v;\n        itr(int\
+    \ v) : v(v) {}\n        void operator++() { ++v; }\n        int operator*() const\
+    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
+    \ }\n    };\n    int l, r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int\
+    \ r) : l(l), r(r) {}\n    itr begin() const { return l; };\n    itr end() const\
+    \ { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n       \
+    \ itr(int v) : v(v) {}\n        void operator++() { --v; }\n        int operator*()\
+    \ const { return v; }\n        bool operator!=(const itr &i) const { return v\
+    \ != i.v; }\n    };\n    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int\
+    \ l, int r) : l(l), r(r) {}\n    itr begin() const { return r - 1; };\n    itr\
+    \ end() const { return l - 1; };\n};\n\n\n#line 5 \"math/matrix.hpp\"\n\ntemplate\
+    \ <typename S> struct matrix {\n    using V = typename S::val_t;\n    vector<vector<V>>\
+    \ val;\n    matrix(int n, int m) : matrix(vector(n, vector(m, S::zero()))) {}\n\
+    \    matrix(vector<vector<V>> src) : val(src) {}\n    vector<V> &operator[](int\
+    \ i) { return val[i]; }\n    const vector<V> &operator[](int i) const { return\
+    \ val[i]; }\n    int height() const { return val.size(); }\n    int width() const\
+    \ { return val[0].size(); }\n    static matrix id(int n) {\n        matrix ret(n,\
+    \ n);\n        for (int i : rep(n)) ret[i][i] = S::one();\n        return ret;\n\
+    \    }\n    void row_add(int i, int j, V a) {\n        for (int k : rep(width()))\
+    \ { val[i][k] += val[j][k] * a; }\n    }\n    bool place_nonzero(int i, int j)\
+    \ {\n        for (int k : rep(i, height())) {\n            if (val[k][j] != S::zero())\
+    \ {\n                if (k > i) row_add(i, k, S::one());\n                break;\n\
+    \            }\n        }\n        return val[i][j] != S::zero();\n    }\n   \
+    \ matrix upper_triangular() const {\n        matrix ret(*this);\n        for (int\
+    \ i = 0, j = 0; i < height() && j < width(); j++) {\n            if (!ret.place_nonzero(i,\
+    \ j)) continue;\n            for (int k : rep(i + 1, height())) ret.row_add(k,\
+    \ i, -ret[k][j] / ret[i][j]);\n            i++;\n        }\n        return ret;\n\
+    \    }\n    V det() const {\n        V ret = S::one();\n        matrix ut = upper_triangular();\n\
     \        for (int i : rep(height())) ret *= ut[i][i];\n        return ret;\n \
     \   }\n    matrix inv() const {\n        matrix ex(height(), width() << 1);\n\
     \        for (int i : rep(height())) {\n            for (int j : rep(width()))\
@@ -155,7 +150,7 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2021-08-19 12:25:05+09:00'
+  timestamp: '2021-08-19 12:39:30+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp

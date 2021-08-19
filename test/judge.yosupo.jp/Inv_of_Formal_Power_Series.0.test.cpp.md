@@ -36,38 +36,34 @@ data:
     \  return true;\n    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
     \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
-    ); }\n    os << \")\";\n    return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...)\
-    \ (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename...\
-    \ Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if\
-    \ (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n#define dump(...)\
-    \ cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
-    #endif\n\nstruct rep {\n    struct itr {\n        int v;\n        itr(int v) :\
-    \ v(v) {}\n        void operator++() { v++; }\n        int operator*() const {\
-    \ return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    int l, r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int\
-    \ r) : l(l), r(r) {}\n    itr begin() const { return l; };\n    itr end() const\
-    \ { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n       \
-    \ itr(int v) : v(v) {}\n        void operator++() { v--; }\n        int operator*()\
-    \ const { return v; }\n        bool operator!=(const itr &i) const { return v\
-    \ != i.v; }\n    };\n    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int\
-    \ l, int r) : l(l), r(r) {}\n    itr begin() const { return r - 1; };\n    itr\
-    \ end() const { return l - 1; };\n};\n\n\n#line 1 \"math/convolution.hpp\"\n\n\
-    \n\n#line 1 \"math/modint.hpp\"\n\n\n\n#line 5 \"math/modint.hpp\"\n\ntemplate\
-    \ <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll val = 0) :\
-    \ val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static ll mod()\
-    \ { return MOD; }\n    modint inv() const {\n        ll a = val, b = MOD, u =\
-    \ 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n            swap(a\
-    \ -= t * b, b);\n            swap(u -= t * v, v);\n        }\n        return modint(u);\n\
-    \    }\n    modint pow(ll p) const {\n        modint res = 1, mul = val;\n   \
-    \     while (p) {\n            if (p & 1) res *= mul;\n            mul *= mul;\n\
-    \            p >>= 1;\n        }\n        return res;\n    }\n    modint &operator+=(const\
-    \ modint &a) {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return\
-    \ *this;\n    }\n    modint &operator-=(const modint &a) {\n        if ((val +=\
-    \ MOD - a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
-    \ modint &a) {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n\
-    \    modint &operator/=(const modint &a) { return *this *= a.inv(); }\n    bool\
-    \ operator==(const modint &a) const { return val == a.val; }\n    bool operator!=(const\
-    \ modint &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+()\
+    ); }\n    os << \")\";\n    return os;\n}\n\nstruct rep {\n    struct itr {\n\
+    \        int v;\n        itr(int v) : v(v) {}\n        void operator++() { ++v;\
+    \ }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    rep(int r) :\
+    \ l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        int v;\n        itr(int v) : v(v) {}\n        void operator++()\
+    \ { --v; }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    per(int r) :\
+    \ l(0), r(r) {}\n    per(int l, int r) : l(l), r(r) {}\n    itr begin() const\
+    \ { return r - 1; };\n    itr end() const { return l - 1; };\n};\n\n\n#line 1\
+    \ \"math/convolution.hpp\"\n\n\n\n#line 1 \"math/modint.hpp\"\n\n\n\n#line 5 \"\
+    math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007> struct modint {\n    ll val;\n\
+    \    modint(ll val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD)\
+    \ {}\n    static ll mod() { return MOD; }\n    modint inv() const {\n        ll\
+    \ a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t =\
+    \ a / b;\n            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n\
+    \        }\n        return modint(u);\n    }\n    modint pow(ll p) const {\n \
+    \       modint res = 1, mul = val;\n        while (p) {\n            if (p & 1)\
+    \ res *= mul;\n            mul *= mul;\n            p >>= 1;\n        }\n    \
+    \    return res;\n    }\n    modint &operator+=(const modint &a) {\n        if\
+    \ ((val += a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint\
+    \ &operator-=(const modint &a) {\n        if ((val += MOD - a.val) >= MOD) val\
+    \ -= MOD;\n        return *this;\n    }\n    modint &operator*=(const modint &a)\
+    \ {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n    modint\
+    \ &operator/=(const modint &a) { return *this *= a.inv(); }\n    bool operator==(const\
+    \ modint &a) const { return val == a.val; }\n    bool operator!=(const modint\
+    \ &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+()\
     \ const { return *this; }\n    modint operator-() const { return modint(-val);\
     \ }\n    friend modint operator+(const modint &a, const modint &b) { return modint(a)\
     \ += b; }\n    friend modint operator-(const modint &a, const modint &b) { return\
@@ -162,7 +158,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-19 12:25:05+09:00'
+  timestamp: '2021-08-19 12:39:30+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
