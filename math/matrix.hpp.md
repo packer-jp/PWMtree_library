@@ -1,73 +1,78 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/matrix.hpp\"\n\n\n\n#line 1 \"template.hpp\"\n\n\n\n\
     #include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
-    \ (a).end()\n#define bit(n) (1ull << (n))\nusing ll = long long;\ntemplate <typename\
-    \ T> using priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
-    \ <typename T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename\
-    \ U> bool chmax(T &a, const U &b) {\n    if (a < b) {\n        a = b;\n      \
-    \  return true;\n    }\n    return false;\n}\ntemplate <typename T, typename U>\
-    \ bool chmin(T &a, const U &b) {\n    if (b < a) {\n        a = b;\n        return\
-    \ true;\n    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
-    \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
-    \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
-    ); }\n    os << \")\";\n    return os;\n}\nstruct rep {\n    struct itr {\n  \
-    \      int v;\n        itr(int v) : v(v) {}\n        void operator++() { v++;\
-    \ }\n        int operator*() const { return v; }\n        bool operator!=(const\
-    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    rep(int r) :\
-    \ l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n    itr begin() const\
-    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
-    \ itr {\n        int v;\n        itr(int v) : v(v) {}\n        void operator++()\
-    \ { v--; }\n        int operator*() const { return v; }\n        bool operator!=(const\
-    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    per(int r) :\
-    \ l(0), r(r) {}\n    per(int l, int r) : l(l), r(r) {}\n    itr begin() const\
-    \ { return r - 1; };\n    itr end() const { return l - 1; };\n};\n\n\n#line 5\
-    \ \"math/matrix.hpp\"\n\ntemplate <typename S> struct matrix {\n    using V =\
-    \ typename S::val_t;\n    vector<vector<V>> val;\n    matrix(int n, int m) : matrix(vector(n,\
-    \ vector(m, S::zero()))) {}\n    matrix(vector<vector<V>> src) : val(src) {}\n\
-    \    vector<V> &operator[](int i) { return val[i]; }\n    const vector<V> &operator[](int\
-    \ i) const { return val[i]; }\n    int height() const { return val.size(); }\n\
-    \    int width() const { return val[0].size(); }\n    static matrix id(int n)\
-    \ {\n        matrix ret(n, n);\n        for (int i : rep(n)) ret[i][i] = S::one();\n\
-    \        return ret;\n    }\n    void row_add(int i, int j, V a) {\n        for\
-    \ (int k : rep(width())) { val[i][k] += val[j][k] * a; }\n    }\n    bool place_nonzero(int\
-    \ i, int j) {\n        for (int k : rep(i, height())) {\n            if (val[k][j]\
-    \ != S::zero()) {\n                if (k > i) row_add(i, k, S::one());\n     \
-    \           break;\n            }\n        }\n        return val[i][j] != S::zero();\n\
-    \    }\n    matrix upper_triangular() const {\n        matrix ret(*this);\n  \
-    \      for (int i = 0, j = 0; i < height() && j < width(); j++) {\n          \
-    \  if (!ret.place_nonzero(i, j)) continue;\n            for (int k : rep(i + 1,\
-    \ height())) ret.row_add(k, i, -ret[k][j] / ret[i][j]);\n            i++;\n  \
-    \      }\n        return ret;\n    }\n    V det() const {\n        V ret = S::one();\n\
-    \        matrix ut = upper_triangular();\n        for (int i : rep(height()))\
-    \ ret *= ut[i][i];\n        return ret;\n    }\n    matrix inv() const {\n   \
-    \     matrix ex(height(), width() << 1);\n        for (int i : rep(height()))\
-    \ {\n            for (int j : rep(width())) { ex[i][j] = val[i][j]; }\n      \
-    \  }\n        for (int i : rep(height())) ex[i][width() + i] = S::one();\n   \
-    \     matrix ut = ex.upper_triangular();\n        for (int i : per(height()))\
-    \ {\n            ut.row_add(i, i, S::one() / ut[i][i] - S::one());\n         \
-    \   for (int j : rep(i)) ut.row_add(j, i, -ut[j][i] / ut[i][i]);\n        }\n\
-    \        matrix ret(height(), width());\n        for (int i : rep(height())) {\n\
-    \            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j]; }\n\
-    \        }\n        return ret;\n    }\n    matrix pow(ll p) const {\n       \
-    \ matrix res = matrix::id(height()), mul(*this);\n        while (p) {\n      \
-    \      if (p & 1) res *= mul;\n            mul *= mul;\n            p >>= 1;\n\
-    \        }\n        return res;\n    }\n    matrix &operator+=(const matrix &a)\
-    \ {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
+    \ (a).end()\nusing ll = long long;\nusing ull = unsigned ll;\ntemplate <typename\
+    \ T> using priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\null\
+    \ bit(int n) { return 1ull << n; }\ntemplate <typename T> T sq(const T &a) { return\
+    \ a * a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) {\n\
+    \    if (a < b) {\n        a = b;\n        return true;\n    }\n    return false;\n\
+    }\ntemplate <typename T, typename U> bool chmin(T &a, const U &b) {\n    if (b\
+    \ < a) {\n        a = b;\n        return true;\n    }\n    return false;\n}\n\
+    template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
+    \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os\
+    \ << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n   \
+    \ return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n#else\nvoid\
+    \ debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail> void debug(Head\
+    \ &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail)) cerr\
+    \ << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__ << \"\
+    : \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\n\nstruct rep {\n\
+    \    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
+    \ operator++() { v++; }\n        int operator*() const { return v; }\n       \
+    \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
+    \ r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n\
+    \    itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
+    struct per {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n\
+    \        void operator++() { v--; }\n        int operator*() const { return v;\
+    \ }\n        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n\
+    \    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int l, int r) : l(l),\
+    \ r(r) {}\n    itr begin() const { return r - 1; };\n    itr end() const { return\
+    \ l - 1; };\n};\n\n\n#line 5 \"math/matrix.hpp\"\n\ntemplate <typename S> struct\
+    \ matrix {\n    using V = typename S::val_t;\n    vector<vector<V>> val;\n   \
+    \ matrix(int n, int m) : matrix(vector(n, vector(m, S::zero()))) {}\n    matrix(vector<vector<V>>\
+    \ src) : val(src) {}\n    vector<V> &operator[](int i) { return val[i]; }\n  \
+    \  const vector<V> &operator[](int i) const { return val[i]; }\n    int height()\
+    \ const { return val.size(); }\n    int width() const { return val[0].size();\
+    \ }\n    static matrix id(int n) {\n        matrix ret(n, n);\n        for (int\
+    \ i : rep(n)) ret[i][i] = S::one();\n        return ret;\n    }\n    void row_add(int\
+    \ i, int j, V a) {\n        for (int k : rep(width())) { val[i][k] += val[j][k]\
+    \ * a; }\n    }\n    bool place_nonzero(int i, int j) {\n        for (int k :\
+    \ rep(i, height())) {\n            if (val[k][j] != S::zero()) {\n           \
+    \     if (k > i) row_add(i, k, S::one());\n                break;\n          \
+    \  }\n        }\n        return val[i][j] != S::zero();\n    }\n    matrix upper_triangular()\
+    \ const {\n        matrix ret(*this);\n        for (int i = 0, j = 0; i < height()\
+    \ && j < width(); j++) {\n            if (!ret.place_nonzero(i, j)) continue;\n\
+    \            for (int k : rep(i + 1, height())) ret.row_add(k, i, -ret[k][j] /\
+    \ ret[i][j]);\n            i++;\n        }\n        return ret;\n    }\n    V\
+    \ det() const {\n        V ret = S::one();\n        matrix ut = upper_triangular();\n\
+    \        for (int i : rep(height())) ret *= ut[i][i];\n        return ret;\n \
+    \   }\n    matrix inv() const {\n        matrix ex(height(), width() << 1);\n\
+    \        for (int i : rep(height())) {\n            for (int j : rep(width()))\
+    \ { ex[i][j] = val[i][j]; }\n        }\n        for (int i : rep(height())) ex[i][width()\
+    \ + i] = S::one();\n        matrix ut = ex.upper_triangular();\n        for (int\
+    \ i : per(height())) {\n            ut.row_add(i, i, S::one() / ut[i][i] - S::one());\n\
+    \            for (int j : rep(i)) ut.row_add(j, i, -ut[j][i] / ut[i][i]);\n  \
+    \      }\n        matrix ret(height(), width());\n        for (int i : rep(height()))\
+    \ {\n            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j];\
+    \ }\n        }\n        return ret;\n    }\n    matrix pow(ll p) const {\n   \
+    \     matrix res = matrix::id(height()), mul(*this);\n        while (p) {\n  \
+    \          if (p & 1) res *= mul;\n            mul *= mul;\n            p >>=\
+    \ 1;\n        }\n        return res;\n    }\n    matrix &operator+=(const matrix\
+    \ &a) {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
     \ { val[i][j] += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix\
     \ &operator-=(const matrix &a) {\n        for (int i : rep(height())) {\n    \
     \        for (int j : rep(width())) { val[i][j] -= a[i][j]; }\n        }\n   \
@@ -150,8 +155,8 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2021-08-17 16:49:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-08-19 11:55:04+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 documentation_of: math/matrix.hpp

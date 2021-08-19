@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_det
@@ -23,19 +23,24 @@ data:
   bundledCode: "#line 1 \"test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n#line 1 \"math/matrix.hpp\"\
     \n\n\n\n#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\n\n#define all(a) (a).begin(), (a).end()\n#define bit(n) (1ull << (n))\n\
-    using ll = long long;\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
-    \ vector<T>, greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a *\
-    \ a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) {\n   \
-    \ if (a < b) {\n        a = b;\n        return true;\n    }\n    return false;\n\
-    }\ntemplate <typename T, typename U> bool chmin(T &a, const U &b) {\n    if (b\
-    \ < a) {\n        a = b;\n        return true;\n    }\n    return false;\n}\n\
-    template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
-    \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os\
-    \ << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n   \
-    \ return os;\n}\nstruct rep {\n    struct itr {\n        int v;\n        itr(int\
-    \ v) : v(v) {}\n        void operator++() { v++; }\n        int operator*() const\
-    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
+    \ std;\n\n#define all(a) (a).begin(), (a).end()\nusing ll = long long;\nusing\
+    \ ull = unsigned ll;\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+    \ vector<T>, greater<T>>;\null bit(int n) { return 1ull << n; }\ntemplate <typename\
+    \ T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename U> bool\
+    \ chmax(T &a, const U &b) {\n    if (a < b) {\n        a = b;\n        return\
+    \ true;\n    }\n    return false;\n}\ntemplate <typename T, typename U> bool chmin(T\
+    \ &a, const U &b) {\n    if (b < a) {\n        a = b;\n        return true;\n\
+    \    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+    \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
+    ); }\n    os << \")\";\n    return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...)\
+    \ (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename...\
+    \ Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if\
+    \ (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n#define dump(...)\
+    \ cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
+    #endif\n\nstruct rep {\n    struct itr {\n        int v;\n        itr(int v) :\
+    \ v(v) {}\n        void operator++() { v++; }\n        int operator*() const {\
+    \ return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
     \ }\n    };\n    int l, r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int\
     \ r) : l(l), r(r) {}\n    itr begin() const { return l; };\n    itr end() const\
     \ { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n       \
@@ -142,8 +147,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-17 16:49:13+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-08-19 11:55:04+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 layout: document
