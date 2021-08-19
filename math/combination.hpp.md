@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/inner_basis.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"math/combination.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     using ll = long long;\nusing ull = unsigned long long;\null bit(int n) { return\
     \ 1ull << n; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
@@ -38,26 +38,38 @@ data:
     \ }\n        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n\
     \    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int l, int r) : l(l),\
     \ r(r) {}\n    itr begin() const { return r - 1; };\n    itr end() const { return\
-    \ l - 1; };\n};\n#line 4 \"math/inner_basis.hpp\"\n\nvector<ll> inner_basis(vector<ll>\
-    \ a) {\n    vector<ll> basis, ret;\n    for (ll e : a) {\n        ll e_ = e;\n\
-    \        for (ll b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e),\
-    \ ret.push_back(e_);\n    }\n    return ret;\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\nvector<ll> inner_basis(vector<ll>\
-    \ a) {\n    vector<ll> basis, ret;\n    for (ll e : a) {\n        ll e_ = e;\n\
-    \        for (ll b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e),\
-    \ ret.push_back(e_);\n    }\n    return ret;\n}"
+    \ l - 1; };\n};\n#line 4 \"math/combination.hpp\"\n\ntemplate <typename mint>\
+    \ struct combination {\n    vector<mint> fact, finv, inv;\n    combination(int\
+    \ n) : fact(n + 1), finv(n + 1), inv(n + 1) {\n        fact[0] = fact[1] = finv[0]\
+    \ = finv[1] = inv[1] = 1;\n        for (int i : rep(2, n + 1)) {\n           \
+    \ fact[i] = fact[i - 1] * i;\n            inv[i] = -inv[mint::mod() % i] * (mit::mod()\
+    \ / i);\n            finv[i] = finv[i - 1] * inv[i];\n        }\n    }\n    T\
+    \ P(int n, int r) { return r < 0 || n < r ? 0 : (fact[n] * finv[n - r]); }\n \
+    \   T C(int n, int r) { return P(n, r) * finv[r]; }\n    T H(int n, int r) { return\
+    \ C(n + r - 1, r); }\n    T catalan(int n) { return C(2 * n, n) / (n + 1); }\n\
+    };\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename mint>\
+    \ struct combination {\n    vector<mint> fact, finv, inv;\n    combination(int\
+    \ n) : fact(n + 1), finv(n + 1), inv(n + 1) {\n        fact[0] = fact[1] = finv[0]\
+    \ = finv[1] = inv[1] = 1;\n        for (int i : rep(2, n + 1)) {\n           \
+    \ fact[i] = fact[i - 1] * i;\n            inv[i] = -inv[mint::mod() % i] * (mit::mod()\
+    \ / i);\n            finv[i] = finv[i - 1] * inv[i];\n        }\n    }\n    T\
+    \ P(int n, int r) { return r < 0 || n < r ? 0 : (fact[n] * finv[n - r]); }\n \
+    \   T C(int n, int r) { return P(n, r) * finv[r]; }\n    T H(int n, int r) { return\
+    \ C(n + r - 1, r); }\n    T catalan(int n) { return C(2 * n, n) / (n + 1); }\n\
+    };"
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: math/inner_basis.hpp
+  path: math/combination.hpp
   requiredBy: []
   timestamp: '2021-08-19 13:08:19+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: math/inner_basis.hpp
+documentation_of: math/combination.hpp
 layout: document
 redirect_from:
-- /library/math/inner_basis.hpp
-- /library/math/inner_basis.hpp.html
-title: math/inner_basis.hpp
+- /library/math/combination.hpp
+- /library/math/combination.hpp.html
+title: math/combination.hpp
 ---
