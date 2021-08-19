@@ -31,11 +31,11 @@ data:
     links: []
   bundledCode: "#line 1 \"data_structure/lazy_segtree.hpp\"\n\n\n\n#line 1 \"template.hpp\"\
     \n\n\n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
-    \ (a).end()\nusing ll = long long;\nusing ull = unsigned ll;\ntemplate <typename\
-    \ T> using priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\null\
-    \ bit(int n) { return 1ull << n; }\ntemplate <typename T> T sq(const T &a) { return\
-    \ a * a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) {\n\
-    \    if (a < b) {\n        a = b;\n        return true;\n    }\n    return false;\n\
+    \ (a).end()\nusing ll = long long;\nusing ull = unsigned ll;\null bit(int n) {\
+    \ return 1ull << n; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+    \ vector<T>, greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a *\
+    \ a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) {\n   \
+    \ if (a < b) {\n        a = b;\n        return true;\n    }\n    return false;\n\
     }\ntemplate <typename T, typename U> bool chmin(T &a, const U &b) {\n    if (b\
     \ < a) {\n        a = b;\n        return true;\n    }\n    return false;\n}\n\
     template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
@@ -185,7 +185,7 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2021-08-19 11:55:04+09:00'
+  timestamp: '2021-08-19 12:25:05+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp

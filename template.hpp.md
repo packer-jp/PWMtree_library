@@ -82,13 +82,13 @@ data:
     links: []
   bundledCode: "#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\n#define all(a) (a).begin(), (a).end()\nusing ll = long long;\nusing\
-    \ ull = unsigned ll;\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
-    \ vector<T>, greater<T>>;\null bit(int n) { return 1ull << n; }\ntemplate <typename\
-    \ T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename U> bool\
-    \ chmax(T &a, const U &b) {\n    if (a < b) {\n        a = b;\n        return\
-    \ true;\n    }\n    return false;\n}\ntemplate <typename T, typename U> bool chmin(T\
-    \ &a, const U &b) {\n    if (b < a) {\n        a = b;\n        return true;\n\
-    \    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
+    \ ull = unsigned ll;\null bit(int n) { return 1ull << n; }\ntemplate <typename\
+    \ T> using priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
+    \ <typename T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename\
+    \ U> bool chmax(T &a, const U &b) {\n    if (a < b) {\n        a = b;\n      \
+    \  return true;\n    }\n    return false;\n}\ntemplate <typename T, typename U>\
+    \ bool chmin(T &a, const U &b) {\n    if (b < a) {\n        a = b;\n        return\
+    \ true;\n    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
     \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
     ); }\n    os << \")\";\n    return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...)\
@@ -109,31 +109,32 @@ data:
     \ end() const { return l - 1; };\n};\n\n\n"
   code: "#ifndef PWMTREE_TEMPLATE_HPP\n#define PWMTREE_TEMPLATE_HPP 1\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
-    using ll = long long;\nusing ull = unsigned ll;\ntemplate <typename T> using priority_queue_rev\
-    \ = priority_queue<T, vector<T>, greater<T>>;\null bit(int n) { return 1ull <<\
-    \ n; }\ntemplate <typename T> T sq(const T &a) { return a * a; }\ntemplate <typename\
-    \ T, typename U> bool chmax(T &a, const U &b) {\n    if (a < b) {\n        a =\
-    \ b;\n        return true;\n    }\n    return false;\n}\ntemplate <typename T,\
-    \ typename U> bool chmin(T &a, const U &b) {\n    if (b < a) {\n        a = b;\n\
-    \        return true;\n    }\n    return false;\n}\ntemplate <typename T> ostream\
-    \ &operator<<(ostream &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto\
-    \ itr = a.begin(); itr != a.end(); itr++) { os << *itr << (next(itr) != a.end()\
-    \ ? \", \" : \"\"); }\n    os << \")\";\n    return os;\n}\n\n#ifdef ONLINE_JUDGE\n\
-    #define dump(...) (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename\
-    \ Head, typename... Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr\
-    \ << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n\
-    #define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
-    #endif\n\nstruct rep {\n    struct itr {\n        int v;\n        itr(int v) :\
-    \ v(v) {}\n        void operator++() { v++; }\n        int operator*() const {\
-    \ return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    int l, r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int\
-    \ r) : l(l), r(r) {}\n    itr begin() const { return l; };\n    itr end() const\
-    \ { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n       \
-    \ itr(int v) : v(v) {}\n        void operator++() { v--; }\n        int operator*()\
-    \ const { return v; }\n        bool operator!=(const itr &i) const { return v\
-    \ != i.v; }\n    };\n    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int\
-    \ l, int r) : l(l), r(r) {}\n    itr begin() const { return r - 1; };\n    itr\
-    \ end() const { return l - 1; };\n};\n\n#endif"
+    using ll = long long;\nusing ull = unsigned ll;\null bit(int n) { return 1ull\
+    \ << n; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+    \ vector<T>, greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a *\
+    \ a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) {\n   \
+    \ if (a < b) {\n        a = b;\n        return true;\n    }\n    return false;\n\
+    }\ntemplate <typename T, typename U> bool chmin(T &a, const U &b) {\n    if (b\
+    \ < a) {\n        a = b;\n        return true;\n    }\n    return false;\n}\n\
+    template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
+    \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os\
+    \ << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n   \
+    \ return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n#else\nvoid\
+    \ debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail> void debug(Head\
+    \ &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail)) cerr\
+    \ << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__ << \"\
+    : \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\n\nstruct rep {\n\
+    \    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
+    \ operator++() { v++; }\n        int operator*() const { return v; }\n       \
+    \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
+    \ r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n\
+    \    itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
+    struct per {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n\
+    \        void operator++() { v--; }\n        int operator*() const { return v;\
+    \ }\n        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n\
+    \    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int l, int r) : l(l),\
+    \ r(r) {}\n    itr begin() const { return r - 1; };\n    itr end() const { return\
+    \ l - 1; };\n};\n\n#endif"
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
@@ -147,7 +148,7 @@ data:
   - graph/zobfs.hpp
   - data_structure/lazy_segtree.hpp
   - data_structure/segtree.hpp
-  timestamp: '2021-08-19 11:55:04+09:00'
+  timestamp: '2021-08-19 12:25:05+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp

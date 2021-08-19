@@ -27,13 +27,13 @@ data:
     \ \"https://judge.yosupo.jp/problem/convolution_mod\"\n#line 1 \"math/convolution.hpp\"\
     \n\n\n\n#line 1 \"template.hpp\"\n\n\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\n#define all(a) (a).begin(), (a).end()\nusing ll = long long;\nusing\
-    \ ull = unsigned ll;\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
-    \ vector<T>, greater<T>>;\null bit(int n) { return 1ull << n; }\ntemplate <typename\
-    \ T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename U> bool\
-    \ chmax(T &a, const U &b) {\n    if (a < b) {\n        a = b;\n        return\
-    \ true;\n    }\n    return false;\n}\ntemplate <typename T, typename U> bool chmin(T\
-    \ &a, const U &b) {\n    if (b < a) {\n        a = b;\n        return true;\n\
-    \    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
+    \ ull = unsigned ll;\null bit(int n) { return 1ull << n; }\ntemplate <typename\
+    \ T> using priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
+    \ <typename T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename\
+    \ U> bool chmax(T &a, const U &b) {\n    if (a < b) {\n        a = b;\n      \
+    \  return true;\n    }\n    return false;\n}\ntemplate <typename T, typename U>\
+    \ bool chmin(T &a, const U &b) {\n    if (b < a) {\n        a = b;\n        return\
+    \ true;\n    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
     \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
     ); }\n    os << \")\";\n    return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...)\
@@ -109,7 +109,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-19 11:55:04+09:00'
+  timestamp: '2021-08-19 12:25:05+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Convolution.0.test.cpp
