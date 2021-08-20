@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/fps.hpp
     title: math/fps.hpp
   - icon: ':question:'
@@ -204,24 +204,22 @@ data:
     \         F[i] *= coeff;\n            coeff += one;\n        }\n    };\n\n   \
     \ fps b{1, 1 < (int)this->size() ? (*this)[1] : 0}, c{1}, z1, z2{1, 1};\n    for\
     \ (int m = 2; m < deg; m *= 2) {\n        auto y = b;\n        y.resize(2 * m);\n\
-    \        ntt(y);\n        dump(b, y);\n        z1 = z2;\n        fps z(m);\n \
-    \       for (int i = 0; i < m; ++i) z[i] = y[i] * z1[i];\n        intt(z);\n \
-    \       dump(z);\n        fill(z.begin(), z.begin() + m / 2, mint(0));\n     \
-    \   dump(z);\n        ntt(z);\n        for (int i = 0; i < m; ++i) z[i] *= -z1[i];\n\
-    \        intt(z);\n        dump(z, c);\n        c.insert(c.end(), z.begin() +\
-    \ m / 2, z.end());\n        dump(c);\n        z2 = c;\n        z2.resize(2 * m);\n\
-    \        dump(z2);\n        ntt(z2);\n        fps x(this->begin(), this->begin()\
-    \ + min<int>(this->size(), m));\n        inplace_diff(x);\n        x.push_back(mint(0));\n\
-    \        dump(x, *this);\n        ntt(x);\n        dump(x);\n        for (int\
-    \ i = 0; i < m; ++i) x[i] *= y[i];\n        dump(x, y);\n        intt(x);\n  \
-    \      dump(x);\n        x -= b.differential();\n        dump(x);\n        x.resize(2\
-    \ * m);\n        for (int i = 0; i < m - 1; ++i) x[m + i] = x[i], x[i] = mint(0);\n\
-    \        ntt(x);\n        for (int i = 0; i < 2 * m; ++i) x[i] *= z2[i];\n   \
-    \     intt(x);\n        x.pop_back();\n        inplace_integral(x);\n        for\
-    \ (int i = m; i < min<int>(this->size(), 2 * m); ++i) x[i] += (*this)[i];\n  \
-    \      fill(x.begin(), x.begin() + m, mint(0));\n        ntt(x);\n        for\
-    \ (int i = 0; i < 2 * m; ++i) x[i] *= y[i];\n        intt(x);\n        b.insert(b.end(),\
-    \ x.begin() + m, x.end());\n    }\n    return b.prefix(deg);\n}\n#line 3 \"test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp\"\
+    \        ntt(y);\n        z1 = z2;\n        fps z(m);\n        for (int i = 0;\
+    \ i < m; ++i) z[i] = y[i] * z1[i];\n        intt(z);\n        fill(z.begin(),\
+    \ z.begin() + m / 2, mint(0));\n        ntt(z);\n        for (int i = 0; i < m;\
+    \ ++i) z[i] *= -z1[i];\n        intt(z);\n        c.insert(c.end(), z.begin()\
+    \ + m / 2, z.end());\n        z2 = c;\n        z2.resize(2 * m);\n        ntt(z2);\n\
+    \        fps x(this->begin(), this->begin() + min<int>(this->size(), m));\n  \
+    \      inplace_diff(x);\n        x.push_back(mint(0));\n        ntt(x);\n    \
+    \    for (int i = 0; i < m; ++i) x[i] *= y[i];\n        intt(x);\n        x -=\
+    \ b.differential();\n        x.resize(2 * m);\n        for (int i = 0; i < m -\
+    \ 1; ++i) x[m + i] = x[i], x[i] = mint(0);\n        ntt(x);\n        for (int\
+    \ i = 0; i < 2 * m; ++i) x[i] *= z2[i];\n        intt(x);\n        x.pop_back();\n\
+    \        inplace_integral(x);\n        for (int i = m; i < min<int>(this->size(),\
+    \ 2 * m); ++i) x[i] += (*this)[i];\n        fill(x.begin(), x.begin() + m, mint(0));\n\
+    \        ntt(x);\n        for (int i = 0; i < 2 * m; ++i) x[i] *= y[i];\n    \
+    \    intt(x);\n        b.insert(b.end(), x.begin() + m, x.end());\n    }\n   \
+    \ return b.prefix(deg);\n}\n#line 3 \"test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp\"\
     \n\nint main() {\n    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n\
     \    fps<mint> a(n);\n    for (ll i : rep(n)) cin >> a[i];\n    fps<mint> b =\
     \ a.exp();\n    for (ll i : rep(n)) cout << b[i] << \" \";\n    cout << endl;\n\
@@ -239,7 +237,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-20 10:21:39+09:00'
+  timestamp: '2021-08-20 12:25:18+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
