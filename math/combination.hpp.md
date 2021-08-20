@@ -42,28 +42,28 @@ data:
     \ struct combination {\n    vector<mint> fact, finv, inv;\n    combination(int\
     \ n) : fact(n + 1), finv(n + 1), inv(n + 1) {\n        fact[0] = fact[1] = finv[0]\
     \ = finv[1] = inv[1] = 1;\n        for (int i : rep(2, n + 1)) {\n           \
-    \ fact[i] = fact[i - 1] * i;\n            inv[i] = -inv[mint::mod() % i] * (mit::mod()\
-    \ / i);\n            finv[i] = finv[i - 1] * inv[i];\n        }\n    }\n    T\
+    \ fact[i] = fact[i - 1] * i;\n            inv[i] = -inv[mint::mod() % i] * (mint::mod()\
+    \ / i);\n            finv[i] = finv[i - 1] * inv[i];\n        }\n    }\n    mint\
     \ P(int n, int r) { return r < 0 || n < r ? 0 : (fact[n] * finv[n - r]); }\n \
-    \   T C(int n, int r) { return P(n, r) * finv[r]; }\n    T H(int n, int r) { return\
-    \ C(n + r - 1, r); }\n    T catalan(int n) { return C(2 * n, n) / (n + 1); }\n\
-    };\n"
+    \   mint C(int n, int r) { return P(n, r) * finv[r]; }\n    mint H(int n, int\
+    \ r) { return C(n + r - 1, r); }\n    mint catalan(int n) { return C(2 * n, n)\
+    \ / (n + 1); }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename mint>\
     \ struct combination {\n    vector<mint> fact, finv, inv;\n    combination(int\
     \ n) : fact(n + 1), finv(n + 1), inv(n + 1) {\n        fact[0] = fact[1] = finv[0]\
     \ = finv[1] = inv[1] = 1;\n        for (int i : rep(2, n + 1)) {\n           \
-    \ fact[i] = fact[i - 1] * i;\n            inv[i] = -inv[mint::mod() % i] * (mit::mod()\
-    \ / i);\n            finv[i] = finv[i - 1] * inv[i];\n        }\n    }\n    T\
+    \ fact[i] = fact[i - 1] * i;\n            inv[i] = -inv[mint::mod() % i] * (mint::mod()\
+    \ / i);\n            finv[i] = finv[i - 1] * inv[i];\n        }\n    }\n    mint\
     \ P(int n, int r) { return r < 0 || n < r ? 0 : (fact[n] * finv[n - r]); }\n \
-    \   T C(int n, int r) { return P(n, r) * finv[r]; }\n    T H(int n, int r) { return\
-    \ C(n + r - 1, r); }\n    T catalan(int n) { return C(2 * n, n) / (n + 1); }\n\
-    };"
+    \   mint C(int n, int r) { return P(n, r) * finv[r]; }\n    mint H(int n, int\
+    \ r) { return C(n + r - 1, r); }\n    mint catalan(int n) { return C(2 * n, n)\
+    \ / (n + 1); }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: math/combination.hpp
   requiredBy: []
-  timestamp: '2021-08-19 13:08:19+09:00'
+  timestamp: '2021-08-20 10:21:39+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/combination.hpp

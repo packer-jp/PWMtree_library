@@ -8,23 +8,23 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':x:'
     path: math/fps.hpp
     title: math/fps.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - icon: ':x:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
   _isVerificationFailed: true
@@ -85,35 +85,51 @@ data:
     \ modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\n#line 5 \"math/convolution.hpp\"\n\n\
-    template <typename mint> void ntt(vector<mint> &a, mint wn) {\n    int n = a.size(),\
-    \ m = n >> 1;\n    vector<mint> b(n);\n    for (int i = 1; i < n; i <<= 1, wn\
-    \ *= wn, swap(a, b)) {\n        mint wj = 1;\n        for (int j = 0; j < m; j\
-    \ += i, wj *= wn) {\n            for (int k : rep(i)) {\n                b[(j\
-    \ << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n                b[(j << 1) + k\
-    \ + i] = (a[j + k] - a[j + k + m]) * wj;\n            }\n        }\n    }\n}\n\
-    \ntemplate <typename mint> mint getw(ll n) {\n    mint root = 2;\n    while (root.pow((mint::mod()\
-    \ - 1) >> 1) == 1) root += 1;\n    return root.pow((mint::mod() - 1) / n);\n}\n\
-    \ntemplate <typename mint> vector<mint> convolution_friendly(vector<mint> a, vector<mint>\
-    \ b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<=\
-    \ 1) {}\n    a.resize(n), b.resize(n);\n    mint wn = getw<mint>(n);\n    ntt(a,\
-    \ wn), ntt(b, wn);\n    for (int i : rep(n)) a[i] *= b[i];\n    ntt(a, wn.inv());\n\
-    \    mint ninv = mint(n).inv();\n    a.resize(n_);\n    for (int i : rep(n_))\
-    \ a[i] *= ninv;\n    return a;\n}\n"
+    template <typename mint> void ntt(vector<mint> &a, bool inv = false) {\n    int\
+    \ n = a.size(), m = n >> 1;\n    mint root = 2;\n    while (root.pow((mint::mod()\
+    \ - 1) >> 1) == 1) root += 1;\n    mint wn = root.pow((mint::mod() - 1) / n);\n\
+    \    if (inv) wn = wn.inv();\n    vector<mint> b(n);\n    for (int i = 1; i <\
+    \ n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint wj = 1;\n        for (int\
+    \ j = 0; j < m; j += i, wj *= wn) {\n            for (int k : rep(i)) {\n    \
+    \            b[(j << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n              \
+    \  b[(j << 1) + k + i] = (a[j + k] - a[j + k + m]) * wj;\n            }\n    \
+    \    }\n    }\n    if (inv) {\n        mint ninv = mint(n).inv();\n        for\
+    \ (int i : rep(n)) a[i] *= ninv;\n    }\n}\ntemplate <typename mint> void intt(vector<mint>\
+    \ &a) { ntt(a, true); }\n\ntemplate <typename mint> vector<mint> convolution_naive(vector<mint>\
+    \ a, vector<mint> b) {\n    int na = a.size(), nb = b.size();\n    vector<mint>\
+    \ c(na + nb - 1);\n    if (na < nb) swap(a, b), swap(na, nb);\n    for (int i\
+    \ : rep(na)) {\n        for (int j : rep(nb)) { c[i + j] += a[i] * b[j]; }\n \
+    \   }\n    return c;\n}\n\ntemplate <typename mint> vector<mint> convolution_ntt(vector<mint>\
+    \ a, vector<mint> b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n =\
+    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n\
+    \    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n   \
+    \ return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const vector<mint>\
+    \ &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n   \
+    \     return convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a,\
+    \ b);\n    }\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n#include \"modint.hpp\"\n\n\
-    template <typename mint> void ntt(vector<mint> &a, mint wn) {\n    int n = a.size(),\
-    \ m = n >> 1;\n    vector<mint> b(n);\n    for (int i = 1; i < n; i <<= 1, wn\
-    \ *= wn, swap(a, b)) {\n        mint wj = 1;\n        for (int j = 0; j < m; j\
-    \ += i, wj *= wn) {\n            for (int k : rep(i)) {\n                b[(j\
-    \ << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n                b[(j << 1) + k\
-    \ + i] = (a[j + k] - a[j + k + m]) * wj;\n            }\n        }\n    }\n}\n\
-    \ntemplate <typename mint> mint getw(ll n) {\n    mint root = 2;\n    while (root.pow((mint::mod()\
-    \ - 1) >> 1) == 1) root += 1;\n    return root.pow((mint::mod() - 1) / n);\n}\n\
-    \ntemplate <typename mint> vector<mint> convolution_friendly(vector<mint> a, vector<mint>\
-    \ b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<=\
-    \ 1) {}\n    a.resize(n), b.resize(n);\n    mint wn = getw<mint>(n);\n    ntt(a,\
-    \ wn), ntt(b, wn);\n    for (int i : rep(n)) a[i] *= b[i];\n    ntt(a, wn.inv());\n\
-    \    mint ninv = mint(n).inv();\n    a.resize(n_);\n    for (int i : rep(n_))\
-    \ a[i] *= ninv;\n    return a;\n}"
+    template <typename mint> void ntt(vector<mint> &a, bool inv = false) {\n    int\
+    \ n = a.size(), m = n >> 1;\n    mint root = 2;\n    while (root.pow((mint::mod()\
+    \ - 1) >> 1) == 1) root += 1;\n    mint wn = root.pow((mint::mod() - 1) / n);\n\
+    \    if (inv) wn = wn.inv();\n    vector<mint> b(n);\n    for (int i = 1; i <\
+    \ n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint wj = 1;\n        for (int\
+    \ j = 0; j < m; j += i, wj *= wn) {\n            for (int k : rep(i)) {\n    \
+    \            b[(j << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n              \
+    \  b[(j << 1) + k + i] = (a[j + k] - a[j + k + m]) * wj;\n            }\n    \
+    \    }\n    }\n    if (inv) {\n        mint ninv = mint(n).inv();\n        for\
+    \ (int i : rep(n)) a[i] *= ninv;\n    }\n}\ntemplate <typename mint> void intt(vector<mint>\
+    \ &a) { ntt(a, true); }\n\ntemplate <typename mint> vector<mint> convolution_naive(vector<mint>\
+    \ a, vector<mint> b) {\n    int na = a.size(), nb = b.size();\n    vector<mint>\
+    \ c(na + nb - 1);\n    if (na < nb) swap(a, b), swap(na, nb);\n    for (int i\
+    \ : rep(na)) {\n        for (int j : rep(nb)) { c[i + j] += a[i] * b[j]; }\n \
+    \   }\n    return c;\n}\n\ntemplate <typename mint> vector<mint> convolution_ntt(vector<mint>\
+    \ a, vector<mint> b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n =\
+    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n\
+    \    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n   \
+    \ return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const vector<mint>\
+    \ &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n   \
+    \     return convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a,\
+    \ b);\n    }\n}"
   dependsOn:
   - template.hpp
   - math/modint.hpp
@@ -121,7 +137,7 @@ data:
   path: math/convolution.hpp
   requiredBy:
   - math/fps.hpp
-  timestamp: '2021-08-19 13:08:19+09:00'
+  timestamp: '2021-08-20 10:21:39+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Convolution.0.test.cpp
