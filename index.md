@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segtree.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
     - icon: ':heavy_check_mark:'
@@ -86,11 +86,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
+      path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+      title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-    - icon: ':x:'
-      path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
-      title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
 layout: toppage
 ---

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
   - icon: ':question:'
@@ -9,15 +9,15 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A
-  bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp\"\
+  bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp\"\
     \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A\"\
     \n#line 2 \"data_structure/lazy_segtree.hpp\"\n\n#line 2 \"template.hpp\"\n\n\
     #include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
@@ -64,8 +64,8 @@ data:
     \        thrust(i += size);\n        val[i] = a;\n        lazy[i] = S::id();\n\
     \        recalc(i);\n    }\n    void apply(int l, int r, F f) {\n        thrust(l\
     \ += size);\n        thrust(r += size - 1);\n        for (int i = l, j = r + 1;\
-    \ i < j; i >>= 1, j >>= 1) {\n            if (i & 1) lazy[i++] = S::composition(f,\
-    \ lazy[i]);\n            if (j & 1) lazy[j] = S::composition(f, lazy[--j]);\n\
+    \ i < j; i >>= 1, j >>= 1) {\n            if (i & 1) lazy[i] = S::composition(f,\
+    \ lazy[i]), ++i;\n            if (j & 1) --j, lazy[j] = S::composition(f, lazy[j]);\n\
     \        }\n        recalc(l);\n        recalc(r);\n    }\n    V get(int i) {\n\
     \        thrust(i += size);\n        return reflect(i);\n    }\n    V prod(int\
     \ l, int r) {\n        thrust(l += size);\n        thrust(r += size - 1);\n  \
@@ -107,8 +107,8 @@ data:
     \ val_t e() { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return\
     \ f == id() ? a : make_pair(f * a.second, a.second); }\n    static fn_t composition(fn_t\
     \ f, fn_t g) { return f == id() ? g : f; }\n    static fn_t id() { return LLONG_MIN;\
-    \ };\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp\"\
-    \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp\"\
+    \ };\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp\"\
+    \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp\"\
     \nusing namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n   \
     \ vector<pair<ll, ll>> a1(n);\n    for (ll i : rep(n)) cin >> a1[i].first;\n \
     \   lazy_segtree<sum_monoid_with_addition> lst(a1);\n    ll ans = LLONG_MAX;\n\
@@ -128,15 +128,15 @@ data:
   - data_structure/lazy_segtree.hpp
   - template.hpp
   isVerificationFile: true
-  path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
+  path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
   requiredBy: []
-  timestamp: '2021-08-20 12:52:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-08-20 20:05:53+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
+documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
 layout: document
 redirect_from:
-- /verify/test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
-- /verify/test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp.html
-title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
+- /verify/test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+- /verify/test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp.html
+title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
 ---

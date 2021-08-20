@@ -145,14 +145,14 @@ data:
     \ d) { return fps(a) >>= d; }\n    friend fps operator<<(const fps &a, int d)\
     \ { return fps(a) <<= d; }\n};\n\nusing m9 = modint<998244353>;\n\ntemplate <>\
     \ fps<m9> &fps<m9>::operator*=(const fps<m9> &a) {\n    *this = convolution(*this,\
-    \ a);\n    return *this;\n}\ntemplate <> fps<m9> fps<m9>::inv(int d) const {\n\
-    \    using mint = m9;\n    if (d == -1) d = this->size();\n    fps ret{(*this)[0].inv()};\n\
+    \ a);\n    return *this;\n}\n/*\ntemplate <> fps<m9> fps<m9>::inv(int d) const\
+    \ {\n    using mint = m9;\n    if (d == -1) d = this->size();\n    fps ret{(*this)[0].inv()};\n\
     \    for (int m = 1; m < d; m <<= 1) {\n        fps f = this->prefix(m << 1);\n\
     \        fps g = ret;\n        f.resize(m << 1), ntt(f);\n        g.resize(m <<\
     \ 1), ntt(g);\n        for (int i : rep(m << 1)) f[i] *= g[i];\n        intt(f);\n\
     \        f >>= m, f.resize(m << 1), ntt(f);\n        for (int i : rep(m << 1))\
     \ f[i] *= g[i];\n        intt(f);\n        f *= mint(-1);\n        ret.insert(ret.end(),\
-    \ f.begin(), f.begin() + m);\n    }\n    return ret.prefix(d);\n}\n\n/*\ntemplate\
+    \ f.begin(), f.begin() + m);\n    }\n    return ret.prefix(d);\n}*/\n\n/*\ntemplate\
     \ <> fps<m9> fps<m9>::exp(int d) const {\n    using mint = m9;\n    int n = this->size();\n\
     \    assert(n > 0 && (*this)[0] == 0);\n    if (d == -1) d = n;\n    assert(d\
     \ >= 0);\n    fps g{1}, g_fft{1, 1};\n    fps ret = *this;\n    ret[0] = 1;\n\
@@ -238,7 +238,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-20 12:52:42+09:00'
+  timestamp: '2021-08-20 20:05:53+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp

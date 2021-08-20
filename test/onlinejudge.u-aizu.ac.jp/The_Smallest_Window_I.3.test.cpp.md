@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A
@@ -64,8 +64,8 @@ data:
     \        thrust(i += size);\n        val[i] = a;\n        lazy[i] = S::id();\n\
     \        recalc(i);\n    }\n    void apply(int l, int r, F f) {\n        thrust(l\
     \ += size);\n        thrust(r += size - 1);\n        for (int i = l, j = r + 1;\
-    \ i < j; i >>= 1, j >>= 1) {\n            if (i & 1) lazy[i++] = S::composition(f,\
-    \ lazy[i]);\n            if (j & 1) lazy[j] = S::composition(f, lazy[--j]);\n\
+    \ i < j; i >>= 1, j >>= 1) {\n            if (i & 1) lazy[i] = S::composition(f,\
+    \ lazy[i]), ++i;\n            if (j & 1) --j, lazy[j] = S::composition(f, lazy[j]);\n\
     \        }\n        recalc(l);\n        recalc(r);\n    }\n    V get(int i) {\n\
     \        thrust(i += size);\n        return reflect(i);\n    }\n    V prod(int\
     \ l, int r) {\n        thrust(l += size);\n        thrust(r += size - 1);\n  \
@@ -131,8 +131,8 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   requiredBy: []
-  timestamp: '2021-08-20 12:52:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-08-20 20:05:53+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
 layout: document

@@ -18,15 +18,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  - icon: ':x:'
-    path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/lazy_segtree.hpp\"\n\n#line 2 \"template.hpp\"\
@@ -74,8 +74,8 @@ data:
     \        thrust(i += size);\n        val[i] = a;\n        lazy[i] = S::id();\n\
     \        recalc(i);\n    }\n    void apply(int l, int r, F f) {\n        thrust(l\
     \ += size);\n        thrust(r += size - 1);\n        for (int i = l, j = r + 1;\
-    \ i < j; i >>= 1, j >>= 1) {\n            if (i & 1) lazy[i++] = S::composition(f,\
-    \ lazy[i]);\n            if (j & 1) lazy[j] = S::composition(f, lazy[--j]);\n\
+    \ i < j; i >>= 1, j >>= 1) {\n            if (i & 1) lazy[i] = S::composition(f,\
+    \ lazy[i]), ++i;\n            if (j & 1) --j, lazy[j] = S::composition(f, lazy[j]);\n\
     \        }\n        recalc(l);\n        recalc(r);\n    }\n    V get(int i) {\n\
     \        thrust(i += size);\n        return reflect(i);\n    }\n    V prod(int\
     \ l, int r) {\n        thrust(l += size);\n        thrust(r += size - 1);\n  \
@@ -136,43 +136,44 @@ data:
     \ a;\n        lazy[i] = S::id();\n        recalc(i);\n    }\n    void apply(int\
     \ l, int r, F f) {\n        thrust(l += size);\n        thrust(r += size - 1);\n\
     \        for (int i = l, j = r + 1; i < j; i >>= 1, j >>= 1) {\n            if\
-    \ (i & 1) lazy[i++] = S::composition(f, lazy[i]);\n            if (j & 1) lazy[j]\
-    \ = S::composition(f, lazy[--j]);\n        }\n        recalc(l);\n        recalc(r);\n\
-    \    }\n    V get(int i) {\n        thrust(i += size);\n        return reflect(i);\n\
-    \    }\n    V prod(int l, int r) {\n        thrust(l += size);\n        thrust(r\
-    \ += size - 1);\n        V a = S::e(), b = S::e();\n        for (r++; l < r; l\
-    \ >>= 1, r >>= 1) {\n            if (l & 1) a = S::op(a, reflect(l++));\n    \
-    \        if (r & 1) b = S::op(reflect(--r), b);\n        }\n        return S::op(a,\
-    \ b);\n    }\n    template <typename G> int max_right(int l, G g) {\n        if\
-    \ (l == n) return n;\n        thrust(l += size);\n        V a = S::e();\n    \
-    \    do {\n            while (~l & 1) l >>= 1;\n            if (!g(S::op(a, reflect(l))))\
-    \ {\n                while (l < size) {\n                    push(l);\n      \
-    \              l = l << 1 | 0;\n                    if (g(S::op(a, reflect(l))))\
-    \ a = S::op(a, reflect(l++));\n                }\n                return l - size;\n\
-    \            }\n            a = S::op(a, reflect(l++));\n        } while ((l &\
-    \ -l) != l);\n        return n;\n    }\n    template <typename G> int min_left(int\
-    \ r, G g) {\n        if (r == 0) return 0;\n        thrust((r += size) - 1);\n\
-    \        V a = S::e();\n        do {\n            r--;\n            while (r >\
-    \ 1 && r & 1) r >>= 1;\n            if (!g(S::op(reflect(r), a))) {\n        \
-    \        while (r < size) {\n                    push(r);\n                  \
-    \  r = r << 1 | 1;\n                    if (g(S::op(reflect(r), a))) a = S::op(reflect(r--),\
-    \ a);\n                }\n                return r + 1 - size;\n            }\n\
-    \            a = S::op(reflect(r), a);\n        } while ((r & -r) != r);\n   \
-    \     return 0;\n    }\n};\n\nstruct min_monoid_with_addition {\n    using val_t\
-    \ = ll;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t b) { return\
-    \ min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n    static val_t mapping(fn_t\
-    \ f, val_t a) { return a == e() ? a : f + a; }\n    static fn_t composition(fn_t\
-    \ f, fn_t g) { return f + g; }\n    static fn_t id() { return 0; }\n};\n\nstruct\
-    \ min_monoid_with_update {\n    using val_t = ll;\n    using fn_t = ll;\n    static\
-    \ val_t op(val_t a, val_t b) { return min(a, b); }\n    static val_t e() { return\
-    \ LLONG_MAX; }\n    static val_t mapping(fn_t f, val_t a) { return f == id() ?\
-    \ a : f; }\n    static fn_t composition(fn_t f, fn_t g) { return f == id() ? g\
-    \ : f; }\n    static fn_t id() { return -1; };\n};\n\nstruct sum_monoid_with_addition\
-    \ {\n    using val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t\
-    \ a, val_t b) { return {a.first + b.first, a.second + b.second}; }\n    static\
-    \ val_t e() { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return\
-    \ {a.first + f * a.second, a.second}; }\n    static fn_t composition(fn_t f, fn_t\
-    \ g) { return f + g; }\n    static fn_t id() { return 0; };\n};\n\nstruct sum_monoid_with_update\
+    \ (i & 1) lazy[i] = S::composition(f, lazy[i]), ++i;\n            if (j & 1) --j,\
+    \ lazy[j] = S::composition(f, lazy[j]);\n        }\n        recalc(l);\n     \
+    \   recalc(r);\n    }\n    V get(int i) {\n        thrust(i += size);\n      \
+    \  return reflect(i);\n    }\n    V prod(int l, int r) {\n        thrust(l +=\
+    \ size);\n        thrust(r += size - 1);\n        V a = S::e(), b = S::e();\n\
+    \        for (r++; l < r; l >>= 1, r >>= 1) {\n            if (l & 1) a = S::op(a,\
+    \ reflect(l++));\n            if (r & 1) b = S::op(reflect(--r), b);\n       \
+    \ }\n        return S::op(a, b);\n    }\n    template <typename G> int max_right(int\
+    \ l, G g) {\n        if (l == n) return n;\n        thrust(l += size);\n     \
+    \   V a = S::e();\n        do {\n            while (~l & 1) l >>= 1;\n       \
+    \     if (!g(S::op(a, reflect(l)))) {\n                while (l < size) {\n  \
+    \                  push(l);\n                    l = l << 1 | 0;\n           \
+    \         if (g(S::op(a, reflect(l)))) a = S::op(a, reflect(l++));\n         \
+    \       }\n                return l - size;\n            }\n            a = S::op(a,\
+    \ reflect(l++));\n        } while ((l & -l) != l);\n        return n;\n    }\n\
+    \    template <typename G> int min_left(int r, G g) {\n        if (r == 0) return\
+    \ 0;\n        thrust((r += size) - 1);\n        V a = S::e();\n        do {\n\
+    \            r--;\n            while (r > 1 && r & 1) r >>= 1;\n            if\
+    \ (!g(S::op(reflect(r), a))) {\n                while (r < size) {\n         \
+    \           push(r);\n                    r = r << 1 | 1;\n                  \
+    \  if (g(S::op(reflect(r), a))) a = S::op(reflect(r--), a);\n                }\n\
+    \                return r + 1 - size;\n            }\n            a = S::op(reflect(r),\
+    \ a);\n        } while ((r & -r) != r);\n        return 0;\n    }\n};\n\nstruct\
+    \ min_monoid_with_addition {\n    using val_t = ll;\n    using fn_t = ll;\n  \
+    \  static val_t op(val_t a, val_t b) { return min(a, b); }\n    static val_t e()\
+    \ { return LLONG_MAX; }\n    static val_t mapping(fn_t f, val_t a) { return a\
+    \ == e() ? a : f + a; }\n    static fn_t composition(fn_t f, fn_t g) { return\
+    \ f + g; }\n    static fn_t id() { return 0; }\n};\n\nstruct min_monoid_with_update\
+    \ {\n    using val_t = ll;\n    using fn_t = ll;\n    static val_t op(val_t a,\
+    \ val_t b) { return min(a, b); }\n    static val_t e() { return LLONG_MAX; }\n\
+    \    static val_t mapping(fn_t f, val_t a) { return f == id() ? a : f; }\n   \
+    \ static fn_t composition(fn_t f, fn_t g) { return f == id() ? g : f; }\n    static\
+    \ fn_t id() { return -1; };\n};\n\nstruct sum_monoid_with_addition {\n    using\
+    \ val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t a, val_t\
+    \ b) { return {a.first + b.first, a.second + b.second}; }\n    static val_t e()\
+    \ { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return {a.first\
+    \ + f * a.second, a.second}; }\n    static fn_t composition(fn_t f, fn_t g) {\
+    \ return f + g; }\n    static fn_t id() { return 0; };\n};\n\nstruct sum_monoid_with_update\
     \ {\n    using val_t = pair<ll, ll>;\n    using fn_t = ll;\n    static val_t op(val_t\
     \ a, val_t b) { return {a.first + b.first, a.second + b.second}; }\n    static\
     \ val_t e() { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return\
@@ -184,15 +185,15 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2021-08-20 12:52:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-08-20 20:05:53+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
 documentation_of: data_structure/lazy_segtree.hpp
 layout: document
 title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
