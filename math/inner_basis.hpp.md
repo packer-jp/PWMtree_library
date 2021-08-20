@@ -31,17 +31,18 @@ data:
     \    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
     \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
     \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n\
-    \    itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
-    struct per {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n\
-    \        void operator++() { --v; }\n        int operator*() const { return v;\
-    \ }\n        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n\
-    \    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int l, int r) : l(l),\
-    \ r(r) {}\n    itr begin() const { return r - 1; };\n    itr end() const { return\
-    \ l - 1; };\n};\n#line 4 \"math/inner_basis.hpp\"\n\nvector<ll> inner_basis(vector<ll>\
-    \ a) {\n    vector<ll> basis, ret;\n    for (ll e : a) {\n        ll e_ = e;\n\
-    \        for (ll b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e),\
-    \ ret.push_back(e_);\n    }\n    return ret;\n}\n"
+    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
+    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
+    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
+    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
+    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
+    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
+    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
+    \    itr end() const { return l - 1; };\n};\n#line 4 \"math/inner_basis.hpp\"\n\
+    \nvector<ll> inner_basis(vector<ll> a) {\n    vector<ll> basis, ret;\n    for\
+    \ (ll e : a) {\n        ll e_ = e;\n        for (ll b : basis) chmin(e, e ^ b);\n\
+    \        if (e) basis.push_back(e), ret.push_back(e_);\n    }\n    return ret;\n\
+    }\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nvector<ll> inner_basis(vector<ll>\
     \ a) {\n    vector<ll> basis, ret;\n    for (ll e : a) {\n        ll e_ = e;\n\
     \        for (ll b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e),\
@@ -51,7 +52,7 @@ data:
   isVerificationFile: false
   path: math/inner_basis.hpp
   requiredBy: []
-  timestamp: '2021-08-19 13:08:19+09:00'
+  timestamp: '2021-08-20 12:52:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/inner_basis.hpp

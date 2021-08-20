@@ -34,29 +34,30 @@ data:
     \    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
     \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
     \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n\
-    \    itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
-    struct per {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n\
-    \        void operator++() { --v; }\n        int operator*() const { return v;\
-    \ }\n        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n\
-    \    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int l, int r) : l(l),\
-    \ r(r) {}\n    itr begin() const { return r - 1; };\n    itr end() const { return\
-    \ l - 1; };\n};\n#line 4 \"graph/dijkstra.hpp\"\n\ntemplate <typename S> struct\
-    \ dijkstra {\n    using D = typename S::dist_t;\n    using C = typename S::cost_t;\n\
-    \    struct edge {\n        int to;\n        C cost;\n        edge(int to, C cost)\
-    \ : to(to), cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n    dijkstra(int\
-    \ n) : adj(n) {}\n    void add_edge(int from, int to, const C &cost) { adj[from].emplace_back(to,\
-    \ cost); }\n    pair<vector<D>, vector<int>> get(int s, const D &base) const {\n\
-    \        vector<D> dist(adj.size(), S::inf());\n        vector<int> prev(adj.size(),\
-    \ -1);\n        using P = pair<D, int>;\n        priority_queue_rev<P> pq;\n \
-    \       dist[s] = base;\n        pq.emplace(base, s);\n        while (!pq.empty())\
-    \ {\n            auto [d, i] = pq.top();\n            pq.pop();\n            if\
-    \ (dist[i] < d) continue;\n            for (auto [to, cost] : adj[i]) {\n    \
-    \            D nd = d + cost;\n                if (nd < dist[to]) {\n        \
-    \            dist[to] = nd;\n                    prev[to] = i;\n             \
-    \       pq.emplace(nd, to);\n                }\n            }\n        }\n   \
-    \     return {dist, prev};\n    }\n};\n\nstruct ll_dij {\n    using dist_t = ll;\n\
-    \    using cost_t = ll;\n    static dist_t inf() { return LLONG_MAX; }\n};\n"
+    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
+    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
+    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
+    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
+    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
+    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
+    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
+    \    itr end() const { return l - 1; };\n};\n#line 4 \"graph/dijkstra.hpp\"\n\n\
+    template <typename S> struct dijkstra {\n    using D = typename S::dist_t;\n \
+    \   using C = typename S::cost_t;\n    struct edge {\n        int to;\n      \
+    \  C cost;\n        edge(int to, C cost) : to(to), cost(cost) {}\n    };\n   \
+    \ vector<vector<edge>> adj;\n    dijkstra(int n) : adj(n) {}\n    void add_edge(int\
+    \ from, int to, const C &cost) { adj[from].emplace_back(to, cost); }\n    pair<vector<D>,\
+    \ vector<int>> get(int s, const D &base) const {\n        vector<D> dist(adj.size(),\
+    \ S::inf());\n        vector<int> prev(adj.size(), -1);\n        using P = pair<D,\
+    \ int>;\n        priority_queue_rev<P> pq;\n        dist[s] = base;\n        pq.emplace(base,\
+    \ s);\n        while (!pq.empty()) {\n            auto [d, i] = pq.top();\n  \
+    \          pq.pop();\n            if (dist[i] < d) continue;\n            for\
+    \ (auto [to, cost] : adj[i]) {\n                D nd = d + cost;\n           \
+    \     if (nd < dist[to]) {\n                    dist[to] = nd;\n             \
+    \       prev[to] = i;\n                    pq.emplace(nd, to);\n             \
+    \   }\n            }\n        }\n        return {dist, prev};\n    }\n};\n\nstruct\
+    \ ll_dij {\n    using dist_t = ll;\n    using cost_t = ll;\n    static dist_t\
+    \ inf() { return LLONG_MAX; }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename S> struct\
     \ dijkstra {\n    using D = typename S::dist_t;\n    using C = typename S::cost_t;\n\
     \    struct edge {\n        int to;\n        C cost;\n        edge(int to, C cost)\
@@ -78,7 +79,7 @@ data:
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2021-08-19 13:08:19+09:00'
+  timestamp: '2021-08-20 12:52:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Shortest_Path.0.test.cpp

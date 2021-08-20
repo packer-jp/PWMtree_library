@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
   - icon: ':heavy_check_mark:'
@@ -45,7 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   - icon: ':x:'
@@ -72,10 +72,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp
   _isVerificationFailed: true
@@ -102,14 +102,14 @@ data:
     #endif\n\nstruct rep {\n    struct itr {\n        int v;\n        itr(int v) :\
     \ v(v) {}\n        void operator++() { ++v; }\n        int operator*() const {\
     \ return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    int l, r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int\
-    \ r) : l(l), r(r) {}\n    itr begin() const { return l; };\n    itr end() const\
-    \ { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n       \
-    \ itr(int v) : v(v) {}\n        void operator++() { --v; }\n        int operator*()\
-    \ const { return v; }\n        bool operator!=(const itr &i) const { return v\
-    \ != i.v; }\n    };\n    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int\
-    \ l, int r) : l(l), r(r) {}\n    itr begin() const { return r - 1; };\n    itr\
-    \ end() const { return l - 1; };\n};\n"
+    \ }\n    };\n    int l, r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int\
+    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return l; };\n  \
+    \  itr end() const { return r; };\n};\nstruct per {\n    struct itr {\n      \
+    \  int v;\n        itr(int v) : v(v) {}\n        void operator++() { --v; }\n\
+    \        int operator*() const { return v; }\n        bool operator!=(const itr\
+    \ &i) const { return v != i.v; }\n    };\n    int l, r;\n    per(int r) : l(min(0,\
+    \ r)), r(r) {}\n    per(int l, int r) : l(min(l, r)), r(r) {}\n    itr begin()\
+    \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\n"
   code: "#pragma once\n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
     \ all(a) (a).begin(), (a).end()\nusing ll = long long;\nusing ull = unsigned long\
     \ long;\null bit(int n) { return 1ull << n; }\ntemplate <typename T> using priority_queue_rev\
@@ -129,14 +129,14 @@ data:
     \ {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
     \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
     \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n\
-    \    itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
-    struct per {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n\
-    \        void operator++() { --v; }\n        int operator*() const { return v;\
-    \ }\n        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n\
-    \    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int l, int r) : l(l),\
-    \ r(r) {}\n    itr begin() const { return r - 1; };\n    itr end() const { return\
-    \ l - 1; };\n};"
+    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
+    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
+    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
+    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
+    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
+    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
+    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
+    \    itr end() const { return l - 1; };\n};"
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
@@ -151,7 +151,7 @@ data:
   - graph/zobfs.hpp
   - data_structure/lazy_segtree.hpp
   - data_structure/segtree.hpp
-  timestamp: '2021-08-19 13:08:19+09:00'
+  timestamp: '2021-08-20 12:52:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_smallest_Window_I.2.test.cpp

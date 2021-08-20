@@ -31,25 +31,25 @@ data:
     \    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
     \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
     \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(0), r(r) {}\n    rep(int l, int r) : l(l), r(r) {}\n\
-    \    itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
-    struct per {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n\
-    \        void operator++() { --v; }\n        int operator*() const { return v;\
-    \ }\n        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n\
-    \    int l, r;\n    per(int r) : l(0), r(r) {}\n    per(int l, int r) : l(l),\
-    \ r(r) {}\n    itr begin() const { return r - 1; };\n    itr end() const { return\
-    \ l - 1; };\n};\n#line 4 \"graph/zobfs.hpp\"\n\nstruct zobfs {\n    struct edge\
-    \ {\n        ll to, cost;\n        edge(ll to, ll cost) : to(to), cost(cost) {}\n\
-    \    };\n    vector<vector<edge>> adj;\n    zobfs(ll n) : adj(n) {}\n    void\
-    \ add_edge(ll from, ll to, ll cost) { adj[from].emplace_back(to, cost); }\n  \
-    \  pair<vector<ll>, vector<ll>> get(int s) const {\n        vector<ll> dist(adj.size(),\
-    \ LLONG_MAX), prev(adj.size(), -1);\n        using P = pair<ll, ll>;\n       \
-    \ deque<P> deq;\n        dist[s] = 0;\n        deq.emplace_front(0, s);\n    \
-    \    while (!deq.empty()) {\n            auto [d, i] = deq.front();\n        \
-    \    deq.pop_front();\n            if (dist[i] < d) continue;\n            for\
-    \ (auto [to, cost] : adj[i]) {\n                ll nd = dist[i] + cost;\n    \
-    \            if (nd < dist[to]) {\n                    dist[to] = nd;\n      \
-    \              prev[to] = i;\n                    if (cost == 0) deq.emplace_front(nd,\
+    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
+    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
+    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
+    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
+    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
+    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
+    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
+    \    itr end() const { return l - 1; };\n};\n#line 4 \"graph/zobfs.hpp\"\n\nstruct\
+    \ zobfs {\n    struct edge {\n        ll to, cost;\n        edge(ll to, ll cost)\
+    \ : to(to), cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n    zobfs(ll\
+    \ n) : adj(n) {}\n    void add_edge(ll from, ll to, ll cost) { adj[from].emplace_back(to,\
+    \ cost); }\n    pair<vector<ll>, vector<ll>> get(int s) const {\n        vector<ll>\
+    \ dist(adj.size(), LLONG_MAX), prev(adj.size(), -1);\n        using P = pair<ll,\
+    \ ll>;\n        deque<P> deq;\n        dist[s] = 0;\n        deq.emplace_front(0,\
+    \ s);\n        while (!deq.empty()) {\n            auto [d, i] = deq.front();\n\
+    \            deq.pop_front();\n            if (dist[i] < d) continue;\n      \
+    \      for (auto [to, cost] : adj[i]) {\n                ll nd = dist[i] + cost;\n\
+    \                if (nd < dist[to]) {\n                    dist[to] = nd;\n  \
+    \                  prev[to] = i;\n                    if (cost == 0) deq.emplace_front(nd,\
     \ to);\n                    if (cost == 1) deq.emplace_back(nd, to);\n       \
     \         }\n            }\n        }\n        return {dist, prev};\n    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct zobfs {\n    struct\
@@ -71,7 +71,7 @@ data:
   isVerificationFile: false
   path: graph/zobfs.hpp
   requiredBy: []
-  timestamp: '2021-08-19 13:08:19+09:00'
+  timestamp: '2021-08-20 12:52:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/zobfs.hpp
