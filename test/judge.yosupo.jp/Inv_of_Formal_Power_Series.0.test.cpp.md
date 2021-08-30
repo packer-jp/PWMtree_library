@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: math/fps.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -114,117 +114,68 @@ data:
     \ <= d) {\n            *this = {};\n        } else {\n            this->erase(this->begin(),\
     \ this->begin() + d);\n        }\n        return *this;\n    }\n    fps &operator<<=(int\
     \ d) {\n        this->insert(this->begin(), d, mint(0));\n        return *this;\n\
-    \    }\n    fps prefix(int d) const { return fps(this->begin(), this->begin()\
-    \ + min((int)this->size(), d)); }\n    fps differential() const {\n        int\
-    \ n = this->size();\n        fps ret(max(0, n - 1));\n        for (int i : rep(1,\
-    \ n)) { ret[i - 1] = i * (*this)[i]; }\n        return ret;\n    }\n    fps integral()\
-    \ const {\n        int n = this->size();\n        fps ret(n + 1);\n        ret[0]\
-    \ = mint(0);\n        if (n > 0) ret[1] = mint(1);\n        for (int i : rep(2,\
-    \ n + 1)) ret[i] = (-ret[mint::mod() % i]) * (mint::mod() / i);\n        for (int\
-    \ i : rep(n)) ret[i + 1] *= (*this)[i];\n        return ret;\n    }\n    fps inv(int\
-    \ d = -1) const {\n        if (d == -1) d = this->size();\n        fps ret{(*this)[0].inv()};\n\
-    \        for (int m = 1; m < d; m <<= 1) ret = (ret + ret - ret * ret * this->prefix(m\
-    \ << 1)).prefix(m << 1);\n        return ret.prefix(d);\n    }\n    fps log(int\
-    \ d = -1) const {\n        assert((*this)[0] == mint(1));\n        if (d == -1)\
-    \ d = this->size();\n        return (this->differential() * this->inv(d)).prefix(d\
-    \ - 1).integral();\n    }\n    fps exp(int d = -1) const {\n        assert(this->size()\
-    \ == 0 || (*this)[0] == mint(0));\n        if (d == -1) d = this->size();\n  \
-    \      fps ret{1};\n        for (int m = 1; m < d; m <<= 1) ret = (ret * (prefix(m\
-    \ << 1) + mint(1) - ret.log(m << 1))).prefix(m << 1);\n        return ret.prefix(d);\n\
-    \    }\n    fps pow(ll k, int d = -1) const {\n        if (d == -1) d = this->size();\n\
-    \        for (int i : rep(this->size())) {\n            if ((*this)[i] != mint(0))\
-    \ {\n                if (i * k > d) return fps(d);\n                fps ret =\
-    \ (((*this * (*this)[i].inv()) >> i).log(d) * mint(k)).exp(d) * ((*this)[i].pow(k));\n\
-    \                ret = (ret << (i * k)).prefix(d);\n                ret.resize(d);\n\
-    \                return ret;\n            }\n        }\n        return fps(d);\n\
-    \    }\n    friend fps operator+(const fps &a) { return a; }\n    friend fps operator-(const\
-    \ fps &a) { return fps() -= a; }\n    friend fps operator+(const fps &a, const\
-    \ fps &b) { return fps(a) += b; }\n    friend fps operator-(const fps &a, const\
-    \ fps &b) { return fps(a) -= b; }\n    friend fps operator*(const fps &a, const\
-    \ fps &b) { return fps(a) *= b; }\n    friend fps operator>>(const fps &a, int\
-    \ d) { return fps(a) >>= d; }\n    friend fps operator<<(const fps &a, int d)\
-    \ { return fps(a) <<= d; }\n};\n\nusing m9 = modint<998244353>;\n\ntemplate <>\
-    \ fps<m9> &fps<m9>::operator*=(const fps<m9> &a) {\n    *this = convolution(*this,\
-    \ a);\n    return *this;\n}\n/*\ntemplate <> fps<m9> fps<m9>::inv(int d) const\
-    \ {\n    using mint = m9;\n    if (d == -1) d = this->size();\n    fps ret{(*this)[0].inv()};\n\
-    \    for (int m = 1; m < d; m <<= 1) {\n        fps f = this->prefix(m << 1);\n\
-    \        fps g = ret;\n        f.resize(m << 1), ntt(f);\n        g.resize(m <<\
-    \ 1), ntt(g);\n        for (int i : rep(m << 1)) f[i] *= g[i];\n        intt(f);\n\
-    \        f >>= m, f.resize(m << 1), ntt(f);\n        for (int i : rep(m << 1))\
-    \ f[i] *= g[i];\n        intt(f);\n        f *= mint(-1);\n        ret.insert(ret.end(),\
-    \ f.begin(), f.begin() + m);\n    }\n    return ret.prefix(d);\n}*/\n\n/*\ntemplate\
-    \ <> fps<m9> fps<m9>::exp(int d) const {\n    using mint = m9;\n    int n = this->size();\n\
-    \    assert(n > 0 && (*this)[0] == 0);\n    if (d == -1) d = n;\n    assert(d\
-    \ >= 0);\n    fps g{1}, g_fft{1, 1};\n    fps ret = *this;\n    ret[0] = 1;\n\
-    \    ret.resize(d);\n    fps h_drv(ret.differential());\n    for (int m = 2; m\
-    \ < d; m *= 2) {\n        // prepare\n        fps f_fft(ret.begin(), ret.begin()\
-    \ + m);\n        f_fft.resize(2 * m), ntt(f_fft);\n\n        // Step 2.a'\n  \
-    \      {\n            fps _g(m);\n            for (int i : rep(m)) _g[i] = f_fft[i]\
-    \ * g_fft[i];\n            intt(_g), _g *= mint(_g.size());\n            _g.erase(_g.begin(),\
-    \ _g.begin() + m / 2);\n            _g.resize(m), ntt(_g);\n            for (int\
-    \ i : rep(m)) _g[i] *= g_fft[i];\n            intt(_g), _g *= mint(_g.size());\n\
-    \            _g.resize(m / 2);\n            _g /= -m * m;\n            g.insert(g.end(),\
-    \ _g.begin(), _g.begin() + m / 2);\n        }\n\n        // Step 2.b'--d'\n  \
-    \      fps t(ret.begin(), ret.begin() + m);\n        t = t.differential();\n \
-    \       {\n            // Step 2.b'\n            fps r{h_drv.begin(), h_drv.begin()\
-    \ + m - 1};\n            // Step 2.c'\n            r.resize(m);\n            ntt(r);\n\
-    \            for (int i : rep(m)) r[i] *= f_fft[i];\n            intt(r), r *=\
-    \ mint(r.size());\n            r /= -m;\n            // Step 2.d'\n          \
-    \  t += r;\n            t.insert(t.begin(), t.back());\n            t.pop_back();\n\
-    \        }\n\n        // Step 2.e'\n        if (2 * m < d) {\n            t.resize(2\
-    \ * m);\n            ntt(t);\n            g_fft = g;\n            g_fft.resize(2\
-    \ * m);\n            ntt(g_fft);\n            for (int i : rep(2 * m)) t[i] *=\
-    \ g_fft[i];\n            intt(t), t *= mint(t.size());\n            t.resize(m);\n\
-    \            t /= 2 * m;\n        } else { // \u3053\u306E\u5834\u5408\u5206\u3051\
-    \u3092\u3057\u3066\u3082\u6570\u30D1\u30FC\u30BB\u30F3\u30C8\u3057\u304B\u901F\
-    \u304F\u306A\u3089\u306A\u3044\n            fps g1(g.begin() + m / 2, g.end());\n\
-    \            fps s1(t.begin() + m / 2, t.end());\n            t.resize(m / 2);\n\
-    \            g1.resize(m), ntt(g1);\n            t.resize(m), ntt(t);\n      \
-    \      s1.resize(m), ntt(s1);\n            for (int i : rep(m)) s1[i] = g_fft[i]\
-    \ * s1[i] + g1[i] * t[i];\n            for (int i : rep(m)) t[i] *= g_fft[i];\n\
-    \            intt(t), t *= mint(t.size());\n            intt(s1), s1 *= mint(s1.size());\n\
-    \            for (int i : rep(m / 2)) t[i + m / 2] += s1[i];\n            t /=\
-    \ m;\n        }\n\n        // Step 2.f'\n        fps v(ret.begin() + m, ret.begin()\
-    \ + min(d, 2 * m));\n        v.resize(m);\n        t.insert(t.begin(), m - 1,\
-    \ 0);\n        t.push_back(0);\n        t = t.integral();\n        for (int i\
-    \ : rep(m)) v[i] -= t[m + i];\n\n        // Step 2.g'\n        v.resize(2 * m);\n\
-    \        ntt(v);\n        for (int i : rep(2 * m)) v[i] *= f_fft[i];\n       \
-    \ intt(v), v *= mint(v.size());\n        v.resize(m);\n        v /= 2 * m;\n\n\
-    \        // Step 2.h'\n        for (int i : rep(min(d - m, m))) ret[m + i] = v[i];\n\
-    \    }\n    return ret;\n}\n*/\n\ntemplate <> fps<m9> fps<m9>::exp(int deg) const\
-    \ {\n    using mint = m9;\n    assert((*this).size() == 0 || (*this)[0] == mint(0));\n\
-    \    if (deg == -1) deg = this->size();\n\n    fps inv;\n    inv.reserve(deg +\
-    \ 1);\n    inv.push_back(mint(0));\n    inv.push_back(mint(1));\n\n    auto inplace_integral\
-    \ = [&](fps &F) -> void {\n        const int n = (int)F.size();\n        auto\
-    \ mod = mint::mod();\n        while ((int)inv.size() <= n) {\n            int\
-    \ i = inv.size();\n            inv.push_back((-inv[mod % i]) * (mod / i));\n \
-    \       }\n        F.insert(F.begin(), mint(0));\n        for (int i = 1; i <=\
-    \ n; i++) F[i] *= inv[i];\n    };\n\n    auto inplace_diff = [](fps &F) -> void\
-    \ {\n        if (F.empty()) return;\n        F.erase(F.begin());\n        mint\
-    \ coeff = 1, one = 1;\n        for (int i = 0; i < (int)F.size(); i++) {\n   \
-    \         F[i] *= coeff;\n            coeff += one;\n        }\n    };\n\n   \
-    \ fps b{1, 1 < (int)this->size() ? (*this)[1] : 0}, c{1}, z1, z2{1, 1};\n    for\
-    \ (int m = 2; m < deg; m *= 2) {\n        auto y = b;\n        y.resize(2 * m);\n\
-    \        ntt(y);\n        z1 = z2;\n        fps z(m);\n        for (int i = 0;\
-    \ i < m; ++i) z[i] = y[i] * z1[i];\n        intt(z);\n        fill(z.begin(),\
-    \ z.begin() + m / 2, mint(0));\n        ntt(z);\n        for (int i = 0; i < m;\
-    \ ++i) z[i] *= -z1[i];\n        intt(z);\n        c.insert(c.end(), z.begin()\
-    \ + m / 2, z.end());\n        z2 = c;\n        z2.resize(2 * m);\n        ntt(z2);\n\
-    \        fps x(this->begin(), this->begin() + min<int>(this->size(), m));\n  \
-    \      inplace_diff(x);\n        x.push_back(mint(0));\n        ntt(x);\n    \
-    \    for (int i = 0; i < m; ++i) x[i] *= y[i];\n        intt(x);\n        x -=\
-    \ b.differential();\n        x.resize(2 * m);\n        for (int i = 0; i < m -\
-    \ 1; ++i) x[m + i] = x[i], x[i] = mint(0);\n        ntt(x);\n        for (int\
-    \ i = 0; i < 2 * m; ++i) x[i] *= z2[i];\n        intt(x);\n        x.pop_back();\n\
-    \        inplace_integral(x);\n        for (int i = m; i < min<int>(this->size(),\
-    \ 2 * m); ++i) x[i] += (*this)[i];\n        fill(x.begin(), x.begin() + m, mint(0));\n\
-    \        ntt(x);\n        for (int i = 0; i < 2 * m; ++i) x[i] *= y[i];\n    \
-    \    intt(x);\n        b.insert(b.end(), x.begin() + m, x.end());\n    }\n   \
-    \ return b.prefix(deg);\n}\n#line 3 \"test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp\"\
-    \n\nint main() {\n    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n\
-    \    fps<mint> a(n);\n    for (ll i : rep(n)) cin >> a[i];\n    fps<mint> b =\
-    \ a.inv();\n    for (ll i : rep(n)) cout << b[i] << \" \";\n    cout << endl;\n\
-    }\n"
+    \    }\n    fps &chdot(const fps &a) {\n        for (int i : rep(this->size()))\
+    \ {\n            if (i < a.size()) {\n                (*this)[i] *= a[i];\n  \
+    \          } else {\n                (*this)[i] = 0;\n            }\n        }\n\
+    \        return *this;\n    }\n    fps prefix(int d) const { return fps(this->begin(),\
+    \ this->begin() + min((int)this->size(), d)); }\n    fps differential() const\
+    \ {\n        int n = this->size();\n        fps ret(max(0, n - 1));\n        for\
+    \ (int i : rep(1, n)) { ret[i - 1] = i * (*this)[i]; }\n        return ret;\n\
+    \    }\n    fps integral() const {\n        int n = this->size();\n        fps\
+    \ ret(n + 1);\n        ret[0] = mint(0);\n        if (n > 0) ret[1] = mint(1);\n\
+    \        for (int i : rep(2, n + 1)) ret[i] = (-ret[mint::mod() % i]) * (mint::mod()\
+    \ / i);\n        for (int i : rep(n)) ret[i + 1] *= (*this)[i];\n        return\
+    \ ret;\n    }\n    fps inv(int d = -1) const {\n        if (d == -1) d = this->size();\n\
+    \        fps ret{(*this)[0].inv()};\n        for (int m = 1; m < d; m <<= 1) ret\
+    \ = (ret + ret - ret * ret * this->prefix(m << 1)).prefix(m << 1);\n        return\
+    \ ret.prefix(d);\n    }\n    fps log(int d = -1) const {\n        assert((*this)[0]\
+    \ == mint(1));\n        if (d == -1) d = this->size();\n        return (this->differential()\
+    \ * this->inv(d)).prefix(d - 1).integral();\n    }\n    fps exp(int d = -1) const\
+    \ {\n        assert(this->size() == 0 || (*this)[0] == mint(0));\n        if (d\
+    \ == -1) d = this->size();\n        fps ret{1};\n        for (int m = 1; m < d;\
+    \ m <<= 1) ret = (ret * (this->prefix(m << 1) + mint(1) - ret.log(m << 1))).prefix(m\
+    \ << 1);\n        return ret.prefix(d);\n    }\n    fps pow(ll k, int d = -1)\
+    \ const {\n        if (d == -1) d = this->size();\n        for (int i : rep(this->size()))\
+    \ {\n            if ((*this)[i] != mint(0)) {\n                if (i * k > d)\
+    \ return fps(d);\n                fps ret = (((*this * (*this)[i].inv()) >> i).log(d)\
+    \ * mint(k)).exp(d) * ((*this)[i].pow(k));\n                ret = (ret << (i *\
+    \ k)).prefix(d);\n                ret.resize(d);\n                return ret;\n\
+    \            }\n        }\n        return fps(d);\n    }\n    friend fps operator+(const\
+    \ fps &a) { return a; }\n    friend fps operator-(const fps &a) { return fps()\
+    \ -= a; }\n    friend fps operator+(const fps &a, const fps &b) { return fps(a)\
+    \ += b; }\n    friend fps operator-(const fps &a, const fps &b) { return fps(a)\
+    \ -= b; }\n    friend fps operator*(const fps &a, const fps &b) { return fps(a)\
+    \ *= b; }\n    friend fps operator>>(const fps &a, int d) { return fps(a) >>=\
+    \ d; }\n    friend fps operator<<(const fps &a, int d) { return fps(a) <<= d;\
+    \ }\n};\n\nusing m9 = modint<998244353>;\n\ntemplate <> fps<m9> &fps<m9>::operator*=(const\
+    \ fps<m9> &a) {\n    *this = convolution(*this, a);\n    return *this;\n}\n\n\
+    template <> fps<m9> fps<m9>::inv(int d) const {\n    using mint = m9;\n    if\
+    \ (d == -1) d = this->size();\n    fps ret{(*this)[0].inv()};\n    for (int m\
+    \ = 1; m < d; m <<= 1) {\n        fps f = this->prefix(m << 1);\n        fps g\
+    \ = ret;\n        f.resize(m << 1), ntt(f);\n        g.resize(m << 1), ntt(g);\n\
+    \        f.chdot(g);\n        intt(f);\n        f >>= m, f.resize(m << 1), ntt(f);\n\
+    \        f.chdot(g);\n        intt(f);\n        f = -f;\n        ret.insert(ret.end(),\
+    \ f.begin(), f.begin() + m);\n    }\n    return ret.prefix(d);\n}\n\ntemplate\
+    \ <> fps<m9> fps<m9>::exp(int d) const {\n    using mint = m9;\n    assert(this->size()\
+    \ == 0 || (*this)[0] == mint(0));\n    if (d == -1) d = this->size();\n    fps\
+    \ f{1}, g{1}, g_freq{1};\n    for (int m = 1; m < d; m <<= 1) {\n        fps f_freq\
+    \ = f.prefix(m);\n        f_freq.resize(m << 1), ntt(f_freq);\n\n        fps g_next\
+    \ = g_freq;\n        for (int i : rep(m)) g_next[i] *= f_freq[i << 1];\n     \
+    \   intt(g_next);\n        g_next >>= m >> 1;\n        g_next.resize(m), ntt(g_next);\n\
+    \        g_next.chdot(g_freq);\n        intt(g_next);\n        g_next = -g_next;\n\
+    \        g.insert(g.end(), g_next.begin(), g_next.begin() + (m >> 1));\n\n   \
+    \     fps r = this->differential().prefix(m - 1);\n        r.resize(m), ntt(r);\n\
+    \        for (int i : rep(m)) r[i] *= f_freq[i << 1];\n        intt(r);\n\n  \
+    \      fps t = f.differential() - r;\n        t.insert(t.begin(), t.back()), t.pop_back();\n\
+    \        t.resize(m << 1), ntt(t);\n        g_freq = g, g_freq.resize(m << 1),\
+    \ ntt(g_freq);\n        t.chdot(g_freq);\n        intt(t), t.resize(m);\n\n  \
+    \      fps u = (this->prefix(m << 1) - (t << m - 1).integral()) >> m;\n      \
+    \  u.resize(m << 1), ntt(u);\n        u.chdot(f_freq);\n        intt(u);\n\n \
+    \       f += u.prefix(m) << m;\n    }\n    return f.prefix(d);\n}\n#line 3 \"\
+    test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp\"\n\nint main() {\n\
+    \    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n    fps<mint>\
+    \ a(n);\n    for (ll i : rep(n)) cin >> a[i];\n    fps<mint> b = a.inv();\n  \
+    \  for (ll i : rep(n)) cout << b[i] << \" \";\n    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
     \n#include \"../../math/fps.hpp\"\n\nint main() {\n    using mint = modint<998244353>;\n\
     \    ll n;\n    cin >> n;\n    fps<mint> a(n);\n    for (ll i : rep(n)) cin >>\
@@ -238,7 +189,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-20 20:05:53+09:00'
+  timestamp: '2021-08-30 22:06:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp

@@ -22,10 +22,10 @@ data:
     - icon: ':warning:'
       path: math/combination.hpp
       title: math/combination.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/convolution.hpp
       title: math/convolution.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/fps.hpp
       title: math/fps.hpp
     - icon: ':warning:'
@@ -34,12 +34,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/modint.hpp
       title: math/modint.hpp
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   verificationCategories:
@@ -51,7 +51,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
       title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
     - icon: ':heavy_check_mark:'
@@ -60,7 +60,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     - icon: ':heavy_check_mark:'
