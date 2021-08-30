@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -21,12 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/fps.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
@@ -138,7 +138,7 @@ data:
     \ {\n        assert(this->size() == 0 || (*this)[0] == mint(0));\n        if (d\
     \ == -1) d = this->size();\n        fps ret{1};\n        for (int m = 1; m < d;\
     \ m <<= 1) ret = (ret * (this->prefix(m << 1) + mint(1) - ret.log(m << 1))).prefix(m\
-    \ << 1);\n        return ret.prefix(d);\n    }\n    fps pow(int k, int d = -1)\
+    \ << 1);\n        return ret.prefix(d);\n    }\n    fps pow(ll k, int d = -1)\
     \ const {\n        if (d == -1) d = this->size();\n        for (int i : rep(this->size()))\
     \ {\n            if ((*this)[i] != mint(0)) {\n                if (i * k > d)\
     \ return fps(d);\n                fps ret = (((*this * (*this)[i].inv()) >> i).log(d)\
@@ -212,7 +212,7 @@ data:
     \ {\n        assert(this->size() == 0 || (*this)[0] == mint(0));\n        if (d\
     \ == -1) d = this->size();\n        fps ret{1};\n        for (int m = 1; m < d;\
     \ m <<= 1) ret = (ret * (this->prefix(m << 1) + mint(1) - ret.log(m << 1))).prefix(m\
-    \ << 1);\n        return ret.prefix(d);\n    }\n    fps pow(int k, int d = -1)\
+    \ << 1);\n        return ret.prefix(d);\n    }\n    fps pow(ll k, int d = -1)\
     \ const {\n        if (d == -1) d = this->size();\n        for (int i : rep(this->size()))\
     \ {\n            if ((*this)[i] != mint(0)) {\n                if (i * k > d)\
     \ return fps(d);\n                fps ret = (((*this * (*this)[i].inv()) >> i).log(d)\
@@ -257,8 +257,8 @@ data:
   isVerificationFile: false
   path: math/fps.hpp
   requiredBy: []
-  timestamp: '2021-08-30 23:43:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-08-31 00:47:41+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
