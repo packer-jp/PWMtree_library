@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: math/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -30,12 +30,11 @@ data:
     \ long;\nusing ull = unsigned long long;\null bit(int n) { return 1ull << n; }\n\
     template <typename T> using priority_queue_rev = priority_queue<T, vector<T>,\
     \ greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a * a; }\ntemplate\
-    \ <typename T, typename U> bool chmax(T &a, const U &b) {\n    if (a < b) {\n\
-    \        a = b;\n        return true;\n    }\n    return false;\n}\ntemplate <typename\
-    \ T, typename U> bool chmin(T &a, const U &b) {\n    if (b < a) {\n        a =\
-    \ b;\n        return true;\n    }\n    return false;\n}\ntemplate <typename T>\
-    \ ostream &operator<<(ostream &os, const vector<T> &a) {\n    os << \"(\";\n \
-    \   for (auto itr = a.begin(); itr != a.end(); itr++) { os << *itr << (next(itr)\
+    \ <typename T, typename U> bool chmax(T &a, const U &b) { return ((a < b) ? (a\
+    \ = b, true) : (false)); }\ntemplate <typename T, typename U> bool chmin(T &a,\
+    \ const U &b) { return ((a > b) ? (a = b, true) : (false)); }\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, const vector<T> &a) {\n    os << \"(\";\n\
+    \    for (auto itr = a.begin(); itr != a.end(); itr++) { os << *itr << (next(itr)\
     \ != a.end() ? \", \" : \"\"); }\n    os << \")\";\n    return os;\n}\n\n#ifdef\
     \ ONLINE_JUDGE\n#define dump(...) (void(0))\n#else\nvoid debug() { cerr << endl;\
     \ }\ntemplate <typename Head, typename... Tail> void debug(Head &&head, Tail &&...\
@@ -189,7 +188,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-31 00:47:41+09:00'
+  timestamp: '2021-08-31 07:58:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp

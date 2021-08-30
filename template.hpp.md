@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/segtree.hpp
     title: data_structure/segtree.hpp
   - icon: ':heavy_check_mark:'
@@ -66,21 +66,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
@@ -88,10 +88,9 @@ data:
     \ ull = unsigned long long;\null bit(int n) { return 1ull << n; }\ntemplate <typename\
     \ T> using priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
     \ <typename T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename\
-    \ U> bool chmax(T &a, const U &b) {\n    if (a < b) {\n        a = b;\n      \
-    \  return true;\n    }\n    return false;\n}\ntemplate <typename T, typename U>\
-    \ bool chmin(T &a, const U &b) {\n    if (b < a) {\n        a = b;\n        return\
-    \ true;\n    }\n    return false;\n}\ntemplate <typename T> ostream &operator<<(ostream\
+    \ U> bool chmax(T &a, const U &b) { return ((a < b) ? (a = b, true) : (false));\
+    \ }\ntemplate <typename T, typename U> bool chmin(T &a, const U &b) { return ((a\
+    \ > b) ? (a = b, true) : (false)); }\ntemplate <typename T> ostream &operator<<(ostream\
     \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
     \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
     ); }\n    os << \")\";\n    return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...)\
@@ -115,10 +114,9 @@ data:
     \ long;\null bit(int n) { return 1ull << n; }\ntemplate <typename T> using priority_queue_rev\
     \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T> T sq(const\
     \ T &a) { return a * a; }\ntemplate <typename T, typename U> bool chmax(T &a,\
-    \ const U &b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n\
-    \    return false;\n}\ntemplate <typename T, typename U> bool chmin(T &a, const\
-    \ U &b) {\n    if (b < a) {\n        a = b;\n        return true;\n    }\n   \
-    \ return false;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
+    \ const U &b) { return ((a < b) ? (a = b, true) : (false)); }\ntemplate <typename\
+    \ T, typename U> bool chmin(T &a, const U &b) { return ((a > b) ? (a = b, true)\
+    \ : (false)); }\ntemplate <typename T> ostream &operator<<(ostream &os, const\
     \ vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
     \ itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os <<\
     \ \")\";\n    return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n\
@@ -151,8 +149,8 @@ data:
   - graph/zobfs.hpp
   - data_structure/lazy_segtree.hpp
   - data_structure/segtree.hpp
-  timestamp: '2021-08-20 12:52:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-08-31 07:58:43+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp

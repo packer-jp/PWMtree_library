@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -24,30 +24,29 @@ data:
     \ (a).end()\nusing ll = long long;\nusing ull = unsigned long long;\null bit(int\
     \ n) { return 1ull << n; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
     \ vector<T>, greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a *\
-    \ a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) {\n   \
-    \ if (a < b) {\n        a = b;\n        return true;\n    }\n    return false;\n\
-    }\ntemplate <typename T, typename U> bool chmin(T &a, const U &b) {\n    if (b\
-    \ < a) {\n        a = b;\n        return true;\n    }\n    return false;\n}\n\
-    template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
-    \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os\
-    \ << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n   \
-    \ return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n#else\nvoid\
-    \ debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail> void debug(Head\
-    \ &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail)) cerr\
-    \ << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__ << \"\
-    : \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\n\nstruct rep {\n\
-    \    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
-    \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
-    \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
-    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
-    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
-    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
-    \    itr end() const { return l - 1; };\n};\n#line 4 \"data_structure/lazy_segtree.hpp\"\
-    \n\ntemplate <typename S> struct lazy_segtree {\n    using V = typename S::val_t;\n\
+    \ a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) { return\
+    \ ((a < b) ? (a = b, true) : (false)); }\ntemplate <typename T, typename U> bool\
+    \ chmin(T &a, const U &b) { return ((a > b) ? (a = b, true) : (false)); }\ntemplate\
+    \ <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n    os\
+    \ << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os << *itr\
+    \ << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n    return os;\n\
+    }\n\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n#else\nvoid debug() { cerr\
+    \ << endl; }\ntemplate <typename Head, typename... Tail> void debug(Head &&head,\
+    \ Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail)) cerr << \",\
+    \ \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__ << \": \" <<\
+    \ #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\n\nstruct rep {\n    struct\
+    \ itr {\n        int v;\n        itr(int v) : v(v) {}\n        void operator++()\
+    \ { ++v; }\n        int operator*() const { return v; }\n        bool operator!=(const\
+    \ itr &i) const { return v != i.v; }\n    };\n    int l, r;\n    rep(int r) :\
+    \ l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l, r)), r(r) {}\n    itr\
+    \ begin() const { return l; };\n    itr end() const { return r; };\n};\nstruct\
+    \ per {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n    \
+    \    void operator++() { --v; }\n        int operator*() const { return v; }\n\
+    \        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n  \
+    \  int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int l, int r) :\
+    \ l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n    itr end()\
+    \ const { return l - 1; };\n};\n#line 4 \"data_structure/lazy_segtree.hpp\"\n\n\
+    template <typename S> struct lazy_segtree {\n    using V = typename S::val_t;\n\
     \    using F = typename S::fn_t;\n    int n, size, log;\n    vector<V> val;\n\
     \    vector<F> lazy;\n    lazy_segtree(int n) : lazy_segtree(vector(n, S::e()))\
     \ {}\n    lazy_segtree(vector<V> src) : n(src.size()) {\n        for (size = 1,\
@@ -131,7 +130,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-20 20:05:53+09:00'
+  timestamp: '2021-08-31 07:58:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
