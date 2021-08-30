@@ -22,10 +22,10 @@ data:
     - icon: ':warning:'
       path: math/combination.hpp
       title: math/combination.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/convolution.hpp
       title: math/convolution.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/fps.hpp
       title: math/fps.hpp
     - icon: ':warning:'
@@ -34,12 +34,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/modint.hpp
       title: math/modint.hpp
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   verificationCategories:
@@ -60,7 +60,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     - icon: ':heavy_check_mark:'
