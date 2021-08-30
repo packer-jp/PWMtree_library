@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: data_structure/segtree.hpp
   - icon: ':heavy_check_mark:'
@@ -66,21 +66,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
@@ -150,7 +150,7 @@ data:
   - data_structure/lazy_segtree.hpp
   - data_structure/segtree.hpp
   timestamp: '2021-08-31 07:58:43+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
