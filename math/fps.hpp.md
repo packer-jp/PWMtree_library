@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: "NTT/\u7573\u307F\u8FBC\u307F"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -61,9 +61,9 @@ data:
     \ ll mod() { return MOD; }\n    modint inv() const {\n        ll a = val, b =\
     \ MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n   \
     \         swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
-    \        return modint(u);\n    }\n    modint pow(ll n) const {\n        modint\
-    \ ret = 1, mul = val;\n        while (n) {\n            if (n & 1) ret *= mul;\n\
-    \            mul *= mul;\n            n >>= 1;\n        }\n        return ret;\n\
+    \        return modint(u);\n    }\n    modint pow(ll k) const {\n        modint\
+    \ ret = 1, mul = val;\n        while (k) {\n            if (k & 1) ret *= mul;\n\
+    \            mul *= mul;\n            k >>= 1;\n        }\n        return ret;\n\
     \    }\n    modint &operator+=(const modint &a) {\n        if ((val += a.val)\
     \ >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator-=(const\
     \ modint &a) {\n        if ((val += MOD - a.val) >= MOD) val -= MOD;\n       \
@@ -256,7 +256,7 @@ data:
   isVerificationFile: false
   path: math/fps.hpp
   requiredBy: []
-  timestamp: '2021-09-01 11:36:48+09:00'
+  timestamp: '2021-09-01 12:58:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
@@ -265,8 +265,20 @@ data:
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
 documentation_of: math/fps.hpp
 layout: document
-redirect_from:
-- /library/math/fps.hpp
-- /library/math/fps.hpp.html
-title: math/fps.hpp
+title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
 ---
+
+# 概要
+- `modint`上の形式的冪級数に関する各種演算をサポートする。
+
+# 詳細
+- `<typename mint> struct fps`  
+    形式的冪級数本体。
+
+    - `typename mint`  
+        テンプレート引数として与える`modint`。
+
+# 参考文献
+- [Nyaan さんのライブラリ](https://nyaannyaan.github.io/library/fps/formal-power-series.hpp)
+- [opt さんの記事](https://opt-cp.com/fps-fast-algorithms/)
+- [exp 高速化に関する論文](https://arxiv.org/pdf/1301.5804.pdf)

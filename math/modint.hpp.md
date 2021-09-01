@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -10,12 +10,12 @@ data:
     title: "NTT/\u7573\u307F\u8FBC\u307F"
   - icon: ':heavy_check_mark:'
     path: math/fps.hpp
-    title: math/fps.hpp
+    title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -30,9 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/modint.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -67,9 +67,9 @@ data:
     \ MOD; }\n    modint inv() const {\n        ll a = val, b = MOD, u = 1, v = 0,\
     \ t;\n        while (b > 0) {\n            t = a / b;\n            swap(a -= t\
     \ * b, b);\n            swap(u -= t * v, v);\n        }\n        return modint(u);\n\
-    \    }\n    modint pow(ll n) const {\n        modint ret = 1, mul = val;\n   \
-    \     while (n) {\n            if (n & 1) ret *= mul;\n            mul *= mul;\n\
-    \            n >>= 1;\n        }\n        return ret;\n    }\n    modint &operator+=(const\
+    \    }\n    modint pow(ll k) const {\n        modint ret = 1, mul = val;\n   \
+    \     while (k) {\n            if (k & 1) ret *= mul;\n            mul *= mul;\n\
+    \            k >>= 1;\n        }\n        return ret;\n    }\n    modint &operator+=(const\
     \ modint &a) {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return\
     \ *this;\n    }\n    modint &operator-=(const modint &a) {\n        if ((val +=\
     \ MOD - a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
@@ -92,9 +92,9 @@ data:
     \    modint inv() const {\n        ll a = val, b = MOD, u = 1, v = 0, t;\n   \
     \     while (b > 0) {\n            t = a / b;\n            swap(a -= t * b, b);\n\
     \            swap(u -= t * v, v);\n        }\n        return modint(u);\n    }\n\
-    \    modint pow(ll n) const {\n        modint ret = 1, mul = val;\n        while\
-    \ (n) {\n            if (n & 1) ret *= mul;\n            mul *= mul;\n       \
-    \     n >>= 1;\n        }\n        return ret;\n    }\n    modint &operator+=(const\
+    \    modint pow(ll k) const {\n        modint ret = 1, mul = val;\n        while\
+    \ (k) {\n            if (k & 1) ret *= mul;\n            mul *= mul;\n       \
+    \     k >>= 1;\n        }\n        return ret;\n    }\n    modint &operator+=(const\
     \ modint &a) {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return\
     \ *this;\n    }\n    modint &operator-=(const modint &a) {\n        if ((val +=\
     \ MOD - a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
@@ -118,8 +118,8 @@ data:
   requiredBy:
   - math/convolution.hpp
   - math/fps.hpp
-  timestamp: '2021-09-01 11:36:48+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-09-01 12:58:39+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
@@ -151,8 +151,8 @@ title: modint
     - `modint inv()`  
         逆元を返す。 $m$ と互いに素である場合に逆元が存在する。 $O(\log m)$ 時間。
 
-    - `modint pow(ll n)`  
-        $n$ 乗した結果を返す。 $O(\log n)$ 時間。
+    - `modint pow(ll k)`  
+        $k$ 乗した結果を返す。 $O(\log k)$ 時間。
 
     - 四則演算、比較、複合代入
 

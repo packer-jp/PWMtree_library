@@ -27,19 +27,19 @@ data:
       title: "NTT/\u7573\u307F\u8FBC\u307F"
     - icon: ':heavy_check_mark:'
       path: math/fps.hpp
-      title: math/fps.hpp
+      title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: math/inner_basis.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/modint.hpp
       title: modint
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   verificationCategories:
@@ -48,7 +48,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Convolution.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
       title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     - icon: ':heavy_check_mark:'

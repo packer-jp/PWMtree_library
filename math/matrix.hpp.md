@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/matrix.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -69,7 +69,7 @@ data:
     \ {\n            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j];\
     \ }\n        }\n        return ret;\n    }\n    matrix pow(ll k) const {\n   \
     \     matrix ret = matrix::id(height()), mul(*this);\n        while (k) {\n  \
-    \          if (k & 1) ret *= mul;\n            mul *= mul;\n            p >>=\
+    \          if (k & 1) ret *= mul;\n            mul *= mul;\n            k >>=\
     \ 1;\n        }\n        return ret;\n    }\n    matrix &operator+=(const matrix\
     \ &a) {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
     \ { val[i][j] += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix\
@@ -123,7 +123,7 @@ data:
     \ {\n            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j];\
     \ }\n        }\n        return ret;\n    }\n    matrix pow(ll k) const {\n   \
     \     matrix ret = matrix::id(height()), mul(*this);\n        while (k) {\n  \
-    \          if (k & 1) ret *= mul;\n            mul *= mul;\n            p >>=\
+    \          if (k & 1) ret *= mul;\n            mul *= mul;\n            k >>=\
     \ 1;\n        }\n        return ret;\n    }\n    matrix &operator+=(const matrix\
     \ &a) {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
     \ { val[i][j] += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix\
@@ -153,8 +153,8 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2021-09-01 12:47:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-09-01 12:58:39+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 documentation_of: math/matrix.hpp
@@ -215,3 +215,6 @@ title: "\u884C\u5217"
 
 - `struct double_field`  
     実数体を載せるときに`matrix`にテンプレート引数 `S` として与える。誤差周りの事情から、特殊化を行っている。
+
+# 参考文献
+- [うしさんのライブラリ](https://ei1333.github.io/library/math/matrix/matrix.cpp)

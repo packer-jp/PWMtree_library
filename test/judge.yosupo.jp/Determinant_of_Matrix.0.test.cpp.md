@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: "\u884C\u5217"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_det
@@ -77,7 +77,7 @@ data:
     \ {\n            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j];\
     \ }\n        }\n        return ret;\n    }\n    matrix pow(ll k) const {\n   \
     \     matrix ret = matrix::id(height()), mul(*this);\n        while (k) {\n  \
-    \          if (k & 1) ret *= mul;\n            mul *= mul;\n            p >>=\
+    \          if (k & 1) ret *= mul;\n            mul *= mul;\n            k >>=\
     \ 1;\n        }\n        return ret;\n    }\n    matrix &operator+=(const matrix\
     \ &a) {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
     \ { val[i][j] += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix\
@@ -107,9 +107,9 @@ data:
     \ {}\n    static ll mod() { return MOD; }\n    modint inv() const {\n        ll\
     \ a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t =\
     \ a / b;\n            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n\
-    \        }\n        return modint(u);\n    }\n    modint pow(ll n) const {\n \
-    \       modint ret = 1, mul = val;\n        while (n) {\n            if (n & 1)\
-    \ ret *= mul;\n            mul *= mul;\n            n >>= 1;\n        }\n    \
+    \        }\n        return modint(u);\n    }\n    modint pow(ll k) const {\n \
+    \       modint ret = 1, mul = val;\n        while (k) {\n            if (k & 1)\
+    \ ret *= mul;\n            mul *= mul;\n            k >>= 1;\n        }\n    \
     \    return ret;\n    }\n    modint &operator+=(const modint &a) {\n        if\
     \ ((val += a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint\
     \ &operator-=(const modint &a) {\n        if ((val += MOD - a.val) >= MOD) val\
@@ -147,8 +147,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-01 12:47:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-01 12:58:39+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 layout: document

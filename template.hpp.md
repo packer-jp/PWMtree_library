@@ -22,21 +22,21 @@ data:
     title: "NTT/\u7573\u307F\u8FBC\u307F"
   - icon: ':heavy_check_mark:'
     path: math/fps.hpp
-    title: math/fps.hpp
+    title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   - icon: ':warning:'
     path: math/inner_basis.hpp
     title: math/inner_basis.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: "\u884C\u5217"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,9 +78,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
@@ -150,7 +150,7 @@ data:
   - data_structure/lazy_segtree.hpp
   - data_structure/segtree.hpp
   timestamp: '2021-08-31 07:58:43+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
