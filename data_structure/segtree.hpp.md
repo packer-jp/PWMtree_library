@@ -124,6 +124,7 @@ title: Segment Tree
 - 長さ $n$ の $V$ の元の列 $s$ に対する処理を行う。
 
 # 詳細
+
 - `<typename S> struct segtree`  
     Segment Tree 本体。
 
@@ -139,14 +140,14 @@ title: Segment Tree
         - `static val_t e()`  
             $(V, \times)$ の単位元 $\mathrm{e}$ を返す。
 
+    - `using V`  
+        $V$ を表す型。
+
     - `(constructor)(int n)`  
         長さ $n$ 、全要素 $\mathrm{e}$ で初期化。
 
     - `(constructor)(vector<V> src)`  
         $s := src$ として初期化。
-
-    - `using V`  
-        $V$ を表す型。
 
     - `void set(int i, V a)`  
         要素 $i$ を $a$ に置き換える。$O(\log n)$ 時間。
@@ -173,10 +174,10 @@ title: Segment Tree
         を共に満たす $l$ をいずれか一つ返す。 $O(\log n)$ 時間。 $g(\mathrm{e})$ を要請。
 
 - `struct min_monoid_with_addition`  
-    区間最小/一点更新クエリを処理したいときに`segtree`にテンプレート引数 `S` として与える。
+    区間最小/一点更新クエリを処理するときに`segtree`にテンプレート引数 `S` として与える。
 
 - `struct sum_monoid_with_update`  
-    区間和/一点更新クエリを処理したいときに`segtree`にテンプレート引数 `S` として与える。
+    区間和/一点更新クエリを処理するときに`segtree`にテンプレート引数 `S` として与える。
 
 # 参考文献
 - [ACL](https://atcoder.github.io/ac-library/production/document_ja/segtree.html)

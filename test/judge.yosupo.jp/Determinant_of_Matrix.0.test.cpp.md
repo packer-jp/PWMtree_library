@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':x:'
     path: math/matrix.hpp
-    title: math/matrix.hpp
+    title: "\u884C\u5217"
   - icon: ':question:'
     path: math/modint.hpp
     title: modint
@@ -50,12 +50,12 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\n#line\
     \ 4 \"math/matrix.hpp\"\n\ntemplate <typename S> struct matrix {\n    using V\
     \ = typename S::val_t;\n    vector<vector<V>> val;\n    matrix(int n, int m) :\
-    \ matrix(vector(n, vector(m, S::zero()))) {}\n    matrix(vector<vector<V>> src)\
-    \ : val(src) {}\n    vector<V> &operator[](int i) { return val[i]; }\n    const\
-    \ vector<V> &operator[](int i) const { return val[i]; }\n    int height() const\
-    \ { return val.size(); }\n    int width() const { return val[0].size(); }\n  \
-    \  static matrix id(int n) {\n        matrix ret(n, n);\n        for (int i :\
-    \ rep(n)) ret[i][i] = S::one();\n        return ret;\n    }\n    void row_add(int\
+    \ matrix(vector(n, vector(m, S::zero()))) {}\n    matrix(const vector<vector<V>>\
+    \ &src) : val(src) {}\n    vector<V> &operator[](int i) { return val[i]; }\n \
+    \   const vector<V> &operator[](int i) const { return val[i]; }\n    int height()\
+    \ const { return val.size(); }\n    int width() const { return val[0].size();\
+    \ }\n    static matrix id(int n) {\n        matrix ret(n, n);\n        for (int\
+    \ i : rep(n)) ret[i][i] = S::one();\n        return ret;\n    }\n    void row_add(int\
     \ i, int j, V a) {\n        for (int k : rep(width())) { val[i][k] += val[j][k]\
     \ * a; }\n    }\n    bool place_nonzero(int i, int j) {\n        for (int k :\
     \ rep(i, height())) {\n            if (val[k][j] != S::zero()) {\n           \
@@ -75,9 +75,9 @@ data:
     \            for (int j : rep(i)) ut.row_add(j, i, -ut[j][i] / ut[i][i]);\n  \
     \      }\n        matrix ret(height(), width());\n        for (int i : rep(height()))\
     \ {\n            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j];\
-    \ }\n        }\n        return ret;\n    }\n    matrix pow(ll n) const {\n   \
-    \     matrix ret = matrix::id(height()), mul(*this);\n        while (n) {\n  \
-    \          if (n & 1) res *= mul;\n            mul *= mul;\n            p >>=\
+    \ }\n        }\n        return ret;\n    }\n    matrix pow(ll k) const {\n   \
+    \     matrix ret = matrix::id(height()), mul(*this);\n        while (k) {\n  \
+    \          if (k & 1) ret *= mul;\n            mul *= mul;\n            p >>=\
     \ 1;\n        }\n        return ret;\n    }\n    matrix &operator+=(const matrix\
     \ &a) {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
     \ { val[i][j] += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix\
@@ -147,7 +147,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-01 11:36:48+09:00'
+  timestamp: '2021-09-01 12:47:27+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp

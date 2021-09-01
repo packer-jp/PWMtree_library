@@ -28,7 +28,7 @@ data:
     title: math/inner_basis.hpp
   - icon: ':x:'
     path: math/matrix.hpp
-    title: math/matrix.hpp
+    title: "\u884C\u5217"
   - icon: ':question:'
     path: math/modint.hpp
     title: modint
