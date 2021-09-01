@@ -49,9 +49,9 @@ data:
     template <typename S> struct lazy_segtree {\n    using V = typename S::val_t;\n\
     \    using F = typename S::fn_t;\n    int n, size, log;\n    vector<V> val;\n\
     \    vector<F> lazy;\n    lazy_segtree(int n) : lazy_segtree(vector(n, S::e()))\
-    \ {}\n    lazy_segtree(vector<V> src) : n(src.size()) {\n        for (size = 1,\
-    \ log = 0; size < n; size <<= 1, log++) {}\n        val.resize(size << 1);\n \
-    \       copy(all(src), val.begin() + size);\n        lazy.resize(size << 1, S::id());\n\
+    \ {}\n    lazy_segtree(const vector<V> &src) : n(src.size()) {\n        for (size\
+    \ = 1, log = 0; size < n; size <<= 1, log++) {}\n        val.resize(size << 1);\n\
+    \        copy(all(src), val.begin() + size);\n        lazy.resize(size << 1, S::id());\n\
     \        for (int i : per(1, size)) val[i] = S::op(val[i << 1 | 0], val[i << 1\
     \ | 1]);\n    }\n    V reflect(int i) { return S::mapping(lazy[i], val[i]); }\n\
     \    void push(int i) {\n        val[i] = S::mapping(lazy[i], val[i]);\n     \
@@ -130,7 +130,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-31 07:58:43+09:00'
+  timestamp: '2021-09-01 11:12:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
