@@ -3,14 +3,14 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
-    title: math/convolution.hpp
+    title: "NTT/\u7573\u307F\u8FBC\u307F"
   - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: math/fps.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
-    title: math/modint.hpp
-  - icon: ':heavy_check_mark:'
+    title: modint
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -57,9 +57,9 @@ data:
     \ ll mod() { return MOD; }\n    modint inv() const {\n        ll a = val, b =\
     \ MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n   \
     \         swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
-    \        return modint(u);\n    }\n    modint pow(ll p) const {\n        modint\
-    \ res = 1, mul = val;\n        while (p) {\n            if (p & 1) res *= mul;\n\
-    \            mul *= mul;\n            p >>= 1;\n        }\n        return res;\n\
+    \        return modint(u);\n    }\n    modint pow(ll n) const {\n        modint\
+    \ ret = 1, mul = val;\n        while (n) {\n            if (n & 1) ret *= mul;\n\
+    \            mul *= mul;\n            n >>= 1;\n        }\n        return ret;\n\
     \    }\n    modint &operator+=(const modint &a) {\n        if ((val += a.val)\
     \ >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator-=(const\
     \ modint &a) {\n        if ((val += MOD - a.val) >= MOD) val -= MOD;\n       \
@@ -188,7 +188,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-31 07:58:43+09:00'
+  timestamp: '2021-09-01 11:36:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp

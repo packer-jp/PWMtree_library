@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
-    title: math/modint.hpp
-  - icon: ':heavy_check_mark:'
+    title: modint
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -64,9 +64,9 @@ data:
     \ ll mod() { return MOD; }\n    modint inv() const {\n        ll a = val, b =\
     \ MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n   \
     \         swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
-    \        return modint(u);\n    }\n    modint pow(ll p) const {\n        modint\
-    \ res = 1, mul = val;\n        while (p) {\n            if (p & 1) res *= mul;\n\
-    \            mul *= mul;\n            p >>= 1;\n        }\n        return res;\n\
+    \        return modint(u);\n    }\n    modint pow(ll n) const {\n        modint\
+    \ ret = 1, mul = val;\n        while (n) {\n            if (n & 1) ret *= mul;\n\
+    \            mul *= mul;\n            n >>= 1;\n        }\n        return ret;\n\
     \    }\n    modint &operator+=(const modint &a) {\n        if ((val += a.val)\
     \ >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator-=(const\
     \ modint &a) {\n        if ((val += MOD - a.val) >= MOD) val -= MOD;\n       \
@@ -136,7 +136,7 @@ data:
   path: math/convolution.hpp
   requiredBy:
   - math/fps.hpp
-  timestamp: '2021-08-31 07:58:43+09:00'
+  timestamp: '2021-09-01 11:36:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Convolution.0.test.cpp
@@ -146,8 +146,23 @@ data:
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
 documentation_of: math/convolution.hpp
 layout: document
-redirect_from:
-- /library/math/convolution.hpp
-- /library/math/convolution.hpp.html
-title: math/convolution.hpp
+title: "NTT/\u7573\u307F\u8FBC\u307F"
 ---
+
+# 概要
+- NTT (Number Theoretic Transform、数論変換) を用いた二数列の畳み込みを行う。
+- 法 $m$ について、 $m - 1$ は結果の列長以上となる最小の 2 冪で割り切れる必要がある。 $998244353 = 2^23 \times 119 + 1$ がよく用いられる。
+- 2 基底の Stockham FFT で実装している。
+
+# 詳細
+- `<typename mint> ntt(vector<mint> &a)`  
+    $a$ 自身を NTT した結果に更新する。列長 $n$ は 2 冪である必要がある。 $O(n\log n)$ 時間。
+
+- `<typename mint> intt(vector<mint> &a)`  
+    $a$ 自身を逆 NTT した結果に更新する。列長 $n$ は 2 冪である必要がある。 $O(n\log n)$ 時間。
+
+- `<typename mint> vector<mint> convolution(vector<mint> a, vector<mint> b)`  
+    $a, b$を畳み込んだ数列を返す。$a, b$それぞれの列長を $n, m$ とすると、結果の列長は $n + m - 1$ となる。$O((n + m)\log(n + m))$時間。
+
+# 参考文献
+- [Stockham FFT 入門](http://wwwa.pikara.ne.jp/okojisan/stockham/stockham1.html)

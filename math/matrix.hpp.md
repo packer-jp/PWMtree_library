@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/matrix.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -67,10 +67,10 @@ data:
     \            for (int j : rep(i)) ut.row_add(j, i, -ut[j][i] / ut[i][i]);\n  \
     \      }\n        matrix ret(height(), width());\n        for (int i : rep(height()))\
     \ {\n            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j];\
-    \ }\n        }\n        return ret;\n    }\n    matrix pow(ll p) const {\n   \
-    \     matrix res = matrix::id(height()), mul(*this);\n        while (p) {\n  \
-    \          if (p & 1) res *= mul;\n            mul *= mul;\n            p >>=\
-    \ 1;\n        }\n        return res;\n    }\n    matrix &operator+=(const matrix\
+    \ }\n        }\n        return ret;\n    }\n    matrix pow(ll n) const {\n   \
+    \     matrix ret = matrix::id(height()), mul(*this);\n        while (n) {\n  \
+    \          if (n & 1) res *= mul;\n            mul *= mul;\n            p >>=\
+    \ 1;\n        }\n        return ret;\n    }\n    matrix &operator+=(const matrix\
     \ &a) {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
     \ { val[i][j] += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix\
     \ &operator-=(const matrix &a) {\n        for (int i : rep(height())) {\n    \
@@ -121,10 +121,10 @@ data:
     \            for (int j : rep(i)) ut.row_add(j, i, -ut[j][i] / ut[i][i]);\n  \
     \      }\n        matrix ret(height(), width());\n        for (int i : rep(height()))\
     \ {\n            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j];\
-    \ }\n        }\n        return ret;\n    }\n    matrix pow(ll p) const {\n   \
-    \     matrix res = matrix::id(height()), mul(*this);\n        while (p) {\n  \
-    \          if (p & 1) res *= mul;\n            mul *= mul;\n            p >>=\
-    \ 1;\n        }\n        return res;\n    }\n    matrix &operator+=(const matrix\
+    \ }\n        }\n        return ret;\n    }\n    matrix pow(ll n) const {\n   \
+    \     matrix ret = matrix::id(height()), mul(*this);\n        while (n) {\n  \
+    \          if (n & 1) res *= mul;\n            mul *= mul;\n            p >>=\
+    \ 1;\n        }\n        return ret;\n    }\n    matrix &operator+=(const matrix\
     \ &a) {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
     \ { val[i][j] += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix\
     \ &operator-=(const matrix &a) {\n        for (int i : rep(height())) {\n    \
@@ -153,8 +153,8 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2021-08-31 07:58:43+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-01 11:36:48+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 documentation_of: math/matrix.hpp

@@ -24,22 +24,22 @@ data:
       title: math/combination.hpp
     - icon: ':heavy_check_mark:'
       path: math/convolution.hpp
-      title: math/convolution.hpp
+      title: "NTT/\u7573\u307F\u8FBC\u307F"
     - icon: ':heavy_check_mark:'
       path: math/fps.hpp
       title: math/fps.hpp
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: math/inner_basis.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/modint.hpp
-      title: math/modint.hpp
+      title: modint
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   verificationCategories:
@@ -48,7 +48,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Convolution.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
       title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     - icon: ':heavy_check_mark:'

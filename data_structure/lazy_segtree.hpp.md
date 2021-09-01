@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -205,7 +205,6 @@ title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
 - 長さ $n$ の $V$ の元の列 $s$ に対する処理を行う。
 
 # 詳細
-
 - `<typename S> struct lazy_segtree`  
     遅延評価 Segment Tree 本体。
 
@@ -234,10 +233,10 @@ title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
             $(F, \circ)$ の単位元 $\mathrm{id}$ を返す。
 
     - `(constructor)(int n)`  
-        長さ $n$ 、全要素 $\mathrm{e}$ で初期化
+        長さ $n$ 、全要素 $\mathrm{e}$ で初期化。
 
     - `(constructor)(vector<V> src)`  
-        長さ $n$ 、全要素 $\mathrm{e}$ で初期化
+        $s := src$ として初期化。
 
     - `using V`  
         $V$ を表す型。
