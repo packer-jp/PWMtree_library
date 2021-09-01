@@ -199,7 +199,7 @@ title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
 ---
 
 # 概要
-- モノイド$V$と作用素モノイド$F$
+- モノイド $(V, \times)$ と作用素モノイド $(F, \circ)$
 - $f(v_0 \times v_1) = f(v_0) \times f(v_1)$
 - $f(g(v)) = f \circ g(v)$
 - 長さ $n$ の $V$ の元の列 $s$ に対する処理を行う
@@ -217,7 +217,7 @@ $F$ を表す型。
 $a \times b$ を返す。
 
 ## $\mathrm{e}()$
-$V$の単位元 $\mathrm{e}$ を返す。
+$(V, \times)$ の単位元 $\mathrm{e}$ を返す。
 
 ## $\mathrm{mapping}(f, a)$
 $f(a)$ を返す。
@@ -226,7 +226,7 @@ $f(a)$ を返す。
 $f \circ g$ を返す。
 
 ## $\mathrm{id}()$
-$F$ の単位元 $\mathrm{id}$ を返す。
+$(F, \circ)$ の単位元 $\mathrm{id}$ を返す。
 
 # メンバ
 ## $\mathrm{set}(i, a)$
@@ -239,7 +239,6 @@ $F$ の単位元 $\mathrm{id}$ を返す。
 - $O(\log n)$  
 
 ## $\mathrm{apply}(l, r, f)$
-時間計算量: $O(log n)$
 $s_l, \cdots s_{r-1}$ に $f$ を作用させる。
 
 ### 制約
@@ -257,7 +256,7 @@ $i$ 番目の要素を得る。
 ### 計算量
 - $O(\log n)$
 
-## `prod(l, r)`
+## $\mathrm{prod}(l, r)$
 $\mathrm{e} \times s_l \times \cdots \times s_{r-1}$ を計算する。
 
 ### 制約
@@ -267,6 +266,8 @@ $\mathrm{e} \times s_l \times \cdots \times s_{r-1}$ を計算する。
 - $O(\log n)$
 
 ## $\mathrm{max\,right}(l, g)$
+述語 $g$ について、
+
 - $g(\mathrm{prod}(l, r))$
 - $r = n \lor g(\mathrm{prod}(l, r + 1))$
 
@@ -280,6 +281,8 @@ $\mathrm{e} \times s_l \times \cdots \times s_{r-1}$ を計算する。
 - $O(\log n)$
 
 ## $\mathrm{min\,left}(r, g)$
+述語 $g$ について、
+
 - $g(\mathrm{prod}(l, r))$
 - $l = 0 \lor g(\mathrm{prod}(l - 1, r))$
 
