@@ -84,8 +84,7 @@ data:
   - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
-redirect_from:
-- /library/graph/dijkstra.hpp
-- /library/graph/dijkstra.hpp.html
-title: graph/dijkstra.hpp
+title: "Dijkstra \u6CD5"
 ---
+
+# 概要

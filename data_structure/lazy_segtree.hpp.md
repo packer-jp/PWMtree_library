@@ -187,12 +187,12 @@ data:
   timestamp: '2021-09-01 11:12:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
 documentation_of: data_structure/lazy_segtree.hpp
 layout: document
 title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
@@ -283,6 +283,6 @@ title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
 - `struct sum_monoid_with_update`  
     区間和/区間更新クエリを処理するときに`lazy_segtree`にテンプレート引数 `S` として与える。
 
-# 参考文献
+# 参考
 - [ACL](https://atcoder.github.io/ac-library/production/document_ja/lazysegtree.html)
 - [Nyaan さんのライブラリ](https://nyaannyaan.github.io/library/segment-tree/lazy-segment-tree-utility.hpp)

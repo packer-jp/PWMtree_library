@@ -278,7 +278,7 @@ title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
     - `typename mint`  
         テンプレート引数として与える`modint`。
 
-# 参考文献
+# 参考
 - [Nyaan さんのライブラリ](https://nyaannyaan.github.io/library/fps/formal-power-series.hpp)
 - [opt さんの記事](https://opt-cp.com/fps-fast-algorithms/)
 - [exp 高速化に関する論文](https://arxiv.org/pdf/1301.5804.pdf)

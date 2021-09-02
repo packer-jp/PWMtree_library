@@ -121,11 +121,11 @@ data:
   timestamp: '2021-09-01 12:58:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
 documentation_of: math/modint.hpp
 layout: document
@@ -159,5 +159,5 @@ title: modint
     - `iostream` を用いた入出力
 
 
-# 参考文献
+# 参考
 - [うしさんのライブラリ](https://ei1333.github.io/library/math/combinatorics/mod-int.cpp)

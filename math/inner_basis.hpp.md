@@ -37,26 +37,30 @@ data:
     \        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n  \
     \  int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int l, int r) :\
     \ l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n    itr end()\
-    \ const { return l - 1; };\n};\n#line 4 \"math/inner_basis.hpp\"\n\nvector<ll>\
-    \ inner_basis(vector<ll> a) {\n    vector<ll> basis, ret;\n    for (ll e : a)\
-    \ {\n        ll e_ = e;\n        for (ll b : basis) chmin(e, e ^ b);\n       \
-    \ if (e) basis.push_back(e), ret.push_back(e_);\n    }\n    return ret;\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\nvector<ll> inner_basis(vector<ll>\
-    \ a) {\n    vector<ll> basis, ret;\n    for (ll e : a) {\n        ll e_ = e;\n\
-    \        for (ll b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e),\
+    \ const { return l - 1; };\n};\n#line 4 \"math/inner_basis.hpp\"\n\nvector<ull>\
+    \ inner_basis(vector<ull> a) {\n    vector<ull> basis, ret;\n    for (ull e :\
+    \ a) {\n        ull e_ = e;\n        for (ull b : basis) chmin(e, e ^ b);\n  \
+    \      if (e) basis.push_back(e), ret.push_back(e_);\n    }\n    return ret;\n\
+    }\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\nvector<ull> inner_basis(vector<ull>\
+    \ a) {\n    vector<ull> basis, ret;\n    for (ull e : a) {\n        ull e_ = e;\n\
+    \        for (ull b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e),\
     \ ret.push_back(e_);\n    }\n    return ret;\n}"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: math/inner_basis.hpp
   requiredBy: []
-  timestamp: '2021-08-31 07:58:43+09:00'
+  timestamp: '2021-09-02 13:47:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/inner_basis.hpp
 layout: document
-redirect_from:
-- /library/math/inner_basis.hpp
-- /library/math/inner_basis.hpp.html
-title: math/inner_basis.hpp
+title: "xor \u57FA\u5E95"
 ---
+
+# 概要
+- 非負整数の集合について、xor に関する基底を集合内から構成する。
+
+# 参考
+- [熨斗袋さんのツイート](https://twitter.com/noshi91/status/1200702280128856064)

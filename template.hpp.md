@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: data_structure/cht.hpp
+    title: Convex Hull Trick
   - icon: ':heavy_check_mark:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
@@ -9,14 +12,17 @@ data:
     path: data_structure/segtree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
+    path: data_structure/splay_tree.hpp
+    title: Splay Tree
+  - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
-    title: graph/dijkstra.hpp
+    title: "Dijkstra \u6CD5"
   - icon: ':warning:'
-    path: graph/zobfs.hpp
-    title: graph/zobfs.hpp
+    path: graph/oibfs.hpp
+    title: 01-BFS
   - icon: ':warning:'
     path: math/combination.hpp
-    title: math/combination.hpp
+    title: "\u7D44\u307F\u5408\u308F\u305B"
   - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: "NTT/\u7573\u307F\u8FBC\u307F"
@@ -25,7 +31,7 @@ data:
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   - icon: ':warning:'
     path: math/inner_basis.hpp
-    title: math/inner_basis.hpp
+    title: "xor \u57FA\u5E95"
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: "\u884C\u5217"
@@ -78,6 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -139,34 +148,37 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
-  - math/convolution.hpp
-  - math/modint.hpp
-  - math/matrix.hpp
-  - math/combination.hpp
-  - math/fps.hpp
-  - math/inner_basis.hpp
+  - graph/oibfs.hpp
   - graph/dijkstra.hpp
-  - graph/zobfs.hpp
+  - math/inner_basis.hpp
+  - math/modint.hpp
+  - math/combination.hpp
+  - math/convolution.hpp
+  - math/matrix.hpp
+  - math/fps.hpp
   - data_structure/lazy_segtree.hpp
+  - data_structure/splay_tree.hpp
+  - data_structure/cht.hpp
   - data_structure/segtree.hpp
   timestamp: '2021-08-31 07:58:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
-  - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
+  - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

@@ -3,25 +3,31 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
+    - icon: ':warning:'
+      path: data_structure/cht.hpp
+      title: Convex Hull Trick
     - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segtree.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree.hpp
       title: Segment Tree
+    - icon: ':heavy_check_mark:'
+      path: data_structure/splay_tree.hpp
+      title: Splay Tree
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
-      title: graph/dijkstra.hpp
+      title: "Dijkstra \u6CD5"
     - icon: ':warning:'
-      path: graph/zobfs.hpp
-      title: graph/zobfs.hpp
+      path: graph/oibfs.hpp
+      title: 01-BFS
   - name: math
     pages:
     - icon: ':warning:'
       path: math/combination.hpp
-      title: math/combination.hpp
+      title: "\u7D44\u307F\u5408\u308F\u305B"
     - icon: ':heavy_check_mark:'
       path: math/convolution.hpp
       title: "NTT/\u7573\u307F\u8FBC\u307F"
@@ -30,7 +36,7 @@ data:
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
     - icon: ':warning:'
       path: math/inner_basis.hpp
-      title: math/inner_basis.hpp
+      title: "xor \u57FA\u5E95"
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217"
@@ -92,5 +98,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
+      title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
 layout: toppage
 ---

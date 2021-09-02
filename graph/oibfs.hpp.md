@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/zobfs.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"graph/oibfs.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     using ll = long long;\nusing ull = unsigned long long;\null bit(int n) { return\
     \ 1ull << n; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
@@ -37,9 +37,9 @@ data:
     \        bool operator!=(const itr &i) const { return v != i.v; }\n    };\n  \
     \  int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int l, int r) :\
     \ l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n    itr end()\
-    \ const { return l - 1; };\n};\n#line 4 \"graph/zobfs.hpp\"\n\nstruct zobfs {\n\
+    \ const { return l - 1; };\n};\n#line 4 \"graph/oibfs.hpp\"\n\nstruct oibfs {\n\
     \    struct edge {\n        ll to, cost;\n        edge(ll to, ll cost) : to(to),\
-    \ cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n    zobfs(ll n) : adj(n)\
+    \ cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n    oibfs(ll n) : adj(n)\
     \ {}\n    void add_edge(ll from, ll to, ll cost) { adj[from].emplace_back(to,\
     \ cost); }\n    pair<vector<ll>, vector<ll>> get(int s) const {\n        vector<ll>\
     \ dist(adj.size(), LLONG_MAX), prev(adj.size(), -1);\n        using P = pair<ll,\
@@ -51,9 +51,9 @@ data:
     \                  prev[to] = i;\n                    if (cost == 0) deq.emplace_front(nd,\
     \ to);\n                    if (cost == 1) deq.emplace_back(nd, to);\n       \
     \         }\n            }\n        }\n        return {dist, prev};\n    }\n};\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct zobfs {\n    struct\
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct oibfs {\n    struct\
     \ edge {\n        ll to, cost;\n        edge(ll to, ll cost) : to(to), cost(cost)\
-    \ {}\n    };\n    vector<vector<edge>> adj;\n    zobfs(ll n) : adj(n) {}\n   \
+    \ {}\n    };\n    vector<vector<edge>> adj;\n    oibfs(ll n) : adj(n) {}\n   \
     \ void add_edge(ll from, ll to, ll cost) { adj[from].emplace_back(to, cost); }\n\
     \    pair<vector<ll>, vector<ll>> get(int s) const {\n        vector<ll> dist(adj.size(),\
     \ LLONG_MAX), prev(adj.size(), -1);\n        using P = pair<ll, ll>;\n       \
@@ -68,15 +68,14 @@ data:
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: graph/zobfs.hpp
+  path: graph/oibfs.hpp
   requiredBy: []
-  timestamp: '2021-08-31 07:58:43+09:00'
+  timestamp: '2021-09-02 13:47:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: graph/zobfs.hpp
+documentation_of: graph/oibfs.hpp
 layout: document
-redirect_from:
-- /library/graph/zobfs.hpp
-- /library/graph/zobfs.hpp.html
-title: graph/zobfs.hpp
+title: 01-BFS
 ---
+
+# 概要
