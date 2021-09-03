@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -35,7 +35,9 @@ data:
   bundledCode: "#line 2 \"math/convolution.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     using ll = long long;\nusing ull = unsigned long long;\null bit(int n) { return\
-    \ 1ull << n; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+    \ 1ull << n; }\nll sign(ll a) { return (a > 0) - (a < 0); }\nll fdiv(ll a, ll\
+    \ b) { return a / b - ((a ^ b) < 0 && a % b); }\nll cdiv(ll a, ll b) { return\
+    \ -fdiv(-a, b); }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
     \ vector<T>, greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a *\
     \ a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) { return\
     \ ((a < b) ? (a = b, true) : (false)); }\ntemplate <typename T, typename U> bool\
@@ -136,7 +138,7 @@ data:
   path: math/convolution.hpp
   requiredBy:
   - math/fps.hpp
-  timestamp: '2021-09-01 12:58:39+09:00'
+  timestamp: '2021-09-03 12:59:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp

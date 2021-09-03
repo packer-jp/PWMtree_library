@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/cht.hpp
     title: Convex Hull Trick
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/splay_tree.hpp
     title: Splay Tree
   - icon: ':heavy_check_mark:'
@@ -52,6 +52,9 @@ data:
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
+    title: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -75,38 +78,40 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\n#define all(a) (a).begin(), (a).end()\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\null bit(int n) { return 1ull << n; }\ntemplate <typename\
-    \ T> using priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
-    \ <typename T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename\
-    \ U> bool chmax(T &a, const U &b) { return ((a < b) ? (a = b, true) : (false));\
-    \ }\ntemplate <typename T, typename U> bool chmin(T &a, const U &b) { return ((a\
-    \ > b) ? (a = b, true) : (false)); }\ntemplate <typename T> ostream &operator<<(ostream\
-    \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
-    \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
-    ); }\n    os << \")\";\n    return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...)\
-    \ (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename...\
-    \ Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if\
-    \ (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n#define dump(...)\
-    \ cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
+    \ ull = unsigned long long;\null bit(int n) { return 1ull << n; }\nll sign(ll\
+    \ a) { return (a > 0) - (a < 0); }\nll fdiv(ll a, ll b) { return a / b - ((a ^\
+    \ b) < 0 && a % b); }\nll cdiv(ll a, ll b) { return -fdiv(-a, b); }\ntemplate\
+    \ <typename T> using priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\n\
+    template <typename T> T sq(const T &a) { return a * a; }\ntemplate <typename T,\
+    \ typename U> bool chmax(T &a, const U &b) { return ((a < b) ? (a = b, true) :\
+    \ (false)); }\ntemplate <typename T, typename U> bool chmin(T &a, const U &b)\
+    \ { return ((a > b) ? (a = b, true) : (false)); }\ntemplate <typename T> ostream\
+    \ &operator<<(ostream &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto\
+    \ itr = a.begin(); itr != a.end(); itr++) { os << *itr << (next(itr) != a.end()\
+    \ ? \", \" : \"\"); }\n    os << \")\";\n    return os;\n}\n\n#ifdef ONLINE_JUDGE\n\
+    #define dump(...) (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename\
+    \ Head, typename... Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr\
+    \ << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n\
+    #define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
     #endif\n\nstruct rep {\n    struct itr {\n        int v;\n        itr(int v) :\
     \ v(v) {}\n        void operator++() { ++v; }\n        int operator*() const {\
     \ return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
@@ -120,7 +125,9 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\n"
   code: "#pragma once\n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
     \ all(a) (a).begin(), (a).end()\nusing ll = long long;\nusing ull = unsigned long\
-    \ long;\null bit(int n) { return 1ull << n; }\ntemplate <typename T> using priority_queue_rev\
+    \ long;\null bit(int n) { return 1ull << n; }\nll sign(ll a) { return (a > 0)\
+    \ - (a < 0); }\nll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\n\
+    ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\ntemplate <typename T> using priority_queue_rev\
     \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T> T sq(const\
     \ T &a) { return a * a; }\ntemplate <typename T, typename U> bool chmax(T &a,\
     \ const U &b) { return ((a < b) ? (a = b, true) : (false)); }\ntemplate <typename\
@@ -160,9 +167,10 @@ data:
   - data_structure/splay_tree.hpp
   - data_structure/cht.hpp
   - data_structure/segtree.hpp
-  timestamp: '2021-08-31 07:58:43+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-03 12:59:51+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp

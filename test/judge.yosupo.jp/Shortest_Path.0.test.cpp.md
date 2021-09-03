@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: "Dijkstra \u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -21,7 +21,9 @@ data:
     \ PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n#line 2 \"graph/dijkstra.hpp\"\
     \n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace std;\n\
     \n#define all(a) (a).begin(), (a).end()\nusing ll = long long;\nusing ull = unsigned\
-    \ long long;\null bit(int n) { return 1ull << n; }\ntemplate <typename T> using\
+    \ long long;\null bit(int n) { return 1ull << n; }\nll sign(ll a) { return (a\
+    \ > 0) - (a < 0); }\nll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a %\
+    \ b); }\nll cdiv(ll a, ll b) { return -fdiv(-a, b); }\ntemplate <typename T> using\
     \ priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename\
     \ T> T sq(const T &a) { return a * a; }\ntemplate <typename T, typename U> bool\
     \ chmax(T &a, const U &b) { return ((a < b) ? (a = b, true) : (false)); }\ntemplate\
@@ -86,7 +88,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-08-31 07:58:43+09:00'
+  timestamp: '2021-09-03 12:59:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Shortest_Path.0.test.cpp

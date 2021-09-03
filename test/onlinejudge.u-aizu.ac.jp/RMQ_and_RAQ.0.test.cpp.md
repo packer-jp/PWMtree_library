@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -22,7 +22,9 @@ data:
     \n#line 2 \"data_structure/lazy_segtree.hpp\"\n\n#line 2 \"template.hpp\"\n\n\
     #include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
     \ (a).end()\nusing ll = long long;\nusing ull = unsigned long long;\null bit(int\
-    \ n) { return 1ull << n; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+    \ n) { return 1ull << n; }\nll sign(ll a) { return (a > 0) - (a < 0); }\nll fdiv(ll\
+    \ a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nll cdiv(ll a, ll b) { return\
+    \ -fdiv(-a, b); }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
     \ vector<T>, greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a *\
     \ a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) { return\
     \ ((a < b) ? (a = b, true) : (false)); }\ntemplate <typename T, typename U> bool\
@@ -108,28 +110,29 @@ data:
     \ f, fn_t g) { return f == id() ? g : f; }\n    static fn_t id() { return LLONG_MIN;\
     \ };\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp\"\n\n\
     #line 5 \"test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp\"\nusing namespace\
-    \ std;\n\nint main() {\n    ll n, q;\n    cin >> n >> q;\n    vector<ll> src(n,\
-    \ 0);\n    lazy_segtree<min_monoid_with_addition> lst(src);\n    while (q--) {\n\
-    \        ll com;\n        cin >> com;\n        if (com == 0) {\n            ll\
-    \ s, t, x;\n            cin >> s >> t >> x;\n            lst.apply(s, t + 1, x);\n\
-    \        } else if (com == 1) {\n            ll s, t;\n            cin >> s >>\
-    \ t;\n            cout << lst.prod(s, t + 1) << endl;\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H\"\
-    \n#include \"../../data_structure/lazy_segtree.hpp\"\n\n#include <bits/stdc++.h>\n\
-    using namespace std;\n\nint main() {\n    ll n, q;\n    cin >> n >> q;\n    vector<ll>\
-    \ src(n, 0);\n    lazy_segtree<min_monoid_with_addition> lst(src);\n    while\
-    \ (q--) {\n        ll com;\n        cin >> com;\n        if (com == 0) {\n   \
-    \         ll s, t, x;\n            cin >> s >> t >> x;\n            lst.apply(s,\
+    \ std;\n\nint main() {\n    dump(-15 / 4);\n    ll n, q;\n    cin >> n >> q;\n\
+    \    vector<ll> src(n, 0);\n    lazy_segtree<min_monoid_with_addition> lst(src);\n\
+    \    while (q--) {\n        ll com;\n        cin >> com;\n        if (com == 0)\
+    \ {\n            ll s, t, x;\n            cin >> s >> t >> x;\n            lst.apply(s,\
     \ t + 1, x);\n        } else if (com == 1) {\n            ll s, t;\n         \
     \   cin >> s >> t;\n            cout << lst.prod(s, t + 1) << endl;\n        }\n\
-    \    }\n}"
+    \    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H\"\
+    \n#include \"../../data_structure/lazy_segtree.hpp\"\n\n#include <bits/stdc++.h>\n\
+    using namespace std;\n\nint main() {\n    dump(-15 / 4);\n    ll n, q;\n    cin\
+    \ >> n >> q;\n    vector<ll> src(n, 0);\n    lazy_segtree<min_monoid_with_addition>\
+    \ lst(src);\n    while (q--) {\n        ll com;\n        cin >> com;\n       \
+    \ if (com == 0) {\n            ll s, t, x;\n            cin >> s >> t >> x;\n\
+    \            lst.apply(s, t + 1, x);\n        } else if (com == 1) {\n       \
+    \     ll s, t;\n            cin >> s >> t;\n            cout << lst.prod(s, t\
+    \ + 1) << endl;\n        }\n    }\n}"
   dependsOn:
   - data_structure/lazy_segtree.hpp
   - template.hpp
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-01 11:12:10+09:00'
+  timestamp: '2021-09-03 12:59:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp

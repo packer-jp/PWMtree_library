@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -18,21 +18,23 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/lazy_segtree.hpp\"\n\n#line 2 \"template.hpp\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
     \ (a).end()\nusing ll = long long;\nusing ull = unsigned long long;\null bit(int\
-    \ n) { return 1ull << n; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+    \ n) { return 1ull << n; }\nll sign(ll a) { return (a > 0) - (a < 0); }\nll fdiv(ll\
+    \ a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nll cdiv(ll a, ll b) { return\
+    \ -fdiv(-a, b); }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
     \ vector<T>, greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a *\
     \ a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) { return\
     \ ((a < b) ? (a = b, true) : (false)); }\ntemplate <typename T, typename U> bool\
@@ -184,8 +186,8 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2021-09-01 11:12:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-03 12:59:51+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp

@@ -1,23 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/splay_tree.hpp\"\n\n#line 2 \"template.hpp\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
     \ (a).end()\nusing ll = long long;\nusing ull = unsigned long long;\null bit(int\
-    \ n) { return 1ull << n; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+    \ n) { return 1ull << n; }\nll sign(ll a) { return (a > 0) - (a < 0); }\nll fdiv(ll\
+    \ a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nll cdiv(ll a, ll b) { return\
+    \ -fdiv(-a, b); }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
     \ vector<T>, greater<T>>;\ntemplate <typename T> T sq(const T &a) { return a *\
     \ a; }\ntemplate <typename T, typename U> bool chmax(T &a, const U &b) { return\
     \ ((a < b) ? (a = b, true) : (false)); }\ntemplate <typename T, typename U> bool\
@@ -67,21 +69,21 @@ data:
     \ (idx < size_l) cur = cur->left;\n            if (idx == size_l) {\n        \
     \        cur->splay();\n                return root = cur;\n            }\n  \
     \          if (idx > size_l) cur = cur->right, idx -= size_l + 1;\n        }\n\
-    \    }\n    V get(int idx) { return get_node(idx)->val; }\n    template <typename\
-    \ F> int lower_bound(F f) {\n        if (!root) { return 0; }\n        node *cur\
-    \ = root;\n        int ret = -1;\n        while (true) {\n            if (cur->state()\
-    \ < 1) {\n                ret += cur->left ? cur->left->size + 1 : 1;\n      \
-    \      } else {\n                ret -= cur->right ? cur->right->size + 1 : 1;\n\
-    \            }\n            if (f(cur->val)) {\n                if (cur->left)\
-    \ {\n                    cur = cur->left;\n                } else {\n        \
-    \            cur->splay(), root = cur;\n                    return ret;\n    \
-    \            }\n            } else {\n                if (cur->right) {\n    \
-    \                cur = cur->right;\n                } else {\n               \
-    \     cur->splay(), root = cur;\n                    return ret + 1;\n       \
-    \         }\n            }\n        }\n    }\n    splay_tree split(int size_left)\
-    \ {\n        if (size_left == 0) {\n            node *root_r = root;\n       \
-    \     root = nullptr;\n            return root_r;\n        }\n        if (size_left\
-    \ == root->size) return nullptr;\n        node *root_r = get_node(size_left);\n\
+    \    }\n    V &operator[](int idx) { return get_node(idx)->val; }\n    template\
+    \ <typename F> int lower_bound(F f) {\n        if (!root) return 0;\n        node\
+    \ *cur = root;\n        int ret = -1;\n        while (true) {\n            if\
+    \ (cur->state() < 1) {\n                ret += cur->left ? cur->left->size + 1\
+    \ : 1;\n            } else {\n                ret -= cur->right ? cur->right->size\
+    \ + 1 : 1;\n            }\n            if (f(cur->val)) {\n                if\
+    \ (cur->left) {\n                    cur = cur->left;\n                } else\
+    \ {\n                    cur->splay(), root = cur;\n                    return\
+    \ ret;\n                }\n            } else {\n                if (cur->right)\
+    \ {\n                    cur = cur->right;\n                } else {\n       \
+    \             cur->splay(), root = cur;\n                    return ret + 1;\n\
+    \                }\n            }\n        }\n    }\n    splay_tree split(int\
+    \ size_left) {\n        if (size_left == 0) {\n            node *root_r = root;\n\
+    \            root = nullptr;\n            return root_r;\n        }\n        if\
+    \ (size_left == root->size) return nullptr;\n        node *root_r = get_node(size_left);\n\
     \        root = root_r->left;\n        root_r->left = nullptr, root->par = nullptr;\n\
     \        root_r->update();\n        return root_r;\n    }\n    void merge(splay_tree\
     \ right) {\n        if (!root) {\n            root = right.root;\n           \
@@ -117,10 +119,10 @@ data:
     \ = cur->left ? cur->left->size : 0;\n            if (idx < size_l) cur = cur->left;\n\
     \            if (idx == size_l) {\n                cur->splay();\n           \
     \     return root = cur;\n            }\n            if (idx > size_l) cur = cur->right,\
-    \ idx -= size_l + 1;\n        }\n    }\n    V get(int idx) { return get_node(idx)->val;\
-    \ }\n    template <typename F> int lower_bound(F f) {\n        if (!root) { return\
-    \ 0; }\n        node *cur = root;\n        int ret = -1;\n        while (true)\
-    \ {\n            if (cur->state() < 1) {\n                ret += cur->left ? cur->left->size\
+    \ idx -= size_l + 1;\n        }\n    }\n    V &operator[](int idx) { return get_node(idx)->val;\
+    \ }\n    template <typename F> int lower_bound(F f) {\n        if (!root) return\
+    \ 0;\n        node *cur = root;\n        int ret = -1;\n        while (true) {\n\
+    \            if (cur->state() < 1) {\n                ret += cur->left ? cur->left->size\
     \ + 1 : 1;\n            } else {\n                ret -= cur->right ? cur->right->size\
     \ + 1 : 1;\n            }\n            if (f(cur->val)) {\n                if\
     \ (cur->left) {\n                    cur = cur->left;\n                } else\
@@ -146,8 +148,8 @@ data:
   isVerificationFile: false
   path: data_structure/splay_tree.hpp
   requiredBy: []
-  timestamp: '2021-09-02 13:47:48+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-03 12:59:51+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
 documentation_of: data_structure/splay_tree.hpp
