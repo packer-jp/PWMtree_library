@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/inner_basis.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"util/bisect.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing vll = vector<ll>;\n\
     constexpr ull bit(int n) { return 1ull << n; }\nconstexpr ll sign(ll a) { return\
@@ -40,29 +40,40 @@ data:
     \ &i) const { return v != i.v; }\n    };\n    int l, r;\n    per(int r) : l(min(0,\
     \ r)), r(r) {}\n    per(int l, int r) : l(min(l, r)), r(r) {}\n    itr begin()\
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\n#line\
-    \ 4 \"math/inner_basis.hpp\"\n\nvector<ull> inner_basis(vector<ull> a) {\n   \
-    \ vector<ull> basis, ret;\n    for (ull e : a) {\n        ull e_ = e;\n      \
-    \  for (ull b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e), ret.push_back(e_);\n\
-    \    }\n    return ret;\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\nvector<ull> inner_basis(vector<ull>\
-    \ a) {\n    vector<ull> basis, ret;\n    for (ull e : a) {\n        ull e_ = e;\n\
-    \        for (ull b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e),\
-    \ ret.push_back(e_);\n    }\n    return ret;\n}"
+    \ 4 \"util/bisect.hpp\"\n\ntemplate <typename F> ll bisect(ll ok, ll ng, F f)\
+    \ {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) / 2;\n       \
+    \ (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\ntemplate <typename F>\
+    \ double continuous_bisect(double ok, double ng, F f, int n) {\n    while (n--)\
+    \ {\n        double mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename F> ll\
+    \ bisect(ll ok, ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid\
+    \ = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n\
+    }\n\ntemplate <typename F> double continuous_bisect(double ok, double ng, F f,\
+    \ int n) {\n    while (n--) {\n        double mid = (ok + ng) / 2;\n        (f(mid)\
+    \ ? ok : ng) = mid;\n    }\n    return ok;\n}"
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: math/inner_basis.hpp
+  path: util/bisect.hpp
   requiredBy: []
   timestamp: '2021-09-04 20:56:23+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: math/inner_basis.hpp
+documentation_of: util/bisect.hpp
 layout: document
-title: "xor \u57FA\u5E95"
+title: "\u4E8C\u5206\u6CD5"
 ---
 
 # 概要
-- 非負整数の集合について、xor に関する基底を集合内から構成する。
+二分法を用いて、述語の成立 / 不成立の境界値を計算する。
+
+# 詳細
+- `<typename F> bisect(ll ok, ll ng, F f)`  
+    $f(ok)\land \lnot f(ng)$ とする。 $f$ が成立し、 $ng$ 側に $1$ 動かすと成立しなくなるような整数を一つ返す。 $O(\log |ok - ng|)$ 時間。
+
+- `<typename F> continuous_bisect(double ok, double ng, F f, int n)`  
+    $f(ok), \lnot f(ng)$ とする。 $f$ が成立し、 $ng$ 側に微小量動かすと成立しなくなるような実数を一つ返す。精度は $\frac{|ok - ng|}{2^n}$ 。 $O(n)$ 時間。
 
 # 参考
-- [熨斗袋さんのツイート](https://twitter.com/noshi91/status/1200702280128856064)
+- [因幡めぐるさんのツイート](https://twitter.com/meguru_comp/status/697008509376835584)

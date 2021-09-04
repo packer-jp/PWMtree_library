@@ -1,0 +1,80 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':x:'
+    path: data_structure/persistent_array.hpp
+    title: data_structure/persistent_array.hpp
+  - icon: ':question:'
+    path: template.hpp
+    title: template.hpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: true
+  _pathExtension: cpp
+  _verificationStatusIcon: ':x:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    IGNORE: ''
+    IGNORE_IF_CLANG: ''
+    IGNORE_IF_GCC: ''
+    links:
+    - https://judge.yosupo.jp/problem/persistent_queue
+  bundledCode: "#line 1 \"test/judge.yosupo.jp/Persistent_Queue.0.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#define IGNORE\n\
+    #line 2 \"data_structure/persistent_array.hpp\"\n\n#line 2 \"template.hpp\"\n\n\
+    #include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
+    \ (a).end()\nusing ll = long long;\nusing ull = unsigned long long;\nusing vll\
+    \ = vector<ll>;\nconstexpr ull bit(int n) { return 1ull << n; }\nconstexpr ll\
+    \ sign(ll a) { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return\
+    \ a / b - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a,\
+    \ b); }\ntemplate <typename T> constexpr T sq(const T &a) { return a * a; }\n\
+    template <typename T> using priority_queue_rev = priority_queue<T, vector<T>,\
+    \ greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a, const U &b)\
+    \ { return ((a < b) ? (a = b, true) : (false)); }\ntemplate <typename T, typename\
+    \ U> bool chmin(T &a, const U &b) { return ((a > b) ? (a = b, true) : (false));\
+    \ }\ntemplate <typename T> ostream &operator<<(ostream &os, const vector<T> &a)\
+    \ {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) {\
+    \ os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n\
+    \    return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n#else\n\
+    void debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail> void\
+    \ debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
+    \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
+    \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\n\nstruct rep\
+    \ {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
+    \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
+    \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
+    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
+    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
+    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
+    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
+    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
+    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
+    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
+    \    itr end() const { return l - 1; };\n};\n#line 4 \"data_structure/persistent_array.hpp\"\
+    \n\ntemplate <typename V, int SHIFT> struct persistent_array {\n    struct node\
+    \ {\n        V val;\n        node *ch[bit(SHIFT)] = {};\n    };\n    static constexpr\
+    \ int MASK = bit(SHIFT) - 1;\n    vector<node> pool, roots;\n    persistent_array(int\
+    \ n) {\n        int dep = 0;\n        for (--n; n; n >>= SHIFT) ++dep;\n    }\n\
+    };\n#line 4 \"test/judge.yosupo.jp/Persistent_Queue.0.test.cpp\"\n\nint main()\
+    \ {\n    persistent_array<ll, 1> pa(1);\n    ll n;\n    cin >> n;\n    cout <<\
+    \ sq(n) << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#define\
+    \ IGNORE\n#include \"../../data_structure/persistent_array.hpp\"\n\nint main()\
+    \ {\n    persistent_array<ll, 1> pa(1);\n    ll n;\n    cin >> n;\n    cout <<\
+    \ sq(n) << endl;\n}"
+  dependsOn:
+  - data_structure/persistent_array.hpp
+  - template.hpp
+  isVerificationFile: true
+  path: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
+  requiredBy: []
+  timestamp: '2021-09-04 20:56:23+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
+  verifiedWith: []
+documentation_of: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
+layout: document
+redirect_from:
+- /verify/test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
+- /verify/test/judge.yosupo.jp/Persistent_Queue.0.test.cpp.html
+title: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
+---
