@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -22,49 +22,52 @@ data:
     links: []
   bundledCode: "#line 2 \"data_structure/persistent_array.hpp\"\n\n#line 2 \"template.hpp\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
-    \ (a).end()\nusing ll = long long;\nusing ull = unsigned long long;\nusing vll\
-    \ = vector<ll>;\nconstexpr ull bit(int n) { return 1ull << n; }\nconstexpr ll\
-    \ sign(ll a) { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return\
-    \ a / b - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a,\
-    \ b); }\ntemplate <typename T> constexpr T sq(const T &a) { return a * a; }\n\
-    template <typename T> using priority_queue_rev = priority_queue<T, vector<T>,\
-    \ greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a, const U &b)\
-    \ { return ((a < b) ? (a = b, true) : (false)); }\ntemplate <typename T, typename\
-    \ U> bool chmin(T &a, const U &b) { return ((a > b) ? (a = b, true) : (false));\
-    \ }\ntemplate <typename T> ostream &operator<<(ostream &os, const vector<T> &a)\
-    \ {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) {\
-    \ os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n\
-    \    return os;\n}\n\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n#else\n\
-    void debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail> void\
-    \ debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
-    \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
-    \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\n\nstruct rep\
-    \ {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
-    \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
-    \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
-    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
-    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
-    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
-    \    itr end() const { return l - 1; };\n};\n#line 4 \"data_structure/persistent_array.hpp\"\
-    \n\ntemplate <typename V, int SHIFT> struct persistent_array {\n    using ptr\
-    \ = shared_ptr<persistent_array>;\n    static constexpr int BASE = 1 << SHIFT;\n\
-    \    static constexpr int MASK = BASE - 1;\n    V val;\n    array<ptr, BASE> ch;\n\
-    \    persistent_array(int n, V val = V(), bool ext = false) : val(val) {\n   \
-    \     if (!ext) {\n            int n_ = 1;\n            while (n_ < n) n_ <<=\
-    \ SHIFT;\n            n = n_;\n        }\n        if (n > 1) {\n            for\
-    \ (int i : rep(BASE)) ch[i] = ptr(new persistent_array(n >> SHIFT, val, true));\n\
-    \        }\n    }\n    persistent_array(V val, const array<ptr, BASE> &ch) : val(val),\
-    \ ch(ch) {}\n    persistent_array(V val, const array<ptr, BASE> &ch, int i, ptr\
-    \ chp) : val(val), ch(ch) { this->ch[i] = chp; }\n    V get(int i) const { return\
-    \ i == 0 ? val : ch[i & MASK]->get(i >> SHIFT); }\n    ptr setp(int i, V val)\
-    \ const {\n        return ptr(i == 0 ? new persistent_array(val, ch)\n       \
-    \                   : new persistent_array(this->val, ch, i & MASK, ch[i & MASK]->setp(i\
-    \ >> SHIFT, val)));\n    }\n    persistent_array set(int i, V val) const { return\
-    \ *setp(i, val); }\n};\n"
+    \ (a).end()\nusing ll = long long;\nusing ull = unsigned long long;\nusing pll\
+    \ = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1,\
+    \ 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr\
+    \ ull bit(int n) { return 1ull << n; }\nconstexpr ll sign(ll a) { return (a >\
+    \ 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0\
+    \ && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\ntemplate\
+    \ <typename T> constexpr T sq(const T &a) { return a * a; }\ntemplate <typename\
+    \ T> using priority_queue_rev = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
+    \ <typename T, typename U> bool chmax(T &a, const U &b) { return a < b ? a = b,\
+    \ true : false; }\ntemplate <typename T, typename U> bool chmin(T &a, const U\
+    \ &b) { return a > b ? a = b, true : false; }\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+    \ itr != a.end(); itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"\
+    ); }\n    os << \")\";\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define dump(...)\
+    \ (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename...\
+    \ Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if\
+    \ (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n#define dump(...)\
+    \ cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
+    #endif\nstruct rep {\n    struct itr {\n        int v;\n        itr(int v) : v(v)\
+    \ {}\n        void operator++() { ++v; }\n        int operator*() const { return\
+    \ v; }\n        bool operator!=(const itr &i) const { return v != i.v; }\n   \
+    \ };\n    int l, r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int\
+    \ r) : l(min(l, r)), r(r) {}\n    itr begin() const { return l; };\n    itr end()\
+    \ const { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n \
+    \       itr(int v) : v(v) {}\n        void operator++() { --v; }\n        int\
+    \ operator*() const { return v; }\n        bool operator!=(const itr &i) const\
+    \ { return v != i.v; }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)),\
+    \ r(r) {}\n    per(int l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const\
+    \ { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct io_setup\
+    \ {\n    static constexpr ll PREC = 20;\n    io_setup() {\n        cout << fixed\
+    \ << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
+    } iOS;\n#line 4 \"data_structure/persistent_array.hpp\"\n\ntemplate <typename\
+    \ V, int SHIFT> struct persistent_array {\n    using ptr = shared_ptr<persistent_array>;\n\
+    \    static constexpr int BASE = 1 << SHIFT;\n    static constexpr int MASK =\
+    \ BASE - 1;\n    V val;\n    array<ptr, BASE> ch;\n    persistent_array(int n,\
+    \ V val = V(), bool ext = false) : val(val) {\n        if (!ext) {\n         \
+    \   int n_ = 1;\n            while (n_ < n) n_ <<= SHIFT;\n            n = n_;\n\
+    \        }\n        if (n > 1) {\n            for (int i : rep(BASE)) ch[i] =\
+    \ ptr(new persistent_array(n >> SHIFT, val, true));\n        }\n    }\n    persistent_array(V\
+    \ val, const array<ptr, BASE> &ch) : val(val), ch(ch) {}\n    persistent_array(V\
+    \ val, const array<ptr, BASE> &ch, int i, ptr chp) : val(val), ch(ch) { this->ch[i]\
+    \ = chp; }\n    V get(int i) const { return i == 0 ? val : ch[i & MASK]->get(i\
+    \ >> SHIFT); }\n    ptr setp(int i, V val) const {\n        return ptr(i == 0\
+    \ ? new persistent_array(val, ch)\n                          : new persistent_array(this->val,\
+    \ ch, i & MASK, ch[i & MASK]->setp(i >> SHIFT, val)));\n    }\n    persistent_array\
+    \ set(int i, V val) const { return *setp(i, val); }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename V, int\
     \ SHIFT> struct persistent_array {\n    using ptr = shared_ptr<persistent_array>;\n\
     \    static constexpr int BASE = 1 << SHIFT;\n    static constexpr int MASK =\
@@ -86,7 +89,7 @@ data:
   path: data_structure/persistent_array.hpp
   requiredBy:
   - data_structure/persistent_uf.hpp
-  timestamp: '2021-09-06 17:11:38+09:00'
+  timestamp: '2021-09-07 02:11:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
