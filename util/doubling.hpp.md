@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -44,31 +44,29 @@ data:
     \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
     \ ll PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"util/doubling.hpp\"\
-    \n\nstruct doubling {\n    vector<vector<int>> dst;\n    doubling(vector<int>\
-    \ next, ll t_max) : dst(64 - __builtin_clzll(t_max), next) {\n        for (int\
-    \ i : rep(dst.size() - 1)) {\n            for (int j : rep(next.size())) {\n \
-    \               if (dst[i][j] == -1) {\n                    dst[i + 1][j] = -1;\n\
-    \                } else {\n                    dst[i + 1][j] = dst[i][dst[i][j]];\n\
-    \                }\n            }\n        }\n    }\n    int get(int i, ll t)\
-    \ {\n        for (int j : per(dst.size())) {\n            if ((t >> j) & 1) {\n\
-    \                if (i == -1) return -1;\n                i = dst[j][i];\n   \
-    \         }\n        }\n        return i;\n    }\n};\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct doubling {\n    vector<vector<int>>\
-    \ dst;\n    doubling(vector<int> next, ll t_max) : dst(64 - __builtin_clzll(t_max),\
-    \ next) {\n        for (int i : rep(dst.size() - 1)) {\n            for (int j\
-    \ : rep(next.size())) {\n                if (dst[i][j] == -1) {\n            \
-    \        dst[i + 1][j] = -1;\n                } else {\n                    dst[i\
-    \ + 1][j] = dst[i][dst[i][j]];\n                }\n            }\n        }\n\
-    \    }\n    int get(int i, ll t) {\n        for (int j : per(dst.size())) {\n\
-    \            if ((t >> j) & 1) {\n                if (i == -1) return -1;\n  \
-    \              i = dst[j][i];\n            }\n        }\n        return i;\n \
-    \   }\n};"
+    \n\nstruct doubling {\n    int n;\n    vector<int> next;\n    vector<vector<int>>\
+    \ dst;\n    doubling(int n) : n(n), next(n + 1, n) {}\n    void set(int i, int\
+    \ j) { next[i] = ((j == -1) ? n : j); }\n    void build(ll t_max) {\n        dst.assign(64\
+    \ - __builtin_clzll(t_max), next);\n        for (int i : rep(dst.size() - 1))\
+    \ {\n            for (int j : rep(n + 1)) dst[i + 1][j] = dst[i][dst[i][j]];\n\
+    \        }\n    }\n    int get(int i, ll t) const {\n        if (i == -1) return\
+    \ -1;\n        for (int j : per(dst.size())) {\n            if ((t >> j) & 1)\
+    \ i = dst[j][i];\n        }\n        return i == n ? -1 : i;\n    }\n};\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct doubling {\n    int\
+    \ n;\n    vector<int> next;\n    vector<vector<int>> dst;\n    doubling(int n)\
+    \ : n(n), next(n + 1, n) {}\n    void set(int i, int j) { next[i] = ((j == -1)\
+    \ ? n : j); }\n    void build(ll t_max) {\n        dst.assign(64 - __builtin_clzll(t_max),\
+    \ next);\n        for (int i : rep(dst.size() - 1)) {\n            for (int j\
+    \ : rep(n + 1)) dst[i + 1][j] = dst[i][dst[i][j]];\n        }\n    }\n    int\
+    \ get(int i, ll t) const {\n        if (i == -1) return -1;\n        for (int\
+    \ j : per(dst.size())) {\n            if ((t >> j) & 1) i = dst[j][i];\n     \
+    \   }\n        return i == n ? -1 : i;\n    }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: util/doubling.hpp
   requiredBy: []
-  timestamp: '2021-09-07 02:11:40+09:00'
+  timestamp: '2021-09-07 03:13:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: util/doubling.hpp
