@@ -57,8 +57,7 @@ data:
     \     if (!ext) {\n            int n_ = 1;\n            while (n_ < n) n_ <<=\
     \ SHIFT;\n            n = n_;\n        }\n        if (n > 1) {\n            for\
     \ (int i : rep(BASE)) ch[i] = ptr(new persistent_array(n >> SHIFT, val, true));\n\
-    \        }\n    }\n    persistent_array(const persistent_array &pa) : val(pa.val),\
-    \ ch(pa.ch) {}\n    persistent_array(V val, const array<ptr, BASE> &ch) : val(val),\
+    \        }\n    }\n    persistent_array(V val, const array<ptr, BASE> &ch) : val(val),\
     \ ch(ch) {}\n    persistent_array(V val, const array<ptr, BASE> &ch, int i, ptr\
     \ chp) : val(val), ch(ch) { this->ch[i] = chp; }\n    V get(int i) const { return\
     \ i == 0 ? val : ch[i & MASK]->get(i >> SHIFT); }\n    ptr setp(int i, V val)\
@@ -73,10 +72,9 @@ data:
     \ V val = V(), bool ext = false) : val(val) {\n        if (!ext) {\n         \
     \   int n_ = 1;\n            while (n_ < n) n_ <<= SHIFT;\n            n = n_;\n\
     \        }\n        if (n > 1) {\n            for (int i : rep(BASE)) ch[i] =\
-    \ ptr(new persistent_array(n >> SHIFT, val, true));\n        }\n    }\n    persistent_array(const\
-    \ persistent_array &pa) : val(pa.val), ch(pa.ch) {}\n    persistent_array(V val,\
-    \ const array<ptr, BASE> &ch) : val(val), ch(ch) {}\n    persistent_array(V val,\
-    \ const array<ptr, BASE> &ch, int i, ptr chp) : val(val), ch(ch) { this->ch[i]\
+    \ ptr(new persistent_array(n >> SHIFT, val, true));\n        }\n    }\n    persistent_array(V\
+    \ val, const array<ptr, BASE> &ch) : val(val), ch(ch) {}\n    persistent_array(V\
+    \ val, const array<ptr, BASE> &ch, int i, ptr chp) : val(val), ch(ch) { this->ch[i]\
     \ = chp; }\n    V get(int i) const { return i == 0 ? val : ch[i & MASK]->get(i\
     \ >> SHIFT); }\n    ptr setp(int i, V val) const {\n        return ptr(i == 0\
     \ ? new persistent_array(val, ch)\n                          : new persistent_array(this->val,\
@@ -88,14 +86,14 @@ data:
   path: data_structure/persistent_array.hpp
   requiredBy:
   - data_structure/persistent_uf.hpp
-  timestamp: '2021-09-06 15:19:49+09:00'
+  timestamp: '2021-09-06 17:11:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
   - test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
 documentation_of: data_structure/persistent_array.hpp
 layout: document
-title: "\u6C38\u7D9A\u914D\u5217"
+title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
 ---
 
 # 参考

@@ -10,7 +10,7 @@ data:
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
   - icon: ':heavy_check_mark:'
     path: data_structure/persistent_array.hpp
-    title: "\u6C38\u7D9A\u914D\u5217"
+    title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
   - icon: ':heavy_check_mark:'
     path: data_structure/persistent_uf.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
