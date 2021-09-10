@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/persistent_array.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -37,40 +37,39 @@ data:
     \ Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if\
     \ (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n#define dump(...)\
     \ cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
-    #endif\nstruct rep {\n    struct itr {\n        int v;\n        itr(int v) : v(v)\
-    \ {}\n        void operator++() { ++v; }\n        int operator*() const { return\
+    #endif\nstruct rep {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v)\
+    \ {}\n        void operator++() { ++v; }\n        ll operator*() const { return\
     \ v; }\n        bool operator!=(const itr &i) const { return v != i.v; }\n   \
-    \ };\n    int l, r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int\
+    \ };\n    ll l, r;\n    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll\
     \ r) : l(min(l, r)), r(r) {}\n    itr begin() const { return l; };\n    itr end()\
-    \ const { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n \
-    \       itr(int v) : v(v) {}\n        void operator++() { --v; }\n        int\
-    \ operator*() const { return v; }\n        bool operator!=(const itr &i) const\
-    \ { return v != i.v; }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)),\
-    \ r(r) {}\n    per(int l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const\
-    \ { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct io_setup\
-    \ {\n    static constexpr ll PREC = 20;\n    io_setup() {\n        cout << fixed\
-    \ << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
+    \ const { return r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n  \
+    \      itr(ll v) : v(v) {}\n        void operator++() { --v; }\n        ll operator*()\
+    \ const { return v; }\n        bool operator!=(const itr &i) const { return v\
+    \ != i.v; }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n \
+    \   per(ll l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r\
+    \ - 1; };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n   \
+    \ static constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed <<\
+    \ setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
     } iOS;\n#line 2 \"data_structure/persistent_array.hpp\"\n\n#line 4 \"data_structure/persistent_array.hpp\"\
     \n\ntemplate <typename V, int SHIFT> struct persistent_array {\n    using ptr\
     \ = shared_ptr<persistent_array>;\n    static constexpr int BASE = 1 << SHIFT;\n\
     \    static constexpr int MASK = BASE - 1;\n    V val;\n    array<ptr, BASE> ch;\n\
-    \    persistent_array(int n, V val = V(), bool ext = false) : val(val) {\n   \
-    \     if (!ext) {\n            int n_ = 1;\n            while (n_ < n) n_ <<=\
-    \ SHIFT;\n            n = n_;\n        }\n        if (n > 1) {\n            for\
-    \ (int i : rep(BASE)) ch[i] = ptr(new persistent_array(n >> SHIFT, val, true));\n\
+    \    persistent_array(int n = 1, V val = V()) : val(val) {\n        for (int i\
+    \ : rep(BASE)) {\n            int m = (n >> SHIFT) + ((n & MASK) > i);\n     \
+    \       if (m > 1 || m > 0 && i > 0) ch[i] = ptr(new persistent_array(m, val));\n\
     \        }\n    }\n    persistent_array(V val, const array<ptr, BASE> &ch) : val(val),\
     \ ch(ch) {}\n    persistent_array(V val, const array<ptr, BASE> &ch, int i, ptr\
     \ chp) : val(val), ch(ch) { this->ch[i] = chp; }\n    V get(int i) const { return\
-    \ i == 0 ? val : ch[i & MASK]->get(i >> SHIFT); }\n    ptr setp(int i, V val)\
-    \ const {\n        return ptr(i == 0 ? new persistent_array(val, ch)\n       \
-    \                   : new persistent_array(this->val, ch, i & MASK, ch[i & MASK]->setp(i\
-    \ >> SHIFT, val)));\n    }\n    persistent_array set(int i, V val) const { return\
-    \ *setp(i, val); }\n};\n#line 5 \"data_structure/persistent_uf.hpp\"\n\ntemplate\
-    \ <int SHIFT> struct persistent_uf {\n    int n;\n    persistent_array<int, SHIFT>\
-    \ ps;\n    persistent_uf(int n) : n(n), ps(n, -1) {}\n    persistent_uf(int n,\
-    \ persistent_array<int, SHIFT> ps) : n(n), ps(ps) {}\n    pair<int, int> find_with_size(int\
-    \ i) const {\n        int psi = ps.get(i);\n        return psi < 0 ? make_pair(i,\
-    \ -psi) : find_with_size(psi);\n    }\n    int find(int i) const { return find_with_size(i).first;\
+    \ i > 0 ? ch[i & MASK]->get(i >> SHIFT) : val; }\n    ptr setp(int i, V val) const\
+    \ {\n        return ptr(i > 0 ? new persistent_array(this->val, ch, i & MASK,\
+    \ ch[i & MASK]->setp(i >> SHIFT, val))\n                         : new persistent_array(val,\
+    \ ch));\n    }\n    persistent_array set(int i, V val) const { return *setp(i,\
+    \ val); }\n};\n#line 5 \"data_structure/persistent_uf.hpp\"\n\ntemplate <int SHIFT>\
+    \ struct persistent_uf {\n    int n;\n    persistent_array<int, SHIFT> ps;\n \
+    \   persistent_uf(int n) : n(n), ps(n, -1) {}\n    persistent_uf(int n, persistent_array<int,\
+    \ SHIFT> ps) : n(n), ps(ps) {}\n    pair<int, int> find_with_size(int i) const\
+    \ {\n        int psi = ps.get(i);\n        return psi < 0 ? make_pair(i, -psi)\
+    \ : find_with_size(psi);\n    }\n    int find(int i) const { return find_with_size(i).first;\
     \ }\n    int size(int i) const { return find_with_size(i).second; }\n    bool\
     \ same(int i, int j) const { return find(i) == find(j); }\n    persistent_uf unite(int\
     \ i, int j) const {\n        auto [ip, si] = find_with_size(i);\n        auto\
@@ -101,7 +100,7 @@ data:
   isVerificationFile: false
   path: data_structure/persistent_uf.hpp
   requiredBy: []
-  timestamp: '2021-09-07 02:11:40+09:00'
+  timestamp: '2021-09-11 00:10:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp

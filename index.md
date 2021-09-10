@@ -6,7 +6,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/cht.hpp
       title: Convex Hull Trick
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/lazy_segtree.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
     - icon: ':heavy_check_mark:'
@@ -15,10 +15,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/persistent_uf.hpp
       title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/segtree.hpp
       title: Segment Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/splay_tree.hpp
       title: Splay Tree
     - icon: ':warning:'
@@ -26,7 +26,7 @@ data:
       title: Union-Find Tree
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/dijkstra.hpp
       title: "Dijkstra \u6CD5"
     - icon: ':warning:'
@@ -49,15 +49,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/modint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/permutation.hpp
       title: math/permutation.hpp
+    - icon: ':x:'
+      path: math/xor_convolution.hpp
+      title: "xor \u7573\u307F\u8FBC\u307F"
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -71,6 +74,9 @@ data:
   verificationCategories:
   - name: test/judge.yosupo.jp
     pages:
+    - icon: ':x:'
+      path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+      title: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Convolution.0.test.cpp
@@ -98,41 +104,41 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
       title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   - name: test/onlinejudge.u-aizu.ac.jp
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   - name: test/unit
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/unit/permutation.test.cpp
       title: test/unit/permutation.test.cpp
 layout: toppage

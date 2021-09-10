@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -45,25 +45,47 @@ data:
     \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
     \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
     \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
-    \ {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
-    \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
-    \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
-    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
+    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
+    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
+    \ operator!=(const itr &i) const { return v != i.v; }\n    };\n    ll l, r;\n\
+    \    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll r) : l(min(l, r)),\
+    \ r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
+    \ r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n        itr(ll v)\
+    \ : v(v) {}\n        void operator++() { --v; }\n        ll operator*() const\
     \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
-    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
+    \ }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n    per(ll\
+    \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
     \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
-    \ ll PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 2 \"math/convolution.hpp\"\
-    \n\n#line 2 \"math/modint.hpp\"\n\n#line 4 \"math/modint.hpp\"\n\ntemplate <ll\
-    \ MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll val = 0) : val(val\
-    \ >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static ll mod() { return\
-    \ MOD; }\n    modint inv() const {\n        ll a = val, b = MOD, u = 1, v = 0,\
-    \ t;\n        while (b > 0) {\n            t = a / b;\n            swap(a -= t\
-    \ * b, b);\n            swap(u -= t * v, v);\n        }\n        return modint(u);\n\
+    \n\n#line 4 \"math/convolution.hpp\"\n\ntemplate <typename mint> void ntt(vector<mint>\
+    \ &a, bool inv = false) {\n    int n = a.size(), m = n >> 1;\n    mint root =\
+    \ 2;\n    while (root.pow((mint::mod() - 1) >> 1) == 1) root += 1;\n    mint wn\
+    \ = root.pow((mint::mod() - 1) / n);\n    if (inv) wn = wn.inv();\n    vector<mint>\
+    \ b(n);\n    for (int i = 1; i < n; i <<= 1, wn *= wn, swap(a, b)) {\n       \
+    \ mint wj = 1;\n        for (int j = 0; j < m; j += i, wj *= wn) {\n         \
+    \   for (int k : rep(i)) {\n                b[0 + (j << 1) + k] = (a[0 + j + k]\
+    \ + a[m + j + k]);\n                b[i + (j << 1) + k] = (a[0 + j + k] - a[m\
+    \ + j + k]) * wj;\n            }\n        }\n    }\n    if (inv) {\n        mint\
+    \ ninv = mint(n).inv();\n        for (mint &ai : a) ai *= ninv;\n    }\n}\ntemplate\
+    \ <typename mint> void intt(vector<mint> &a) { ntt(a, true); }\n\ntemplate <typename\
+    \ mint> vector<mint> convolution_naive(vector<mint> a, vector<mint> b) {\n   \
+    \ int na = a.size(), nb = b.size();\n    vector<mint> c(na + nb - 1);\n    if\
+    \ (na < nb) swap(a, b), swap(na, nb);\n    for (int i : rep(na)) {\n        for\
+    \ (int j : rep(nb)) { c[i + j] += a[i] * b[j]; }\n    }\n    return c;\n}\n\n\
+    template <typename mint> vector<mint> convolution_ntt(vector<mint> a, vector<mint>\
+    \ b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<=\
+    \ 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n    for (int i :\
+    \ rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n    return a;\n}\n\n\
+    template <typename mint> vector<mint> convolution(const vector<mint> &a, const\
+    \ vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n        return\
+    \ convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a, b);\n\
+    \    }\n}\n#line 2 \"math/modint.hpp\"\n\n#line 4 \"math/modint.hpp\"\n\ntemplate\
+    \ <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll val = 0) :\
+    \ val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static ll mod()\
+    \ { return MOD; }\n    modint inv() const {\n        ll a = val, b = MOD, u =\
+    \ 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n            swap(a\
+    \ -= t * b, b);\n            swap(u -= t * v, v);\n        }\n        return modint(u);\n\
     \    }\n    modint pow(ll k) const {\n        modint ret = 1, mul = val;\n   \
     \     while (k) {\n            if (k & 1) ret *= mul;\n            mul *= mul;\n\
     \            k >>= 1;\n        }\n        return ret;\n    }\n    modint &operator+=(const\
@@ -82,40 +104,19 @@ data:
     \ const modint &b) { return modint(a) /= b; }\n    friend istream &operator>>(istream\
     \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
-    \ modint &a) { return os << a.val; }\n};\n#line 5 \"math/convolution.hpp\"\n\n\
-    template <typename mint> void ntt(vector<mint> &a, bool inv = false) {\n    int\
-    \ n = a.size(), m = n >> 1;\n    mint root = 2;\n    while (root.pow((mint::mod()\
-    \ - 1) >> 1) == 1) root += 1;\n    mint wn = root.pow((mint::mod() - 1) / n);\n\
-    \    if (inv) wn = wn.inv();\n    vector<mint> b(n);\n    for (int i = 1; i <\
-    \ n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint wj = 1;\n        for (int\
-    \ j = 0; j < m; j += i, wj *= wn) {\n            for (int k : rep(i)) {\n    \
-    \            b[(j << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n              \
-    \  b[(j << 1) + k + i] = (a[j + k] - a[j + k + m]) * wj;\n            }\n    \
-    \    }\n    }\n    if (inv) {\n        mint ninv = mint(n).inv();\n        for\
-    \ (int i : rep(n)) a[i] *= ninv;\n    }\n}\ntemplate <typename mint> void intt(vector<mint>\
-    \ &a) { ntt(a, true); }\n\ntemplate <typename mint> vector<mint> convolution_naive(vector<mint>\
-    \ a, vector<mint> b) {\n    int na = a.size(), nb = b.size();\n    vector<mint>\
-    \ c(na + nb - 1);\n    if (na < nb) swap(a, b), swap(na, nb);\n    for (int i\
-    \ : rep(na)) {\n        for (int j : rep(nb)) { c[i + j] += a[i] * b[j]; }\n \
-    \   }\n    return c;\n}\n\ntemplate <typename mint> vector<mint> convolution_ntt(vector<mint>\
-    \ a, vector<mint> b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n =\
-    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n\
-    \    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n   \
-    \ return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const vector<mint>\
-    \ &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n   \
-    \     return convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a,\
-    \ b);\n    }\n}\n#line 6 \"math/fps.hpp\"\n\ntemplate <typename mint> struct fps\
-    \ : vector<mint> {\n    using vector<mint>::vector;\n    using vector<mint>::operator=;\n\
-    \    fps() : vector<mint>() {}\n    fps(const mint &a) : vector<mint>(1, a) {}\n\
-    \    fps(const fps &a) : vector<mint>(a) {}\n    fps &operator=(const fps &a)\
-    \ {\n        *this = (vector<mint>)a;\n        return *this;\n    }\n    fps &operator+=(const\
+    \ modint &a) { return os << a.val; }\n};\n#line 6 \"math/fps.hpp\"\n\ntemplate\
+    \ <typename mint> struct fps : vector<mint> {\n    using vector<mint>::vector;\n\
+    \    using vector<mint>::operator=;\n    fps() : vector<mint>() {}\n    fps(const\
+    \ mint &a) : vector<mint>(1, a) {}\n    fps(const fps &a) : vector<mint>(a) {}\n\
+    \    fps &operator=(const fps &a) {\n        *this = (vector<mint>)a;\n      \
+    \  return *this;\n    }\n    fps &operator+=(const fps &a) {\n        if (a.size()\
+    \ > this->size()) this->resize(a.size());\n        for (int i : rep(a.size()))\
+    \ (*this)[i] += a[i];\n        return *this;\n    }\n    fps &operator-=(const\
     \ fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n  \
-    \      for (int i : rep(a.size())) (*this)[i] += a[i];\n        return *this;\n\
-    \    }\n    fps &operator-=(const fps &a) {\n        if (a.size() > this->size())\
-    \ this->resize(a.size());\n        for (int i : rep(a.size())) (*this)[i] -= a[i];\n\
-    \        return *this;\n    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const\
-    \ mint &a) {\n        for (int i : rep(this->size())) (*this)[i] /= a;\n     \
-    \   return *this;\n    };\n    fps &operator>>=(int d) {\n        if ((int)this->size()\
+    \      for (int i : rep(a.size())) (*this)[i] -= a[i];\n        return *this;\n\
+    \    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const mint &a)\
+    \ {\n        for (int i : rep(this->size())) (*this)[i] /= a;\n        return\
+    \ *this;\n    };\n    fps &operator>>=(int d) {\n        if ((int)this->size()\
     \ <= d) {\n            *this = {};\n        } else {\n            this->erase(this->begin(),\
     \ this->begin() + d);\n        }\n        return *this;\n    }\n    fps &operator<<=(int\
     \ d) {\n        this->insert(this->begin(), d, mint(0));\n        return *this;\n\
@@ -194,7 +195,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-07 02:11:40+09:00'
+  timestamp: '2021-09-11 00:10:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp

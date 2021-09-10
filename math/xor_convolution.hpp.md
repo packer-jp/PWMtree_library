@@ -5,14 +5,17 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+    title: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/uf.hpp\"\n\n#line 2 \"template.hpp\"\n\n\
-    #include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
+  bundledCode: "#line 2 \"math/xor_convolution.hpp\"\n\n#line 2 \"template.hpp\"\n\
+    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
     \ (a).end()\nusing ll = long long;\nusing ull = unsigned long long;\nusing pll\
     \ = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1,\
     \ 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr\
@@ -44,38 +47,41 @@ data:
     \ - 1; };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n   \
     \ static constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed <<\
     \ setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
-    } iOS;\n#line 4 \"data_structure/uf.hpp\"\n\nstruct uf {\n    int n;\n    vector<int>\
-    \ ps;\n    uf(int n) : n(n), ps(n, -1) {}\n    int find(int i) {\n        if (ps[i]\
-    \ < 0) return i;\n        return ps[i] = find(ps[i]);\n    }\n    int size(int\
-    \ i) { return -ps[find(i)]; }\n    void unite(int i, int j) {\n        if ((i\
-    \ = find(i)) == (j = find(j))) return;\n        if (-ps[i] < -ps[j]) swap(i, j);\n\
-    \        ps[i] += ps[j];\n        ps[j] = i;\n    }\n    bool same(int i, int\
-    \ j) { return find(i) == find(j); }\n    vector<vector<int>> groups() {\n    \
-    \    vector<vector<int>> ret(n);\n        for (int i : rep(n)) ret[find(i)].push_back(i);\n\
-    \        ret.erase(remove_if(all(ret), [](const vector<int> &v) { return v.empty();\
-    \ }), ret.end());\n        return ret;\n    }\n};\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct uf {\n    int n;\n\
-    \    vector<int> ps;\n    uf(int n) : n(n), ps(n, -1) {}\n    int find(int i)\
-    \ {\n        if (ps[i] < 0) return i;\n        return ps[i] = find(ps[i]);\n \
-    \   }\n    int size(int i) { return -ps[find(i)]; }\n    void unite(int i, int\
-    \ j) {\n        if ((i = find(i)) == (j = find(j))) return;\n        if (-ps[i]\
-    \ < -ps[j]) swap(i, j);\n        ps[i] += ps[j];\n        ps[j] = i;\n    }\n\
-    \    bool same(int i, int j) { return find(i) == find(j); }\n    vector<vector<int>>\
-    \ groups() {\n        vector<vector<int>> ret(n);\n        for (int i : rep(n))\
-    \ ret[find(i)].push_back(i);\n        ret.erase(remove_if(all(ret), [](const vector<int>\
-    \ &v) { return v.empty(); }), ret.end());\n        return ret;\n    }\n};"
+    } iOS;\n#line 4 \"math/xor_convolution.hpp\"\n\ntemplate <typename mint> void\
+    \ fwht(vector<mint> &a) {\n    int n = a.size();\n    for (int i = 1; i < n; i\
+    \ <<= 1) {\n        for (int j = 0; j < n; j += i << 1) {\n            for (int\
+    \ k : rep(i)) {\n                mint p = a[0 + j + k], q = a[i + j + k];\n  \
+    \              a[0 + j + k] = p + q;\n                a[i + j + k] = p - q;\n\
+    \            }\n        }\n    }\n}\ntemplate <typename mint> void ifwht(vector<mint>\
+    \ &a) {\n    fwht(a);\n    mint ninv = mint(a.size()).inv();\n    for (mint &ai\
+    \ : a) ai *= ninv;\n}\ntemplate <typename mint> vector<mint> xor_convolution(vector<mint>\
+    \ a, vector<mint> b) {\n    int n_ = max(a.size(), b.size()), n;\n    for (n =\
+    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    fwht(a), fwht(b);\n\
+    \    for (int i : rep(n)) a[i] *= b[i];\n    ifwht(a);\n    return a;\n}\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename mint>\
+    \ void fwht(vector<mint> &a) {\n    int n = a.size();\n    for (int i = 1; i <\
+    \ n; i <<= 1) {\n        for (int j = 0; j < n; j += i << 1) {\n            for\
+    \ (int k : rep(i)) {\n                mint p = a[0 + j + k], q = a[i + j + k];\n\
+    \                a[0 + j + k] = p + q;\n                a[i + j + k] = p - q;\n\
+    \            }\n        }\n    }\n}\ntemplate <typename mint> void ifwht(vector<mint>\
+    \ &a) {\n    fwht(a);\n    mint ninv = mint(a.size()).inv();\n    for (mint &ai\
+    \ : a) ai *= ninv;\n}\ntemplate <typename mint> vector<mint> xor_convolution(vector<mint>\
+    \ a, vector<mint> b) {\n    int n_ = max(a.size(), b.size()), n;\n    for (n =\
+    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    fwht(a), fwht(b);\n\
+    \    for (int i : rep(n)) a[i] *= b[i];\n    ifwht(a);\n    return a;\n}"
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: data_structure/uf.hpp
+  path: math/xor_convolution.hpp
   requiredBy: []
   timestamp: '2021-09-11 00:10:41+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: data_structure/uf.hpp
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+documentation_of: math/xor_convolution.hpp
 layout: document
-title: Union-Find Tree
+title: "xor \u7573\u307F\u8FBC\u307F"
 ---
 
 # 参考
-- [ACL](https://atcoder.github.io/ac-library/document_ja/dsu.html)
+- [cympfh さんの記事](https://cympfh.cc/aiura/hadamard-xor-convolution)

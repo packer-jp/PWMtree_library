@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: math/convolution.hpp
-    title: "NTT/\u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+    title: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
@@ -30,9 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/modint.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -55,18 +55,18 @@ data:
     \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
     \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
     \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
-    \ {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
-    \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
-    \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
-    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
+    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
+    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
+    \ operator!=(const itr &i) const { return v != i.v; }\n    };\n    ll l, r;\n\
+    \    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll r) : l(min(l, r)),\
+    \ r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
+    \ r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n        itr(ll v)\
+    \ : v(v) {}\n        void operator++() { --v; }\n        ll operator*() const\
     \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
-    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
+    \ }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n    per(ll\
+    \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
     \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
-    \ ll PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"math/modint.hpp\"\
     \n\ntemplate <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll\
     \ val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static\
@@ -123,10 +123,9 @@ data:
   isVerificationFile: false
   path: math/modint.hpp
   requiredBy:
-  - math/convolution.hpp
   - math/fps.hpp
-  timestamp: '2021-09-07 02:11:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-11 00:10:41+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
@@ -134,6 +133,7 @@ data:
   - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 title: modint

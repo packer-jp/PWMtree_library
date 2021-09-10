@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: "\u884C\u5217"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -41,19 +41,19 @@ data:
     \ }\ntemplate <typename Head, typename... Tail> void debug(Head &&head, Tail &&...\
     \ tail) {\n    cerr << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n\
     }\n#define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
-    #endif\nstruct rep {\n    struct itr {\n        int v;\n        itr(int v) : v(v)\
-    \ {}\n        void operator++() { ++v; }\n        int operator*() const { return\
+    #endif\nstruct rep {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v)\
+    \ {}\n        void operator++() { ++v; }\n        ll operator*() const { return\
     \ v; }\n        bool operator!=(const itr &i) const { return v != i.v; }\n   \
-    \ };\n    int l, r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int\
+    \ };\n    ll l, r;\n    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll\
     \ r) : l(min(l, r)), r(r) {}\n    itr begin() const { return l; };\n    itr end()\
-    \ const { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n \
-    \       itr(int v) : v(v) {}\n        void operator++() { --v; }\n        int\
-    \ operator*() const { return v; }\n        bool operator!=(const itr &i) const\
-    \ { return v != i.v; }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)),\
-    \ r(r) {}\n    per(int l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const\
-    \ { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct io_setup\
-    \ {\n    static constexpr ll PREC = 20;\n    io_setup() {\n        cout << fixed\
-    \ << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
+    \ const { return r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n  \
+    \      itr(ll v) : v(v) {}\n        void operator++() { --v; }\n        ll operator*()\
+    \ const { return v; }\n        bool operator!=(const itr &i) const { return v\
+    \ != i.v; }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n \
+    \   per(ll l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r\
+    \ - 1; };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n   \
+    \ static constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed <<\
+    \ setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
     } iOS;\n#line 4 \"math/matrix.hpp\"\n\ntemplate <typename S> struct matrix {\n\
     \    using V = typename S::val_t;\n    vector<vector<V>> val;\n    matrix(int\
     \ n, int m) : matrix(vector(n, vector(m, S::zero()))) {}\n    matrix(const vector<vector<V>>\
@@ -153,7 +153,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-07 02:11:40+09:00'
+  timestamp: '2021-09-11 00:10:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp

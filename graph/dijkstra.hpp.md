@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
     title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -34,18 +34,18 @@ data:
     \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
     \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
     \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
-    \ {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
-    \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
-    \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
-    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
+    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
+    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
+    \ operator!=(const itr &i) const { return v != i.v; }\n    };\n    ll l, r;\n\
+    \    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll r) : l(min(l, r)),\
+    \ r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
+    \ r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n        itr(ll v)\
+    \ : v(v) {}\n        void operator++() { --v; }\n        ll operator*() const\
     \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
-    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
+    \ }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n    per(ll\
+    \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
     \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
-    \ ll PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"graph/dijkstra.hpp\"\
     \n\ntemplate <typename S> struct dijkstra {\n    using D = typename S::dist_t;\n\
     \    using C = typename S::cost_t;\n    struct edge {\n        int to;\n     \
@@ -84,8 +84,8 @@ data:
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2021-09-07 02:11:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-11 00:10:41+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
 documentation_of: graph/dijkstra.hpp

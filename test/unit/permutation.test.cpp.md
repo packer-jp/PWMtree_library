@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/permutation.hpp
     title: math/permutation.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja
@@ -38,18 +38,18 @@ data:
     \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
     \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
     \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
-    \ {\n    struct itr {\n        int v;\n        itr(int v) : v(v) {}\n        void\
-    \ operator++() { ++v; }\n        int operator*() const { return v; }\n       \
-    \ bool operator!=(const itr &i) const { return v != i.v; }\n    };\n    int l,\
-    \ r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int r) : l(min(l,\
-    \ r)), r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        int v;\n        itr(int v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        int operator*() const\
+    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
+    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
+    \ operator!=(const itr &i) const { return v != i.v; }\n    };\n    ll l, r;\n\
+    \    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll r) : l(min(l, r)),\
+    \ r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
+    \ r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n        itr(ll v)\
+    \ : v(v) {}\n        void operator++() { --v; }\n        ll operator*() const\
     \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)), r(r) {}\n    per(int\
-    \ l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
+    \ }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n    per(ll\
+    \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
     \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
-    \ ll PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"math/permutation.hpp\"\
     \n\nstruct permutation {\n    vector<int> data;\n    permutation(int n) : data(n)\
     \ { iota(all(data), 0); }\n    permutation(const vector<int> &src) : data(src)\
@@ -75,35 +75,35 @@ data:
     \ while (cur != i);\n            for (int j : rep(cyc.size())) ret[cyc[j]] = cyc[(j\
     \ + k) % cyc.size()];\n        }\n        return ret;\n    }\n    friend ostream\
     \ &operator<<(std::ostream &os, const permutation &a) {\n        os << \"(\";\n\
-    \        for (int i = 0; i < a.size(); i++) { os << a[i] << (i + 1 != a.size()\
-    \ ? \", \" : \"\"); }\n        os << \")\";\n        return os;\n    }\n};\n#line\
-    \ 3 \"test/unit/permutation.test.cpp\"\n\nint main() {\n    vector<int> e = {0,\
-    \ 1, 2, 3, 4};\n    vector<int> a = {3, 2, 1, 4, 0};\n    vector<int> b = {1,\
-    \ 2, 0, 3, 4};\n    vector<int> ab = {2, 1, 3, 4, 0};\n    vector<int> a9 = {0,\
-    \ 2, 1, 3, 4};\n    vector<int> b6 = {0, 1, 2, 3, 4};\n\n    assert(permutation(5)\
-    \ == permutation(e));\n    assert(permutation(a) * permutation(b) == permutation(ab));\n\
-    \    assert(permutation(ab) / permutation(b) == permutation(a));\n    assert(permutation(a).pow(0)\
-    \ == permutation(e));\n    assert(permutation(a).pow(9) == permutation(a9));\n\
-    \    assert(permutation(b).pow(6) == permutation(b6));\n\n    cout << \"Hello\
-    \ World\" << endl;\n}\n"
+    \        for (int i : rep(a.size())) { os << a[i] << (i + 1 != a.size() ? \",\
+    \ \" : \"\"); }\n        os << \")\";\n        return os;\n    }\n};\n#line 3\
+    \ \"test/unit/permutation.test.cpp\"\n\n#line 5 \"test/unit/permutation.test.cpp\"\
+    \nusing namespace std;\n\nint main() {\n    vector<int> e = {0, 1, 2, 3, 4};\n\
+    \    vector<int> a = {3, 2, 1, 4, 0};\n    vector<int> b = {1, 2, 0, 3, 4};\n\
+    \    vector<int> ab = {2, 1, 3, 4, 0};\n    vector<int> a9 = {0, 2, 1, 3, 4};\n\
+    \    vector<int> b6 = {0, 1, 2, 3, 4};\n\n    assert(permutation(5) == permutation(e));\n\
+    \    assert(permutation(a) * permutation(b) == permutation(ab));\n    assert(permutation(ab)\
+    \ / permutation(b) == permutation(a));\n    assert(permutation(a).pow(0) == permutation(e));\n\
+    \    assert(permutation(a).pow(9) == permutation(a9));\n    assert(permutation(b).pow(6)\
+    \ == permutation(b6));\n\n    cout << \"Hello World\" << endl;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja\"\
-    \n#include \"../../math/permutation.hpp\"\n\nint main() {\n    vector<int> e =\
-    \ {0, 1, 2, 3, 4};\n    vector<int> a = {3, 2, 1, 4, 0};\n    vector<int> b =\
-    \ {1, 2, 0, 3, 4};\n    vector<int> ab = {2, 1, 3, 4, 0};\n    vector<int> a9\
-    \ = {0, 2, 1, 3, 4};\n    vector<int> b6 = {0, 1, 2, 3, 4};\n\n    assert(permutation(5)\
-    \ == permutation(e));\n    assert(permutation(a) * permutation(b) == permutation(ab));\n\
-    \    assert(permutation(ab) / permutation(b) == permutation(a));\n    assert(permutation(a).pow(0)\
-    \ == permutation(e));\n    assert(permutation(a).pow(9) == permutation(a9));\n\
-    \    assert(permutation(b).pow(6) == permutation(b6));\n\n    cout << \"Hello\
-    \ World\" << endl;\n}"
+    \n#include \"../../math/permutation.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
+    \ std;\n\nint main() {\n    vector<int> e = {0, 1, 2, 3, 4};\n    vector<int>\
+    \ a = {3, 2, 1, 4, 0};\n    vector<int> b = {1, 2, 0, 3, 4};\n    vector<int>\
+    \ ab = {2, 1, 3, 4, 0};\n    vector<int> a9 = {0, 2, 1, 3, 4};\n    vector<int>\
+    \ b6 = {0, 1, 2, 3, 4};\n\n    assert(permutation(5) == permutation(e));\n   \
+    \ assert(permutation(a) * permutation(b) == permutation(ab));\n    assert(permutation(ab)\
+    \ / permutation(b) == permutation(a));\n    assert(permutation(a).pow(0) == permutation(e));\n\
+    \    assert(permutation(a).pow(9) == permutation(a9));\n    assert(permutation(b).pow(6)\
+    \ == permutation(b6));\n\n    cout << \"Hello World\" << endl;\n}"
   dependsOn:
   - math/permutation.hpp
   - template.hpp
   isVerificationFile: true
   path: test/unit/permutation.test.cpp
   requiredBy: []
-  timestamp: '2021-09-07 03:13:34+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-11 00:10:41+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/unit/permutation.test.cpp
 layout: document

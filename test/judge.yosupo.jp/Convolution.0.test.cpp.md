@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: "NTT/\u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -41,20 +41,42 @@ data:
     \ }\ntemplate <typename Head, typename... Tail> void debug(Head &&head, Tail &&...\
     \ tail) {\n    cerr << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n\
     }\n#define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
-    #endif\nstruct rep {\n    struct itr {\n        int v;\n        itr(int v) : v(v)\
-    \ {}\n        void operator++() { ++v; }\n        int operator*() const { return\
+    #endif\nstruct rep {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v)\
+    \ {}\n        void operator++() { ++v; }\n        ll operator*() const { return\
     \ v; }\n        bool operator!=(const itr &i) const { return v != i.v; }\n   \
-    \ };\n    int l, r;\n    rep(int r) : l(min(0, r)), r(r) {}\n    rep(int l, int\
+    \ };\n    ll l, r;\n    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll\
     \ r) : l(min(l, r)), r(r) {}\n    itr begin() const { return l; };\n    itr end()\
-    \ const { return r; };\n};\nstruct per {\n    struct itr {\n        int v;\n \
-    \       itr(int v) : v(v) {}\n        void operator++() { --v; }\n        int\
-    \ operator*() const { return v; }\n        bool operator!=(const itr &i) const\
-    \ { return v != i.v; }\n    };\n    int l, r;\n    per(int r) : l(min(0, r)),\
-    \ r(r) {}\n    per(int l, int r) : l(min(l, r)), r(r) {}\n    itr begin() const\
-    \ { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct io_setup\
-    \ {\n    static constexpr ll PREC = 20;\n    io_setup() {\n        cout << fixed\
-    \ << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
-    } iOS;\n#line 2 \"math/modint.hpp\"\n\n#line 4 \"math/modint.hpp\"\n\ntemplate\
+    \ const { return r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n  \
+    \      itr(ll v) : v(v) {}\n        void operator++() { --v; }\n        ll operator*()\
+    \ const { return v; }\n        bool operator!=(const itr &i) const { return v\
+    \ != i.v; }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n \
+    \   per(ll l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r\
+    \ - 1; };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n   \
+    \ static constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed <<\
+    \ setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
+    } iOS;\n#line 4 \"math/convolution.hpp\"\n\ntemplate <typename mint> void ntt(vector<mint>\
+    \ &a, bool inv = false) {\n    int n = a.size(), m = n >> 1;\n    mint root =\
+    \ 2;\n    while (root.pow((mint::mod() - 1) >> 1) == 1) root += 1;\n    mint wn\
+    \ = root.pow((mint::mod() - 1) / n);\n    if (inv) wn = wn.inv();\n    vector<mint>\
+    \ b(n);\n    for (int i = 1; i < n; i <<= 1, wn *= wn, swap(a, b)) {\n       \
+    \ mint wj = 1;\n        for (int j = 0; j < m; j += i, wj *= wn) {\n         \
+    \   for (int k : rep(i)) {\n                b[0 + (j << 1) + k] = (a[0 + j + k]\
+    \ + a[m + j + k]);\n                b[i + (j << 1) + k] = (a[0 + j + k] - a[m\
+    \ + j + k]) * wj;\n            }\n        }\n    }\n    if (inv) {\n        mint\
+    \ ninv = mint(n).inv();\n        for (mint &ai : a) ai *= ninv;\n    }\n}\ntemplate\
+    \ <typename mint> void intt(vector<mint> &a) { ntt(a, true); }\n\ntemplate <typename\
+    \ mint> vector<mint> convolution_naive(vector<mint> a, vector<mint> b) {\n   \
+    \ int na = a.size(), nb = b.size();\n    vector<mint> c(na + nb - 1);\n    if\
+    \ (na < nb) swap(a, b), swap(na, nb);\n    for (int i : rep(na)) {\n        for\
+    \ (int j : rep(nb)) { c[i + j] += a[i] * b[j]; }\n    }\n    return c;\n}\n\n\
+    template <typename mint> vector<mint> convolution_ntt(vector<mint> a, vector<mint>\
+    \ b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<=\
+    \ 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n    for (int i :\
+    \ rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n    return a;\n}\n\n\
+    template <typename mint> vector<mint> convolution(const vector<mint> &a, const\
+    \ vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n        return\
+    \ convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a, b);\n\
+    \    }\n}\n#line 2 \"math/modint.hpp\"\n\n#line 4 \"math/modint.hpp\"\n\ntemplate\
     \ <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll val = 0) :\
     \ val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static ll mod()\
     \ { return MOD; }\n    modint inv() const {\n        ll a = val, b = MOD, u =\
@@ -78,39 +100,17 @@ data:
     \ const modint &b) { return modint(a) /= b; }\n    friend istream &operator>>(istream\
     \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
-    \ modint &a) { return os << a.val; }\n};\n#line 5 \"math/convolution.hpp\"\n\n\
-    template <typename mint> void ntt(vector<mint> &a, bool inv = false) {\n    int\
-    \ n = a.size(), m = n >> 1;\n    mint root = 2;\n    while (root.pow((mint::mod()\
-    \ - 1) >> 1) == 1) root += 1;\n    mint wn = root.pow((mint::mod() - 1) / n);\n\
-    \    if (inv) wn = wn.inv();\n    vector<mint> b(n);\n    for (int i = 1; i <\
-    \ n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint wj = 1;\n        for (int\
-    \ j = 0; j < m; j += i, wj *= wn) {\n            for (int k : rep(i)) {\n    \
-    \            b[(j << 1) + k + 0] = (a[j + k] + a[j + k + m]);\n              \
-    \  b[(j << 1) + k + i] = (a[j + k] - a[j + k + m]) * wj;\n            }\n    \
-    \    }\n    }\n    if (inv) {\n        mint ninv = mint(n).inv();\n        for\
-    \ (int i : rep(n)) a[i] *= ninv;\n    }\n}\ntemplate <typename mint> void intt(vector<mint>\
-    \ &a) { ntt(a, true); }\n\ntemplate <typename mint> vector<mint> convolution_naive(vector<mint>\
-    \ a, vector<mint> b) {\n    int na = a.size(), nb = b.size();\n    vector<mint>\
-    \ c(na + nb - 1);\n    if (na < nb) swap(a, b), swap(na, nb);\n    for (int i\
-    \ : rep(na)) {\n        for (int j : rep(nb)) { c[i + j] += a[i] * b[j]; }\n \
-    \   }\n    return c;\n}\n\ntemplate <typename mint> vector<mint> convolution_ntt(vector<mint>\
-    \ a, vector<mint> b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n =\
-    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n\
-    \    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n   \
-    \ return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const vector<mint>\
-    \ &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n   \
-    \     return convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a,\
-    \ b);\n    }\n}\n#line 4 \"test/judge.yosupo.jp/Convolution.0.test.cpp\"\n\nint\
-    \ main() {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >> n >>\
-    \ m;\n    vector<mint> a(n), b(m);\n    for (ll i : rep(n)) cin >> a[i];\n   \
-    \ for (ll i : rep(m)) cin >> b[i];\n    vector<mint> c = convolution<mint>(a,\
-    \ b);\n    for (mint ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}\n"
+    \ modint &a) { return os << a.val; }\n};\n#line 4 \"test/judge.yosupo.jp/Convolution.0.test.cpp\"\
+    \n\nint main() {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >>\
+    \ n >> m;\n    vector<mint> a(n), b(m);\n    for (ll i : rep(n)) cin >> a[i];\n\
+    \    for (ll i : rep(m)) cin >> b[i];\n    vector<mint> c = convolution(a, b);\n\
+    \    for (mint ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n#include\
     \ \"../../math/convolution.hpp\"\n#include \"../../math/modint.hpp\"\n\nint main()\
     \ {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >> n >> m;\n \
     \   vector<mint> a(n), b(m);\n    for (ll i : rep(n)) cin >> a[i];\n    for (ll\
-    \ i : rep(m)) cin >> b[i];\n    vector<mint> c = convolution<mint>(a, b);\n  \
-    \  for (mint ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}"
+    \ i : rep(m)) cin >> b[i];\n    vector<mint> c = convolution(a, b);\n    for (mint\
+    \ ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}"
   dependsOn:
   - math/convolution.hpp
   - template.hpp
@@ -118,7 +118,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-07 02:11:40+09:00'
+  timestamp: '2021-09-11 00:10:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Convolution.0.test.cpp
