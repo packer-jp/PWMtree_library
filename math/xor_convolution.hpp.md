@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/xor_convolution.hpp\"\n\n#line 2 \"template.hpp\"\n\
@@ -75,12 +75,12 @@ data:
   path: math/xor_convolution.hpp
   requiredBy: []
   timestamp: '2021-09-11 00:10:41+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
 documentation_of: math/xor_convolution.hpp
 layout: document
-title: "xor \u7573\u307F\u8FBC\u307F"
+title: "FWHT / xor \u7573\u307F\u8FBC\u307F"
 ---
 
 # 参考

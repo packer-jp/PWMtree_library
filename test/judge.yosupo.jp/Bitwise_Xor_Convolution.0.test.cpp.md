@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/xor_convolution.hpp
-    title: "xor \u7573\u307F\u8FBC\u307F"
-  - icon: ':question:'
+    title: "FWHT / xor \u7573\u307F\u8FBC\u307F"
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/bitwise_xor_convolution_mod
+    PROBLEM: https://judge.yosupo.jp/problem/bitwise_xor_convolution
     links:
-    - https://judge.yosupo.jp/problem/bitwise_xor_convolution_mod
+    - https://judge.yosupo.jp/problem/bitwise_xor_convolution
   bundledCode: "#line 1 \"test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution_mod\"\
-    \n#line 2 \"math/modint.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\n\
+    #line 2 \"math/modint.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#define all(a) (a).begin(), (a).end()\nusing ll = long\
     \ long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll\
     \ = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr\
@@ -92,16 +92,18 @@ data:
     \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    fwht(a), fwht(b);\n\
     \    for (int i : rep(n)) a[i] *= b[i];\n    ifwht(a);\n    return a;\n}\n#line\
     \ 4 \"test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp\"\n\nint main()\
-    \ {\n    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint>\
+    \ {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n    using mint\
+    \ = modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint> a(bit(n)),\
+    \ b(bit(n));\n    for (ll i : rep(bit(n))) cin >> a[i];\n    for (ll i : rep(bit(n)))\
+    \ cin >> b[i];\n    vector<mint> c = xor_convolution(a, b);\n    for (mint ci\
+    \ : c) { cout << ci << \" \"; }\n    cout << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\
+    \n#include \"../../math/modint.hpp\"\n#include \"../../math/xor_convolution.hpp\"\
+    \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
+    \    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint>\
     \ a(bit(n)), b(bit(n));\n    for (ll i : rep(bit(n))) cin >> a[i];\n    for (ll\
     \ i : rep(bit(n))) cin >> b[i];\n    vector<mint> c = xor_convolution(a, b);\n\
-    \    for (mint ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution_mod\"\
-    \n#include \"../../math/modint.hpp\"\n#include \"../../math/xor_convolution.hpp\"\
-    \n\nint main() {\n    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n\
-    \    vector<mint> a(bit(n)), b(bit(n));\n    for (ll i : rep(bit(n))) cin >> a[i];\n\
-    \    for (ll i : rep(bit(n))) cin >> b[i];\n    vector<mint> c = xor_convolution(a,\
-    \ b);\n    for (mint ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}"
+    \    for (mint ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}"
   dependsOn:
   - math/modint.hpp
   - template.hpp
@@ -109,8 +111,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-11 00:10:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-11 00:45:29+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
 layout: document

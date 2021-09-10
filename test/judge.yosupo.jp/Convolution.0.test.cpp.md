@@ -3,11 +3,11 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
-    title: "NTT/\u7573\u307F\u8FBC\u307F"
-  - icon: ':question:'
+    title: "NTT / \u7573\u307F\u8FBC\u307F"
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -101,16 +101,18 @@ data:
     \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\n#line 4 \"test/judge.yosupo.jp/Convolution.0.test.cpp\"\
-    \n\nint main() {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >>\
-    \ n >> m;\n    vector<mint> a(n), b(m);\n    for (ll i : rep(n)) cin >> a[i];\n\
-    \    for (ll i : rep(m)) cin >> b[i];\n    vector<mint> c = convolution(a, b);\n\
-    \    for (mint ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}\n"
+    \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
+    \    using mint = modint<998244353>;\n    ll n, m;\n    cin >> n >> m;\n    vector<mint>\
+    \ a(n), b(m);\n    for (ll i : rep(n)) cin >> a[i];\n    for (ll i : rep(m)) cin\
+    \ >> b[i];\n    vector<mint> c = convolution(a, b);\n    for (mint ci : c) { cout\
+    \ << ci << \" \"; }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n#include\
     \ \"../../math/convolution.hpp\"\n#include \"../../math/modint.hpp\"\n\nint main()\
-    \ {\n    using mint = modint<998244353>;\n    ll n, m;\n    cin >> n >> m;\n \
-    \   vector<mint> a(n), b(m);\n    for (ll i : rep(n)) cin >> a[i];\n    for (ll\
-    \ i : rep(m)) cin >> b[i];\n    vector<mint> c = convolution(a, b);\n    for (mint\
-    \ ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}"
+    \ {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n    using mint\
+    \ = modint<998244353>;\n    ll n, m;\n    cin >> n >> m;\n    vector<mint> a(n),\
+    \ b(m);\n    for (ll i : rep(n)) cin >> a[i];\n    for (ll i : rep(m)) cin >>\
+    \ b[i];\n    vector<mint> c = convolution(a, b);\n    for (mint ci : c) { cout\
+    \ << ci << \" \"; }\n    cout << endl;\n}"
   dependsOn:
   - math/convolution.hpp
   - template.hpp
@@ -118,7 +120,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-11 00:10:41+09:00'
+  timestamp: '2021-09-11 00:45:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Convolution.0.test.cpp

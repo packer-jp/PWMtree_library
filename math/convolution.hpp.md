@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -123,7 +123,7 @@ data:
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
 documentation_of: math/convolution.hpp
 layout: document
-title: "NTT/\u7573\u307F\u8FBC\u307F"
+title: "NTT / \u7573\u307F\u8FBC\u307F"
 ---
 
 # 概要
