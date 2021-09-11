@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -125,11 +125,11 @@ layout: document
 title: Segment Tree
 ---
 
-# 概要
+## 概要
 - モノイド $(V, \times)$ を考える。
 - 長さ $n$ の $V$ の元の列 $s$ に対する処理を行う。
 
-# 詳細
+## 詳細
 
 - `<typename S> struct segtree`  
     Segment Tree 本体。
@@ -185,6 +185,6 @@ title: Segment Tree
 - `struct sum_monoid_with_update`  
     区間和/一点更新クエリを処理するときに`segtree`にテンプレート引数 `S` として与える。
 
-# 参考
+## 参考
 - [ACL](https://atcoder.github.io/ac-library/production/document_ja/segtree.html)
 - [えびちゃんさんのスライド](https://hcpc-hokudai.github.io/archive/structure_segtree_001.pdf)

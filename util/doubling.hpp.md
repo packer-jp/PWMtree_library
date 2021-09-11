@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -74,5 +74,5 @@ layout: document
 title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
 ---
 
-# 参考
+## 参考
 - [うしさんのライブラリ](https://ei1333.github.io/luzhiled/snippets/memo/doubling.html)

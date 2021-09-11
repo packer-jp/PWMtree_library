@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -161,5 +161,5 @@ layout: document
 title: Splay Tree
 ---
 
-# 参考
+## 参考
 - [かつっぱさんの動画](https://www.youtube.com/watch?v=M6LcINhgXeM&t=0s)

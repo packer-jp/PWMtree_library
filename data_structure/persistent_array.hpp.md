@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -99,5 +99,5 @@ layout: document
 title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
 ---
 
-# 参考
+## 参考
 - [37zigen さんの記事](https://37zigen.com/persistent-array/)

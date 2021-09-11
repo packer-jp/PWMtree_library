@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: modint
   - icon: ':heavy_check_mark:'
     path: math/xor_convolution.hpp
-    title: "FWHT / xor \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+    title: "FWHT, xor \u7573\u307F\u8FBC\u307F"
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -85,12 +85,12 @@ data:
     \  for (int j = 0; j < n; j += i << 1) {\n            for (int k : rep(i)) {\n\
     \                T p = a[0 + j + k], q = a[i + j + k];\n                a[0 +\
     \ j + k] = p + q;\n                a[i + j + k] = p - q;\n            }\n    \
-    \    }\n    }\n}\ntemplate <typename T> void ifwht(vector<T> &a) {\n    fwht(a);\n\
-    \    T ninv = T(1) / a.size();\n    for (T &ai : a) ai *= ninv;\n}\ntemplate <typename\
-    \ T> vector<T> xor_convolution(vector<T> a, vector<T> b) {\n    int n_ = max(a.size(),\
-    \ b.size()), n;\n    for (n = 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n\
-    \    fwht(a), fwht(b);\n    for (int i : rep(n)) a[i] *= b[i];\n    ifwht(a);\n\
-    \    return a;\n}\n#line 4 \"test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp\"\
+    \    }\n    }\n}\n\ntemplate <typename T> void ifwht(vector<T> &a) {\n    fwht(a);\n\
+    \    T ninv = T(1) / a.size();\n    for (T &ai : a) ai *= ninv;\n}\n\ntemplate\
+    \ <typename T> vector<T> xor_convolution(vector<T> a, vector<T> b) {\n    int\
+    \ n_ = max(a.size(), b.size()), n;\n    for (n = 1; n < n_; n <<= 1) {}\n    a.resize(n),\
+    \ b.resize(n);\n    fwht(a), fwht(b);\n    for (int i : rep(n)) a[i] *= b[i];\n\
+    \    ifwht(a);\n    return a;\n}\n#line 4 \"test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp\"\
     \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
     \    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint>\
     \ a(bit(n)), b(bit(n));\n    for (ll i : rep(bit(n))) cin >> a[i];\n    for (ll\
@@ -110,7 +110,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-11 20:42:15+09:00'
+  timestamp: '2021-09-12 02:09:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp

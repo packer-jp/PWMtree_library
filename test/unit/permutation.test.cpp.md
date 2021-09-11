@@ -3,8 +3,8 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/permutation.hpp
-    title: math/permutation.hpp
-  - icon: ':heavy_check_mark:'
+    title: "\u9806\u5217"
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

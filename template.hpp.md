@@ -35,33 +35,33 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/wf.hpp
     title: "Warshall-Floyd \u6CD5"
+  - icon: ':question:'
+    path: math/and_or_convolution.hpp
+    title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
   - icon: ':warning:'
     path: math/combination.hpp
     title: "\u7D44\u307F\u5408\u308F\u305B"
   - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
-    title: "NTT / \u7573\u307F\u8FBC\u307F"
+    title: "NTT, \u7573\u307F\u8FBC\u307F"
   - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-  - icon: ':heavy_check_mark:'
-    path: math/fzt_and_fmt.hpp
-    title: FZT / FMT
   - icon: ':warning:'
     path: math/inner_basis.hpp
     title: "xor \u57FA\u5E95"
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: "\u884C\u5217"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: modint
   - icon: ':heavy_check_mark:'
     path: math/permutation.hpp
-    title: math/permutation.hpp
+    title: "\u9806\u5217"
   - icon: ':heavy_check_mark:'
     path: math/xor_convolution.hpp
-    title: "FWHT / xor \u7573\u307F\u8FBC\u307F"
+    title: "FWHT, xor \u7573\u307F\u8FBC\u307F"
   - icon: ':warning:'
     path: util/bisect.hpp
     title: "\u4E8C\u5206\u63A2\u7D22"
@@ -70,8 +70,11 @@ data:
     title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-    title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
+    path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
+    title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
+  - icon: ':x:'
+    path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
+    title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
@@ -141,9 +144,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/unit/permutation.test.cpp
     title: test/unit/permutation.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
@@ -226,8 +229,8 @@ data:
   - math/xor_convolution.hpp
   - math/combination.hpp
   - math/convolution.hpp
+  - math/and_or_convolution.hpp
   - math/matrix.hpp
-  - math/fzt_and_fmt.hpp
   - math/fps.hpp
   - util/bisect.hpp
   - util/doubling.hpp
@@ -239,20 +242,21 @@ data:
   - data_structure/segtree.hpp
   - data_structure/persistent_array.hpp
   timestamp: '2021-09-11 00:10:41+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
   - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
   - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   - test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
-  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - test/unit/permutation.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp

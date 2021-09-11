@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -65,8 +65,8 @@ layout: document
 title: "xor \u57FA\u5E95"
 ---
 
-# 概要
+## 概要
 - 非負整数の集合について、xor に関する基底を集合内から構成する。
 
-# 参考
+## 参考
 - [熨斗袋さんのツイート](https://twitter.com/noshi91/status/1200702280128856064)

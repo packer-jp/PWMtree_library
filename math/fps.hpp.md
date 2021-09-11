@@ -3,11 +3,11 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
-    title: "NTT / \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+    title: "NTT, \u7573\u307F\u8FBC\u307F"
+  - icon: ':question:'
     path: math/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -275,17 +275,17 @@ layout: document
 title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
 ---
 
-# 概要
+## 概要
 - `modint`上の形式的冪級数に関する各種演算をサポートする。
 
-# 詳細
+## 詳細
 - `<typename mint> struct fps`  
     形式的冪級数本体。
 
     - `typename mint`  
         テンプレート引数として与える`modint`。
 
-# 参考
+## 参考
 - [Nyaan さんのライブラリ](https://nyaannyaan.github.io/library/fps/formal-power-series.hpp)
 - [opt さんの記事](https://opt-cp.com/fps-fast-algorithms/)
 - [exp 高速化に関する論文](https://arxiv.org/pdf/1301.5804.pdf)

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -72,4 +72,4 @@ layout: document
 title: "Warshall-Floyd \u6CD5"
 ---
 
-# 概要
+## 概要

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -96,7 +96,7 @@ layout: document
 title: SPFA
 ---
 
-# 概要
+## 概要
 
-# 参考
+## 参考
 - [うしさんのライブラリ](https://ei1333.github.io/library/graph/shortest-path/shortest-path-faster-algorithm.hpp)

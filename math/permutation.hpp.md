@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -110,8 +110,5 @@ data:
   - test/unit/permutation.test.cpp
 documentation_of: math/permutation.hpp
 layout: document
-redirect_from:
-- /library/math/permutation.hpp
-- /library/math/permutation.hpp.html
-title: math/permutation.hpp
+title: "\u9806\u5217"
 ---

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -76,4 +76,4 @@ layout: document
 title: "\u7D44\u307F\u5408\u308F\u305B"
 ---
 
-# 概要
+## 概要

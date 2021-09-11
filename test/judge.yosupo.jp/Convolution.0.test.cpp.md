@@ -3,11 +3,11 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
-    title: "NTT / \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+    title: "NTT, \u7573\u307F\u8FBC\u307F"
+  - icon: ':question:'
     path: math/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

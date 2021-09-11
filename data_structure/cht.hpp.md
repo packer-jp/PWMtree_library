@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -115,6 +115,6 @@ layout: document
 title: Convex Hull Trick
 ---
 
-# 参考
+## 参考
 - [えびちゃんさんのスライド](https://hcpc-hokudai.github.io/archive/algorithm_convex_hull_trick_001.pdf)
 - [kactl](https://github.com/kth-competitive-programming/kactl/blob/main/content/data-structures/LineContainer.h)

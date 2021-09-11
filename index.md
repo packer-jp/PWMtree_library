@@ -40,36 +40,36 @@ data:
       title: "Warshall-Floyd \u6CD5"
   - name: math
     pages:
+    - icon: ':question:'
+      path: math/and_or_convolution.hpp
+      title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
     - icon: ':warning:'
       path: math/combination.hpp
       title: "\u7D44\u307F\u5408\u308F\u305B"
     - icon: ':heavy_check_mark:'
       path: math/convolution.hpp
-      title: "NTT / \u7573\u307F\u8FBC\u307F"
+      title: "NTT, \u7573\u307F\u8FBC\u307F"
     - icon: ':heavy_check_mark:'
       path: math/fps.hpp
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-    - icon: ':heavy_check_mark:'
-      path: math/fzt_and_fmt.hpp
-      title: FZT / FMT
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: "xor \u57FA\u5E95"
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/modint.hpp
       title: modint
     - icon: ':heavy_check_mark:'
       path: math/permutation.hpp
-      title: math/permutation.hpp
+      title: "\u9806\u5217"
     - icon: ':heavy_check_mark:'
       path: math/xor_convolution.hpp
-      title: "FWHT / xor \u7573\u307F\u8FBC\u307F"
+      title: "FWHT, xor \u7573\u307F\u8FBC\u307F"
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -83,11 +83,17 @@ data:
   verificationCategories:
   - name: test/judge.u-aizu.ac.jp
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
       title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - name: test/judge.yosupo.jp
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
+      title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
+    - icon: ':x:'
+      path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
+      title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp

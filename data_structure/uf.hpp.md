@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -77,5 +77,5 @@ layout: document
 title: Union-Find Tree
 ---
 
-# 参考
+## 参考
 - [ACL](https://atcoder.github.io/ac-library/document_ja/dsu.html)
