@@ -41,10 +41,10 @@ data:
   - icon: ':warning:'
     path: math/combination.hpp
     title: "\u7D44\u307F\u5408\u308F\u305B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/convolution.hpp
     title: "NTT, \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   - icon: ':warning:'
@@ -59,6 +59,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/permutation.hpp
     title: "\u9806\u5217"
+  - icon: ':x:'
+    path: math/subset_convolution.hpp
+    title: Subset Convolution
   - icon: ':heavy_check_mark:'
     path: math/xor_convolution.hpp
     title: "FWHT, xor \u7573\u307F\u8FBC\u307F"
@@ -69,6 +72,9 @@ data:
     path: util/doubling.hpp
     title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
+    title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
@@ -108,6 +114,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
     title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
+  - icon: ':x:'
+    path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+    title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
@@ -226,6 +235,7 @@ data:
   - math/inner_basis.hpp
   - math/permutation.hpp
   - math/modint.hpp
+  - math/subset_convolution.hpp
   - math/xor_convolution.hpp
   - math/combination.hpp
   - math/convolution.hpp
@@ -251,12 +261,14 @@ data:
   - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
+  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   - test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - test/unit/permutation.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp

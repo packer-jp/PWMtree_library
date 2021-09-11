@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/convolution.hpp
     title: "NTT, \u7573\u307F\u8FBC\u307F"
   - icon: ':question:'
@@ -10,7 +10,10 @@ data:
   - icon: ':question:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: math/subset_convolution.hpp
+    title: Subset Convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
@@ -24,9 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+    title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/fps.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
@@ -76,23 +82,23 @@ data:
     \ mint> vector<mint> convolution_naive(vector<mint> a, vector<mint> b) {\n   \
     \ int na = a.size(), nb = b.size();\n    vector<mint> c(na + nb - 1);\n    if\
     \ (na < nb) swap(a, b), swap(na, nb);\n    for (int i : rep(na)) {\n        for\
-    \ (int j : rep(nb)) { c[i + j] += a[i] * b[j]; }\n    }\n    return c;\n}\n\n\
-    template <typename mint> vector<mint> convolution_ntt(vector<mint> a, vector<mint>\
-    \ b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<=\
-    \ 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n    for (int i :\
-    \ rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n    return a;\n}\n\n\
-    template <typename mint> vector<mint> convolution(const vector<mint> &a, const\
-    \ vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n        return\
-    \ convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a, b);\n\
-    \    }\n}\n#line 2 \"math/modint.hpp\"\n\n#line 4 \"math/modint.hpp\"\n\ntemplate\
-    \ <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll val = 0) :\
-    \ val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static ll mod()\
-    \ { return MOD; }\n    modint inv() const {\n        ll a = val, b = MOD, u =\
-    \ 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n            swap(a\
-    \ -= t * b, b);\n            swap(u -= t * v, v);\n        }\n        return modint(u);\n\
-    \    }\n    modint pow(ll k) const {\n        modint ret = 1, mul = val;\n   \
-    \     while (k) {\n            if (k & 1) ret *= mul;\n            mul *= mul;\n\
-    \            k >>= 1;\n        }\n        return ret;\n    }\n    modint &operator+=(const\
+    \ (int j : rep(nb)) c[i + j] += a[i] * b[j];\n    }\n    return c;\n}\n\ntemplate\
+    \ <typename mint> vector<mint> convolution_ntt(vector<mint> a, vector<mint> b)\
+    \ {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<= 1)\
+    \ {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n    for (int i : rep(n))\
+    \ a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n    return a;\n}\n\ntemplate\
+    \ <typename mint> vector<mint> convolution(const vector<mint> &a, const vector<mint>\
+    \ &b) {\n    if (min(a.size(), b.size()) <= 60) {\n        return convolution_naive(a,\
+    \ b);\n    } else {\n        return convolution_ntt(a, b);\n    }\n}\n#line 2\
+    \ \"math/modint.hpp\"\n\n#line 4 \"math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007>\
+    \ struct modint {\n    ll val;\n    modint(ll val = 0) : val(val >= 0 ? val %\
+    \ MOD : (MOD - (-val) % MOD) % MOD) {}\n    static ll mod() { return MOD; }\n\
+    \    modint inv() const {\n        ll a = val, b = MOD, u = 1, v = 0, t;\n   \
+    \     while (b > 0) {\n            t = a / b;\n            swap(a -= t * b, b);\n\
+    \            swap(u -= t * v, v);\n        }\n        return modint(u);\n    }\n\
+    \    modint pow(ll k) const {\n        modint ret = 1, mul = val;\n        while\
+    \ (k) {\n            if (k & 1) ret *= mul;\n            mul *= mul;\n       \
+    \     k >>= 1;\n        }\n        return ret;\n    }\n    modint &operator+=(const\
     \ modint &a) {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return\
     \ *this;\n    }\n    modint &operator-=(const modint &a) {\n        if ((val +=\
     \ MOD - a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
@@ -262,13 +268,15 @@ data:
   - math/modint.hpp
   isVerificationFile: false
   path: math/fps.hpp
-  requiredBy: []
-  timestamp: '2021-09-11 00:10:41+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  requiredBy:
+  - math/subset_convolution.hpp
+  timestamp: '2021-09-12 03:22:55+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
 documentation_of: math/fps.hpp
 layout: document

@@ -4,14 +4,23 @@ data:
   - icon: ':question:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: math/subset_convolution.hpp
+    title: Subset Convolution
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
+    title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
   - icon: ':x:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
+  - icon: ':x:'
+    path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+    title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':question:'
@@ -92,12 +101,15 @@ data:
   - template.hpp
   isVerificationFile: false
   path: math/and_or_convolution.hpp
-  requiredBy: []
+  requiredBy:
+  - math/subset_convolution.hpp
   timestamp: '2021-09-12 02:09:55+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
+  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
 documentation_of: math/and_or_convolution.hpp
 layout: document
 title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"

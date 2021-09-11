@@ -5,9 +5,12 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
+  - icon: ':x:'
+    path: math/subset_convolution.hpp
+    title: Subset Convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
@@ -36,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
+  - icon: ':x:'
+    path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+    title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':question:'
@@ -129,6 +135,7 @@ data:
   isVerificationFile: false
   path: math/modint.hpp
   requiredBy:
+  - math/subset_convolution.hpp
   - math/fps.hpp
   timestamp: '2021-09-11 00:10:41+09:00'
   verificationStatus: LIBRARY_SOME_WA
@@ -139,6 +146,7 @@ data:
   - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
+  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp

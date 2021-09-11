@@ -46,10 +46,10 @@ data:
     - icon: ':warning:'
       path: math/combination.hpp
       title: "\u7D44\u307F\u5408\u308F\u305B"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/convolution.hpp
       title: "NTT, \u7573\u307F\u8FBC\u307F"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/fps.hpp
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
     - icon: ':warning:'
@@ -64,6 +64,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/permutation.hpp
       title: "\u9806\u5217"
+    - icon: ':x:'
+      path: math/subset_convolution.hpp
+      title: Subset Convolution
     - icon: ':heavy_check_mark:'
       path: math/xor_convolution.hpp
       title: "FWHT, xor \u7573\u307F\u8FBC\u307F"
@@ -83,7 +86,7 @@ data:
   verificationCategories:
   - name: test/judge.u-aizu.ac.jp
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
       title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - name: test/judge.yosupo.jp
@@ -127,6 +130,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
       title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
+    - icon: ':x:'
+      path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+      title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   - name: test/onlinejudge.u-aizu.ac.jp
     pages:
     - icon: ':heavy_check_mark:'
