@@ -32,6 +32,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/spfa.hpp
     title: SPFA
+  - icon: ':heavy_check_mark:'
+    path: graph/wf.hpp
+    title: "Warshall-Floyd \u6CD5"
   - icon: ':warning:'
     path: math/combination.hpp
     title: "\u7D44\u307F\u5408\u308F\u305B"
@@ -96,6 +99,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
     title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
@@ -206,6 +212,7 @@ data:
   requiredBy:
   - graph/spfa.hpp
   - graph/oibfs.hpp
+  - graph/wf.hpp
   - graph/dijkstra.hpp
   - math/inner_basis.hpp
   - math/permutation.hpp
@@ -249,6 +256,7 @@ data:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

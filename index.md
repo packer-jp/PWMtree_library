@@ -35,6 +35,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/spfa.hpp
       title: SPFA
+    - icon: ':heavy_check_mark:'
+      path: graph/wf.hpp
+      title: "Warshall-Floyd \u6CD5"
   - name: math
     pages:
     - icon: ':warning:'
@@ -112,6 +115,9 @@ data:
       title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   - name: test/onlinejudge.u-aizu.ac.jp
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
+      title: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
