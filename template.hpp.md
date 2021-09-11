@@ -65,12 +65,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/xor_convolution.hpp
     title: "FWHT, xor \u7573\u307F\u8FBC\u307F"
+  - icon: ':heavy_check_mark:'
+    path: string/rolling_hash.hpp
+    title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - icon: ':warning:'
     path: util/bisect.hpp
     title: "\u4E8C\u5206\u63A2\u7D22"
   - icon: ':warning:'
     path: util/doubling.hpp
     title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
+  - icon: ':heavy_check_mark:'
+    path: util/xorshift.hpp
+    title: Xorshift
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
@@ -135,6 +141,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
@@ -228,6 +237,7 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
+  - string/rolling_hash.hpp
   - graph/spfa.hpp
   - graph/oibfs.hpp
   - graph/wf.hpp
@@ -243,6 +253,7 @@ data:
   - math/matrix.hpp
   - math/fps.hpp
   - util/bisect.hpp
+  - util/xorshift.hpp
   - util/doubling.hpp
   - data_structure/lazy_segtree.hpp
   - data_structure/splay_tree.hpp
@@ -278,6 +289,7 @@ data:
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp

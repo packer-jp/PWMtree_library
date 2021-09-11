@@ -70,6 +70,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/xor_convolution.hpp
       title: "FWHT, xor \u7573\u307F\u8FBC\u307F"
+  - name: string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: string/rolling_hash.hpp
+      title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: .
     pages:
     - icon: ':heavy_check_mark:'
@@ -83,6 +88,9 @@ data:
     - icon: ':warning:'
       path: util/doubling.hpp
       title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
+    - icon: ':heavy_check_mark:'
+      path: util/xorshift.hpp
+      title: Xorshift
   verificationCategories:
   - name: test/judge.u-aizu.ac.jp
     pages:
@@ -153,6 +161,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
+      title: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
