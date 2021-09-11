@@ -49,7 +49,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/fps.hpp
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/fzt_and_fmt.hpp
       title: math/fzt_and_fmt.hpp
     - icon: ':warning:'
@@ -69,7 +69,7 @@ data:
       title: "FWHT / xor \u7573\u307F\u8FBC\u307F"
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -81,6 +81,11 @@ data:
       path: util/doubling.hpp
       title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
   verificationCategories:
+  - name: test/judge.u-aizu.ac.jp
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
+      title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - name: test/judge.yosupo.jp
     pages:
     - icon: ':heavy_check_mark:'
@@ -121,9 +126,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
-    - icon: ':x:'
-      path: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
-      title: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp

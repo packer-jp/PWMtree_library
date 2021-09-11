@@ -44,7 +44,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/fzt_and_fmt.hpp
     title: math/fzt_and_fmt.hpp
   - icon: ':warning:'
@@ -69,6 +69,9 @@ data:
     path: util/doubling.hpp
     title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
+    title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
@@ -105,9 +108,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
-  - icon: ':x:'
-    path: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
@@ -141,9 +141,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/unit/permutation.test.cpp
     title: test/unit/permutation.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
@@ -239,7 +239,7 @@ data:
   - data_structure/segtree.hpp
   - data_structure/persistent_array.hpp
   timestamp: '2021-09-11 00:10:41+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
@@ -252,6 +252,7 @@ data:
   - test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - test/unit/permutation.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
@@ -264,7 +265,6 @@ data:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

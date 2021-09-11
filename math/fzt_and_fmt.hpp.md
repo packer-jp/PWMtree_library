@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
+    title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/fzt_and_fmt.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -78,9 +78,9 @@ data:
   path: math/fzt_and_fmt.hpp
   requiredBy: []
   timestamp: '2021-09-11 20:42:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
+  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
 documentation_of: math/fzt_and_fmt.hpp
 layout: document
 redirect_from:

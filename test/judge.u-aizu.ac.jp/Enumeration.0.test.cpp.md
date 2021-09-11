@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/fzt_and_fmt.hpp
     title: math/fzt_and_fmt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: 1e-7
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/challenges/search/titles/2446
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446
     links:
-    - https://onlinejudge.u-aizu.ac.jp/challenges/search/titles/2446
-  bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\n\
-    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/challenges/search/titles/2446\"\
-    \n#define ERROR 1e-7\n#line 2 \"math/fzt_and_fmt.hpp\"\n\n#line 2 \"template.hpp\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446
+  bundledCode: "#line 1 \"test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446\"\n\
+    #define ERROR 1e-7\n#line 2 \"math/fzt_and_fmt.hpp\"\n\n#line 2 \"template.hpp\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
     \ (a).end()\nusing ll = long long;\nusing ull = unsigned long long;\nusing pll\
     \ = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1,\
@@ -65,8 +65,8 @@ data:
     \ -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fmt_sub(vector<T>\
     \ &a) {\n    int n = __builtin_ffs(a.size()) - 1;\n    for (int i : rep(n)) {\n\
     \        for (int s : rep(bit(n))) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)]\
-    \ -= a[s];\n        }\n    }\n}\n#line 4 \"test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\
-    \n\n#line 6 \"test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\nusing namespace\
+    \ -= a[s];\n        }\n    }\n}\n#line 4 \"test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\
+    \n\n#line 6 \"test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\nusing namespace\
     \ std;\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    vll a(n), p(n);\n\
     \    for (ll i : rep(n)) cin >> a[i];\n    for (ll i : rep(n)) cin >> p[i];\n\
     \    vector<ll> x(bit(n));\n    for (ll i : rep(bit(n))) {\n        ll l = 1;\n\
@@ -79,7 +79,7 @@ data:
     \ q *= p[j] / 100.0;\n            } else {\n                q *= (1 - p[j] / 100.0);\n\
     \            }\n        }\n        x[i] = m - abs(x[i]);\n        ans += x[i]\
     \ * q;\n    };\n    cout << ans << endl;\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/challenges/search/titles/2446\"\
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446\"\
     \n#define ERROR 1e-7\n#include \"../../math/fzt_and_fmt.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    vll\
     \ a(n), p(n);\n    for (ll i : rep(n)) cin >> a[i];\n    for (ll i : rep(n)) cin\
@@ -97,15 +97,15 @@ data:
   - math/fzt_and_fmt.hpp
   - template.hpp
   isVerificationFile: true
-  path: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
+  path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-12 00:37:31+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-12 00:41:34+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
+documentation_of: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
 layout: document
 redirect_from:
-- /verify/test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
-- /verify/test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp.html
-title: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
+- /verify/test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
+- /verify/test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp.html
+title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
 ---

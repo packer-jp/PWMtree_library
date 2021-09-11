@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/permutation.hpp
     title: math/permutation.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
