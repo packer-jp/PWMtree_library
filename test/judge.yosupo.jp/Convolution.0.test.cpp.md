@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: "NTT, \u7573\u307F\u8FBC\u307F"
   - icon: ':question:'

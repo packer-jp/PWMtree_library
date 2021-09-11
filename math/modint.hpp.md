@@ -5,10 +5,10 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
   _extendedVerifiedWith:
@@ -39,7 +39,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   _isVerificationFailed: true

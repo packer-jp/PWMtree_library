@@ -41,10 +41,10 @@ data:
   - icon: ':warning:'
     path: math/combination.hpp
     title: "\u7D44\u307F\u5408\u308F\u305B"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: "NTT, \u7573\u307F\u8FBC\u307F"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   - icon: ':warning:'
@@ -59,7 +59,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/permutation.hpp
     title: "\u9806\u5217"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
   - icon: ':heavy_check_mark:'
@@ -114,7 +114,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
     title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   - icon: ':heavy_check_mark:'
