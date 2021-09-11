@@ -64,7 +64,7 @@ data:
     title: "\u4E8C\u5206\u6CD5"
   - icon: ':warning:'
     path: util/doubling.hpp
-    title: util/doubling.hpp
+    title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp

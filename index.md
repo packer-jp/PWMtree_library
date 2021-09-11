@@ -46,9 +46,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/convolution.hpp
       title: "NTT / \u7573\u307F\u8FBC\u307F"
+    - icon: ':warning:'
+      path: math/fmt.hpp
+      title: math/fmt.hpp
     - icon: ':heavy_check_mark:'
       path: math/fps.hpp
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
+    - icon: ':warning:'
+      path: math/fzt.hpp
+      title: math/fzt.hpp
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: "xor \u57FA\u5E95"
@@ -76,7 +82,7 @@ data:
       title: "\u4E8C\u5206\u6CD5"
     - icon: ':warning:'
       path: util/doubling.hpp
-      title: util/doubling.hpp
+      title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
   verificationCategories:
   - name: test/judge.yosupo.jp
     pages:

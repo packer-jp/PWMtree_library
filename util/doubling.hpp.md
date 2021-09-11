@@ -71,8 +71,8 @@ data:
   verifiedWith: []
 documentation_of: util/doubling.hpp
 layout: document
-redirect_from:
-- /library/util/doubling.hpp
-- /library/util/doubling.hpp.html
-title: util/doubling.hpp
+title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
 ---
+
+# 参考
+- [うしさんのライブラリ](https://ei1333.github.io/luzhiled/snippets/memo/doubling.html)
