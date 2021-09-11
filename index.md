@@ -51,7 +51,7 @@ data:
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
     - icon: ':heavy_check_mark:'
       path: math/fzt_and_fmt.hpp
-      title: math/fzt_and_fmt.hpp
+      title: FZT / FMT
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: "xor \u57FA\u5E95"

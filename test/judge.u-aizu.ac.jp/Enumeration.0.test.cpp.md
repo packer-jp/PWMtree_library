@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/fzt_and_fmt.hpp
-    title: math/fzt_and_fmt.hpp
+    title: FZT / FMT
   - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
