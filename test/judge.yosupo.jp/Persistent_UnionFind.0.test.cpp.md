@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/persistent_uf.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -57,7 +57,7 @@ data:
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 2 \"data_structure/persistent_array.hpp\"\
     \n\n#line 4 \"data_structure/persistent_array.hpp\"\n\ntemplate <typename V, int\
     \ SHIFT> struct persistent_array {\n    using ptr = shared_ptr<persistent_array>;\n\
-    \    static constexpr int BASE = 1 << SHIFT;\n    static constexpr int MASK =\
+    \    static constexpr int BASE = bit(SHIFT);\n    static constexpr int MASK =\
     \ BASE - 1;\n    V val;\n    array<ptr, BASE> ch;\n    persistent_array(int n\
     \ = 1, V val = V()) : val(val) {\n        for (int i : rep(BASE)) {\n        \
     \    int m = (n >> SHIFT) + ((n & MASK) > i);\n            if (m > 1 || m > 0\
@@ -105,7 +105,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-11 00:10:41+09:00'
+  timestamp: '2021-09-11 20:42:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp

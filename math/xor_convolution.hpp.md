@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -47,34 +47,34 @@ data:
     \ - 1; };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n   \
     \ static constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed <<\
     \ setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
-    } iOS;\n#line 4 \"math/xor_convolution.hpp\"\n\ntemplate <typename mint> void\
-    \ fwht(vector<mint> &a) {\n    int n = a.size();\n    for (int i = 1; i < n; i\
-    \ <<= 1) {\n        for (int j = 0; j < n; j += i << 1) {\n            for (int\
-    \ k : rep(i)) {\n                mint p = a[0 + j + k], q = a[i + j + k];\n  \
-    \              a[0 + j + k] = p + q;\n                a[i + j + k] = p - q;\n\
-    \            }\n        }\n    }\n}\ntemplate <typename mint> void ifwht(vector<mint>\
-    \ &a) {\n    fwht(a);\n    mint ninv = mint(a.size()).inv();\n    for (mint &ai\
-    \ : a) ai *= ninv;\n}\ntemplate <typename mint> vector<mint> xor_convolution(vector<mint>\
-    \ a, vector<mint> b) {\n    int n_ = max(a.size(), b.size()), n;\n    for (n =\
-    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    fwht(a), fwht(b);\n\
-    \    for (int i : rep(n)) a[i] *= b[i];\n    ifwht(a);\n    return a;\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename mint>\
-    \ void fwht(vector<mint> &a) {\n    int n = a.size();\n    for (int i = 1; i <\
-    \ n; i <<= 1) {\n        for (int j = 0; j < n; j += i << 1) {\n            for\
-    \ (int k : rep(i)) {\n                mint p = a[0 + j + k], q = a[i + j + k];\n\
-    \                a[0 + j + k] = p + q;\n                a[i + j + k] = p - q;\n\
-    \            }\n        }\n    }\n}\ntemplate <typename mint> void ifwht(vector<mint>\
-    \ &a) {\n    fwht(a);\n    mint ninv = mint(a.size()).inv();\n    for (mint &ai\
-    \ : a) ai *= ninv;\n}\ntemplate <typename mint> vector<mint> xor_convolution(vector<mint>\
-    \ a, vector<mint> b) {\n    int n_ = max(a.size(), b.size()), n;\n    for (n =\
-    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    fwht(a), fwht(b);\n\
-    \    for (int i : rep(n)) a[i] *= b[i];\n    ifwht(a);\n    return a;\n}"
+    } iOS;\n#line 4 \"math/xor_convolution.hpp\"\n\ntemplate <typename T> void fwht(vector<T>\
+    \ &a) {\n    int n = a.size();\n    for (int i = 1; i < n; i <<= 1) {\n      \
+    \  for (int j = 0; j < n; j += i << 1) {\n            for (int k : rep(i)) {\n\
+    \                T p = a[0 + j + k], q = a[i + j + k];\n                a[0 +\
+    \ j + k] = p + q;\n                a[i + j + k] = p - q;\n            }\n    \
+    \    }\n    }\n}\ntemplate <typename T> void ifwht(vector<T> &a) {\n    fwht(a);\n\
+    \    T ninv = T(1) / a.size();\n    for (T &ai : a) ai *= ninv;\n}\ntemplate <typename\
+    \ T> vector<T> xor_convolution(vector<T> a, vector<T> b) {\n    int n_ = max(a.size(),\
+    \ b.size()), n;\n    for (n = 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n\
+    \    fwht(a), fwht(b);\n    for (int i : rep(n)) a[i] *= b[i];\n    ifwht(a);\n\
+    \    return a;\n}\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> void\
+    \ fwht(vector<T> &a) {\n    int n = a.size();\n    for (int i = 1; i < n; i <<=\
+    \ 1) {\n        for (int j = 0; j < n; j += i << 1) {\n            for (int k\
+    \ : rep(i)) {\n                T p = a[0 + j + k], q = a[i + j + k];\n       \
+    \         a[0 + j + k] = p + q;\n                a[i + j + k] = p - q;\n     \
+    \       }\n        }\n    }\n}\ntemplate <typename T> void ifwht(vector<T> &a)\
+    \ {\n    fwht(a);\n    T ninv = T(1) / a.size();\n    for (T &ai : a) ai *= ninv;\n\
+    }\ntemplate <typename T> vector<T> xor_convolution(vector<T> a, vector<T> b) {\n\
+    \    int n_ = max(a.size(), b.size()), n;\n    for (n = 1; n < n_; n <<= 1) {}\n\
+    \    a.resize(n), b.resize(n);\n    fwht(a), fwht(b);\n    for (int i : rep(n))\
+    \ a[i] *= b[i];\n    ifwht(a);\n    return a;\n}"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: math/xor_convolution.hpp
   requiredBy: []
-  timestamp: '2021-09-11 00:10:41+09:00'
+  timestamp: '2021-09-11 20:42:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp

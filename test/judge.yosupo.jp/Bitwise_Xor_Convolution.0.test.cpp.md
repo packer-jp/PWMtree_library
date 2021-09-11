@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/xor_convolution.hpp
     title: "FWHT / xor \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -80,23 +80,22 @@ data:
     \ modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\n#line 2 \"math/xor_convolution.hpp\"\
-    \n\n#line 4 \"math/xor_convolution.hpp\"\n\ntemplate <typename mint> void fwht(vector<mint>\
+    \n\n#line 4 \"math/xor_convolution.hpp\"\n\ntemplate <typename T> void fwht(vector<T>\
     \ &a) {\n    int n = a.size();\n    for (int i = 1; i < n; i <<= 1) {\n      \
     \  for (int j = 0; j < n; j += i << 1) {\n            for (int k : rep(i)) {\n\
-    \                mint p = a[0 + j + k], q = a[i + j + k];\n                a[0\
-    \ + j + k] = p + q;\n                a[i + j + k] = p - q;\n            }\n  \
-    \      }\n    }\n}\ntemplate <typename mint> void ifwht(vector<mint> &a) {\n \
-    \   fwht(a);\n    mint ninv = mint(a.size()).inv();\n    for (mint &ai : a) ai\
-    \ *= ninv;\n}\ntemplate <typename mint> vector<mint> xor_convolution(vector<mint>\
-    \ a, vector<mint> b) {\n    int n_ = max(a.size(), b.size()), n;\n    for (n =\
-    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    fwht(a), fwht(b);\n\
-    \    for (int i : rep(n)) a[i] *= b[i];\n    ifwht(a);\n    return a;\n}\n#line\
-    \ 4 \"test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp\"\n\nint main()\
-    \ {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n    using mint\
-    \ = modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint> a(bit(n)),\
-    \ b(bit(n));\n    for (ll i : rep(bit(n))) cin >> a[i];\n    for (ll i : rep(bit(n)))\
-    \ cin >> b[i];\n    vector<mint> c = xor_convolution(a, b);\n    for (mint ci\
-    \ : c) { cout << ci << \" \"; }\n    cout << endl;\n}\n"
+    \                T p = a[0 + j + k], q = a[i + j + k];\n                a[0 +\
+    \ j + k] = p + q;\n                a[i + j + k] = p - q;\n            }\n    \
+    \    }\n    }\n}\ntemplate <typename T> void ifwht(vector<T> &a) {\n    fwht(a);\n\
+    \    T ninv = T(1) / a.size();\n    for (T &ai : a) ai *= ninv;\n}\ntemplate <typename\
+    \ T> vector<T> xor_convolution(vector<T> a, vector<T> b) {\n    int n_ = max(a.size(),\
+    \ b.size()), n;\n    for (n = 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n\
+    \    fwht(a), fwht(b);\n    for (int i : rep(n)) a[i] *= b[i];\n    ifwht(a);\n\
+    \    return a;\n}\n#line 4 \"test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp\"\
+    \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
+    \    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint>\
+    \ a(bit(n)), b(bit(n));\n    for (ll i : rep(bit(n))) cin >> a[i];\n    for (ll\
+    \ i : rep(bit(n))) cin >> b[i];\n    vector<mint> c = xor_convolution(a, b);\n\
+    \    for (mint ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\
     \n#include \"../../math/modint.hpp\"\n#include \"../../math/xor_convolution.hpp\"\
     \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
@@ -111,7 +110,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-11 00:45:29+09:00'
+  timestamp: '2021-09-11 20:42:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp

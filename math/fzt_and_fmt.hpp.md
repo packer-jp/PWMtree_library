@@ -5,13 +5,16 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/inner_basis.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"math/fzt_and_fmt.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\n\
     using vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\n\
@@ -43,30 +46,45 @@ data:
     \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
     \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
     \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
-    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"math/inner_basis.hpp\"\
-    \n\nvector<ull> inner_basis(vector<ull> a) {\n    vector<ull> basis, ret;\n  \
-    \  for (ull e : a) {\n        ull e_ = e;\n        for (ull b : basis) chmin(e,\
-    \ e ^ b);\n        if (e) basis.push_back(e), ret.push_back(e_);\n    }\n    return\
-    \ ret;\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\nvector<ull> inner_basis(vector<ull>\
-    \ a) {\n    vector<ull> basis, ret;\n    for (ull e : a) {\n        ull e_ = e;\n\
-    \        for (ull b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e),\
-    \ ret.push_back(e_);\n    }\n    return ret;\n}"
+    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"math/fzt_and_fmt.hpp\"\
+    \n\ntemplate <typename T> void fzt_super(vector<T> &a) {\n    int n = __builtin_ffs(a.size())\
+    \ - 1;\n    for (int i : rep(n)) {\n        for (int s : rep(bit(n))) {\n    \
+    \        if ((s >> i) & 1) a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate\
+    \ <typename T> void fzt_sub(vector<T> &a) {\n    int n = __builtin_ffs(a.size())\
+    \ - 1;\n    for (int i : rep(n)) {\n        for (int s : rep(bit(n))) {\n    \
+    \        if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\n\
+    template <typename T> void fmt_super(vector<T> &a) {\n    int n = __builtin_ffs(a.size())\
+    \ - 1;\n    for (int i : rep(n)) {\n        for (int s : rep(bit(n))) {\n    \
+    \        if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate\
+    \ <typename T> void fmt_sub(vector<T> &a) {\n    int n = __builtin_ffs(a.size())\
+    \ - 1;\n    for (int i : rep(n)) {\n        for (int s : rep(bit(n))) {\n    \
+    \        if (!((s >> i) & 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> void\
+    \ fzt_super(vector<T> &a) {\n    int n = __builtin_ffs(a.size()) - 1;\n    for\
+    \ (int i : rep(n)) {\n        for (int s : rep(bit(n))) {\n            if ((s\
+    \ >> i) & 1) a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename\
+    \ T> void fzt_sub(vector<T> &a) {\n    int n = __builtin_ffs(a.size()) - 1;\n\
+    \    for (int i : rep(n)) {\n        for (int s : rep(bit(n))) {\n           \
+    \ if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate\
+    \ <typename T> void fmt_super(vector<T> &a) {\n    int n = __builtin_ffs(a.size())\
+    \ - 1;\n    for (int i : rep(n)) {\n        for (int s : rep(bit(n))) {\n    \
+    \        if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate\
+    \ <typename T> void fmt_sub(vector<T> &a) {\n    int n = __builtin_ffs(a.size())\
+    \ - 1;\n    for (int i : rep(n)) {\n        for (int s : rep(bit(n))) {\n    \
+    \        if (!((s >> i) & 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}"
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: math/inner_basis.hpp
+  path: math/fzt_and_fmt.hpp
   requiredBy: []
-  timestamp: '2021-09-11 00:10:41+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: math/inner_basis.hpp
+  timestamp: '2021-09-11 20:42:15+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
+documentation_of: math/fzt_and_fmt.hpp
 layout: document
-title: "xor \u57FA\u5E95"
+redirect_from:
+- /library/math/fzt_and_fmt.hpp
+- /library/math/fzt_and_fmt.hpp.html
+title: math/fzt_and_fmt.hpp
 ---
-
-# 概要
-- 非負整数の集合について、xor に関する基底を集合内から構成する。
-
-# 参考
-- [熨斗袋さんのツイート](https://twitter.com/noshi91/status/1200702280128856064)

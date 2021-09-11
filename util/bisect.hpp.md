@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -65,7 +65,7 @@ data:
   verifiedWith: []
 documentation_of: util/bisect.hpp
 layout: document
-title: "\u4E8C\u5206\u6CD5"
+title: "\u4E8C\u5206\u63A2\u7D22"
 ---
 
 # 概要

@@ -46,15 +46,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/convolution.hpp
       title: "NTT / \u7573\u307F\u8FBC\u307F"
-    - icon: ':warning:'
-      path: math/fmt.hpp
-      title: math/fmt.hpp
     - icon: ':heavy_check_mark:'
       path: math/fps.hpp
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-    - icon: ':warning:'
-      path: math/fzt.hpp
-      title: math/fzt.hpp
+    - icon: ':x:'
+      path: math/fzt_and_fmt.hpp
+      title: math/fzt_and_fmt.hpp
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: "xor \u57FA\u5E95"
@@ -72,14 +69,14 @@ data:
       title: "FWHT / xor \u7573\u307F\u8FBC\u307F"
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: util
     pages:
     - icon: ':warning:'
       path: util/bisect.hpp
-      title: "\u4E8C\u5206\u6CD5"
+      title: "\u4E8C\u5206\u63A2\u7D22"
     - icon: ':warning:'
       path: util/doubling.hpp
       title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
@@ -124,6 +121,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
+    - icon: ':x:'
+      path: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
+      title: test/onlinejudge.u-aizu.ac.jp/Enumeration.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -55,7 +55,7 @@ data:
     \ setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
     } iOS;\n#line 4 \"data_structure/persistent_array.hpp\"\n\ntemplate <typename\
     \ V, int SHIFT> struct persistent_array {\n    using ptr = shared_ptr<persistent_array>;\n\
-    \    static constexpr int BASE = 1 << SHIFT;\n    static constexpr int MASK =\
+    \    static constexpr int BASE = bit(SHIFT);\n    static constexpr int MASK =\
     \ BASE - 1;\n    V val;\n    array<ptr, BASE> ch;\n    persistent_array(int n\
     \ = 1, V val = V()) : val(val) {\n        for (int i : rep(BASE)) {\n        \
     \    int m = (n >> SHIFT) + ((n & MASK) > i);\n            if (m > 1 || m > 0\
@@ -70,7 +70,7 @@ data:
     };\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename V, int\
     \ SHIFT> struct persistent_array {\n    using ptr = shared_ptr<persistent_array>;\n\
-    \    static constexpr int BASE = 1 << SHIFT;\n    static constexpr int MASK =\
+    \    static constexpr int BASE = bit(SHIFT);\n    static constexpr int MASK =\
     \ BASE - 1;\n    V val;\n    array<ptr, BASE> ch;\n    persistent_array(int n\
     \ = 1, V val = V()) : val(val) {\n        for (int i : rep(BASE)) {\n        \
     \    int m = (n >> SHIFT) + ((n & MASK) > i);\n            if (m > 1 || m > 0\
@@ -89,7 +89,7 @@ data:
   path: data_structure/persistent_array.hpp
   requiredBy:
   - data_structure/persistent_uf.hpp
-  timestamp: '2021-09-11 00:10:41+09:00'
+  timestamp: '2021-09-11 20:42:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
