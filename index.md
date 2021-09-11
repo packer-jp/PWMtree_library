@@ -40,7 +40,7 @@ data:
       title: "Warshall-Floyd \u6CD5"
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/and_or_convolution.hpp
       title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
     - icon: ':warning:'
@@ -58,7 +58,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/modint.hpp
       title: modint
     - icon: ':heavy_check_mark:'
@@ -72,7 +72,7 @@ data:
       title: "FWHT, xor \u7573\u307F\u8FBC\u307F"
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -94,7 +94,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
       title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
     - icon: ':heavy_check_mark:'

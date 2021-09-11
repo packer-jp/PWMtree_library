@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/and_or_convolution.hpp
     title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/bitwise_and_convolution
@@ -101,21 +101,23 @@ data:
     \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
     \    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint>\
     \ a(bit(n)), b(bit(n));\n    for (ll i : rep(bit(n))) cin >> a[i];\n    for (ll\
-    \ i : rep(bit(n))) cin >> b[i];\n    for (ll i : rep(bit(n - 1))) {\n        swap(a[i],\
-    \ a[i ^ ((bit(n) - 1))]);\n        swap(b[i], b[i ^ ((bit(n) - 1))]);\n    }\n\
-    \    vector<mint> c = or_convolution(a, b);\n    for (ll i : rep(bit(n - 1)))\
-    \ swap(c[i], c[i ^ ((bit(n) - 1))]);\n    for (mint ci : c) { cout << ci << \"\
-    \ \"; }\n    cout << endl;\n}\n"
+    \ i : rep(bit(n))) cin >> b[i];\n    if (n > 0) {\n        for (ll i : rep(bit(n\
+    \ - 1))) {\n            swap(a[i], a[i ^ ((bit(n) - 1))]);\n            swap(b[i],\
+    \ b[i ^ ((bit(n) - 1))]);\n        }\n    }\n    vector<mint> c = or_convolution(a,\
+    \ b);\n    if (n > 0) {\n        for (ll i : rep(bit(n - 1))) swap(c[i], c[i ^\
+    \ ((bit(n) - 1))]);\n    }\n    for (mint ci : c) { cout << ci << \" \"; }\n \
+    \   cout << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\
     \n#include \"../../math/and_or_convolution.hpp\"\n#include \"../../math/modint.hpp\"\
     \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
     \    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint>\
     \ a(bit(n)), b(bit(n));\n    for (ll i : rep(bit(n))) cin >> a[i];\n    for (ll\
-    \ i : rep(bit(n))) cin >> b[i];\n    for (ll i : rep(bit(n - 1))) {\n        swap(a[i],\
-    \ a[i ^ ((bit(n) - 1))]);\n        swap(b[i], b[i ^ ((bit(n) - 1))]);\n    }\n\
-    \    vector<mint> c = or_convolution(a, b);\n    for (ll i : rep(bit(n - 1)))\
-    \ swap(c[i], c[i ^ ((bit(n) - 1))]);\n    for (mint ci : c) { cout << ci << \"\
-    \ \"; }\n    cout << endl;\n}"
+    \ i : rep(bit(n))) cin >> b[i];\n    if (n > 0) {\n        for (ll i : rep(bit(n\
+    \ - 1))) {\n            swap(a[i], a[i ^ ((bit(n) - 1))]);\n            swap(b[i],\
+    \ b[i ^ ((bit(n) - 1))]);\n        }\n    }\n    vector<mint> c = or_convolution(a,\
+    \ b);\n    if (n > 0) {\n        for (ll i : rep(bit(n - 1))) swap(c[i], c[i ^\
+    \ ((bit(n) - 1))]);\n    }\n    for (mint ci : c) { cout << ci << \" \"; }\n \
+    \   cout << endl;\n}"
   dependsOn:
   - math/and_or_convolution.hpp
   - template.hpp
@@ -123,8 +125,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
   requiredBy: []
-  timestamp: '2021-09-12 02:09:55+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-12 03:49:23+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
 layout: document
