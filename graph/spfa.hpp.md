@@ -7,14 +7,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
-    title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
+    path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"graph/spfa.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\n\
     using vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\n\
@@ -46,52 +46,57 @@ data:
     \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
     \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
     \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
-    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"graph/dijkstra.hpp\"\
-    \n\ntemplate <typename S> struct dijkstra {\n    using D = typename S::dist_t;\n\
-    \    using C = typename S::cost_t;\n    struct edge {\n        int to;\n     \
-    \   C cost;\n        edge(int to, C cost) : to(to), cost(cost) {}\n    };\n  \
-    \  vector<vector<edge>> adj;\n    dijkstra(int n) : adj(n) {}\n    void add_edge(int\
+    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"graph/spfa.hpp\"\
+    \n\ntemplate <typename S> struct spfa {\n    using D = typename S::dist_t;\n \
+    \   using C = typename S::cost_t;\n    struct edge {\n        int to;\n      \
+    \  C cost;\n        edge(int to, C cost) : to(to), cost(cost) {}\n    };\n   \
+    \ vector<vector<edge>> adj;\n    spfa(int n) : adj(n) {}\n    void add_edge(int\
     \ from, int to, const C &cost) { adj[from].emplace_back(to, cost); }\n    pair<vector<D>,\
-    \ vector<int>> get(int s, const D &base = D()) const {\n        vector<D> dist(adj.size(),\
-    \ S::inf());\n        vector<int> prev(adj.size(), -1);\n        using P = pair<D,\
-    \ int>;\n        priority_queue_rev<P> pq;\n        dist[s] = base;\n        pq.emplace(base,\
-    \ s);\n        while (!pq.empty()) {\n            auto [d, from] = pq.top();\n\
-    \            pq.pop();\n            if (dist[from] < d) continue;\n          \
-    \  for (auto [to, cost] : adj[from]) {\n                D nd = d + cost;\n   \
-    \             if (nd < dist[to]) {\n                    dist[to] = nd;\n     \
-    \               prev[to] = from;\n                    pq.emplace(nd, to);\n  \
-    \              }\n            }\n        }\n        return {dist, prev};\n   \
-    \ }\n};\n\nstruct ll_dij {\n    using dist_t = ll;\n    using cost_t = ll;\n \
-    \   static dist_t inf() { return LLONG_MAX; }\n};\n"
+    \ vector<int>> get(int s, const D &base = D()) const {\n        int n = adj.size();\n\
+    \        vector<D> dist(n, S::inf());\n        vector<int> prev(n, -1), inq(n),\
+    \ time(n);\n        queue<int> q;\n        q.push(s);\n        dist[s] = base;\n\
+    \        ++time[s];\n        while (!q.empty()) {\n            int from = q.front();\n\
+    \            q.pop();\n            inq[from] = false;\n            for (auto [to,\
+    \ cost] : adj[from]) {\n                if (chmin(dist[to], dist[from] + cost))\
+    \ {\n                    prev[to] = from;\n                    if (!inq[to]) {\n\
+    \                        if (++time[to] >= n) return {{}, {}};\n             \
+    \           q.push(to);\n                        inq[to] = true;\n           \
+    \         }\n                }\n            }\n        }\n        return {dist,\
+    \ prev};\n    }\n};\n\nstruct ll_spfa {\n    using dist_t = ll;\n    using cost_t\
+    \ = ll;\n    static dist_t inf() { return LLONG_MAX; }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename S> struct\
-    \ dijkstra {\n    using D = typename S::dist_t;\n    using C = typename S::cost_t;\n\
+    \ spfa {\n    using D = typename S::dist_t;\n    using C = typename S::cost_t;\n\
     \    struct edge {\n        int to;\n        C cost;\n        edge(int to, C cost)\
-    \ : to(to), cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n    dijkstra(int\
+    \ : to(to), cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n    spfa(int\
     \ n) : adj(n) {}\n    void add_edge(int from, int to, const C &cost) { adj[from].emplace_back(to,\
     \ cost); }\n    pair<vector<D>, vector<int>> get(int s, const D &base = D()) const\
-    \ {\n        vector<D> dist(adj.size(), S::inf());\n        vector<int> prev(adj.size(),\
-    \ -1);\n        using P = pair<D, int>;\n        priority_queue_rev<P> pq;\n \
-    \       dist[s] = base;\n        pq.emplace(base, s);\n        while (!pq.empty())\
-    \ {\n            auto [d, from] = pq.top();\n            pq.pop();\n         \
-    \   if (dist[from] < d) continue;\n            for (auto [to, cost] : adj[from])\
-    \ {\n                D nd = d + cost;\n                if (nd < dist[to]) {\n\
-    \                    dist[to] = nd;\n                    prev[to] = from;\n  \
-    \                  pq.emplace(nd, to);\n                }\n            }\n   \
-    \     }\n        return {dist, prev};\n    }\n};\n\nstruct ll_dij {\n    using\
-    \ dist_t = ll;\n    using cost_t = ll;\n    static dist_t inf() { return LLONG_MAX;\
-    \ }\n};"
+    \ {\n        int n = adj.size();\n        vector<D> dist(n, S::inf());\n     \
+    \   vector<int> prev(n, -1), inq(n), time(n);\n        queue<int> q;\n       \
+    \ q.push(s);\n        dist[s] = base;\n        ++time[s];\n        while (!q.empty())\
+    \ {\n            int from = q.front();\n            q.pop();\n            inq[from]\
+    \ = false;\n            for (auto [to, cost] : adj[from]) {\n                if\
+    \ (chmin(dist[to], dist[from] + cost)) {\n                    prev[to] = from;\n\
+    \                    if (!inq[to]) {\n                        if (++time[to] >=\
+    \ n) return {{}, {}};\n                        q.push(to);\n                 \
+    \       inq[to] = true;\n                    }\n                }\n          \
+    \  }\n        }\n        return {dist, prev};\n    }\n};\n\nstruct ll_spfa {\n\
+    \    using dist_t = ll;\n    using cost_t = ll;\n    static dist_t inf() { return\
+    \ LLONG_MAX; }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: graph/dijkstra.hpp
+  path: graph/spfa.hpp
   requiredBy: []
   timestamp: '2021-09-11 18:03:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
-documentation_of: graph/dijkstra.hpp
+  - test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
+documentation_of: graph/spfa.hpp
 layout: document
-title: "Dijkstra \u6CD5"
+title: SPFA
 ---
 
 # 概要
+
+# 参考
+- [うしさんのライブラリ](https://ei1333.github.io/library/graph/shortest-path/shortest-path-faster-algorithm.hpp)

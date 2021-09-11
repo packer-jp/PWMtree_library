@@ -50,13 +50,14 @@ data:
     \ cost); }\n    pair<vector<ll>, vector<ll>> get(int s) const {\n        vector<ll>\
     \ dist(adj.size(), LLONG_MAX), prev(adj.size(), -1);\n        using P = pair<ll,\
     \ ll>;\n        deque<P> deq;\n        dist[s] = 0;\n        deq.emplace_front(0,\
-    \ s);\n        while (!deq.empty()) {\n            auto [d, i] = deq.front();\n\
-    \            deq.pop_front();\n            if (dist[i] < d) continue;\n      \
-    \      for (auto [to, cost] : adj[i]) {\n                ll nd = dist[i] + cost;\n\
-    \                if (nd < dist[to]) {\n                    dist[to] = nd;\n  \
-    \                  prev[to] = i;\n                    if (cost == 0) deq.emplace_front(nd,\
-    \ to);\n                    if (cost == 1) deq.emplace_back(nd, to);\n       \
-    \         }\n            }\n        }\n        return {dist, prev};\n    }\n};\n"
+    \ s);\n        while (!deq.empty()) {\n            auto [d, from] = deq.front();\n\
+    \            deq.pop_front();\n            if (dist[from] < d) continue;\n   \
+    \         for (auto [to, cost] : adj[from]) {\n                ll nd = dist[from]\
+    \ + cost;\n                if (nd < dist[to]) {\n                    dist[to]\
+    \ = nd;\n                    prev[to] = from;\n                    if (cost ==\
+    \ 0) deq.emplace_front(nd, to);\n                    if (cost == 1) deq.emplace_back(nd,\
+    \ to);\n                }\n            }\n        }\n        return {dist, prev};\n\
+    \    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct oibfs {\n    struct\
     \ edge {\n        ll to, cost;\n        edge(ll to, ll cost) : to(to), cost(cost)\
     \ {}\n    };\n    vector<vector<edge>> adj;\n    oibfs(ll n) : adj(n) {}\n   \
@@ -64,19 +65,20 @@ data:
     \    pair<vector<ll>, vector<ll>> get(int s) const {\n        vector<ll> dist(adj.size(),\
     \ LLONG_MAX), prev(adj.size(), -1);\n        using P = pair<ll, ll>;\n       \
     \ deque<P> deq;\n        dist[s] = 0;\n        deq.emplace_front(0, s);\n    \
-    \    while (!deq.empty()) {\n            auto [d, i] = deq.front();\n        \
-    \    deq.pop_front();\n            if (dist[i] < d) continue;\n            for\
-    \ (auto [to, cost] : adj[i]) {\n                ll nd = dist[i] + cost;\n    \
-    \            if (nd < dist[to]) {\n                    dist[to] = nd;\n      \
-    \              prev[to] = i;\n                    if (cost == 0) deq.emplace_front(nd,\
-    \ to);\n                    if (cost == 1) deq.emplace_back(nd, to);\n       \
-    \         }\n            }\n        }\n        return {dist, prev};\n    }\n};"
+    \    while (!deq.empty()) {\n            auto [d, from] = deq.front();\n     \
+    \       deq.pop_front();\n            if (dist[from] < d) continue;\n        \
+    \    for (auto [to, cost] : adj[from]) {\n                ll nd = dist[from] +\
+    \ cost;\n                if (nd < dist[to]) {\n                    dist[to] =\
+    \ nd;\n                    prev[to] = from;\n                    if (cost == 0)\
+    \ deq.emplace_front(nd, to);\n                    if (cost == 1) deq.emplace_back(nd,\
+    \ to);\n                }\n            }\n        }\n        return {dist, prev};\n\
+    \    }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: graph/oibfs.hpp
   requiredBy: []
-  timestamp: '2021-09-11 00:10:41+09:00'
+  timestamp: '2021-09-11 18:03:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/oibfs.hpp

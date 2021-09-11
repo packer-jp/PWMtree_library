@@ -29,6 +29,9 @@ data:
   - icon: ':warning:'
     path: graph/oibfs.hpp
     title: 01-BFS
+  - icon: ':heavy_check_mark:'
+    path: graph/spfa.hpp
+    title: SPFA
   - icon: ':warning:'
     path: math/combination.hpp
     title: "\u7D44\u307F\u5408\u308F\u305B"
@@ -105,6 +108,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
@@ -198,6 +204,7 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
+  - graph/spfa.hpp
   - graph/oibfs.hpp
   - graph/dijkstra.hpp
   - math/inner_basis.hpp
@@ -238,6 +245,7 @@ data:
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp

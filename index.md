@@ -32,6 +32,9 @@ data:
     - icon: ':warning:'
       path: graph/oibfs.hpp
       title: 01-BFS
+    - icon: ':heavy_check_mark:'
+      path: graph/spfa.hpp
+      title: SPFA
   - name: math
     pages:
     - icon: ':warning:'
@@ -121,6 +124,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
+      title: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
