@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/splay_tree.hpp\"\n\n#line 2 \"template.hpp\"\
@@ -47,9 +47,9 @@ data:
     \ - 1; };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n   \
     \ static constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed <<\
     \ setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n    };\n\
-    } iOS;\n#line 4 \"data_structure/splay_tree.hpp\"\n\ntemplate <typename V> struct\
+    } iOS;\n#line 4 \"data_structure/splay_tree.hpp\"\n\ntemplate <typename T> struct\
     \ splay_tree {\n    struct node {\n        node *left, *right, *par;\n       \
-    \ int size;\n        V val;\n        node(V val) : left(nullptr), right(nullptr),\
+    \ int size;\n        T val;\n        node(T val) : left(nullptr), right(nullptr),\
     \ par(nullptr), size(1), val(val) {}\n        void rotate() {\n            node\
     \ *p, *pp, *c;\n            p = par, pp = p->par;\n            if (p->left ==\
     \ this) {\n                c = right, right = p, p->left = c;\n            } else\
@@ -73,7 +73,7 @@ data:
     \ = cur->left ? cur->left->size : 0;\n            if (idx < size_l) cur = cur->left;\n\
     \            if (idx == size_l) {\n                cur->splay();\n           \
     \     return root = cur;\n            }\n            if (idx > size_l) cur = cur->right,\
-    \ idx -= size_l + 1;\n        }\n    }\n    V &operator[](int idx) { return get_node(idx)->val;\
+    \ idx -= size_l + 1;\n        }\n    }\n    T &operator[](int idx) { return get_node(idx)->val;\
     \ }\n    template <typename F> int lower_bound(F f) {\n        if (!root) return\
     \ 0;\n        node *cur = root;\n        int ret = -1;\n        while (true) {\n\
     \            if (cur->state() < 1) {\n                ret += cur->left ? cur->left->size\
@@ -97,9 +97,9 @@ data:
     \ right = split(idx);\n        merge(xt), merge(right);\n    }\n    void erase(int\
     \ idx) {\n        splay_tree xt = split(idx);\n        splay_tree right = xt.split(1);\n\
     \        delete xt.root;\n        merge(right);\n    }\n};\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename V> struct\
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> struct\
     \ splay_tree {\n    struct node {\n        node *left, *right, *par;\n       \
-    \ int size;\n        V val;\n        node(V val) : left(nullptr), right(nullptr),\
+    \ int size;\n        T val;\n        node(T val) : left(nullptr), right(nullptr),\
     \ par(nullptr), size(1), val(val) {}\n        void rotate() {\n            node\
     \ *p, *pp, *c;\n            p = par, pp = p->par;\n            if (p->left ==\
     \ this) {\n                c = right, right = p, p->left = c;\n            } else\
@@ -123,7 +123,7 @@ data:
     \ = cur->left ? cur->left->size : 0;\n            if (idx < size_l) cur = cur->left;\n\
     \            if (idx == size_l) {\n                cur->splay();\n           \
     \     return root = cur;\n            }\n            if (idx > size_l) cur = cur->right,\
-    \ idx -= size_l + 1;\n        }\n    }\n    V &operator[](int idx) { return get_node(idx)->val;\
+    \ idx -= size_l + 1;\n        }\n    }\n    T &operator[](int idx) { return get_node(idx)->val;\
     \ }\n    template <typename F> int lower_bound(F f) {\n        if (!root) return\
     \ 0;\n        node *cur = root;\n        int ret = -1;\n        while (true) {\n\
     \            if (cur->state() < 1) {\n                ret += cur->left ? cur->left->size\
@@ -152,8 +152,8 @@ data:
   isVerificationFile: false
   path: data_structure/splay_tree.hpp
   requiredBy: []
-  timestamp: '2021-09-11 00:10:41+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-12 11:47:10+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
 documentation_of: data_structure/splay_tree.hpp

@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/convolution.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -78,18 +78,18 @@ data:
     \      b[i + (j << 1) + k] = (a[0 + j + k] - a[m + j + k]) * wj;\n           \
     \ }\n        }\n    }\n    if (inv) {\n        mint ninv = mint(n).inv();\n  \
     \      for (mint &ai : a) ai *= ninv;\n    }\n}\ntemplate <typename mint> void\
-    \ intt(vector<mint> &a) { ntt(a, true); }\n\ntemplate <typename mint> vector<mint>\
-    \ convolution_naive(vector<mint> a, vector<mint> b) {\n    int na = a.size(),\
-    \ nb = b.size();\n    vector<mint> c(na + nb - 1);\n    if (na < nb) swap(a, b),\
-    \ swap(na, nb);\n    for (int i : rep(na)) {\n        for (int j : rep(nb)) c[i\
-    \ + j] += a[i] * b[j];\n    }\n    return c;\n}\n\ntemplate <typename mint> vector<mint>\
-    \ convolution_ntt(vector<mint> a, vector<mint> b) {\n    int n_ = a.size() + b.size()\
-    \ - 1, n;\n    for (n = 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n\
-    \    ntt(a), ntt(b);\n    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n \
-    \   a.resize(n_);\n    return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const\
-    \ vector<mint> &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <=\
-    \ 60) {\n        return convolution_naive(a, b);\n    } else {\n        return\
-    \ convolution_ntt(a, b);\n    }\n}\n"
+    \ intt(vector<mint> &a) { ntt(a, true); }\n\ntemplate <typename T> vector<T> convolution_naive(vector<T>\
+    \ a, vector<T> b) {\n    int na = a.size(), nb = b.size();\n    vector<T> c(na\
+    \ + nb - 1);\n    if (na < nb) swap(a, b), swap(na, nb);\n    for (int i : rep(na))\
+    \ {\n        for (int j : rep(nb)) c[i + j] += a[i] * b[j];\n    }\n    return\
+    \ c;\n}\n\ntemplate <typename mint> vector<mint> convolution_ntt(vector<mint>\
+    \ a, vector<mint> b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n =\
+    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n\
+    \    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n   \
+    \ return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const vector<mint>\
+    \ &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n   \
+    \     return convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a,\
+    \ b);\n    }\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename mint>\
     \ void ntt(vector<mint> &a, bool inv = false) {\n    int n = a.size(), m = n >>\
     \ 1;\n    mint root = 2;\n    while (root.pow((mint::mod() - 1) >> 1) == 1) root\
@@ -101,18 +101,18 @@ data:
     \ j + k] - a[m + j + k]) * wj;\n            }\n        }\n    }\n    if (inv)\
     \ {\n        mint ninv = mint(n).inv();\n        for (mint &ai : a) ai *= ninv;\n\
     \    }\n}\ntemplate <typename mint> void intt(vector<mint> &a) { ntt(a, true);\
-    \ }\n\ntemplate <typename mint> vector<mint> convolution_naive(vector<mint> a,\
-    \ vector<mint> b) {\n    int na = a.size(), nb = b.size();\n    vector<mint> c(na\
-    \ + nb - 1);\n    if (na < nb) swap(a, b), swap(na, nb);\n    for (int i : rep(na))\
-    \ {\n        for (int j : rep(nb)) c[i + j] += a[i] * b[j];\n    }\n    return\
-    \ c;\n}\n\ntemplate <typename mint> vector<mint> convolution_ntt(vector<mint>\
-    \ a, vector<mint> b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n =\
-    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n\
-    \    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n   \
-    \ return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const vector<mint>\
-    \ &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n   \
-    \     return convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a,\
-    \ b);\n    }\n}"
+    \ }\n\ntemplate <typename T> vector<T> convolution_naive(vector<T> a, vector<T>\
+    \ b) {\n    int na = a.size(), nb = b.size();\n    vector<T> c(na + nb - 1);\n\
+    \    if (na < nb) swap(a, b), swap(na, nb);\n    for (int i : rep(na)) {\n   \
+    \     for (int j : rep(nb)) c[i + j] += a[i] * b[j];\n    }\n    return c;\n}\n\
+    \ntemplate <typename mint> vector<mint> convolution_ntt(vector<mint> a, vector<mint>\
+    \ b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n = 1; n < n_; n <<=\
+    \ 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n    for (int i :\
+    \ rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n    return a;\n}\n\n\
+    template <typename mint> vector<mint> convolution(const vector<mint> &a, const\
+    \ vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n        return\
+    \ convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a, b);\n\
+    \    }\n}"
   dependsOn:
   - template.hpp
   isVerificationFile: false
@@ -120,8 +120,8 @@ data:
   requiredBy:
   - math/subset_convolution.hpp
   - math/fps.hpp
-  timestamp: '2021-09-12 03:22:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-12 11:47:10+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp

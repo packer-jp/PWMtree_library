@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/splay_tree.hpp
     title: Splay Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/1/ITP2_1_A
@@ -52,8 +52,8 @@ data:
     \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
     \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"data_structure/splay_tree.hpp\"\
-    \n\ntemplate <typename V> struct splay_tree {\n    struct node {\n        node\
-    \ *left, *right, *par;\n        int size;\n        V val;\n        node(V val)\
+    \n\ntemplate <typename T> struct splay_tree {\n    struct node {\n        node\
+    \ *left, *right, *par;\n        int size;\n        T val;\n        node(T val)\
     \ : left(nullptr), right(nullptr), par(nullptr), size(1), val(val) {}\n      \
     \  void rotate() {\n            node *p, *pp, *c;\n            p = par, pp = p->par;\n\
     \            if (p->left == this) {\n                c = right, right = p, p->left\
@@ -78,7 +78,7 @@ data:
     \ (idx < size_l) cur = cur->left;\n            if (idx == size_l) {\n        \
     \        cur->splay();\n                return root = cur;\n            }\n  \
     \          if (idx > size_l) cur = cur->right, idx -= size_l + 1;\n        }\n\
-    \    }\n    V &operator[](int idx) { return get_node(idx)->val; }\n    template\
+    \    }\n    T &operator[](int idx) { return get_node(idx)->val; }\n    template\
     \ <typename F> int lower_bound(F f) {\n        if (!root) return 0;\n        node\
     \ *cur = root;\n        int ret = -1;\n        while (true) {\n            if\
     \ (cur->state() < 1) {\n                ret += cur->left ? cur->left->size + 1\
@@ -122,8 +122,8 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-11 00:10:41+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-12 11:47:10+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
 layout: document

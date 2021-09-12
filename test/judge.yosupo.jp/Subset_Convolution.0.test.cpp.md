@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/and_or_convolution.hpp
     title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/convolution.hpp
     title: "NTT, \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/subset_convolution
@@ -118,90 +118,89 @@ data:
     \      b[i + (j << 1) + k] = (a[0 + j + k] - a[m + j + k]) * wj;\n           \
     \ }\n        }\n    }\n    if (inv) {\n        mint ninv = mint(n).inv();\n  \
     \      for (mint &ai : a) ai *= ninv;\n    }\n}\ntemplate <typename mint> void\
-    \ intt(vector<mint> &a) { ntt(a, true); }\n\ntemplate <typename mint> vector<mint>\
-    \ convolution_naive(vector<mint> a, vector<mint> b) {\n    int na = a.size(),\
-    \ nb = b.size();\n    vector<mint> c(na + nb - 1);\n    if (na < nb) swap(a, b),\
-    \ swap(na, nb);\n    for (int i : rep(na)) {\n        for (int j : rep(nb)) c[i\
-    \ + j] += a[i] * b[j];\n    }\n    return c;\n}\n\ntemplate <typename mint> vector<mint>\
-    \ convolution_ntt(vector<mint> a, vector<mint> b) {\n    int n_ = a.size() + b.size()\
-    \ - 1, n;\n    for (n = 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n\
-    \    ntt(a), ntt(b);\n    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n \
-    \   a.resize(n_);\n    return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const\
-    \ vector<mint> &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <=\
-    \ 60) {\n        return convolution_naive(a, b);\n    } else {\n        return\
-    \ convolution_ntt(a, b);\n    }\n}\n#line 6 \"math/fps.hpp\"\n\ntemplate <typename\
-    \ mint> struct fps : vector<mint> {\n    using vector<mint>::vector;\n    using\
-    \ vector<mint>::operator=;\n    fps() : vector<mint>() {}\n    fps(const mint\
-    \ &a) : vector<mint>(1, a) {}\n    fps(const fps &a) : vector<mint>(a) {}\n  \
-    \  fps &operator=(const fps &a) {\n        *this = (vector<mint>)a;\n        return\
-    \ *this;\n    }\n    fps &operator+=(const fps &a) {\n        if (a.size() > this->size())\
-    \ this->resize(a.size());\n        for (int i : rep(a.size())) (*this)[i] += a[i];\n\
-    \        return *this;\n    }\n    fps &operator-=(const fps &a) {\n        if\
-    \ (a.size() > this->size()) this->resize(a.size());\n        for (int i : rep(a.size()))\
-    \ (*this)[i] -= a[i];\n        return *this;\n    }\n    fps &operator*=(const\
-    \ fps &a);\n    fps &operator/=(const mint &a) {\n        for (int i : rep(this->size()))\
-    \ (*this)[i] /= a;\n        return *this;\n    };\n    fps &operator>>=(int d)\
-    \ {\n        if ((int)this->size() <= d) {\n            *this = {};\n        }\
-    \ else {\n            this->erase(this->begin(), this->begin() + d);\n       \
-    \ }\n        return *this;\n    }\n    fps &operator<<=(int d) {\n        this->insert(this->begin(),\
-    \ d, mint(0));\n        return *this;\n    }\n    fps &chdot(const fps &a) {\n\
-    \        for (int i : rep(this->size())) {\n            if (i < (int)a.size())\
-    \ {\n                (*this)[i] *= a[i];\n            } else {\n             \
-    \   (*this)[i] = 0;\n            }\n        }\n        return *this;\n    }\n\
-    \    fps prefix(int d) const { return fps(this->begin(), this->begin() + min((int)this->size(),\
-    \ d)); }\n    fps differential() const {\n        int n = this->size();\n    \
-    \    fps ret(max(0, n - 1));\n        for (int i : rep(1, n)) { ret[i - 1] = i\
-    \ * (*this)[i]; }\n        return ret;\n    }\n    fps integral() const {\n  \
-    \      int n = this->size();\n        fps ret(n + 1);\n        ret[0] = mint(0);\n\
-    \        if (n > 0) ret[1] = mint(1);\n        for (int i : rep(2, n + 1)) ret[i]\
-    \ = (-ret[mint::mod() % i]) * (mint::mod() / i);\n        for (int i : rep(n))\
-    \ ret[i + 1] *= (*this)[i];\n        return ret;\n    }\n    fps inv(int d = -1)\
-    \ const {\n        if (d == -1) d = this->size();\n        fps ret{(*this)[0].inv()};\n\
-    \        for (int m = 1; m < d; m <<= 1) ret = (ret + ret - ret * ret * this->prefix(m\
-    \ << 1)).prefix(m << 1);\n        return ret.prefix(d);\n    }\n    fps log(int\
-    \ d = -1) const {\n        assert((*this)[0] == mint(1));\n        if (d == -1)\
-    \ d = this->size();\n        return (this->differential() * this->inv(d)).prefix(d\
-    \ - 1).integral();\n    }\n    fps exp(int d = -1) const {\n        assert(this->size()\
-    \ == 0 || (*this)[0] == mint(0));\n        if (d == -1) d = this->size();\n  \
-    \      fps ret{1};\n        for (int m = 1; m < d; m <<= 1) ret = (ret * (this->prefix(m\
-    \ << 1) + mint(1) - ret.log(m << 1))).prefix(m << 1);\n        return ret.prefix(d);\n\
-    \    }\n    fps pow(ll k, int d = -1) const {\n        if (d == -1) d = this->size();\n\
-    \        for (int i : rep(this->size())) {\n            if ((*this)[i] != mint(0))\
-    \ {\n                if (i * k > d) return fps(d);\n                fps ret =\
-    \ (((*this * (*this)[i].inv()) >> i).log(d) * mint(k)).exp(d) * ((*this)[i].pow(k));\n\
-    \                ret = (ret << (i * k)).prefix(d);\n                ret.resize(d);\n\
-    \                return ret;\n            }\n        }\n        return fps(d);\n\
-    \    }\n    friend fps operator+(const fps &a) { return a; }\n    friend fps operator-(const\
-    \ fps &a) { return fps() -= a; }\n    friend fps operator+(const fps &a, const\
-    \ fps &b) { return fps(a) += b; }\n    friend fps operator-(const fps &a, const\
-    \ fps &b) { return fps(a) -= b; }\n    friend fps operator*(const fps &a, const\
-    \ fps &b) { return fps(a) *= b; }\n    friend fps operator>>(const fps &a, int\
-    \ d) { return fps(a) >>= d; }\n    friend fps operator<<(const fps &a, int d)\
-    \ { return fps(a) <<= d; }\n};\n\nusing m9 = modint<998244353>;\n\ntemplate <>\
-    \ fps<m9> &fps<m9>::operator*=(const fps<m9> &a) {\n    *this = convolution(*this,\
-    \ a);\n    return *this;\n}\n\ntemplate <> fps<m9> fps<m9>::inv(int d) const {\n\
-    \    if (d == -1) d = this->size();\n    fps ret{(*this)[0].inv()};\n    for (int\
-    \ m = 1; m < d; m <<= 1) {\n        fps f = this->prefix(m << 1);\n        fps\
-    \ g = ret;\n        f.resize(m << 1), ntt(f);\n        g.resize(m << 1), ntt(g);\n\
-    \        f.chdot(g);\n        intt(f);\n        f >>= m, f.resize(m << 1), ntt(f);\n\
-    \        f.chdot(g);\n        intt(f);\n        f = -f;\n        ret.insert(ret.end(),\
-    \ f.begin(), f.begin() + m);\n    }\n    return ret.prefix(d);\n}\n\ntemplate\
-    \ <> fps<m9> fps<m9>::exp(int d) const {\n    using mint = m9;\n    assert(this->size()\
-    \ == 0 || (*this)[0] == mint(0));\n    if (d == -1) d = this->size();\n    fps\
-    \ ret{1}, g{1}, g_freq{1};\n    for (int m = 1; m < d; m <<= 1) {\n        fps\
-    \ ret_freq = ret.prefix(m);\n        ret_freq.resize(m << 1), ntt(ret_freq);\n\
-    \n        fps g_cont = g_freq;\n        for (int i : rep(m)) g_cont[i] *= ret_freq[i\
-    \ << 1];\n        intt(g_cont);\n        g_cont >>= m >> 1;\n        g_cont.resize(m),\
-    \ ntt(g_cont);\n        g_cont.chdot(g_freq);\n        intt(g_cont);\n       \
-    \ g_cont = -g_cont;\n        g.insert(g.end(), g_cont.begin(), g_cont.begin()\
-    \ + (m >> 1));\n\n        fps r = this->differential().prefix(m - 1);\n      \
-    \  r.resize(m), ntt(r);\n        for (int i : rep(m)) r[i] *= ret_freq[i << 1];\n\
-    \        intt(r);\n\n        fps t = ret.differential() - r;\n        t.insert(t.begin(),\
-    \ t.back()), t.pop_back();\n        t.resize(m << 1), ntt(t);\n        g_freq\
-    \ = g, g_freq.resize(m << 1), ntt(g_freq);\n        t.chdot(g_freq);\n       \
-    \ intt(t), t.resize(m);\n\n        fps u = (this->prefix(m << 1) - (t << m - 1).integral())\
-    \ >> m;\n        u.resize(m << 1), ntt(u);\n        u.chdot(ret_freq);\n     \
-    \   intt(u);\n\n        ret += u.prefix(m) << m;\n    }\n    return ret.prefix(d);\n\
+    \ intt(vector<mint> &a) { ntt(a, true); }\n\ntemplate <typename T> vector<T> convolution_naive(vector<T>\
+    \ a, vector<T> b) {\n    int na = a.size(), nb = b.size();\n    vector<T> c(na\
+    \ + nb - 1);\n    if (na < nb) swap(a, b), swap(na, nb);\n    for (int i : rep(na))\
+    \ {\n        for (int j : rep(nb)) c[i + j] += a[i] * b[j];\n    }\n    return\
+    \ c;\n}\n\ntemplate <typename mint> vector<mint> convolution_ntt(vector<mint>\
+    \ a, vector<mint> b) {\n    int n_ = a.size() + b.size() - 1, n;\n    for (n =\
+    \ 1; n < n_; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n\
+    \    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(n_);\n   \
+    \ return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const vector<mint>\
+    \ &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n   \
+    \     return convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a,\
+    \ b);\n    }\n}\n#line 6 \"math/fps.hpp\"\n\ntemplate <typename T> struct fps\
+    \ : vector<T> {\n    using vector<T>::vector;\n    using vector<T>::operator=;\n\
+    \    fps() : vector<T>() {}\n    fps(const T &a) : vector<T>(1, a) {}\n    fps(const\
+    \ fps &a) : vector<T>(a) {}\n    fps &operator=(const fps &a) {\n        *this\
+    \ = (vector<T>)a;\n        return *this;\n    }\n    fps &operator+=(const fps\
+    \ &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n      \
+    \  for (int i : rep(a.size())) (*this)[i] += a[i];\n        return *this;\n  \
+    \  }\n    fps &operator-=(const fps &a) {\n        if (a.size() > this->size())\
+    \ this->resize(a.size());\n        for (int i : rep(a.size())) (*this)[i] -= a[i];\n\
+    \        return *this;\n    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const\
+    \ mint &a) {\n        for (int i : rep(this->size())) (*this)[i] /= a;\n     \
+    \   return *this;\n    };\n    fps &operator>>=(int d) {\n        if ((int)this->size()\
+    \ <= d) {\n            *this = {};\n        } else {\n            this->erase(this->begin(),\
+    \ this->begin() + d);\n        }\n        return *this;\n    }\n    fps &operator<<=(int\
+    \ d) {\n        this->insert(this->begin(), d, mint(0));\n        return *this;\n\
+    \    }\n    fps &chdot(const fps &a) {\n        for (int i : rep(this->size()))\
+    \ {\n            if (i < (int)a.size()) {\n                (*this)[i] *= a[i];\n\
+    \            } else {\n                (*this)[i] = 0;\n            }\n      \
+    \  }\n        return *this;\n    }\n    fps prefix(int d) const { return fps(this->begin(),\
+    \ this->begin() + min((int)this->size(), d)); }\n    fps differential() const\
+    \ {\n        int n = this->size();\n        fps ret(max(0, n - 1));\n        for\
+    \ (int i : rep(1, n)) { ret[i - 1] = i * (*this)[i]; }\n        return ret;\n\
+    \    }\n    fps integral() const {\n        int n = this->size();\n        fps\
+    \ ret(n + 1);\n        ret[0] = mint(0);\n        if (n > 0) ret[1] = mint(1);\n\
+    \        for (int i : rep(2, n + 1)) ret[i] = (-ret[mint::mod() % i]) * (mint::mod()\
+    \ / i);\n        for (int i : rep(n)) ret[i + 1] *= (*this)[i];\n        return\
+    \ ret;\n    }\n    fps inv(int d = -1) const {\n        if (d == -1) d = this->size();\n\
+    \        fps ret{(*this)[0].inv()};\n        for (int m = 1; m < d; m <<= 1) ret\
+    \ = (ret + ret - ret * ret * this->prefix(m << 1)).prefix(m << 1);\n        return\
+    \ ret.prefix(d);\n    }\n    fps log(int d = -1) const {\n        assert((*this)[0]\
+    \ == mint(1));\n        if (d == -1) d = this->size();\n        return (this->differential()\
+    \ * this->inv(d)).prefix(d - 1).integral();\n    }\n    fps exp(int d = -1) const\
+    \ {\n        assert(this->size() == 0 || (*this)[0] == mint(0));\n        if (d\
+    \ == -1) d = this->size();\n        fps ret{1};\n        for (int m = 1; m < d;\
+    \ m <<= 1) ret = (ret * (this->prefix(m << 1) + mint(1) - ret.log(m << 1))).prefix(m\
+    \ << 1);\n        return ret.prefix(d);\n    }\n    fps pow(ll k, int d = -1)\
+    \ const {\n        if (d == -1) d = this->size();\n        for (int i : rep(this->size()))\
+    \ {\n            if ((*this)[i] != mint(0)) {\n                if (i * k > d)\
+    \ return fps(d);\n                fps ret = (((*this * (*this)[i].inv()) >> i).log(d)\
+    \ * mint(k)).exp(d) * ((*this)[i].pow(k));\n                ret = (ret << (i *\
+    \ k)).prefix(d);\n                ret.resize(d);\n                return ret;\n\
+    \            }\n        }\n        return fps(d);\n    }\n    friend fps operator+(const\
+    \ fps &a) { return a; }\n    friend fps operator-(const fps &a) { return fps()\
+    \ -= a; }\n    friend fps operator+(const fps &a, const fps &b) { return fps(a)\
+    \ += b; }\n    friend fps operator-(const fps &a, const fps &b) { return fps(a)\
+    \ -= b; }\n    friend fps operator*(const fps &a, const fps &b) { return fps(a)\
+    \ *= b; }\n    friend fps operator>>(const fps &a, int d) { return fps(a) >>=\
+    \ d; }\n    friend fps operator<<(const fps &a, int d) { return fps(a) <<= d;\
+    \ }\n};\n\nusing m9 = modint<998244353>;\n\ntemplate <> fps<m9> &fps<m9>::operator*=(const\
+    \ fps<m9> &a) {\n    *this = convolution(*this, a);\n    return *this;\n}\n\n\
+    template <> fps<m9> fps<m9>::inv(int d) const {\n    if (d == -1) d = this->size();\n\
+    \    fps ret{(*this)[0].inv()};\n    for (int m = 1; m < d; m <<= 1) {\n     \
+    \   fps f = this->prefix(m << 1);\n        fps g = ret;\n        f.resize(m <<\
+    \ 1), ntt(f);\n        g.resize(m << 1), ntt(g);\n        f.chdot(g);\n      \
+    \  intt(f);\n        f >>= m, f.resize(m << 1), ntt(f);\n        f.chdot(g);\n\
+    \        intt(f);\n        f = -f;\n        ret.insert(ret.end(), f.begin(), f.begin()\
+    \ + m);\n    }\n    return ret.prefix(d);\n}\n\ntemplate <> fps<m9> fps<m9>::exp(int\
+    \ d) const {\n    using mint = m9;\n    assert(this->size() == 0 || (*this)[0]\
+    \ == mint(0));\n    if (d == -1) d = this->size();\n    fps ret{1}, g{1}, g_freq{1};\n\
+    \    for (int m = 1; m < d; m <<= 1) {\n        fps ret_freq = ret.prefix(m);\n\
+    \        ret_freq.resize(m << 1), ntt(ret_freq);\n\n        fps g_cont = g_freq;\n\
+    \        for (int i : rep(m)) g_cont[i] *= ret_freq[i << 1];\n        intt(g_cont);\n\
+    \        g_cont >>= m >> 1;\n        g_cont.resize(m), ntt(g_cont);\n        g_cont.chdot(g_freq);\n\
+    \        intt(g_cont);\n        g_cont = -g_cont;\n        g.insert(g.end(), g_cont.begin(),\
+    \ g_cont.begin() + (m >> 1));\n\n        fps r = this->differential().prefix(m\
+    \ - 1);\n        r.resize(m), ntt(r);\n        for (int i : rep(m)) r[i] *= ret_freq[i\
+    \ << 1];\n        intt(r);\n\n        fps t = ret.differential() - r;\n      \
+    \  t.insert(t.begin(), t.back()), t.pop_back();\n        t.resize(m << 1), ntt(t);\n\
+    \        g_freq = g, g_freq.resize(m << 1), ntt(g_freq);\n        t.chdot(g_freq);\n\
+    \        intt(t), t.resize(m);\n\n        fps u = (this->prefix(m << 1) - (t <<\
+    \ m - 1).integral()) >> m;\n        u.resize(m << 1), ntt(u);\n        u.chdot(ret_freq);\n\
+    \        intt(u);\n\n        ret += u.prefix(m) << m;\n    }\n    return ret.prefix(d);\n\
     }\n#line 6 \"math/subset_convolution.hpp\"\n\ntemplate <typename T> vector<fps<T>>\
     \ attach(const vector<T> &a) {\n    vector<fps<T>> ret(a.size());\n    for (int\
     \ i : rep(a.size())) {\n        int j = __builtin_popcount(i);\n        ret[i].resize(j\
@@ -235,8 +234,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-12 03:43:05+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-12 11:47:10+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
 layout: document

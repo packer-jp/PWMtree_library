@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/wf.hpp
     title: "Warshall-Floyd \u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -52,7 +52,7 @@ data:
     \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
     \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"graph/wf.hpp\"\
-    \n\ntemplate <typename C> void wf(vector<vector<C>> &adj, C inf = numeric_limits<C>::max())\
+    \n\ntemplate <typename T> void wf(vector<vector<T>> &adj, T inf = numeric_limits<T>::max())\
     \ {\n    int n = adj.size();\n    for (int k : rep(n)) {\n        for (int i :\
     \ rep(n)) {\n            for (int j : rep(n)) {\n                if (adj[i][k]\
     \ != inf && adj[k][j] != inf) chmin(adj[i][j], adj[i][k] + adj[k][j]);\n     \
@@ -84,7 +84,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-11 18:20:30+09:00'
+  timestamp: '2021-09-12 11:47:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
