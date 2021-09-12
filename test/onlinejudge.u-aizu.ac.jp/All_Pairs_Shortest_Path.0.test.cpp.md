@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/wf.hpp
     title: "Warshall-Floyd \u6CD5"
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/1/GRL_1_C
@@ -23,33 +23,32 @@ data:
     using namespace std;\n\n#define all(a) (a).begin(), (a).end()\nusing ll = long\
     \ long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll\
     \ = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr\
-    \ ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ull bit(int n) { return\
-    \ 1ull << n; }\nconstexpr ll sign(ll a) { return (a > 0) - (a < 0); }\nconstexpr\
-    \ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr ll\
-    \ cdiv(ll a, ll b) { return -fdiv(-a, b); }\ntemplate <typename T> constexpr T\
-    \ sq(const T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev\
-    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T, typename\
-    \ U> bool chmax(T &a, const U &b) { return a < b ? a = b, true : false; }\ntemplate\
-    \ <typename T, typename U> bool chmin(T &a, const U &b) { return a > b ? a = b,\
-    \ true : false; }\ntemplate <typename T> ostream &operator<<(ostream &os, const\
-    \ vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
-    \ itr++) { os << *itr << (next(itr) != a.end() ? \", \" : \"\"); }\n    os <<\
-    \ \")\";\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n\
-    #else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail>\
-    \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
-    \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
-    \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
-    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
-    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
-    \ operator!=(const itr &i) const { return v != i.v; }\n    };\n    ll l, r;\n\
-    \    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll r) : l(min(l, r)),\
-    \ r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n        itr(ll v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        ll operator*() const\
-    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n    per(ll\
-    \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
-    \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
+    \ ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return\
+    \ (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b)\
+    \ < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr\
+    \ ull bit(int n) { return 1ull << n; }\ntemplate <typename T> constexpr T sq(const\
+    \ T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+    \ vector<T>, greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a,\
+    \ const U &b) { return a < b ? a = b, true : false; }\ntemplate <typename T, typename\
+    \ U> bool chmin(T &a, const U &b) { return a > b ? a = b, true : false; }\ntemplate\
+    \ <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n    os\
+    \ << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os << *itr\
+    \ << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n    return os;\n\
+    }\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n#else\nvoid debug() { cerr\
+    \ << endl; }\ntemplate <typename Head, typename... Tail> void debug(Head &&head,\
+    \ Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail)) cerr << \",\
+    \ \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__ << \": \" <<\
+    \ #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep {\n    struct\
+    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
+    \ { ++v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
+    \ i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll l, ll r) : l(l),\
+    \ r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const { return l; };\n\
+    \    itr end() const { return r; };\n};\nstruct per {\n    struct itr {\n    \
+    \    ll v;\n        itr(ll v) : v(v) {}\n        void operator++() { --v; }\n\
+    \        ll operator*() const { return v; }\n        bool operator!=(itr i) const\
+    \ { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l), r(r) {}\n\
+    \    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1; };\n    itr\
+    \ end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
     \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"graph/wf.hpp\"\
     \n\ntemplate <typename T> void wf(vector<vector<T>> &adj, T inf = numeric_limits<T>::max())\
@@ -84,8 +83,8 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-12 11:47:10+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-12 15:48:51+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
 layout: document

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/rolling_hash.hpp
     title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - icon: ':question:'
     path: template.hpp
     title: template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: util/xorshift.hpp
     title: Xorshift
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/14/ALDS1_14_B
@@ -26,11 +26,11 @@ data:
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\n\
     using vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\n\
-    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ull bit(int n)\
-    \ { return 1ull << n; }\nconstexpr ll sign(ll a) { return (a > 0) - (a < 0); }\n\
-    constexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr\
-    \ ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\ntemplate <typename T> constexpr\
-    \ T sq(const T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev\
+    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a)\
+    \ { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b\
+    \ - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a,\
+    \ b); }\nconstexpr ull bit(int n) { return 1ull << n; }\ntemplate <typename T>\
+    \ constexpr T sq(const T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev\
     \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T, typename\
     \ U> bool chmax(T &a, const U &b) { return a < b ? a = b, true : false; }\ntemplate\
     \ <typename T, typename U> bool chmin(T &a, const U &b) { return a > b ? a = b,\
@@ -44,16 +44,15 @@ data:
     \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
     \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
     \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
-    \ operator!=(const itr &i) const { return v != i.v; }\n    };\n    ll l, r;\n\
-    \    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll r) : l(min(l, r)),\
-    \ r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n        itr(ll v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        ll operator*() const\
-    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n    per(ll\
-    \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
-    \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
-    \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \ operator!=(itr i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll\
+    \ l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
+    \ { --v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
+    \ i) const { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l),\
+    \ r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1;\
+    \ };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static\
+    \ constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 2 \"util/xorshift.hpp\"\
     \n\n#line 4 \"util/xorshift.hpp\"\n\ntemplate <typename T> T xor64(T lb, T ub)\
     \ {\n    static ull x = 88172645463325252ull;\n    x ^= x << 7;\n    return lb\
@@ -75,15 +74,15 @@ data:
     \ l, int r) const { return calc_mod((MOD << 2) - mul(hash[l], pb[r - l]) + hash[r]);\
     \ }\n};\nvector<ull> rolling_hash::pb{1, xor64(MOD >> 1, MOD)};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp\"\
     \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp\"\nusing\
-    \ namespace std;\n\nint main() {\n    string T, P;\n    cin >> T >> P;\n    rolling_hash\
-    \ Th(T), Ph(P);\n    for (int i : rep((int)T.size() - (int)P.size() + 1)) {\n\
-    \        if (Th.get_hash(i, i + P.size()) == Ph.get_hash(0, P.size())) cout <<\
+    \ namespace std;\n\nint main() {\n    string t, p;\n    cin >> t >> p;\n    rolling_hash\
+    \ th(t), ph(p);\n    for (int i : rep((int)t.size() - (int)p.size() + 1)) {\n\
+    \        if (th.get_hash(i, i + p.size()) == ph.get_hash(0, p.size())) cout <<\
     \ i << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/14/ALDS1_14_B\"\
     \n#include \"../../string/rolling_hash.hpp\"\n\n#include <bits/stdc++.h>\nusing\
-    \ namespace std;\n\nint main() {\n    string T, P;\n    cin >> T >> P;\n    rolling_hash\
-    \ Th(T), Ph(P);\n    for (int i : rep((int)T.size() - (int)P.size() + 1)) {\n\
-    \        if (Th.get_hash(i, i + P.size()) == Ph.get_hash(0, P.size())) cout <<\
+    \ namespace std;\n\nint main() {\n    string t, p;\n    cin >> t >> p;\n    rolling_hash\
+    \ th(t), ph(p);\n    for (int i : rep((int)t.size() - (int)p.size() + 1)) {\n\
+    \        if (th.get_hash(i, i + p.size()) == ph.get_hash(0, p.size())) cout <<\
     \ i << endl;\n    }\n}"
   dependsOn:
   - string/rolling_hash.hpp
@@ -92,8 +91,8 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-12 04:41:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-12 15:48:51+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
 layout: document

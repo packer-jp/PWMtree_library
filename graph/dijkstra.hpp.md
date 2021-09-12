@@ -6,23 +6,23 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
     title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\n\
     using vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\n\
-    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ull bit(int n)\
-    \ { return 1ull << n; }\nconstexpr ll sign(ll a) { return (a > 0) - (a < 0); }\n\
-    constexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr\
-    \ ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\ntemplate <typename T> constexpr\
-    \ T sq(const T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev\
+    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a)\
+    \ { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b\
+    \ - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a,\
+    \ b); }\nconstexpr ull bit(int n) { return 1ull << n; }\ntemplate <typename T>\
+    \ constexpr T sq(const T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev\
     \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T, typename\
     \ U> bool chmax(T &a, const U &b) { return a < b ? a = b, true : false; }\ntemplate\
     \ <typename T, typename U> bool chmin(T &a, const U &b) { return a > b ? a = b,\
@@ -36,23 +36,38 @@ data:
     \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
     \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
     \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
-    \ operator!=(const itr &i) const { return v != i.v; }\n    };\n    ll l, r;\n\
-    \    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll r) : l(min(l, r)),\
-    \ r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n        itr(ll v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        ll operator*() const\
-    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n    per(ll\
-    \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
-    \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
-    \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \ operator!=(itr i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll\
+    \ l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
+    \ { --v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
+    \ i) const { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l),\
+    \ r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1;\
+    \ };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static\
+    \ constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"graph/dijkstra.hpp\"\
     \n\ntemplate <typename S> struct dijkstra {\n    using D = typename S::dist_t;\n\
     \    using C = typename S::cost_t;\n    struct edge {\n        int to;\n     \
-    \   C cost;\n        edge(int to, C cost) : to(to), cost(cost) {}\n    };\n  \
-    \  vector<vector<edge>> adj;\n    dijkstra(int n) : adj(n) {}\n    void add_edge(int\
-    \ from, int to, const C &cost) { adj[from].emplace_back(to, cost); }\n    pair<vector<D>,\
-    \ vector<int>> get(int s, const D &base = D()) const {\n        vector<D> dist(adj.size(),\
+    \   C cost;\n    };\n    vector<vector<edge>> adj;\n    dijkstra(int n) : adj(n)\
+    \ {}\n    void add_edge(int from, int to, const C &cost) { adj[from].push_back({to,\
+    \ cost}); }\n    pair<vector<D>, vector<int>> get(int s, const D &base = D())\
+    \ const {\n        vector<D> dist(adj.size(), S::inf());\n        vector<int>\
+    \ prev(adj.size(), -1);\n        using P = pair<D, int>;\n        priority_queue_rev<P>\
+    \ pq;\n        dist[s] = base;\n        pq.emplace(base, s);\n        while (!pq.empty())\
+    \ {\n            auto [d, from] = pq.top();\n            pq.pop();\n         \
+    \   if (dist[from] < d) continue;\n            for (auto [to, cost] : adj[from])\
+    \ {\n                D nd = d + cost;\n                if (nd < dist[to]) {\n\
+    \                    dist[to] = nd;\n                    prev[to] = from;\n  \
+    \                  pq.emplace(nd, to);\n                }\n            }\n   \
+    \     }\n        return {dist, prev};\n    }\n};\n\nstruct ll_dij {\n    using\
+    \ dist_t = ll;\n    using cost_t = ll;\n    static dist_t inf() { return LLONG_MAX;\
+    \ }\n};\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename S> struct\
+    \ dijkstra {\n    using D = typename S::dist_t;\n    using C = typename S::cost_t;\n\
+    \    struct edge {\n        int to;\n        C cost;\n    };\n    vector<vector<edge>>\
+    \ adj;\n    dijkstra(int n) : adj(n) {}\n    void add_edge(int from, int to, const\
+    \ C &cost) { adj[from].push_back({to, cost}); }\n    pair<vector<D>, vector<int>>\
+    \ get(int s, const D &base = D()) const {\n        vector<D> dist(adj.size(),\
     \ S::inf());\n        vector<int> prev(adj.size(), -1);\n        using P = pair<D,\
     \ int>;\n        priority_queue_rev<P> pq;\n        dist[s] = base;\n        pq.emplace(base,\
     \ s);\n        while (!pq.empty()) {\n            auto [d, from] = pq.top();\n\
@@ -62,31 +77,14 @@ data:
     \               prev[to] = from;\n                    pq.emplace(nd, to);\n  \
     \              }\n            }\n        }\n        return {dist, prev};\n   \
     \ }\n};\n\nstruct ll_dij {\n    using dist_t = ll;\n    using cost_t = ll;\n \
-    \   static dist_t inf() { return LLONG_MAX; }\n};\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename S> struct\
-    \ dijkstra {\n    using D = typename S::dist_t;\n    using C = typename S::cost_t;\n\
-    \    struct edge {\n        int to;\n        C cost;\n        edge(int to, C cost)\
-    \ : to(to), cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n    dijkstra(int\
-    \ n) : adj(n) {}\n    void add_edge(int from, int to, const C &cost) { adj[from].emplace_back(to,\
-    \ cost); }\n    pair<vector<D>, vector<int>> get(int s, const D &base = D()) const\
-    \ {\n        vector<D> dist(adj.size(), S::inf());\n        vector<int> prev(adj.size(),\
-    \ -1);\n        using P = pair<D, int>;\n        priority_queue_rev<P> pq;\n \
-    \       dist[s] = base;\n        pq.emplace(base, s);\n        while (!pq.empty())\
-    \ {\n            auto [d, from] = pq.top();\n            pq.pop();\n         \
-    \   if (dist[from] < d) continue;\n            for (auto [to, cost] : adj[from])\
-    \ {\n                D nd = d + cost;\n                if (nd < dist[to]) {\n\
-    \                    dist[to] = nd;\n                    prev[to] = from;\n  \
-    \                  pq.emplace(nd, to);\n                }\n            }\n   \
-    \     }\n        return {dist, prev};\n    }\n};\n\nstruct ll_dij {\n    using\
-    \ dist_t = ll;\n    using cost_t = ll;\n    static dist_t inf() { return LLONG_MAX;\
-    \ }\n};"
+    \   static dist_t inf() { return LLONG_MAX; }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2021-09-11 18:03:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-12 15:48:51+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
 documentation_of: graph/dijkstra.hpp

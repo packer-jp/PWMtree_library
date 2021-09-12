@@ -5,7 +5,7 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   - icon: ':x:'
@@ -15,16 +15,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
   - icon: ':x:'
@@ -39,11 +39,11 @@ data:
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\n\
     using vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\n\
-    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ull bit(int n)\
-    \ { return 1ull << n; }\nconstexpr ll sign(ll a) { return (a > 0) - (a < 0); }\n\
-    constexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr\
-    \ ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\ntemplate <typename T> constexpr\
-    \ T sq(const T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev\
+    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a)\
+    \ { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b\
+    \ - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a,\
+    \ b); }\nconstexpr ull bit(int n) { return 1ull << n; }\ntemplate <typename T>\
+    \ constexpr T sq(const T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev\
     \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T, typename\
     \ U> bool chmax(T &a, const U &b) { return a < b ? a = b, true : false; }\ntemplate\
     \ <typename T, typename U> bool chmin(T &a, const U &b) { return a > b ? a = b,\
@@ -57,16 +57,15 @@ data:
     \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
     \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
     \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
-    \ operator!=(const itr &i) const { return v != i.v; }\n    };\n    ll l, r;\n\
-    \    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll r) : l(min(l, r)),\
-    \ r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n        itr(ll v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        ll operator*() const\
-    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n    per(ll\
-    \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
-    \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
-    \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \ operator!=(itr i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll\
+    \ l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
+    \ { --v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
+    \ i) const { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l),\
+    \ r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1;\
+    \ };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static\
+    \ constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"math/convolution.hpp\"\
     \n\ntemplate <typename mint> void ntt(vector<mint> &a, bool inv = false) {\n \
     \   int n = a.size(), m = n >> 1;\n    mint root = 2;\n    while (root.pow((mint::mod()\
@@ -120,7 +119,7 @@ data:
   requiredBy:
   - math/subset_convolution.hpp
   - math/fps.hpp
-  timestamp: '2021-09-12 11:47:10+09:00'
+  timestamp: '2021-09-12 15:48:51+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp

@@ -15,11 +15,11 @@ data:
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\n\
     using vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\n\
-    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ull bit(int n)\
-    \ { return 1ull << n; }\nconstexpr ll sign(ll a) { return (a > 0) - (a < 0); }\n\
-    constexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr\
-    \ ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\ntemplate <typename T> constexpr\
-    \ T sq(const T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev\
+    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a)\
+    \ { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b\
+    \ - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a,\
+    \ b); }\nconstexpr ull bit(int n) { return 1ull << n; }\ntemplate <typename T>\
+    \ constexpr T sq(const T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev\
     \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T, typename\
     \ U> bool chmax(T &a, const U &b) { return a < b ? a = b, true : false; }\ntemplate\
     \ <typename T, typename U> bool chmin(T &a, const U &b) { return a > b ? a = b,\
@@ -33,22 +33,20 @@ data:
     \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
     \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
     \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
-    \ operator!=(const itr &i) const { return v != i.v; }\n    };\n    ll l, r;\n\
-    \    rep(ll r) : l(min(0ll, r)), r(r) {}\n    rep(ll l, ll r) : l(min(l, r)),\
-    \ r(r) {}\n    itr begin() const { return l; };\n    itr end() const { return\
-    \ r; };\n};\nstruct per {\n    struct itr {\n        ll v;\n        itr(ll v)\
-    \ : v(v) {}\n        void operator++() { --v; }\n        ll operator*() const\
-    \ { return v; }\n        bool operator!=(const itr &i) const { return v != i.v;\
-    \ }\n    };\n    ll l, r;\n    per(ll r) : l(min(0ll, r)), r(r) {}\n    per(ll\
-    \ l, ll r) : l(min(l, r)), r(r) {}\n    itr begin() const { return r - 1; };\n\
-    \    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
-    \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \ operator!=(itr i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll\
+    \ l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
+    \ { --v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
+    \ i) const { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l),\
+    \ r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1;\
+    \ };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static\
+    \ constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"graph/oibfs.hpp\"\
-    \n\nstruct oibfs {\n    struct edge {\n        int to, cost;\n        edge(int\
-    \ to, int cost) : to(to), cost(cost) {}\n    };\n    vector<vector<edge>> adj;\n\
-    \    oibfs(int n) : adj(n) {}\n    void add_edge(int from, int to, int cost) {\
-    \ adj[from].emplace_back(to, cost); }\n    pair<vector<int>, vector<int>> get(int\
-    \ s) const {\n        vector<int> dist(adj.size(), INT_MAX), prev(adj.size(),\
+    \n\nstruct oibfs {\n    struct edge {\n        int to, cost;\n    };\n    vector<vector<edge>>\
+    \ adj;\n    oibfs(int n) : adj(n) {}\n    void add_edge(int from, int to, int\
+    \ cost) { adj[from].push_back({to, cost}); }\n    pair<vector<int>, vector<int>>\
+    \ get(int s) const {\n        vector<int> dist(adj.size(), INT_MAX), prev(adj.size(),\
     \ -1);\n        using P = pair<int, int>;\n        deque<P> deq;\n        dist[s]\
     \ = 0;\n        deq.emplace_front(0, s);\n        while (!deq.empty()) {\n   \
     \         auto [d, from] = deq.front();\n            deq.pop_front();\n      \
@@ -59,10 +57,9 @@ data:
     \       if (cost == 1) deq.emplace_back(nd, to);\n                }\n        \
     \    }\n        }\n        return {dist, prev};\n    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct oibfs {\n    struct\
-    \ edge {\n        int to, cost;\n        edge(int to, int cost) : to(to), cost(cost)\
-    \ {}\n    };\n    vector<vector<edge>> adj;\n    oibfs(int n) : adj(n) {}\n  \
-    \  void add_edge(int from, int to, int cost) { adj[from].emplace_back(to, cost);\
-    \ }\n    pair<vector<int>, vector<int>> get(int s) const {\n        vector<int>\
+    \ edge {\n        int to, cost;\n    };\n    vector<vector<edge>> adj;\n    oibfs(int\
+    \ n) : adj(n) {}\n    void add_edge(int from, int to, int cost) { adj[from].push_back({to,\
+    \ cost}); }\n    pair<vector<int>, vector<int>> get(int s) const {\n        vector<int>\
     \ dist(adj.size(), INT_MAX), prev(adj.size(), -1);\n        using P = pair<int,\
     \ int>;\n        deque<P> deq;\n        dist[s] = 0;\n        deq.emplace_front(0,\
     \ s);\n        while (!deq.empty()) {\n            auto [d, from] = deq.front();\n\
@@ -78,7 +75,7 @@ data:
   isVerificationFile: false
   path: graph/oibfs.hpp
   requiredBy: []
-  timestamp: '2021-09-12 00:37:31+09:00'
+  timestamp: '2021-09-12 15:48:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/oibfs.hpp
