@@ -1,9 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/and_or_convolution.hpp
-    title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
+    title: "and / or \u7573\u307F\u8FBC\u307F"
+  - icon: ':heavy_check_mark:'
+    path: math/fzt_fmt.hpp
+    title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
   - icon: ':question:'
     path: template.hpp
     title: template.hpp
@@ -63,8 +66,8 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"math/and_or_convolution.hpp\"\n\ntemplate <typename\
-    \ T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
+    \    };\n} iOS;\n#line 2 \"math/fzt_fmt.hpp\"\n\n#line 4 \"math/fzt_fmt.hpp\"\n\
+    \ntemplate <typename T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
     \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
     \ a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
     \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
@@ -74,23 +77,24 @@ data:
     \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
     }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
     \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
-    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> vector<T>\
-    \ and_convolution(vector<T> a, vector<T> b) {\n    int _n = max(a.size(), b.size()),\
-    \ n;\n    for (n = 1; n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n   \
-    \ fzt_super(a), fzt_super(b);\n    for (int i : rep(n)) a[i] *= b[i];\n    fmt_super(a);\n\
-    \    return a;\n}\n\ntemplate <typename T> vector<T> or_convolution(vector<T>\
-    \ a, vector<T> b) {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1;\
-    \ n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    fzt_sub(a), fzt_sub(b);\n\
-    \    for (int i : rep(n)) a[i] *= b[i];\n    fmt_sub(a);\n    return a;\n}\n#line\
-    \ 4 \"test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\n\n#line 6 \"test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\
-    \nusing namespace std;\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n   \
-    \ vll a(n), p(n);\n    for (ll i : rep(n)) cin >> a[i];\n    for (ll i : rep(n))\
-    \ cin >> p[i];\n    vector<ll> x(bit(n));\n    for (ll i : rep(bit(n))) {\n  \
-    \      ll l = 1;\n        for (ll j : rep(n)) {\n            if ((i >> j) & 1)\
-    \ {\n                if (l) {\n                    ll d = l / gcd(l, a[j]);\n\
-    \                    l = (__int128_t)d * a[j] > m ? 0 : d * a[j];\n          \
-    \      }\n            }\n        }\n        if (l) x[i] = m / l;\n    }\n    fzt_super(x);\n\
-    \    fmt_super(x);\n    fzt_sub(x);\n    fmt_sub(x);\n\n    fmt_sub(x);\n    double\
+    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n#line 5 \"math/and_or_convolution.hpp\"\
+    \n\ntemplate <typename T> vector<T> and_convolution(vector<T> a, vector<T> b)\
+    \ {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1; n < _n; n <<= 1)\
+    \ {}\n    a.resize(n), b.resize(n);\n    fzt_super(a), fzt_super(b);\n    for\
+    \ (int i : rep(n)) a[i] *= b[i];\n    fmt_super(a);\n    return a;\n}\n\ntemplate\
+    \ <typename T> vector<T> or_convolution(vector<T> a, vector<T> b) {\n    int _n\
+    \ = max(a.size(), b.size()), n;\n    for (n = 1; n < _n; n <<= 1) {}\n    a.resize(n),\
+    \ b.resize(n);\n    fzt_sub(a), fzt_sub(b);\n    for (int i : rep(n)) a[i] *=\
+    \ b[i];\n    fmt_sub(a);\n    return a;\n}\n#line 4 \"test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\
+    \n\n#line 6 \"test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\nusing namespace\
+    \ std;\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    vll a(n), p(n);\n\
+    \    for (ll i : rep(n)) cin >> a[i];\n    for (ll i : rep(n)) cin >> p[i];\n\
+    \    vector<ll> x(bit(n));\n    for (ll i : rep(bit(n))) {\n        ll l = 1;\n\
+    \        for (ll j : rep(n)) {\n            if ((i >> j) & 1) {\n            \
+    \    if (l) {\n                    ll d = l / gcd(l, a[j]);\n                \
+    \    l = (__int128_t)d * a[j] > m ? 0 : d * a[j];\n                }\n       \
+    \     }\n        }\n        if (l) x[i] = m / l;\n    }\n    fzt_super(x);\n \
+    \   fmt_super(x);\n    fzt_sub(x);\n    fmt_sub(x);\n\n    fmt_sub(x);\n    double\
     \ ans = 0;\n    for (ll i : rep(bit(n))) {\n        double q = 1;\n        for\
     \ (ll j : rep(n)) {\n            if ((i >> j) & 1) {\n                q *= p[j]\
     \ / 100.0;\n            } else {\n                q *= (1 - p[j] / 100.0);\n \
@@ -114,10 +118,11 @@ data:
   dependsOn:
   - math/and_or_convolution.hpp
   - template.hpp
+  - math/fzt_fmt.hpp
   isVerificationFile: true
   path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-13 23:45:47+09:00'
+  timestamp: '2021-09-14 02:34:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp

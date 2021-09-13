@@ -75,21 +75,21 @@ data:
     \ {\n                D nd = d + cost;\n                if (nd < dist[to]) {\n\
     \                    dist[to] = nd;\n                    prev[to] = from;\n  \
     \                  pq.emplace(nd, to);\n                }\n            }\n   \
-    \     }\n        return {dist, prev};\n    }\n};\n\nstruct ll_dij {\n    using\
-    \ dist_t = ll;\n    using cost_t = ll;\n    static dist_t inf() { return LLONG_MAX;\
-    \ }\n};\n#line 3 \"test/judge.yosupo.jp/Shortest_Path.0.test.cpp\"\n\nint main()\
-    \ {\n    ll n, m, s, t;\n    cin >> n >> m >> s >> t;\n    dijkstra<ll_dij> dij(n);\n\
-    \    while (m--) {\n        int a, b, c;\n        cin >> a >> b >> c;\n      \
-    \  dij.add_edge(a, b, c);\n    }\n    auto [dist, prev] = dij.get(s);\n    if\
-    \ (prev[t] == -1) {\n        cout << -1 << endl;\n        return 0;\n    }\n \
-    \   vector<ll> vs{t};\n    do {\n        ll back = vs.back();\n        vs.push_back(prev[back]);\n\
+    \     }\n        return {dist, prev};\n    }\n};\n\nstruct ll_dijkstra {\n   \
+    \ using dist_t = ll;\n    using cost_t = ll;\n    static dist_t inf() { return\
+    \ LLONG_MAX; }\n};\n#line 3 \"test/judge.yosupo.jp/Shortest_Path.0.test.cpp\"\n\
+    \nint main() {\n    ll n, m, s, t;\n    cin >> n >> m >> s >> t;\n    dijkstra<ll_dijkstra>\
+    \ dij(n);\n    while (m--) {\n        int a, b, c;\n        cin >> a >> b >> c;\n\
+    \        dij.add_edge(a, b, c);\n    }\n    auto [dist, prev] = dij.get(s);\n\
+    \    if (prev[t] == -1) {\n        cout << -1 << endl;\n        return 0;\n  \
+    \  }\n    vector<ll> vs{t};\n    do {\n        ll back = vs.back();\n        vs.push_back(prev[back]);\n\
     \    } while (vs.back() != s);\n    reverse(all(vs));\n    cout << dist[t] <<\
     \ \" \" << vs.size() - 1 << endl;\n    for (ll i : rep(vs.size() - 1)) cout <<\
     \ vs[i] << \" \" << vs[i + 1] << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n#include\
     \ \"../../graph/dijkstra.hpp\"\n\nint main() {\n    ll n, m, s, t;\n    cin >>\
-    \ n >> m >> s >> t;\n    dijkstra<ll_dij> dij(n);\n    while (m--) {\n       \
-    \ int a, b, c;\n        cin >> a >> b >> c;\n        dij.add_edge(a, b, c);\n\
+    \ n >> m >> s >> t;\n    dijkstra<ll_dijkstra> dij(n);\n    while (m--) {\n  \
+    \      int a, b, c;\n        cin >> a >> b >> c;\n        dij.add_edge(a, b, c);\n\
     \    }\n    auto [dist, prev] = dij.get(s);\n    if (prev[t] == -1) {\n      \
     \  cout << -1 << endl;\n        return 0;\n    }\n    vector<ll> vs{t};\n    do\
     \ {\n        ll back = vs.back();\n        vs.push_back(prev[back]);\n    } while\
@@ -102,7 +102,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
+  timestamp: '2021-09-14 02:34:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Shortest_Path.0.test.cpp

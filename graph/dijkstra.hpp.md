@@ -71,8 +71,8 @@ data:
     \           if (nd < dist[to]) {\n                    dist[to] = nd;\n       \
     \             prev[to] = from;\n                    pq.emplace(nd, to);\n    \
     \            }\n            }\n        }\n        return {dist, prev};\n    }\n\
-    };\n\nstruct ll_dij {\n    using dist_t = ll;\n    using cost_t = ll;\n    static\
-    \ dist_t inf() { return LLONG_MAX; }\n};\n"
+    };\n\nstruct ll_dijkstra {\n    using dist_t = ll;\n    using cost_t = ll;\n \
+    \   static dist_t inf() { return LLONG_MAX; }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename S> struct\
     \ dijkstra {\n    using D = typename S::dist_t;\n    using C = typename S::cost_t;\n\
     \    struct edge {\n        int to;\n        C cost;\n    };\n    vector<vector<edge>>\
@@ -87,14 +87,14 @@ data:
     \           if (nd < dist[to]) {\n                    dist[to] = nd;\n       \
     \             prev[to] = from;\n                    pq.emplace(nd, to);\n    \
     \            }\n            }\n        }\n        return {dist, prev};\n    }\n\
-    };\n\nstruct ll_dij {\n    using dist_t = ll;\n    using cost_t = ll;\n    static\
-    \ dist_t inf() { return LLONG_MAX; }\n};"
+    };\n\nstruct ll_dijkstra {\n    using dist_t = ll;\n    using cost_t = ll;\n \
+    \   static dist_t inf() { return LLONG_MAX; }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
+  timestamp: '2021-09-14 02:34:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Shortest_Path.0.test.cpp

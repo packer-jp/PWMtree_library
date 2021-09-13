@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/permutation.hpp
     title: "\u9806\u5217"
   - icon: ':question:'
@@ -9,15 +9,15 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja
-  bundledCode: "#line 1 \"test/unit/permutation.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja\"\
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"test/unit/permutation.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n#line 2 \"math/permutation.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#define all(a) (a).begin(), (a).end()\n#define uniq(a)\
     \ (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\nusing ull = unsigned\
@@ -96,7 +96,7 @@ data:
     \ / permutation(b) == permutation(a));\n    assert(permutation(a).pow(0) == permutation(e));\n\
     \    assert(permutation(a).pow(9) == permutation(a9));\n    assert(permutation(b).pow(6)\
     \ == permutation(b6));\n\n    cout << \"Hello World\" << endl;\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja\"\
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n#include \"../../math/permutation.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\nint main() {\n    vector<int> e = {0, 1, 2, 3, 4};\n    vector<int>\
     \ a = {3, 2, 1, 4, 0};\n    vector<int> b = {1, 2, 0, 3, 4};\n    vector<int>\
@@ -112,8 +112,8 @@ data:
   isVerificationFile: true
   path: test/unit/permutation.test.cpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-14 02:34:21+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/unit/permutation.test.cpp
 layout: document

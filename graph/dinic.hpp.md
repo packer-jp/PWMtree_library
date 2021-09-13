@@ -9,21 +9,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/dinic.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -70,7 +70,7 @@ data:
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
     \    };\n} iOS;\n#line 4 \"graph/dinic.hpp\"\n\ntemplate <typename S> struct dinic\
-    \ {\n    using C = typename S::cost_t;\n    struct _edge {\n        int to, rev;\n\
+    \ {\n    using C = typename S::cap_t;\n    struct _edge {\n        int to, rev;\n\
     \        C cap;\n    };\n    struct edge {\n        int from, to;\n        C cap,\
     \ flow;\n    };\n    vector<vector<_edge>> g;\n    vector<int> level, iter;\n\
     \    vector<pair<int, int>> pos;\n    dinic(int n) : g(n), level(n), iter(n) {}\n\
@@ -108,12 +108,12 @@ data:
     \ int v) -> void {\n            if (ret[v]) return;\n            ret[v] = true;\n\
     \            for (_edge e : g[v]) {\n                if (e.cap) dfs(dfs, e.to);\n\
     \            }\n        };\n        dfs(dfs, s);\n        return ret;\n    }\n\
-    };\n\nstruct ll_dinic {\n    using cost_t = ll;\n    static cost_t zero() { return\
-    \ 0; }\n    static cost_t inf() { return numeric_limits<cost_t>::max(); }\n};\n"
+    };\n\nstruct ll_dinic {\n    using cap_t = ll;\n    static cap_t zero() { return\
+    \ 0; }\n    static cap_t inf() { return numeric_limits<cap_t>::max(); }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename S> struct\
-    \ dinic {\n    using C = typename S::cost_t;\n    struct _edge {\n        int\
-    \ to, rev;\n        C cap;\n    };\n    struct edge {\n        int from, to;\n\
-    \        C cap, flow;\n    };\n    vector<vector<_edge>> g;\n    vector<int> level,\
+    \ dinic {\n    using C = typename S::cap_t;\n    struct _edge {\n        int to,\
+    \ rev;\n        C cap;\n    };\n    struct edge {\n        int from, to;\n   \
+    \     C cap, flow;\n    };\n    vector<vector<_edge>> g;\n    vector<int> level,\
     \ iter;\n    vector<pair<int, int>> pos;\n    dinic(int n) : g(n), level(n), iter(n)\
     \ {}\n    int add_edge(int from, int to, C cap) {\n        int from_id = g[from].size();\n\
     \        int to_id = g[to].size();\n        if (from == to) ++to_id;\n       \
@@ -149,15 +149,15 @@ data:
     \ int v) -> void {\n            if (ret[v]) return;\n            ret[v] = true;\n\
     \            for (_edge e : g[v]) {\n                if (e.cap) dfs(dfs, e.to);\n\
     \            }\n        };\n        dfs(dfs, s);\n        return ret;\n    }\n\
-    };\n\nstruct ll_dinic {\n    using cost_t = ll;\n    static cost_t zero() { return\
-    \ 0; }\n    static cost_t inf() { return numeric_limits<cost_t>::max(); }\n};"
+    };\n\nstruct ll_dinic {\n    using cap_t = ll;\n    static cap_t zero() { return\
+    \ 0; }\n    static cap_t inf() { return numeric_limits<cap_t>::max(); }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: graph/dinic.hpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-14 02:34:21+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp

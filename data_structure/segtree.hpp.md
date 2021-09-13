@@ -12,9 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/unit/hld.test.cpp
+    title: test/unit/hld.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/segtree.hpp\"\n\n#line 2 \"template.hpp\"\
@@ -126,8 +129,9 @@ data:
   path: data_structure/segtree.hpp
   requiredBy: []
   timestamp: '2021-09-13 22:50:01+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/unit/hld.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
 documentation_of: data_structure/segtree.hpp

@@ -1,12 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
+    path: math/fwht.hpp
+    title: "\u9AD8\u901F\u30A6\u30A9\u30EB\u30B7\u30E5\u30FB\u30A2\u30C0\u30DE\u30FC\
+      \u30EB\u5909\u63DB"
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
   - icon: ':heavy_check_mark:'
     path: math/xor_convolution.hpp
-    title: "FWHT, xor \u7573\u307F\u8FBC\u307F"
+    title: "xor \u7573\u307F\u8FBC\u307F"
   - icon: ':question:'
     path: template.hpp
     title: template.hpp
@@ -90,17 +94,18 @@ data:
     \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\n#line 2 \"math/xor_convolution.hpp\"\
-    \n\n#line 4 \"math/xor_convolution.hpp\"\n\ntemplate <typename T> void fwht(vector<T>\
-    \ &a) {\n    int n = a.size();\n    for (int i = 1; i < n; i <<= 1) {\n      \
-    \  for (int j = 0; j < n; j += i << 1) {\n            for (int k : rep(i)) {\n\
-    \                T p = a[0 + j + k], q = a[i + j + k];\n                a[0 +\
-    \ j + k] = p + q;\n                a[i + j + k] = p - q;\n            }\n    \
-    \    }\n    }\n}\n\ntemplate <typename T> void ifwht(vector<T> &a) {\n    fwht(a);\n\
-    \    T ninv = T(1) / a.size();\n    for (T &ai : a) ai *= ninv;\n}\n\ntemplate\
-    \ <typename T> vector<T> xor_convolution(vector<T> a, vector<T> b) {\n    int\
-    \ _n = max(a.size(), b.size()), n;\n    for (n = 1; n < _n; n <<= 1) {}\n    a.resize(n),\
-    \ b.resize(n);\n    fwht(a), fwht(b);\n    for (int i : rep(n)) a[i] *= b[i];\n\
-    \    ifwht(a);\n    return a;\n}\n#line 4 \"test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp\"\
+    \n\n#line 2 \"math/fwht.hpp\"\n\n#line 4 \"math/fwht.hpp\"\n\ntemplate <typename\
+    \ T> void fwht(vector<T> &a) {\n    int n = a.size();\n    for (int i = 1; i <\
+    \ n; i <<= 1) {\n        for (int j = 0; j < n; j += i << 1) {\n            for\
+    \ (int k : rep(i)) {\n                T p = a[0 + j + k], q = a[i + j + k];\n\
+    \                a[0 + j + k] = p + q;\n                a[i + j + k] = p - q;\n\
+    \            }\n        }\n    }\n}\n\ntemplate <typename T> void ifwht(vector<T>\
+    \ &a) {\n    fwht(a);\n    T ninv = T(1) / a.size();\n    for (T &ai : a) ai *=\
+    \ ninv;\n}\n#line 5 \"math/xor_convolution.hpp\"\n\ntemplate <typename T> vector<T>\
+    \ xor_convolution(vector<T> a, vector<T> b) {\n    int _n = max(a.size(), b.size()),\
+    \ n;\n    for (n = 1; n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n   \
+    \ fwht(a), fwht(b);\n    for (int i : rep(n)) a[i] *= b[i];\n    ifwht(a);\n \
+    \   return a;\n}\n#line 4 \"test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp\"\
     \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
     \    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint>\
     \ a(bit(n)), b(bit(n));\n    for (ll i : rep(bit(n))) cin >> a[i];\n    for (ll\
@@ -117,10 +122,11 @@ data:
   - math/modint.hpp
   - template.hpp
   - math/xor_convolution.hpp
+  - math/fwht.hpp
   isVerificationFile: true
   path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
+  timestamp: '2021-09-14 02:38:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp

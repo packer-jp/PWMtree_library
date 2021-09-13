@@ -1,14 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: math/fwht.hpp
-    title: "\u9AD8\u901F\u30A6\u30A9\u30EB\u30B7\u30E5\u30FB\u30A2\u30C0\u30DE\u30FC\
-      \u30EB\u5909\u63DB"
   - icon: ':question:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: math/xor_convolution.hpp
+    title: "xor \u7573\u307F\u8FBC\u307F"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
@@ -18,16 +17,16 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/xor_convolution.hpp\"\n\n#line 2 \"template.hpp\"\n\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
-    \ (a).end()\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll =\
-    \ long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing\
-    \ vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr\
-    \ ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return\
-    \ (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b)\
-    \ < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr\
-    \ ull bit(int n) { return 1ull << n; }\ntemplate <typename T> constexpr T sq(const\
-    \ T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+  bundledCode: "#line 2 \"math/fwht.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
+    #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
+    using ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\n\
+    constexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1,\
+    \ 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return (a > 0) - (a <\
+    \ 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b);\
+    \ }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr ull bit(int\
+    \ n) { return 1ull << n; }\ntemplate <typename T> constexpr T sq(const T &a) {\
+    \ return a * a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
     \ vector<T>, greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a,\
     \ const U &b) { return a < b ? a = b, true : false; }\ntemplate <typename T, typename\
     \ U> bool chmin(T &a, const U &b) { return a > b ? a = b, true : false; }\ntemplate\
@@ -61,37 +60,38 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 2 \"math/fwht.hpp\"\n\n#line 4 \"math/fwht.hpp\"\n\ntemplate\
-    \ <typename T> void fwht(vector<T> &a) {\n    int n = a.size();\n    for (int\
-    \ i = 1; i < n; i <<= 1) {\n        for (int j = 0; j < n; j += i << 1) {\n  \
-    \          for (int k : rep(i)) {\n                T p = a[0 + j + k], q = a[i\
-    \ + j + k];\n                a[0 + j + k] = p + q;\n                a[i + j +\
-    \ k] = p - q;\n            }\n        }\n    }\n}\n\ntemplate <typename T> void\
-    \ ifwht(vector<T> &a) {\n    fwht(a);\n    T ninv = T(1) / a.size();\n    for\
-    \ (T &ai : a) ai *= ninv;\n}\n#line 5 \"math/xor_convolution.hpp\"\n\ntemplate\
-    \ <typename T> vector<T> xor_convolution(vector<T> a, vector<T> b) {\n    int\
-    \ _n = max(a.size(), b.size()), n;\n    for (n = 1; n < _n; n <<= 1) {}\n    a.resize(n),\
-    \ b.resize(n);\n    fwht(a), fwht(b);\n    for (int i : rep(n)) a[i] *= b[i];\n\
-    \    ifwht(a);\n    return a;\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n#include \"fwht.hpp\"\n\ntemplate\
-    \ <typename T> vector<T> xor_convolution(vector<T> a, vector<T> b) {\n    int\
-    \ _n = max(a.size(), b.size()), n;\n    for (n = 1; n < _n; n <<= 1) {}\n    a.resize(n),\
-    \ b.resize(n);\n    fwht(a), fwht(b);\n    for (int i : rep(n)) a[i] *= b[i];\n\
-    \    ifwht(a);\n    return a;\n}"
+    \    };\n} iOS;\n#line 4 \"math/fwht.hpp\"\n\ntemplate <typename T> void fwht(vector<T>\
+    \ &a) {\n    int n = a.size();\n    for (int i = 1; i < n; i <<= 1) {\n      \
+    \  for (int j = 0; j < n; j += i << 1) {\n            for (int k : rep(i)) {\n\
+    \                T p = a[0 + j + k], q = a[i + j + k];\n                a[0 +\
+    \ j + k] = p + q;\n                a[i + j + k] = p - q;\n            }\n    \
+    \    }\n    }\n}\n\ntemplate <typename T> void ifwht(vector<T> &a) {\n    fwht(a);\n\
+    \    T ninv = T(1) / a.size();\n    for (T &ai : a) ai *= ninv;\n}\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> void\
+    \ fwht(vector<T> &a) {\n    int n = a.size();\n    for (int i = 1; i < n; i <<=\
+    \ 1) {\n        for (int j = 0; j < n; j += i << 1) {\n            for (int k\
+    \ : rep(i)) {\n                T p = a[0 + j + k], q = a[i + j + k];\n       \
+    \         a[0 + j + k] = p + q;\n                a[i + j + k] = p - q;\n     \
+    \       }\n        }\n    }\n}\n\ntemplate <typename T> void ifwht(vector<T> &a)\
+    \ {\n    fwht(a);\n    T ninv = T(1) / a.size();\n    for (T &ai : a) ai *= ninv;\n\
+    }"
   dependsOn:
   - template.hpp
-  - math/fwht.hpp
   isVerificationFile: false
-  path: math/xor_convolution.hpp
-  requiredBy: []
+  path: math/fwht.hpp
+  requiredBy:
+  - math/xor_convolution.hpp
   timestamp: '2021-09-14 02:38:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
-documentation_of: math/xor_convolution.hpp
+documentation_of: math/fwht.hpp
 layout: document
-title: "xor \u7573\u307F\u8FBC\u307F"
+title: "\u9AD8\u901F\u30A6\u30A9\u30EB\u30B7\u30E5\u30FB\u30A2\u30C0\u30DE\u30FC\u30EB\
+  \u5909\u63DB"
 ---
 
 ## 概要
-- 高速ウォルシュ・アダマール変換を用いた xor 畳み込みを行う。
+- 高速ウォルシュ・アダマール変換を行う。
+
+- [cympfh さんの記事](https://cympfh.cc/aiura/hadamard-xor-convolution)

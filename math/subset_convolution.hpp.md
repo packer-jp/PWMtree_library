@@ -1,29 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: math/and_or_convolution.hpp
-    title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
-    title: "NTT, \u7573\u307F\u8FBC\u307F"
-  - icon: ':question:'
+    title: "\u7573\u307F\u8FBC\u307F"
+  - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
+    path: math/fzt_fmt.hpp
+    title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
+  - icon: ':heavy_check_mark:'
+    path: math/ntt.hpp
+    title: "\u6570\u8AD6\u5909\u63DB"
   - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/subset_convolution.hpp\"\n\n#line 2 \"template.hpp\"\
@@ -69,47 +72,29 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 2 \"math/and_or_convolution.hpp\"\n\n#line 4 \"math/and_or_convolution.hpp\"\
-    \n\ntemplate <typename T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
-    \ a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
-    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
-    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> vector<T>\
-    \ and_convolution(vector<T> a, vector<T> b) {\n    int _n = max(a.size(), b.size()),\
-    \ n;\n    for (n = 1; n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n   \
-    \ fzt_super(a), fzt_super(b);\n    for (int i : rep(n)) a[i] *= b[i];\n    fmt_super(a);\n\
-    \    return a;\n}\n\ntemplate <typename T> vector<T> or_convolution(vector<T>\
-    \ a, vector<T> b) {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1;\
-    \ n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    fzt_sub(a), fzt_sub(b);\n\
-    \    for (int i : rep(n)) a[i] *= b[i];\n    fmt_sub(a);\n    return a;\n}\n#line\
-    \ 2 \"math/fps.hpp\"\n\n#line 2 \"math/convolution.hpp\"\n\n#line 4 \"math/convolution.hpp\"\
-    \n\ntemplate <typename mint> void ntt(vector<mint> &a, bool inv = false) {\n \
-    \   int n = a.size(), m = n >> 1;\n    mint root = 2;\n    while (root.pow((mint::mod()\
-    \ - 1) >> 1) == 1) root += 1;\n    mint wn = root.pow((mint::mod() - 1) / n);\n\
-    \    if (inv) wn = wn.inv();\n    vector<mint> b(n);\n    for (int i = 1; i <\
-    \ n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint wj = 1;\n        for (int\
-    \ j = 0; j < m; j += i, wj *= wn) {\n            for (int k : rep(i)) {\n    \
-    \            b[0 + (j << 1) + k] = (a[0 + j + k] + a[m + j + k]);\n          \
-    \      b[i + (j << 1) + k] = (a[0 + j + k] - a[m + j + k]) * wj;\n           \
-    \ }\n        }\n    }\n    if (inv) {\n        mint ninv = mint(n).inv();\n  \
-    \      for (mint &ai : a) ai *= ninv;\n    }\n}\ntemplate <typename mint> void\
-    \ intt(vector<mint> &a) { ntt(a, true); }\n\ntemplate <typename T> vector<T> convolutio_nnaive(vector<T>\
+    \    };\n} iOS;\n#line 2 \"math/fps.hpp\"\n\n#line 2 \"math/convolution.hpp\"\n\
+    \n#line 2 \"math/ntt.hpp\"\n\n#line 4 \"math/ntt.hpp\"\n\ntemplate <typename mint>\
+    \ void ntt(vector<mint> &a, bool inv = false) {\n    int n = a.size(), m = n >>\
+    \ 1;\n    mint root = 2;\n    while (root.pow((mint::mod() - 1) >> 1) == 1) root\
+    \ += 1;\n    mint wn = root.pow((mint::mod() - 1) / n);\n    if (inv) wn = wn.inv();\n\
+    \    vector<mint> b(n);\n    for (int i = 1; i < n; i <<= 1, wn *= wn, swap(a,\
+    \ b)) {\n        mint wj = 1;\n        for (int j = 0; j < m; j += i, wj *= wn)\
+    \ {\n            for (int k : rep(i)) {\n                b[0 + (j << 1) + k] =\
+    \ (a[0 + j + k] + a[m + j + k]);\n                b[i + (j << 1) + k] = (a[0 +\
+    \ j + k] - a[m + j + k]) * wj;\n            }\n        }\n    }\n    if (inv)\
+    \ {\n        mint ninv = mint(n).inv();\n        for (mint &ai : a) ai *= ninv;\n\
+    \    }\n}\ntemplate <typename mint> void intt(vector<mint> &a) { ntt(a, true);\
+    \ }\n#line 5 \"math/convolution.hpp\"\n\ntemplate <typename T> vector<T> convolution_naive(vector<T>\
     \ a, vector<T> b) {\n    int na = a.size(), nb = b.size();\n    vector<T> c(na\
     \ + nb - 1);\n    if (na < nb) swap(a, b), swap(na, nb);\n    for (int i : rep(na))\
     \ {\n        for (int j : rep(nb)) c[i + j] += a[i] * b[j];\n    }\n    return\
-    \ c;\n}\n\ntemplate <typename mint> vector<mint> convolutio_nntt(vector<mint>\
+    \ c;\n}\n\ntemplate <typename mint> vector<mint> convolution_ntt(vector<mint>\
     \ a, vector<mint> b) {\n    int _n = a.size() + b.size() - 1, n;\n    for (n =\
     \ 1; n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n\
     \    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(_n);\n   \
     \ return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const vector<mint>\
     \ &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n   \
-    \     return convolutio_nnaive(a, b);\n    } else {\n        return convolutio_nntt(a,\
+    \     return convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a,\
     \ b);\n    }\n}\n#line 2 \"math/modint.hpp\"\n\n#line 4 \"math/modint.hpp\"\n\n\
     template <ll MOD = 1000000007> struct modint {\n    ll val;\n    modint(ll val\
     \ = 0) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD) {}\n    static\
@@ -207,40 +192,52 @@ data:
     \        intt(t), t.resize(m);\n\n        fps u = (this->prefix(m << 1) - (t <<\
     \ m - 1).integral()) >> m;\n        u.resize(m << 1), ntt(u);\n        u.chdot(ret_freq);\n\
     \        intt(u);\n\n        ret += u.prefix(m) << m;\n    }\n    return ret.prefix(d);\n\
-    }\n#line 6 \"math/subset_convolution.hpp\"\n\ntemplate <typename T> vector<fps<T>>\
-    \ attach(const vector<T> &a) {\n    vector<fps<T>> ret(a.size());\n    for (int\
-    \ i : rep(a.size())) {\n        int j = __builti_npopcount(i);\n        ret[i].resize(j\
-    \ + 1);\n        ret[i][j] = a[i];\n    }\n    return ret;\n}\n\ntemplate <typename\
-    \ T> vector<T> detach(const vector<fps<T>> &a) {\n    vector<T> ret(a.size());\n\
-    \    for (int i : rep(a.size())) ret[i] = a[i][__builti_npopcount(i)];\n    return\
-    \ ret;\n}\n\ntemplate <typename T> vector<T> subset_convolution(vector<T> a, vector<T>\
-    \ b) {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1; n < _n; n <<=\
-    \ 1) {}\n    a.resize(n), b.resize(n);\n    vector<fps<T>> a_ = attach(a), b_\
-    \ = attach(b);\n    fzt_sub(a_), fzt_sub(b_);\n    for (int i : rep(n)) a_[i]\
-    \ *= b_[i];\n    fmt_sub(a_);\n    return detach(a_);\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n#include \"and_or_convolution.hpp\"\
-    \n#include \"fps.hpp\"\n\ntemplate <typename T> vector<fps<T>> attach(const vector<T>\
+    }\n#line 2 \"math/fzt_fmt.hpp\"\n\n#line 4 \"math/fzt_fmt.hpp\"\n\ntemplate <typename\
+    \ T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
+    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
+    \ a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
+    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
+    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
+    \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
+    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
+    \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
+    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
+    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
+    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n#line 6 \"math/subset_convolution.hpp\"\
+    \n\ntemplate <typename T> vector<fps<T>> attach(const vector<T> &a) {\n    vector<fps<T>>\
+    \ ret(a.size());\n    for (int i : rep(a.size())) {\n        int j = __builtin_popcount(i);\n\
+    \        ret[i].resize(j + 1);\n        ret[i][j] = a[i];\n    }\n    return ret;\n\
+    }\n\ntemplate <typename T> vector<T> detach(const vector<fps<T>> &a) {\n    vector<T>\
+    \ ret(a.size());\n    for (int i : rep(a.size())) ret[i] = a[i][__builtin_popcount(i)];\n\
+    \    return ret;\n}\n\ntemplate <typename T> vector<T> subset_convolution(vector<T>\
+    \ a, vector<T> b) {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1;\
+    \ n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    vector<fps<T>> _a =\
+    \ attach(a), _b = attach(b);\n    fzt_sub(_a), fzt_sub(_b);\n    for (int i :\
+    \ rep(n)) _a[i] *= _b[i];\n    fmt_sub(_a);\n    return detach(_a);\n}\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n#include \"fps.hpp\"\n#include\
+    \ \"fzt_fmt.hpp\"\n\ntemplate <typename T> vector<fps<T>> attach(const vector<T>\
     \ &a) {\n    vector<fps<T>> ret(a.size());\n    for (int i : rep(a.size())) {\n\
-    \        int j = __builti_npopcount(i);\n        ret[i].resize(j + 1);\n     \
+    \        int j = __builtin_popcount(i);\n        ret[i].resize(j + 1);\n     \
     \   ret[i][j] = a[i];\n    }\n    return ret;\n}\n\ntemplate <typename T> vector<T>\
     \ detach(const vector<fps<T>> &a) {\n    vector<T> ret(a.size());\n    for (int\
-    \ i : rep(a.size())) ret[i] = a[i][__builti_npopcount(i)];\n    return ret;\n\
+    \ i : rep(a.size())) ret[i] = a[i][__builtin_popcount(i)];\n    return ret;\n\
     }\n\ntemplate <typename T> vector<T> subset_convolution(vector<T> a, vector<T>\
     \ b) {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1; n < _n; n <<=\
-    \ 1) {}\n    a.resize(n), b.resize(n);\n    vector<fps<T>> a_ = attach(a), b_\
-    \ = attach(b);\n    fzt_sub(a_), fzt_sub(b_);\n    for (int i : rep(n)) a_[i]\
-    \ *= b_[i];\n    fmt_sub(a_);\n    return detach(a_);\n}"
+    \ 1) {}\n    a.resize(n), b.resize(n);\n    vector<fps<T>> _a = attach(a), _b\
+    \ = attach(b);\n    fzt_sub(_a), fzt_sub(_b);\n    for (int i : rep(n)) _a[i]\
+    \ *= _b[i];\n    fmt_sub(_a);\n    return detach(_a);\n}"
   dependsOn:
   - template.hpp
-  - math/and_or_convolution.hpp
   - math/fps.hpp
   - math/convolution.hpp
+  - math/ntt.hpp
   - math/modint.hpp
+  - math/fzt_fmt.hpp
   isVerificationFile: false
   path: math/subset_convolution.hpp
   requiredBy: []
-  timestamp: '2021-09-13 23:45:47+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-09-14 02:34:21+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
 documentation_of: math/subset_convolution.hpp

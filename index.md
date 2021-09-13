@@ -15,7 +15,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/persistent_uf.hpp
       title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/segtree.hpp
       title: Segment Tree
     - icon: ':heavy_check_mark:'
@@ -29,9 +29,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: "Dijkstra \u6CD5"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/dinic.hpp
       title: "Dinic \u6CD5"
+    - icon: ':x:'
+      path: graph/hld.hpp
+      title: "HL \u5206\u89E3"
     - icon: ':warning:'
       path: graph/oibfs.hpp
       title: 01-BFS
@@ -43,36 +46,46 @@ data:
       title: "Warshall-Floyd \u6CD5"
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/and_or_convolution.hpp
-      title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
+      title: "and / or \u7573\u307F\u8FBC\u307F"
     - icon: ':warning:'
       path: math/combination.hpp
       title: "\u7D44\u307F\u5408\u308F\u305B"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/convolution.hpp
-      title: "NTT, \u7573\u307F\u8FBC\u307F"
-    - icon: ':question:'
+      title: "\u7573\u307F\u8FBC\u307F"
+    - icon: ':heavy_check_mark:'
       path: math/fps.hpp
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
+    - icon: ':heavy_check_mark:'
+      path: math/fwht.hpp
+      title: "\u9AD8\u901F\u30A6\u30A9\u30EB\u30B7\u30E5\u30FB\u30A2\u30C0\u30DE\u30FC\
+        \u30EB\u5909\u63DB"
+    - icon: ':heavy_check_mark:'
+      path: math/fzt_fmt.hpp
+      title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: "xor \u57FA\u5E95"
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/modint.hpp
       title: modint
     - icon: ':heavy_check_mark:'
+      path: math/ntt.hpp
+      title: "\u6570\u8AD6\u5909\u63DB"
+    - icon: ':x:'
       path: math/permutation.hpp
       title: "\u9806\u5217"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/subset_convolution.hpp
       title: Subset Convolution
     - icon: ':heavy_check_mark:'
       path: math/xor_convolution.hpp
-      title: "FWHT, xor \u7573\u307F\u8FBC\u307F"
+      title: "xor \u7573\u307F\u8FBC\u307F"
   - name: string
     pages:
     - icon: ':heavy_check_mark:'
@@ -141,7 +154,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
       title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     - icon: ':heavy_check_mark:'
@@ -155,16 +168,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
     - icon: ':heavy_check_mark:'
@@ -202,7 +215,10 @@ data:
       title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   - name: test/unit
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
+      path: test/unit/hld.test.cpp
+      title: test/unit/hld.test.cpp
+    - icon: ':x:'
       path: test/unit/permutation.test.cpp
       title: test/unit/permutation.test.cpp
 layout: toppage

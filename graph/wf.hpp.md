@@ -57,22 +57,22 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"graph/wf.hpp\"\n\ntemplate <typename T> void wf(vector<vector<T>>\
-    \ &g, T inf = numeric_limits<T>::max()) {\n    int n = g.size();\n    for (int\
-    \ k : rep(n)) {\n        for (int i : rep(n)) {\n            for (int j : rep(n))\
-    \ {\n                if (g[i][k] != inf && g[k][j] != inf) chmin(g[i][j], g[i][k]\
-    \ + g[k][j]);\n            }\n        }\n    }\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> void\
-    \ wf(vector<vector<T>> &g, T inf = numeric_limits<T>::max()) {\n    int n = g.size();\n\
+    \    };\n} iOS;\n#line 4 \"graph/wf.hpp\"\n\ntemplate <typename T, T INF = numeric_limits<T>::max()>\
+    \ void wf(vector<vector<T>> &g) {\n    int n = g.size();\n    for (int k : rep(n))\
+    \ {\n        for (int i : rep(n)) {\n            for (int j : rep(n)) {\n    \
+    \            if (g[i][k] != INF && g[k][j] != INF) chmin(g[i][j], g[i][k] + g[k][j]);\n\
+    \            }\n        }\n    }\n}\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T, T INF\
+    \ = numeric_limits<T>::max()> void wf(vector<vector<T>> &g) {\n    int n = g.size();\n\
     \    for (int k : rep(n)) {\n        for (int i : rep(n)) {\n            for (int\
-    \ j : rep(n)) {\n                if (g[i][k] != inf && g[k][j] != inf) chmin(g[i][j],\
+    \ j : rep(n)) {\n                if (g[i][k] != INF && g[k][j] != INF) chmin(g[i][j],\
     \ g[i][k] + g[k][j]);\n            }\n        }\n    }\n}"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: graph/wf.hpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
+  timestamp: '2021-09-14 02:34:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp

@@ -1,19 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: math/and_or_convolution.hpp
-    title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
-    title: "NTT, \u7573\u307F\u8FBC\u307F"
-  - icon: ':question:'
+    title: "\u7573\u307F\u8FBC\u307F"
+  - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
+    path: math/fzt_fmt.hpp
+    title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: math/ntt.hpp
+    title: "\u6570\u8AD6\u5909\u63DB"
+  - icon: ':heavy_check_mark:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
   - icon: ':question:'
@@ -21,9 +24,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/subset_convolution
@@ -99,60 +102,42 @@ data:
     \ modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\n#line 2 \"math/subset_convolution.hpp\"\
-    \n\n#line 2 \"math/and_or_convolution.hpp\"\n\n#line 4 \"math/and_or_convolution.hpp\"\
-    \n\ntemplate <typename T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
-    \ a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
-    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
-    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> vector<T>\
-    \ and_convolution(vector<T> a, vector<T> b) {\n    int _n = max(a.size(), b.size()),\
-    \ n;\n    for (n = 1; n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n   \
-    \ fzt_super(a), fzt_super(b);\n    for (int i : rep(n)) a[i] *= b[i];\n    fmt_super(a);\n\
-    \    return a;\n}\n\ntemplate <typename T> vector<T> or_convolution(vector<T>\
-    \ a, vector<T> b) {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1;\
-    \ n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    fzt_sub(a), fzt_sub(b);\n\
-    \    for (int i : rep(n)) a[i] *= b[i];\n    fmt_sub(a);\n    return a;\n}\n#line\
-    \ 2 \"math/fps.hpp\"\n\n#line 2 \"math/convolution.hpp\"\n\n#line 4 \"math/convolution.hpp\"\
-    \n\ntemplate <typename mint> void ntt(vector<mint> &a, bool inv = false) {\n \
-    \   int n = a.size(), m = n >> 1;\n    mint root = 2;\n    while (root.pow((mint::mod()\
-    \ - 1) >> 1) == 1) root += 1;\n    mint wn = root.pow((mint::mod() - 1) / n);\n\
-    \    if (inv) wn = wn.inv();\n    vector<mint> b(n);\n    for (int i = 1; i <\
-    \ n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint wj = 1;\n        for (int\
-    \ j = 0; j < m; j += i, wj *= wn) {\n            for (int k : rep(i)) {\n    \
-    \            b[0 + (j << 1) + k] = (a[0 + j + k] + a[m + j + k]);\n          \
-    \      b[i + (j << 1) + k] = (a[0 + j + k] - a[m + j + k]) * wj;\n           \
-    \ }\n        }\n    }\n    if (inv) {\n        mint ninv = mint(n).inv();\n  \
-    \      for (mint &ai : a) ai *= ninv;\n    }\n}\ntemplate <typename mint> void\
-    \ intt(vector<mint> &a) { ntt(a, true); }\n\ntemplate <typename T> vector<T> convolutio_nnaive(vector<T>\
-    \ a, vector<T> b) {\n    int na = a.size(), nb = b.size();\n    vector<T> c(na\
-    \ + nb - 1);\n    if (na < nb) swap(a, b), swap(na, nb);\n    for (int i : rep(na))\
-    \ {\n        for (int j : rep(nb)) c[i + j] += a[i] * b[j];\n    }\n    return\
-    \ c;\n}\n\ntemplate <typename mint> vector<mint> convolutio_nntt(vector<mint>\
-    \ a, vector<mint> b) {\n    int _n = a.size() + b.size() - 1, n;\n    for (n =\
-    \ 1; n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n\
-    \    for (int i : rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(_n);\n   \
-    \ return a;\n}\n\ntemplate <typename mint> vector<mint> convolution(const vector<mint>\
-    \ &a, const vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n   \
-    \     return convolutio_nnaive(a, b);\n    } else {\n        return convolutio_nntt(a,\
-    \ b);\n    }\n}\n#line 6 \"math/fps.hpp\"\n\ntemplate <typename T> struct fps\
-    \ : vector<T> {\n    using vector<T>::vector;\n    using vector<T>::operator=;\n\
-    \    fps() : vector<T>() {}\n    fps(const T &a) : vector<T>(1, a) {}\n    fps(const\
-    \ fps &a) : vector<T>(a) {}\n    fps &operator=(const fps &a) {\n        *this\
-    \ = (vector<T>)a;\n        return *this;\n    }\n    fps &operator+=(const fps\
-    \ &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n      \
-    \  for (int i : rep(a.size())) (*this)[i] += a[i];\n        return *this;\n  \
-    \  }\n    fps &operator-=(const fps &a) {\n        if (a.size() > this->size())\
-    \ this->resize(a.size());\n        for (int i : rep(a.size())) (*this)[i] -= a[i];\n\
-    \        return *this;\n    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const\
-    \ T &a) {\n        for (int i : rep(this->size())) (*this)[i] /= a;\n        return\
-    \ *this;\n    };\n    fps &operator>>=(int d) {\n        if ((int)this->size()\
-    \ <= d) {\n            *this = {};\n        } else {\n            this->erase(this->begin(),\
+    \n\n#line 2 \"math/fps.hpp\"\n\n#line 2 \"math/convolution.hpp\"\n\n#line 2 \"\
+    math/ntt.hpp\"\n\n#line 4 \"math/ntt.hpp\"\n\ntemplate <typename mint> void ntt(vector<mint>\
+    \ &a, bool inv = false) {\n    int n = a.size(), m = n >> 1;\n    mint root =\
+    \ 2;\n    while (root.pow((mint::mod() - 1) >> 1) == 1) root += 1;\n    mint wn\
+    \ = root.pow((mint::mod() - 1) / n);\n    if (inv) wn = wn.inv();\n    vector<mint>\
+    \ b(n);\n    for (int i = 1; i < n; i <<= 1, wn *= wn, swap(a, b)) {\n       \
+    \ mint wj = 1;\n        for (int j = 0; j < m; j += i, wj *= wn) {\n         \
+    \   for (int k : rep(i)) {\n                b[0 + (j << 1) + k] = (a[0 + j + k]\
+    \ + a[m + j + k]);\n                b[i + (j << 1) + k] = (a[0 + j + k] - a[m\
+    \ + j + k]) * wj;\n            }\n        }\n    }\n    if (inv) {\n        mint\
+    \ ninv = mint(n).inv();\n        for (mint &ai : a) ai *= ninv;\n    }\n}\ntemplate\
+    \ <typename mint> void intt(vector<mint> &a) { ntt(a, true); }\n#line 5 \"math/convolution.hpp\"\
+    \n\ntemplate <typename T> vector<T> convolution_naive(vector<T> a, vector<T> b)\
+    \ {\n    int na = a.size(), nb = b.size();\n    vector<T> c(na + nb - 1);\n  \
+    \  if (na < nb) swap(a, b), swap(na, nb);\n    for (int i : rep(na)) {\n     \
+    \   for (int j : rep(nb)) c[i + j] += a[i] * b[j];\n    }\n    return c;\n}\n\n\
+    template <typename mint> vector<mint> convolution_ntt(vector<mint> a, vector<mint>\
+    \ b) {\n    int _n = a.size() + b.size() - 1, n;\n    for (n = 1; n < _n; n <<=\
+    \ 1) {}\n    a.resize(n), b.resize(n);\n    ntt(a), ntt(b);\n    for (int i :\
+    \ rep(n)) a[i] *= b[i];\n    intt(a);\n    a.resize(_n);\n    return a;\n}\n\n\
+    template <typename mint> vector<mint> convolution(const vector<mint> &a, const\
+    \ vector<mint> &b) {\n    if (min(a.size(), b.size()) <= 60) {\n        return\
+    \ convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a, b);\n\
+    \    }\n}\n#line 6 \"math/fps.hpp\"\n\ntemplate <typename T> struct fps : vector<T>\
+    \ {\n    using vector<T>::vector;\n    using vector<T>::operator=;\n    fps()\
+    \ : vector<T>() {}\n    fps(const T &a) : vector<T>(1, a) {}\n    fps(const fps\
+    \ &a) : vector<T>(a) {}\n    fps &operator=(const fps &a) {\n        *this = (vector<T>)a;\n\
+    \        return *this;\n    }\n    fps &operator+=(const fps &a) {\n        if\
+    \ (a.size() > this->size()) this->resize(a.size());\n        for (int i : rep(a.size()))\
+    \ (*this)[i] += a[i];\n        return *this;\n    }\n    fps &operator-=(const\
+    \ fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n  \
+    \      for (int i : rep(a.size())) (*this)[i] -= a[i];\n        return *this;\n\
+    \    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const T &a) {\n\
+    \        for (int i : rep(this->size())) (*this)[i] /= a;\n        return *this;\n\
+    \    };\n    fps &operator>>=(int d) {\n        if ((int)this->size() <= d) {\n\
+    \            *this = {};\n        } else {\n            this->erase(this->begin(),\
     \ this->begin() + d);\n        }\n        return *this;\n    }\n    fps &operator<<=(int\
     \ d) {\n        this->insert(this->begin(), d, T(0));\n        return *this;\n\
     \    }\n    fps &chdot(const fps &a) {\n        for (int i : rep(this->size()))\
@@ -212,22 +197,34 @@ data:
     \        intt(t), t.resize(m);\n\n        fps u = (this->prefix(m << 1) - (t <<\
     \ m - 1).integral()) >> m;\n        u.resize(m << 1), ntt(u);\n        u.chdot(ret_freq);\n\
     \        intt(u);\n\n        ret += u.prefix(m) << m;\n    }\n    return ret.prefix(d);\n\
-    }\n#line 6 \"math/subset_convolution.hpp\"\n\ntemplate <typename T> vector<fps<T>>\
-    \ attach(const vector<T> &a) {\n    vector<fps<T>> ret(a.size());\n    for (int\
-    \ i : rep(a.size())) {\n        int j = __builti_npopcount(i);\n        ret[i].resize(j\
-    \ + 1);\n        ret[i][j] = a[i];\n    }\n    return ret;\n}\n\ntemplate <typename\
-    \ T> vector<T> detach(const vector<fps<T>> &a) {\n    vector<T> ret(a.size());\n\
-    \    for (int i : rep(a.size())) ret[i] = a[i][__builti_npopcount(i)];\n    return\
-    \ ret;\n}\n\ntemplate <typename T> vector<T> subset_convolution(vector<T> a, vector<T>\
-    \ b) {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1; n < _n; n <<=\
-    \ 1) {}\n    a.resize(n), b.resize(n);\n    vector<fps<T>> a_ = attach(a), b_\
-    \ = attach(b);\n    fzt_sub(a_), fzt_sub(b_);\n    for (int i : rep(n)) a_[i]\
-    \ *= b_[i];\n    fmt_sub(a_);\n    return detach(a_);\n}\n#line 4 \"test/judge.yosupo.jp/Subset_Convolution.0.test.cpp\"\
-    \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
-    \    using mint = modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint>\
-    \ a(bit(n)), b(bit(n));\n    for (ll i : rep(bit(n))) cin >> a[i];\n    for (ll\
-    \ i : rep(bit(n))) cin >> b[i];\n    vector<mint> c = subset_convolution(a, b);\n\
-    \    for (mint ci : c) { cout << ci << \" \"; }\n    cout << endl;\n}\n"
+    }\n#line 2 \"math/fzt_fmt.hpp\"\n\n#line 4 \"math/fzt_fmt.hpp\"\n\ntemplate <typename\
+    \ T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
+    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
+    \ a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
+    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
+    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
+    \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
+    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
+    \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
+    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
+    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
+    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n#line 6 \"math/subset_convolution.hpp\"\
+    \n\ntemplate <typename T> vector<fps<T>> attach(const vector<T> &a) {\n    vector<fps<T>>\
+    \ ret(a.size());\n    for (int i : rep(a.size())) {\n        int j = __builtin_popcount(i);\n\
+    \        ret[i].resize(j + 1);\n        ret[i][j] = a[i];\n    }\n    return ret;\n\
+    }\n\ntemplate <typename T> vector<T> detach(const vector<fps<T>> &a) {\n    vector<T>\
+    \ ret(a.size());\n    for (int i : rep(a.size())) ret[i] = a[i][__builtin_popcount(i)];\n\
+    \    return ret;\n}\n\ntemplate <typename T> vector<T> subset_convolution(vector<T>\
+    \ a, vector<T> b) {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1;\
+    \ n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    vector<fps<T>> _a =\
+    \ attach(a), _b = attach(b);\n    fzt_sub(_a), fzt_sub(_b);\n    for (int i :\
+    \ rep(n)) _a[i] *= _b[i];\n    fmt_sub(_a);\n    return detach(_a);\n}\n#line\
+    \ 4 \"test/judge.yosupo.jp/Subset_Convolution.0.test.cpp\"\n\nint main() {\n \
+    \   cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n    using mint =\
+    \ modint<998244353>;\n    ll n;\n    cin >> n;\n    vector<mint> a(bit(n)), b(bit(n));\n\
+    \    for (ll i : rep(bit(n))) cin >> a[i];\n    for (ll i : rep(bit(n))) cin >>\
+    \ b[i];\n    vector<mint> c = subset_convolution(a, b);\n    for (mint ci : c)\
+    \ { cout << ci << \" \"; }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/subset_convolution\"\n\
     #include \"../../math/modint.hpp\"\n#include \"../../math/subset_convolution.hpp\"\
     \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
@@ -239,14 +236,15 @@ data:
   - math/modint.hpp
   - template.hpp
   - math/subset_convolution.hpp
-  - math/and_or_convolution.hpp
   - math/fps.hpp
   - math/convolution.hpp
+  - math/ntt.hpp
+  - math/fzt_fmt.hpp
   isVerificationFile: true
   path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-13 23:45:47+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-14 02:34:21+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
 layout: document
