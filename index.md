@@ -15,7 +15,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/persistent_uf.hpp
       title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segtree.hpp
       title: Segment Tree
     - icon: ':heavy_check_mark:'
@@ -29,10 +29,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: "Dijkstra \u6CD5"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/dinic.hpp
       title: "Dinic \u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/hld.hpp
       title: "HL \u5206\u89E3"
     - icon: ':warning:'
@@ -77,7 +77,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/ntt.hpp
       title: "\u6570\u8AD6\u5909\u63DB"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/permutation.hpp
       title: "\u9806\u5217"
     - icon: ':heavy_check_mark:'
@@ -93,7 +93,7 @@ data:
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -168,16 +168,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
     - icon: ':heavy_check_mark:'
@@ -215,10 +215,10 @@ data:
       title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   - name: test/unit
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/unit/hld.test.cpp
       title: test/unit/hld.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/unit/permutation.test.cpp
       title: test/unit/permutation.test.cpp
 layout: toppage

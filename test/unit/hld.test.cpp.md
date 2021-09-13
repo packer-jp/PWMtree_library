@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: Segment Tree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/hld.hpp
     title: "HL \u5206\u89E3"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"test/unit/hld.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja
+  bundledCode: "#line 1 \"test/unit/hld.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja\"\
     \n#line 2 \"data_structure/segtree.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
@@ -147,7 +147,7 @@ data:
     chg\");\n    assert(subtree(5) == \"fechgdbaji\");\n    assert(hld.dist(2, 0)\
     \ == 4);\n    assert(hld.dist(4, 1) == 2);\n\n    cout << \"Hello World\" << endl;\n\
     }\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja\"\
     \n#include \"../../data_structure/segtree.hpp\"\n#include \"../../graph/hld.hpp\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    int n\
     \ = 10;\n    struct str {\n        using val_t = string;\n        static val_t\
@@ -178,8 +178,8 @@ data:
   isVerificationFile: true
   path: test/unit/hld.test.cpp
   requiredBy: []
-  timestamp: '2021-09-14 02:34:21+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-14 03:02:04+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/unit/hld.test.cpp
 layout: document
