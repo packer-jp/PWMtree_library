@@ -12,10 +12,10 @@ data:
     path: math/subset_convolution.hpp
     title: Subset Convolution
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
   - icon: ':heavy_check_mark:'

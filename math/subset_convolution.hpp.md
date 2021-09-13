@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/and_or_convolution.hpp
     title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
   - icon: ':question:'
@@ -70,15 +70,15 @@ data:
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
     \    };\n} iOS;\n#line 2 \"math/and_or_convolution.hpp\"\n\n#line 4 \"math/and_or_convolution.hpp\"\
-    \n\ntemplate <typename T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builti_nffs(a.size())\
+    \n\ntemplate <typename T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
     \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
     \ a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builti_nffs(a.size()) - 1)) {\n        for (int\
+    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
     \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
     \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
-    \    for (int i : rep(__builti_nffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
+    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
     \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builti_nffs(a.size())\
+    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
     \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
     \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> vector<T>\
     \ and_convolution(vector<T> a, vector<T> b) {\n    int _n = max(a.size(), b.size()),\
@@ -239,7 +239,7 @@ data:
   isVerificationFile: false
   path: math/subset_convolution.hpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
+  timestamp: '2021-09-13 23:45:47+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp

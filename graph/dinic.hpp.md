@@ -9,21 +9,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/dinic.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -157,7 +157,7 @@ data:
   path: graph/dinic.hpp
   requiredBy: []
   timestamp: '2021-09-13 22:50:01+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp

@@ -9,13 +9,13 @@ data:
     path: math/subset_convolution.hpp
     title: Subset Convolution
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
     title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
   - icon: ':x:'
@@ -23,7 +23,7 @@ data:
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/and_or_convolution.hpp\"\n\n#line 2 \"template.hpp\"\
@@ -70,15 +70,15 @@ data:
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
     \    };\n} iOS;\n#line 4 \"math/and_or_convolution.hpp\"\n\ntemplate <typename\
-    \ T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builti_nffs(a.size())\
+    \ T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
     \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
     \ a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builti_nffs(a.size()) - 1)) {\n        for (int\
+    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
     \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
     \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
-    \    for (int i : rep(__builti_nffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
+    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
     \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builti_nffs(a.size())\
+    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
     \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
     \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> vector<T>\
     \ and_convolution(vector<T> a, vector<T> b) {\n    int _n = max(a.size(), b.size()),\
@@ -89,15 +89,15 @@ data:
     \ n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    fzt_sub(a), fzt_sub(b);\n\
     \    for (int i : rep(n)) a[i] *= b[i];\n    fmt_sub(a);\n    return a;\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> void\
-    \ fzt_super(vector<T> &a) {\n    for (int i : rep(__builti_nffs(a.size()) - 1))\
+    \ fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1))\
     \ {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1) a[s\
     \ ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builti_nffs(a.size()) - 1)) {\n        for (int\
+    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
     \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
     \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
-    \    for (int i : rep(__builti_nffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
+    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
     \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builti_nffs(a.size())\
+    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
     \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
     \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> vector<T>\
     \ and_convolution(vector<T> a, vector<T> b) {\n    int _n = max(a.size(), b.size()),\
@@ -113,8 +113,8 @@ data:
   path: math/and_or_convolution.hpp
   requiredBy:
   - math/subset_convolution.hpp
-  timestamp: '2021-09-13 22:50:01+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-09-13 23:45:47+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp

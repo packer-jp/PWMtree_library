@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/and_or_convolution.hpp
     title: "FZT / FMT, and / or \u7573\u307F\u8FBC\u307F"
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: 1e-7
@@ -64,15 +64,15 @@ data:
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
     \    };\n} iOS;\n#line 4 \"math/and_or_convolution.hpp\"\n\ntemplate <typename\
-    \ T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builti_nffs(a.size())\
+    \ T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
     \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
     \ a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builti_nffs(a.size()) - 1)) {\n        for (int\
+    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
     \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
     \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
-    \    for (int i : rep(__builti_nffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
+    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
     \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builti_nffs(a.size())\
+    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
     \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
     \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> vector<T>\
     \ and_convolution(vector<T> a, vector<T> b) {\n    int _n = max(a.size(), b.size()),\
@@ -117,8 +117,8 @@ data:
   isVerificationFile: true
   path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-13 23:45:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
 layout: document
