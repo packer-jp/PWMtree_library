@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/dinic.hpp
     title: "Dinic \u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/6/GRL_6_A
@@ -20,97 +20,113 @@ data:
   bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/6/GRL_6_A\"\
     \n#line 2 \"graph/dinic.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
-    using namespace std;\n\n#define all(a) (a).begin(), (a).end()\nusing ll = long\
-    \ long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll\
-    \ = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr\
-    \ ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return\
-    \ (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b)\
-    \ < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr\
-    \ ull bit(int n) { return 1ull << n; }\ntemplate <typename T> constexpr T sq(const\
-    \ T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
-    \ vector<T>, greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a,\
-    \ const U &b) { return a < b ? a = b, true : false; }\ntemplate <typename T, typename\
-    \ U> bool chmin(T &a, const U &b) { return a > b ? a = b, true : false; }\ntemplate\
-    \ <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n    os\
-    \ << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); itr++) { os << *itr\
-    \ << (next(itr) != a.end() ? \", \" : \"\"); }\n    os << \")\";\n    return os;\n\
-    }\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n#else\nvoid debug() { cerr\
-    \ << endl; }\ntemplate <typename Head, typename... Tail> void debug(Head &&head,\
-    \ Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail)) cerr << \",\
-    \ \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__ << \": \" <<\
-    \ #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep {\n    struct\
-    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
-    \ { ++v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
-    \ i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll l, ll r) : l(l),\
-    \ r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const { return l; };\n\
-    \    itr end() const { return r; };\n};\nstruct per {\n    struct itr {\n    \
-    \    ll v;\n        itr(ll v) : v(v) {}\n        void operator++() { --v; }\n\
-    \        ll operator*() const { return v; }\n        bool operator!=(itr i) const\
-    \ { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l), r(r) {}\n\
-    \    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1; };\n    itr\
-    \ end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
-    \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
-    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"graph/dinic.hpp\"\
-    \n\ntemplate <typename S> struct dinic {\n    using C = typename S::cost_t;\n\
-    \    struct edge {\n        int to, rev;\n        C cap;\n        bool is_rev;\n\
-    \    };\n    vector<vector<edge>> graph;\n    vector<int> level, iter;\n    void\
-    \ add_edge(int from, int to, C cap) {\n        graph[from].push_back({to, (int)graph[to].size(),\
-    \ cap, false});\n        graph[to].push_back({from, (int)graph[from].size() -\
-    \ 1, S::zero(), true});\n    }\n    dinic(int n) : graph(n), level(n), iter(n)\
-    \ {}\n    void bfs(int s) {\n        fill(level.begin(), level.end(), -1);\n \
-    \       queue<int> que;\n        level[s] = 0;\n        que.push(s);\n       \
-    \ while (!que.empty()) {\n            int v = que.front();\n            que.pop();\n\
-    \            for (edge &e : graph[v]) {\n                if (e.cap == S::zero()\
-    \ || level[e.to] >= 0) continue;\n                level[e.to] = level[v] + 1;\n\
-    \                que.push(e.to);\n            }\n        }\n    }\n    C dfs(int\
-    \ v, int t, C f) {\n        if (v == t) return f;\n        for (int &i = iter[v];\
-    \ i < graph[v].size(); ++i) {\n            edge &e = graph[v][i];\n          \
-    \  if (level[v] >= level[e.to] || e.cap == S::zero()) continue;\n            C\
-    \ d = dfs(e.to, t, f > e.cap ? e.cap : f);\n            if (d == S::zero()) continue;\n\
-    \            e.cap -= d;\n            graph[e.to][e.rev].cap += d;\n         \
-    \   return d;\n        }\n        return S::zero();\n    }\n    C calc_max_flow(int\
-    \ s, int t, C lim) {\n        C ret = S::zero();\n        while (true) {\n   \
-    \         bfs(s);\n            if (level[t] < 0 || lim == S::zero()) { return\
-    \ ret; }\n            fill(iter.begin(), iter.end(), 0);\n            C f;\n \
-    \           while ((f = dfs(s, t, lim)) != S::zero()) {\n                ret +=\
-    \ f;\n                lim -= f;\n            }\n        }\n    }\n    C calc_max_flow(int\
-    \ s, int t) { return calc_max_flow(s, t, S::inf()); }\n    map<pair<int, int>,\
-    \ C> get_max_flow() {\n        map<pair<int, int>, C> ret;\n        for (int i\
-    \ : rep(graph.size())) {\n            for (edge &e : graph[i]) {\n           \
-    \     if (e.is_rev) ret[{e.to, i}] = e.cap;\n            }\n        }\n      \
-    \  return ret;\n    }\n    map<pair<int, int>, C> get_min_cut(int s) {\n     \
-    \   map<pair<int, int>, C> ret;\n        vector<int> visited(graph.size());\n\
-    \        queue<int> que;\n        que.push(s);\n        while (!que.empty()) {\n\
-    \            int v = que.front();\n            que.pop();\n            if (visited[v])\
-    \ continue;\n            visited[v] = true;\n            for (edge &e : graph[v])\
-    \ {\n                if (e.cap != S::zero()) que.push(e.to);\n            }\n\
-    \        }\n        for (int i : rep(graph.size())) {\n            if (visited[i])\
-    \ continue;\n            for (edge &e : graph[i]) {\n                if (e.is_rev\
-    \ && visited[e.to]) ret[{e.to, i}] = e.cap;\n            }\n        }\n      \
-    \  return ret;\n    }\n};\n\nstruct ll_dinic {\n    using cost_t = ll;\n    static\
-    \ cost_t zero() { return 0; }\n    static cost_t inf() { return numeric_limits<cost_t>::max();\
-    \ }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp\"\n\n\
-    #line 5 \"test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp\"\nusing namespace\
-    \ std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n    dinic<ll_dinic>\
-    \ dinic(v);\n    while (e--) {\n        int u, v, c;\n        cin >> u >> v >>\
-    \ c;\n        dinic.add_edge(u, v, c);\n    }\n    dinic.calc_max_flow(0, v -\
-    \ 1);\n    auto cut = dinic.get_min_cut(0);\n    ll ans = 0;\n    for (auto p\
-    \ : cut) ans += p.second;\n    cout << ans << endl;\n}\n"
+    using namespace std;\n\n#define all(a) (a).begin(), (a).end()\n#define uniq(a)\
+    \ (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\nusing ull = unsigned\
+    \ long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll\
+    \ dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1, 0, -1, 0,\
+    \ 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return (a > 0) - (a < 0); }\nconstexpr\
+    \ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr ll\
+    \ cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr ull bit(int n) { return\
+    \ 1ull << n; }\ntemplate <typename T> constexpr T sq(const T &a) { return a *\
+    \ a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T, vector<T>,\
+    \ greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a, const U &b)\
+    \ { return a < b ? a = b, true : false; }\ntemplate <typename T, typename U> bool\
+    \ chmin(T &a, const U &b) { return a > b ? a = b, true : false; }\ntemplate <typename\
+    \ T, typename U> ostream &operator<<(ostream &os, const pair<T, U> &a) {\n   \
+    \ os << \"(\" << a.first << \", \" << a.second << \")\";\n    return os;\n}\n\
+    template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
+    \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os <<\
+    \ *itr << (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate\
+    \ <typename T> ostream &operator<<(ostream &os, const set<T> &a) {\n    os <<\
+    \ \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr <<\
+    \ (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, const multiset<T> &a) {\n    os << \"(\"\
+    ;\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
+    \ != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename T, typename\
+    \ U> ostream &operator<<(ostream &os, const map<T, U> &a) {\n    os << \"(\";\n\
+    \    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
+    \ != a.end() ? \", \" : \")\");\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define\
+    \ dump(...) (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename\
+    \ Head, typename... Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr\
+    \ << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n\
+    #define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
+    #endif\nstruct rep {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v)\
+    \ {}\n        void operator++() { ++v; }\n        ll operator*() const { return\
+    \ v; }\n        bool operator!=(itr i) const { return v < *i; }\n    };\n    ll\
+    \ l, r;\n    rep(ll l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n \
+    \   itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
+    struct per {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n \
+    \       void operator++() { --v; }\n        ll operator*() const { return v; }\n\
+    \        bool operator!=(itr i) const { return v > *i; }\n    };\n    ll l, r;\n\
+    \    per(ll l, ll r) : l(l), r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin()\
+    \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
+    \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
+    \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
+    \    };\n} iOS;\n#line 4 \"graph/dinic.hpp\"\n\ntemplate <typename S> struct dinic\
+    \ {\n    using C = typename S::cost_t;\n    struct _edge {\n        int to, rev;\n\
+    \        C cap;\n    };\n    struct edge {\n        int from, to;\n        C cap,\
+    \ flow;\n    };\n    vector<vector<_edge>> g;\n    vector<int> level, iter;\n\
+    \    vector<pair<int, int>> pos;\n    dinic(int n) : g(n), level(n), iter(n) {}\n\
+    \    int add_edge(int from, int to, C cap) {\n        int from_id = g[from].size();\n\
+    \        int to_id = g[to].size();\n        if (from == to) ++to_id;\n       \
+    \ g[from].push_back({to, to_id, cap});\n        g[to].push_back({from, from_id,\
+    \ S::zero()});\n        pos.emplace_back(from, from_id);\n        return pos.size()\
+    \ - 1;\n    }\n    void change_edge(int i, C new_cap, C new_flow) {\n        _edge\
+    \ &e = g[pos[i].first][pos[i].second], &re = g[e.to][e.rev];\n        e.cap =\
+    \ new_cap - new_flow;\n        re.cap = new_flow;\n    }\n    C flow(int s, int\
+    \ t, C lim = S::inf()) {\n        auto bfs = [&](int s) -> void {\n          \
+    \  fill(level.begin(), level.end(), -1);\n            queue<int> q;\n        \
+    \    level[s] = 0;\n            q.push(s);\n            while (!q.empty()) {\n\
+    \                int v = q.front();\n                q.pop();\n              \
+    \  for (_edge &e : g[v]) {\n                    if (e.cap == S::zero() || level[e.to]\
+    \ >= 0) continue;\n                    level[e.to] = level[v] + 1;\n         \
+    \           q.push(e.to);\n                }\n            }\n        };\n    \
+    \    auto dfs = [&](auto dfs, int v, int t, C lim) -> C {\n            if (v ==\
+    \ t) return lim;\n            for (int &i = iter[v]; i < g[v].size(); ++i) {\n\
+    \                _edge &e = g[v][i];\n                if (level[v] >= level[e.to]\
+    \ || e.cap == S::zero()) continue;\n                C d = dfs(dfs, e.to, t, lim\
+    \ > e.cap ? e.cap : lim);\n                if (d == S::zero()) continue;\n   \
+    \             e.cap -= d;\n                g[e.to][e.rev].cap += d;\n        \
+    \        return d;\n            }\n            return S::zero();\n        };\n\
+    \        C ret = S::zero();\n        while (true) {\n            bfs(s);\n   \
+    \         if (level[t] < 0 || lim == S::zero()) return ret;\n            fill(iter.begin(),\
+    \ iter.end(), 0);\n            C f;\n            while ((f = dfs(dfs, s, t, lim))\
+    \ != S::zero()) {\n                ret += f;\n                lim -= f;\n    \
+    \        }\n        }\n    }\n    edge get_edge(int i) const {\n        _edge\
+    \ e = g[pos[i].first][pos[i].second], re = g[e.to][e.rev];\n        return {pos[i].first,\
+    \ e.to, e.cap + re.cap, re.cap};\n    }\n    vector<edge> edges() const {\n  \
+    \      vector<edge> ret(pos.size());\n        for (int i : rep(pos.size())) ret[i]\
+    \ = get_edge(i);\n        return ret;\n    }\n    vector<bool> min_cut(int s)\
+    \ const {\n        vector<bool> ret(g.size());\n        auto dfs = [&](auto dfs,\
+    \ int v) -> void {\n            if (ret[v]) return;\n            ret[v] = true;\n\
+    \            for (_edge e : g[v]) {\n                if (e.cap) dfs(dfs, e.to);\n\
+    \            }\n        };\n        dfs(dfs, s);\n        return ret;\n    }\n\
+    };\n\nstruct ll_dinic {\n    using cost_t = ll;\n    static cost_t zero() { return\
+    \ 0; }\n    static cost_t inf() { return numeric_limits<cost_t>::max(); }\n};\n\
+    #line 3 \"test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp\"\n\n#line 5 \"\
+    test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp\"\nusing namespace std;\n\
+    \nint main() {\n    ll v, e;\n    cin >> v >> e;\n    dinic<ll_dinic> dinic(v);\n\
+    \    while (e--) {\n        int u, v, c;\n        cin >> u >> v >> c;\n      \
+    \  dinic.add_edge(u, v, c);\n    }\n    dinic.flow(0, v - 1);\n    auto flow =\
+    \ dinic.edges();\n    auto cut = dinic.min_cut(0);\n    ll ans = 0;\n    for (auto\
+    \ e : flow) {\n        if (cut[e.from] && !cut[e.to]) ans += e.flow;\n    }\n\
+    \    cout << ans << endl;\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/6/GRL_6_A\"\
     \n#include \"../../graph/dinic.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n    dinic<ll_dinic>\
     \ dinic(v);\n    while (e--) {\n        int u, v, c;\n        cin >> u >> v >>\
-    \ c;\n        dinic.add_edge(u, v, c);\n    }\n    dinic.calc_max_flow(0, v -\
-    \ 1);\n    auto cut = dinic.get_min_cut(0);\n    ll ans = 0;\n    for (auto p\
-    \ : cut) ans += p.second;\n    cout << ans << endl;\n}"
+    \ c;\n        dinic.add_edge(u, v, c);\n    }\n    dinic.flow(0, v - 1);\n   \
+    \ auto flow = dinic.edges();\n    auto cut = dinic.min_cut(0);\n    ll ans = 0;\n\
+    \    for (auto e : flow) {\n        if (cut[e.from] && !cut[e.to]) ans += e.flow;\n\
+    \    }\n    cout << ans << endl;\n}"
   dependsOn:
   - graph/dinic.hpp
   - template.hpp
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
   requiredBy: []
-  timestamp: '2021-09-12 19:48:10+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-13 22:50:01+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
 layout: document

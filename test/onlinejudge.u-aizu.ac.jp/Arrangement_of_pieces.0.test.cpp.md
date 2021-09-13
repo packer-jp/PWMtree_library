@@ -9,16 +9,16 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/6/GRL_6_A
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/challenges/sources/VPC/TUATPC/3198
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/6/GRL_6_A
-  bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp\"\n\
-    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/6/GRL_6_A\"\
+    - https://onlinejudge.u-aizu.ac.jp/challenges/sources/VPC/TUATPC/3198
+  bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp\"\
+    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/challenges/sources/VPC/TUATPC/3198\"\
     \n#line 2 \"graph/dinic.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#define all(a) (a).begin(), (a).end()\n#define uniq(a)\
     \ (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\nusing ull = unsigned\
@@ -103,31 +103,51 @@ data:
     \            }\n        };\n        dfs(dfs, s);\n        return ret;\n    }\n\
     };\n\nstruct ll_dinic {\n    using cost_t = ll;\n    static cost_t zero() { return\
     \ 0; }\n    static cost_t inf() { return numeric_limits<cost_t>::max(); }\n};\n\
-    #line 3 \"test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp\"\n\n#line 5 \"\
-    test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp\"\nusing namespace std;\n\
-    \nint main() {\n    ll v, e;\n    cin >> v >> e;\n    dinic<ll_dinic> dinic(v);\n\
-    \    while (e--) {\n        int u, v, c;\n        cin >> u >> v >> c;\n      \
-    \  dinic.add_edge(u, v, c);\n    }\n    ll ans = dinic.flow(0, v - 1);\n    cout\
-    \ << ans << endl;\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/6/GRL_6_A\"\
+    #line 3 \"test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp\"\n\n\
+    #line 5 \"test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp\"\nusing\
+    \ namespace std;\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    dinic<ll_dinic>\
+    \ dinic(n * 2 + 2);\n    vector id(n, vll(n, -1));\n    ll s = n * 2, t = n *\
+    \ 2 + 1;\n    for (ll i : rep(n)) {\n        dinic.add_edge(s, i, 1);\n      \
+    \  dinic.add_edge(i + n, t, 1);\n    }\n    for (ll i : rep(m)) {\n        ll\
+    \ a, b;\n        cin >> a >> b, --a, --b;\n        id[a][b] = dinic.add_edge(a,\
+    \ b + n, 1);\n    }\n    ll q, f = dinic.flow(s, t);\n    cin >> q;\n    for (ll\
+    \ i : rep(q)) {\n        ll x, y;\n        cin >> x >> y, --x, --y;\n        if\
+    \ (id[x][y] == -1) {\n            id[x][y] = dinic.add_edge(x, y + n, 1);\n  \
+    \      } else {\n            auto e = dinic.get_edge(id[x][y]);\n            if\
+    \ (e.flow > 0) {\n                dinic.flow(x, s, 1);\n                dinic.flow(t,\
+    \ y + n, 1);\n                --f;\n            }\n            dinic.change_edge(id[x][y],\
+    \ 0, 0);\n            id[x][y] = -1;\n        }\n        f += dinic.flow(s, t);\n\
+    \        if (f == n) {\n            cout << \"Yes\" << endl;\n        } else {\n\
+    \            cout << \"No\" << endl;\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/challenges/sources/VPC/TUATPC/3198\"\
     \n#include \"../../graph/dinic.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n    dinic<ll_dinic>\
-    \ dinic(v);\n    while (e--) {\n        int u, v, c;\n        cin >> u >> v >>\
-    \ c;\n        dinic.add_edge(u, v, c);\n    }\n    ll ans = dinic.flow(0, v -\
-    \ 1);\n    cout << ans << endl;\n}"
+    \ std;\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    dinic<ll_dinic>\
+    \ dinic(n * 2 + 2);\n    vector id(n, vll(n, -1));\n    ll s = n * 2, t = n *\
+    \ 2 + 1;\n    for (ll i : rep(n)) {\n        dinic.add_edge(s, i, 1);\n      \
+    \  dinic.add_edge(i + n, t, 1);\n    }\n    for (ll i : rep(m)) {\n        ll\
+    \ a, b;\n        cin >> a >> b, --a, --b;\n        id[a][b] = dinic.add_edge(a,\
+    \ b + n, 1);\n    }\n    ll q, f = dinic.flow(s, t);\n    cin >> q;\n    for (ll\
+    \ i : rep(q)) {\n        ll x, y;\n        cin >> x >> y, --x, --y;\n        if\
+    \ (id[x][y] == -1) {\n            id[x][y] = dinic.add_edge(x, y + n, 1);\n  \
+    \      } else {\n            auto e = dinic.get_edge(id[x][y]);\n            if\
+    \ (e.flow > 0) {\n                dinic.flow(x, s, 1);\n                dinic.flow(t,\
+    \ y + n, 1);\n                --f;\n            }\n            dinic.change_edge(id[x][y],\
+    \ 0, 0);\n            id[x][y] = -1;\n        }\n        f += dinic.flow(s, t);\n\
+    \        if (f == n) {\n            cout << \"Yes\" << endl;\n        } else {\n\
+    \            cout << \"No\" << endl;\n        }\n    }\n}"
   dependsOn:
   - graph/dinic.hpp
   - template.hpp
   isVerificationFile: true
-  path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
+  path: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
   requiredBy: []
   timestamp: '2021-09-13 22:50:01+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
+documentation_of: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
 layout: document
 redirect_from:
-- /verify/test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
-- /verify/test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp.html
-title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
+- /verify/test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
+- /verify/test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp.html
+title: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
 ---
