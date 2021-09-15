@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dinic.hpp
     title: "Dinic \u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -19,7 +19,7 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/challenges/sources/VPC/TUATPC/3198
   bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp\"\
     \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/challenges/sources/VPC/TUATPC/3198\"\
-    \n#line 2 \"graph/dinic.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
+    \n#line 2 \"graph/dinic.hpp\"\n\n#line 1 \"template.hpp\"\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#define all(a) (a).begin(), (a).end()\n#define uniq(a)\
     \ (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\nusing ull = unsigned\
     \ long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll\
@@ -36,80 +36,80 @@ data:
     \ os << \"(\" << a.first << \", \" << a.second << \")\";\n    return os;\n}\n\
     template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
     \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os <<\
-    \ *itr << (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate\
-    \ <typename T> ostream &operator<<(ostream &os, const set<T> &a) {\n    os <<\
-    \ \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr <<\
-    \ (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const multiset<T> &a) {\n    os << \"(\"\
-    ;\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename T, typename\
-    \ U> ostream &operator<<(ostream &os, const map<T, U> &a) {\n    os << \"(\";\n\
-    \    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \")\");\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define\
-    \ dump(...) (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename\
-    \ Head, typename... Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr\
-    \ << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n\
-    #define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
-    #endif\nstruct rep {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v)\
-    \ {}\n        void operator++() { ++v; }\n        ll operator*() const { return\
-    \ v; }\n        bool operator!=(itr i) const { return v < *i; }\n    };\n    ll\
-    \ l, r;\n    rep(ll l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n \
-    \   itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
-    struct per {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n \
-    \       void operator++() { --v; }\n        ll operator*() const { return v; }\n\
-    \        bool operator!=(itr i) const { return v > *i; }\n    };\n    ll l, r;\n\
-    \    per(ll l, ll r) : l(l), r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin()\
-    \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
-    \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
-    \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"graph/dinic.hpp\"\n\ntemplate <typename S> struct dinic\
-    \ {\n    using C = typename S::cap_t;\n    struct _edge {\n        int to, rev;\n\
-    \        C cap;\n    };\n    struct edge {\n        int from, to;\n        C cap,\
-    \ flow;\n    };\n    vector<vector<_edge>> g;\n    vector<int> level, iter;\n\
-    \    vector<pair<int, int>> pos;\n    dinic(int n) : g(n), level(n), iter(n) {}\n\
-    \    int add_edge(int from, int to, C cap) {\n        int from_id = g[from].size();\n\
-    \        int to_id = g[to].size();\n        if (from == to) ++to_id;\n       \
-    \ g[from].push_back({to, to_id, cap});\n        g[to].push_back({from, from_id,\
-    \ S::zero()});\n        pos.emplace_back(from, from_id);\n        return pos.size()\
-    \ - 1;\n    }\n    void change_edge(int i, C new_cap, C new_flow) {\n        _edge\
-    \ &e = g[pos[i].first][pos[i].second], &re = g[e.to][e.rev];\n        e.cap =\
-    \ new_cap - new_flow;\n        re.cap = new_flow;\n    }\n    C flow(int s, int\
-    \ t, C lim = S::inf()) {\n        auto bfs = [&](int s) -> void {\n          \
-    \  fill(level.begin(), level.end(), -1);\n            queue<int> q;\n        \
-    \    level[s] = 0;\n            q.push(s);\n            while (!q.empty()) {\n\
-    \                int v = q.front();\n                q.pop();\n              \
-    \  for (_edge &e : g[v]) {\n                    if (e.cap == S::zero() || level[e.to]\
-    \ >= 0) continue;\n                    level[e.to] = level[v] + 1;\n         \
-    \           q.push(e.to);\n                }\n            }\n        };\n    \
-    \    auto dfs = [&](auto dfs, int v, int t, C lim) -> C {\n            if (v ==\
-    \ t) return lim;\n            for (int &i = iter[v]; i < g[v].size(); ++i) {\n\
-    \                _edge &e = g[v][i];\n                if (level[v] >= level[e.to]\
-    \ || e.cap == S::zero()) continue;\n                C d = dfs(dfs, e.to, t, lim\
-    \ > e.cap ? e.cap : lim);\n                if (d == S::zero()) continue;\n   \
-    \             e.cap -= d;\n                g[e.to][e.rev].cap += d;\n        \
-    \        return d;\n            }\n            return S::zero();\n        };\n\
-    \        C ret = S::zero();\n        while (true) {\n            bfs(s);\n   \
-    \         if (level[t] < 0 || lim == S::zero()) return ret;\n            fill(iter.begin(),\
-    \ iter.end(), 0);\n            C f;\n            while ((f = dfs(dfs, s, t, lim))\
-    \ != S::zero()) {\n                ret += f;\n                lim -= f;\n    \
-    \        }\n        }\n    }\n    edge get_edge(int i) const {\n        _edge\
-    \ e = g[pos[i].first][pos[i].second], re = g[e.to][e.rev];\n        return {pos[i].first,\
-    \ e.to, e.cap + re.cap, re.cap};\n    }\n    vector<edge> edges() const {\n  \
-    \      vector<edge> ret(pos.size());\n        for (int i : rep(pos.size())) ret[i]\
-    \ = get_edge(i);\n        return ret;\n    }\n    vector<bool> min_cut(int s)\
-    \ const {\n        vector<bool> ret(g.size());\n        auto dfs = [&](auto dfs,\
-    \ int v) -> void {\n            if (ret[v]) return;\n            ret[v] = true;\n\
-    \            for (_edge e : g[v]) {\n                if (e.cap) dfs(dfs, e.to);\n\
-    \            }\n        };\n        dfs(dfs, s);\n        return ret;\n    }\n\
-    };\n\nstruct ll_dinic {\n    using cap_t = ll;\n    static cap_t zero() { return\
-    \ 0; }\n    static cap_t inf() { return numeric_limits<cap_t>::max(); }\n};\n\
-    #line 3 \"test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp\"\n\n\
-    #line 5 \"test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp\"\nusing\
-    \ namespace std;\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    dinic<ll_dinic>\
-    \ dinic(n * 2 + 2);\n    vector id(n, vll(n, -1));\n    ll s = n * 2, t = n *\
-    \ 2 + 1;\n    for (ll i : rep(n)) {\n        dinic.add_edge(s, i, 1);\n      \
-    \  dinic.add_edge(i + n, t, 1);\n    }\n    for (ll i : rep(m)) {\n        ll\
-    \ a, b;\n        cin >> a >> b, --a, --b;\n        id[a][b] = dinic.add_edge(a,\
+    \ *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n    return\
+    \ os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const set<T>\
+    \ &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr)\
+    \ os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n  \
+    \  return os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
+    \ multiset<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
+    \ ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\"\
+    ;\n    return os;\n}\ntemplate <typename T, typename U> ostream &operator<<(ostream\
+    \ &os, const map<T, U> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+    \ itr != a.end(); ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n\
+    \    os << \")\";\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n\
+    #else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail>\
+    \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
+    \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
+    \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
+    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
+    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
+    \ operator!=(itr i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll\
+    \ l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
+    \ { --v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
+    \ i) const { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l),\
+    \ r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1;\
+    \ };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static\
+    \ constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"graph/dinic.hpp\"\
+    \n\ntemplate <typename S> struct dinic {\n    using C = typename S::cap_t;\n \
+    \   struct _edge {\n        int to, rev;\n        C cap;\n    };\n    struct edge\
+    \ {\n        int from, to;\n        C cap, flow;\n    };\n    vector<vector<_edge>>\
+    \ g;\n    vector<int> level, iter;\n    vector<pair<int, int>> pos;\n    dinic(int\
+    \ n) : g(n), level(n), iter(n) {}\n    int add_edge(int from, int to, C cap) {\n\
+    \        int from_id = g[from].size();\n        int to_id = g[to].size();\n  \
+    \      if (from == to) ++to_id;\n        g[from].push_back({to, to_id, cap});\n\
+    \        g[to].push_back({from, from_id, S::zero()});\n        pos.emplace_back(from,\
+    \ from_id);\n        return pos.size() - 1;\n    }\n    void change_edge(int i,\
+    \ C new_cap, C new_flow) {\n        _edge &e = g[pos[i].first][pos[i].second],\
+    \ &re = g[e.to][e.rev];\n        e.cap = new_cap - new_flow;\n        re.cap =\
+    \ new_flow;\n    }\n    C flow(int s, int t, C lim = S::inf()) {\n        auto\
+    \ bfs = [&](int s) -> void {\n            fill(level.begin(), level.end(), -1);\n\
+    \            queue<int> q;\n            level[s] = 0;\n            q.push(s);\n\
+    \            while (!q.empty()) {\n                int v = q.front();\n      \
+    \          q.pop();\n                for (_edge &e : g[v]) {\n               \
+    \     if (e.cap == S::zero() || level[e.to] >= 0) continue;\n                \
+    \    level[e.to] = level[v] + 1;\n                    q.push(e.to);\n        \
+    \        }\n            }\n        };\n        auto dfs = [&](auto dfs, int v,\
+    \ int t, C lim) -> C {\n            if (v == t) return lim;\n            for (int\
+    \ &i = iter[v]; i < g[v].size(); ++i) {\n                _edge &e = g[v][i];\n\
+    \                if (level[v] >= level[e.to] || e.cap == S::zero()) continue;\n\
+    \                C d = dfs(dfs, e.to, t, lim > e.cap ? e.cap : lim);\n       \
+    \         if (d == S::zero()) continue;\n                e.cap -= d;\n       \
+    \         g[e.to][e.rev].cap += d;\n                return d;\n            }\n\
+    \            return S::zero();\n        };\n        C ret = S::zero();\n     \
+    \   while (true) {\n            bfs(s);\n            if (level[t] < 0 || lim ==\
+    \ S::zero()) return ret;\n            fill(iter.begin(), iter.end(), 0);\n   \
+    \         C f;\n            while ((f = dfs(dfs, s, t, lim)) != S::zero()) {\n\
+    \                ret += f;\n                lim -= f;\n            }\n       \
+    \ }\n    }\n    edge get_edge(int i) const {\n        _edge e = g[pos[i].first][pos[i].second],\
+    \ re = g[e.to][e.rev];\n        return {pos[i].first, e.to, e.cap + re.cap, re.cap};\n\
+    \    }\n    vector<edge> edges() const {\n        vector<edge> ret(pos.size());\n\
+    \        for (int i : rep(pos.size())) ret[i] = get_edge(i);\n        return ret;\n\
+    \    }\n    vector<bool> min_cut(int s) const {\n        vector<bool> ret(g.size());\n\
+    \        auto dfs = [&](auto dfs, int v) -> void {\n            if (ret[v]) return;\n\
+    \            ret[v] = true;\n            for (_edge e : g[v]) {\n            \
+    \    if (e.cap) dfs(dfs, e.to);\n            }\n        };\n        dfs(dfs, s);\n\
+    \        return ret;\n    }\n};\n\nstruct ll_dinic {\n    using cap_t = ll;\n\
+    \    static cap_t zero() { return 0; }\n    static cap_t inf() { return numeric_limits<cap_t>::max();\
+    \ }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp\"\
+    \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp\"\
+    \nusing namespace std;\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n   \
+    \ dinic<ll_dinic> dinic(n * 2 + 2);\n    vector id(n, vll(n, -1));\n    ll s =\
+    \ n * 2, t = n * 2 + 1;\n    for (ll i : rep(n)) {\n        dinic.add_edge(s,\
+    \ i, 1);\n        dinic.add_edge(i + n, t, 1);\n    }\n    for (ll i : rep(m))\
+    \ {\n        ll a, b;\n        cin >> a >> b, --a, --b;\n        id[a][b] = dinic.add_edge(a,\
     \ b + n, 1);\n    }\n    ll q, f = dinic.flow(s, t);\n    cin >> q;\n    for (ll\
     \ i : rep(q)) {\n        ll x, y;\n        cin >> x >> y, --x, --y;\n        if\
     \ (id[x][y] == -1) {\n            id[x][y] = dinic.add_edge(x, y + n, 1);\n  \
@@ -141,7 +141,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-14 02:34:21+09:00'
+  timestamp: '2021-09-16 04:43:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp

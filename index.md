@@ -6,19 +6,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/cht.hpp
       title: Convex Hull Trick
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/lazy_segtree.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/persistent_array.hpp
       title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/persistent_uf.hpp
       title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/segtree.hpp
       title: Segment Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/splay_tree.hpp
       title: Splay Tree
     - icon: ':heavy_check_mark:'
@@ -32,13 +32,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dinic.hpp
       title: "Dinic \u6CD5"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/hld.hpp
       title: "HL \u5206\u89E3"
     - icon: ':warning:'
       path: graph/oibfs.hpp
       title: 01-BFS
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/spfa.hpp
       title: SPFA
     - icon: ':heavy_check_mark:'
@@ -46,54 +46,54 @@ data:
       title: "Warshall-Floyd \u6CD5"
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/and_or_convolution.hpp
       title: "and / or \u7573\u307F\u8FBC\u307F"
     - icon: ':warning:'
       path: math/combination.hpp
       title: "\u7D44\u307F\u5408\u308F\u305B"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/convolution.hpp
       title: "\u7573\u307F\u8FBC\u307F"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/fps.hpp
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/fwht.hpp
       title: "\u9AD8\u901F\u30A6\u30A9\u30EB\u30B7\u30E5\u30FB\u30A2\u30C0\u30DE\u30FC\
         \u30EB\u5909\u63DB"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/fzt_fmt.hpp
       title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: "xor \u57FA\u5E95"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/matrix.hpp
       title: "\u884C\u5217"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/modint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/ntt.hpp
       title: "\u6570\u8AD6\u5909\u63DB"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/permutation.hpp
       title: "\u9806\u5217"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/subset_convolution.hpp
       title: Subset Convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/xor_convolution.hpp
       title: "xor \u7573\u307F\u8FBC\u307F"
   - name: string
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/rolling_hash.hpp
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -104,57 +104,57 @@ data:
     - icon: ':warning:'
       path: util/doubling.hpp
       title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: util/xorshift.hpp
       title: Xorshift
   verificationCategories:
   - name: test/judge.u-aizu.ac.jp
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
       title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - name: test/judge.yosupo.jp
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
       title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Convolution.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
       title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
       title: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
       title: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
       title: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
       title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     - icon: ':heavy_check_mark:'
@@ -180,45 +180,45 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   - name: test/unit
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/unit/hld.test.cpp
       title: test/unit/hld.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/unit/permutation.test.cpp
       title: test/unit/permutation.test.cpp
 layout: toppage

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/spfa.hpp
     title: SPFA
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/1/GRL_1_B
@@ -19,7 +19,7 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/1/GRL_1_B
   bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp\"\
     \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/1/GRL_1_B\"\
-    \n#line 2 \"graph/spfa.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
+    \n#line 2 \"graph/spfa.hpp\"\n\n#line 1 \"template.hpp\"\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#define all(a) (a).begin(), (a).end()\n#define uniq(a)\
     \ (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\nusing ull = unsigned\
     \ long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll\
@@ -36,49 +36,50 @@ data:
     \ os << \"(\" << a.first << \", \" << a.second << \")\";\n    return os;\n}\n\
     template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
     \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os <<\
-    \ *itr << (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate\
-    \ <typename T> ostream &operator<<(ostream &os, const set<T> &a) {\n    os <<\
-    \ \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr <<\
-    \ (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const multiset<T> &a) {\n    os << \"(\"\
-    ;\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename T, typename\
-    \ U> ostream &operator<<(ostream &os, const map<T, U> &a) {\n    os << \"(\";\n\
-    \    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \")\");\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define\
-    \ dump(...) (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename\
-    \ Head, typename... Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr\
-    \ << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n\
-    #define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
-    #endif\nstruct rep {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v)\
-    \ {}\n        void operator++() { ++v; }\n        ll operator*() const { return\
-    \ v; }\n        bool operator!=(itr i) const { return v < *i; }\n    };\n    ll\
-    \ l, r;\n    rep(ll l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n \
-    \   itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
-    struct per {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n \
-    \       void operator++() { --v; }\n        ll operator*() const { return v; }\n\
-    \        bool operator!=(itr i) const { return v > *i; }\n    };\n    ll l, r;\n\
-    \    per(ll l, ll r) : l(l), r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin()\
-    \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
-    \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
-    \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"graph/spfa.hpp\"\n\ntemplate <typename S> struct spfa\
-    \ {\n    using D = typename S::dist_t;\n    using C = typename S::cost_t;\n  \
-    \  struct edge {\n        int to;\n        C cost;\n    };\n    vector<vector<edge>>\
-    \ g;\n    spfa(int n) : g(n) {}\n    void add_edge(int from, int to, const C &cost)\
-    \ { g[from].push_back({to, cost}); }\n    pair<vector<D>, vector<int>> get(int\
-    \ s, const D &base = D()) const {\n        int n = g.size();\n        vector<D>\
-    \ dist(n, S::inf());\n        vector<int> prev(n, -1), time(n);\n        vector<bool>\
-    \ inq(n);\n        queue<int> q;\n        q.push(s);\n        dist[s] = base;\n\
-    \        ++time[s];\n        while (!q.empty()) {\n            int from = q.front();\n\
-    \            q.pop();\n            inq[from] = false;\n            for (auto [to,\
-    \ cost] : g[from]) {\n                if (chmin(dist[to], dist[from] + cost))\
-    \ {\n                    prev[to] = from;\n                    if (!inq[to]) {\n\
-    \                        if (++time[to] >= n) return {{}, {}};\n             \
-    \           q.push(to);\n                        inq[to] = true;\n           \
-    \         }\n                }\n            }\n        }\n        return {dist,\
-    \ prev};\n    }\n};\n\nstruct ll_spfa {\n    using dist_t = ll;\n    using cost_t\
-    \ = ll;\n    static dist_t inf() { return LLONG_MAX; }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp\"\
+    \ *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n    return\
+    \ os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const set<T>\
+    \ &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr)\
+    \ os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n  \
+    \  return os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
+    \ multiset<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
+    \ ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\"\
+    ;\n    return os;\n}\ntemplate <typename T, typename U> ostream &operator<<(ostream\
+    \ &os, const map<T, U> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+    \ itr != a.end(); ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n\
+    \    os << \")\";\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n\
+    #else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail>\
+    \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
+    \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
+    \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
+    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
+    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
+    \ operator!=(itr i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll\
+    \ l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
+    \ { --v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
+    \ i) const { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l),\
+    \ r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1;\
+    \ };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static\
+    \ constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"graph/spfa.hpp\"\
+    \n\ntemplate <typename S> struct spfa {\n    using D = typename S::dist_t;\n \
+    \   using C = typename S::cost_t;\n    struct edge {\n        int to;\n      \
+    \  C cost;\n    };\n    vector<vector<edge>> g;\n    spfa(int n) : g(n) {}\n \
+    \   void add_edge(int from, int to, const C &cost) { g[from].push_back({to, cost});\
+    \ }\n    pair<vector<D>, vector<int>> get(int s, const D &base = D()) const {\n\
+    \        int n = g.size();\n        vector<D> dist(n, S::inf());\n        vector<int>\
+    \ prev(n, -1), time(n);\n        vector<bool> inq(n);\n        queue<int> q;\n\
+    \        q.push(s);\n        dist[s] = base;\n        ++time[s];\n        while\
+    \ (!q.empty()) {\n            int from = q.front();\n            q.pop();\n  \
+    \          inq[from] = false;\n            for (auto [to, cost] : g[from]) {\n\
+    \                if (chmin(dist[to], dist[from] + cost)) {\n                 \
+    \   prev[to] = from;\n                    if (!inq[to]) {\n                  \
+    \      if (++time[to] >= n) return {{}, {}};\n                        q.push(to);\n\
+    \                        inq[to] = true;\n                    }\n            \
+    \    }\n            }\n        }\n        return {dist, prev};\n    }\n};\n\n\
+    struct ll_spfa {\n    using dist_t = ll;\n    using cost_t = ll;\n    static dist_t\
+    \ inf() { return LLONG_MAX; }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp\"\
     \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp\"\
     \nusing namespace std;\n\nint main() {\n    ll v, e, r;\n    cin >> v >> e >>\
     \ r;\n    spfa<ll_spfa> spfa(v);\n    while (e--) {\n        ll s, t, d;\n   \
@@ -102,8 +103,8 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-16 04:43:03+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
 layout: document

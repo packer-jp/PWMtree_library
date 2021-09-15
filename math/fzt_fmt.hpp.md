@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/and_or_convolution.hpp
     title: "and / or \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
     title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/fzt_fmt.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"math/fzt_fmt.hpp\"\n\n#line 1 \"template.hpp\"\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
     using ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\n\
@@ -46,44 +46,44 @@ data:
     \ {\n    os << \"(\" << a.first << \", \" << a.second << \")\";\n    return os;\n\
     }\ntemplate <typename T> ostream &operator<<(ostream &os, const vector<T> &a)\
     \ {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os\
-    \ << *itr << (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate\
-    \ <typename T> ostream &operator<<(ostream &os, const set<T> &a) {\n    os <<\
-    \ \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr <<\
-    \ (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const multiset<T> &a) {\n    os << \"(\"\
-    ;\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename T, typename\
-    \ U> ostream &operator<<(ostream &os, const map<T, U> &a) {\n    os << \"(\";\n\
-    \    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \")\");\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define\
-    \ dump(...) (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename\
-    \ Head, typename... Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr\
-    \ << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n\
-    #define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
-    #endif\nstruct rep {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v)\
-    \ {}\n        void operator++() { ++v; }\n        ll operator*() const { return\
-    \ v; }\n        bool operator!=(itr i) const { return v < *i; }\n    };\n    ll\
-    \ l, r;\n    rep(ll l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n \
-    \   itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
-    struct per {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n \
-    \       void operator++() { --v; }\n        ll operator*() const { return v; }\n\
-    \        bool operator!=(itr i) const { return v > *i; }\n    };\n    ll l, r;\n\
-    \    per(ll l, ll r) : l(l), r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin()\
-    \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
-    \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
-    \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"math/fzt_fmt.hpp\"\n\ntemplate <typename T> void fzt_super(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if ((s >> i) & 1) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T> &a) {\n \
-    \   for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
+    \ << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n    return\
+    \ os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const set<T>\
+    \ &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr)\
+    \ os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n  \
+    \  return os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
+    \ multiset<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
+    \ ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\"\
+    ;\n    return os;\n}\ntemplate <typename T, typename U> ostream &operator<<(ostream\
+    \ &os, const map<T, U> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+    \ itr != a.end(); ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n\
+    \    os << \")\";\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n\
+    #else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail>\
+    \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
+    \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
+    \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
+    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
+    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
+    \ operator!=(itr i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll\
+    \ l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
+    \ { --v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
+    \ i) const { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l),\
+    \ r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1;\
+    \ };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static\
+    \ constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"math/fzt_fmt.hpp\"\
+    \n\ntemplate <typename T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
     \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
-    \ a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fmt_sub(vector<T>\
+    \ a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
     \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] -= a[s];\n\
-    \        }\n    }\n}\n"
+    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
+    \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
+    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
+    \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
+    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
+    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
+    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> void\
     \ fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1))\
     \ {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1) a[s\
@@ -101,15 +101,15 @@ data:
   isVerificationFile: false
   path: math/fzt_fmt.hpp
   requiredBy:
-  - math/subset_convolution.hpp
   - math/and_or_convolution.hpp
-  timestamp: '2021-09-14 02:34:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - math/subset_convolution.hpp
+  timestamp: '2021-09-16 04:43:03+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
+  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
   - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
 documentation_of: math/fzt_fmt.hpp
 layout: document
 title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"

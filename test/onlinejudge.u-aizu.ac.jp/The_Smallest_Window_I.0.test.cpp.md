@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/segtree.hpp
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A
@@ -19,7 +19,7 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A
   bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\
     \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A\"\
-    \n#line 2 \"data_structure/segtree.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+    \n#line 2 \"data_structure/segtree.hpp\"\n\n#line 1 \"template.hpp\"\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
     using ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\n\
@@ -36,67 +36,67 @@ data:
     \ {\n    os << \"(\" << a.first << \", \" << a.second << \")\";\n    return os;\n\
     }\ntemplate <typename T> ostream &operator<<(ostream &os, const vector<T> &a)\
     \ {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os\
-    \ << *itr << (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate\
-    \ <typename T> ostream &operator<<(ostream &os, const set<T> &a) {\n    os <<\
-    \ \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr <<\
-    \ (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const multiset<T> &a) {\n    os << \"(\"\
-    ;\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename T, typename\
-    \ U> ostream &operator<<(ostream &os, const map<T, U> &a) {\n    os << \"(\";\n\
-    \    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \")\");\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define\
-    \ dump(...) (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename\
-    \ Head, typename... Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr\
-    \ << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n\
-    #define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
-    #endif\nstruct rep {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v)\
-    \ {}\n        void operator++() { ++v; }\n        ll operator*() const { return\
-    \ v; }\n        bool operator!=(itr i) const { return v < *i; }\n    };\n    ll\
-    \ l, r;\n    rep(ll l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n \
-    \   itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
-    struct per {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n \
-    \       void operator++() { --v; }\n        ll operator*() const { return v; }\n\
-    \        bool operator!=(itr i) const { return v > *i; }\n    };\n    ll l, r;\n\
-    \    per(ll l, ll r) : l(l), r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin()\
-    \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
-    \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
-    \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"data_structure/segtree.hpp\"\n\ntemplate <typename\
-    \ S> struct segtree {\n    using V = typename S::val_t;\n    int n, size;\n  \
-    \  vector<V> val;\n    segtree(int n) : segtree(vector(n, S::e())) {}\n    segtree(const\
-    \ vector<V> &src) : n(src.size()) {\n        for (size = 1; size < n; size <<=\
-    \ 1) {}\n        val.resize(size << 1);\n        copy(all(src), val.begin() +\
-    \ size);\n        for (int i : per(1, size)) val[i] = S::op(val[i << 1 | 0], val[i\
-    \ << 1 | 1]);\n    }\n    void set(int i, const V &a) {\n        val[i += size]\
-    \ = a;\n        while (i >>= 1) val[i] = S::op(val[i << 1 | 0], val[i << 1 | 1]);\n\
-    \    }\n    V get(int i) const { return val[i + size]; }\n    V prod(int l, int\
-    \ r) const {\n        V a = S::e(), b = S::e();\n        for (l += size, r +=\
-    \ size; l < r; l >>= 1, r >>= 1) {\n            if (l & 1) a = S::op(a, val[l++]);\n\
-    \            if (r & 1) b = S::op(val[--r], b);\n        }\n        return S::op(a,\
-    \ b);\n    }\n    template <typename F> int max_right(int l, F f) const {\n  \
-    \      if (l == n) return n;\n        V a = S::e();\n        l += size;\n    \
-    \    do {\n            while (~l & 1) l >>= 1;\n            if (!f(S::op(a, val[l])))\
-    \ {\n                while (l < size) {\n                    l = l << 1;\n   \
-    \                 if (f(S::op(a, val[l]))) a = S::op(a, val[l++]);\n         \
-    \       }\n                return l - size;\n            }\n            a = S::op(a,\
-    \ val[l++]);\n        } while ((l & -l) != l);\n        return n;\n    }\n   \
-    \ template <typename F> int min_left(int r, F f) const {\n        if (r == 0)\
-    \ return 0;\n        V a = S::e();\n        r += size;\n        do {\n       \
-    \     r--;\n            while (r > 1 && r & 1) r >>= 1;\n            if (!f(S::op(val[r],\
-    \ a))) {\n                while (r < size) {\n                    r = r << 1 |\
-    \ 1;\n                    if (f(S::op(val[r], a))) a = S::op(val[r--], a);\n \
-    \               }\n                return r + 1 - size;\n            }\n     \
-    \       a = S::op(val[r], a);\n        } while ((r & -r) != r);\n        return\
-    \ 0;\n    }\n};\n\nstruct min_monoid {\n    using val_t = ll;\n    static val_t\
-    \ op(val_t a, val_t b) { return min(a, b); }\n    static val_t e() { return LLONG_MAX;\
-    \ }\n};\n\nstruct sum_monoid {\n    using val_t = ll;\n    static val_t op(val_t\
-    \ a, val_t b) { return a + b; }\n    static val_t e() { return 0; }\n};\n#line\
-    \ 3 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\n\n#line\
-    \ 5 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\nusing\
-    \ namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n    vector<ll>\
-    \ a(n);\n    for (ll i : rep(n)) cin >> a[i];\n    segtree<sum_monoid> st(a);\n\
-    \    ll ans = LLONG_MAX;\n    for (ll l : rep(n)) {\n        ll r = st.max_right(l,\
+    \ << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n    return\
+    \ os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const set<T>\
+    \ &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr)\
+    \ os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n  \
+    \  return os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
+    \ multiset<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
+    \ ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\"\
+    ;\n    return os;\n}\ntemplate <typename T, typename U> ostream &operator<<(ostream\
+    \ &os, const map<T, U> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+    \ itr != a.end(); ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n\
+    \    os << \")\";\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n\
+    #else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail>\
+    \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
+    \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
+    \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
+    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
+    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
+    \ operator!=(itr i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll\
+    \ l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
+    \ { --v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
+    \ i) const { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l),\
+    \ r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1;\
+    \ };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static\
+    \ constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"data_structure/segtree.hpp\"\
+    \n\ntemplate <typename S> struct segtree {\n    using V = typename S::val_t;\n\
+    \    int n, size;\n    vector<V> val;\n    segtree(int n) : segtree(vector(n,\
+    \ S::e())) {}\n    segtree(const vector<V> &src) : n(src.size()) {\n        for\
+    \ (size = 1; size < n; size <<= 1) {}\n        val.resize(size << 1);\n      \
+    \  copy(all(src), val.begin() + size);\n        for (int i : per(1, size)) val[i]\
+    \ = S::op(val[i << 1 | 0], val[i << 1 | 1]);\n    }\n    void set(int i, const\
+    \ V &a) {\n        val[i += size] = a;\n        while (i >>= 1) val[i] = S::op(val[i\
+    \ << 1 | 0], val[i << 1 | 1]);\n    }\n    V get(int i) const { return val[i +\
+    \ size]; }\n    V prod(int l, int r) const {\n        V a = S::e(), b = S::e();\n\
+    \        for (l += size, r += size; l < r; l >>= 1, r >>= 1) {\n            if\
+    \ (l & 1) a = S::op(a, val[l++]);\n            if (r & 1) b = S::op(val[--r],\
+    \ b);\n        }\n        return S::op(a, b);\n    }\n    template <typename F>\
+    \ int max_right(int l, F f) const {\n        if (l == n) return n;\n        V\
+    \ a = S::e();\n        l += size;\n        do {\n            while (~l & 1) l\
+    \ >>= 1;\n            if (!f(S::op(a, val[l]))) {\n                while (l <\
+    \ size) {\n                    l = l << 1;\n                    if (f(S::op(a,\
+    \ val[l]))) a = S::op(a, val[l++]);\n                }\n                return\
+    \ l - size;\n            }\n            a = S::op(a, val[l++]);\n        } while\
+    \ ((l & -l) != l);\n        return n;\n    }\n    template <typename F> int min_left(int\
+    \ r, F f) const {\n        if (r == 0) return 0;\n        V a = S::e();\n    \
+    \    r += size;\n        do {\n            r--;\n            while (r > 1 && r\
+    \ & 1) r >>= 1;\n            if (!f(S::op(val[r], a))) {\n                while\
+    \ (r < size) {\n                    r = r << 1 | 1;\n                    if (f(S::op(val[r],\
+    \ a))) a = S::op(val[r--], a);\n                }\n                return r +\
+    \ 1 - size;\n            }\n            a = S::op(val[r], a);\n        } while\
+    \ ((r & -r) != r);\n        return 0;\n    }\n};\n\nstruct min_monoid {\n    using\
+    \ val_t = ll;\n    static val_t op(val_t a, val_t b) { return min(a, b); }\n \
+    \   static val_t e() { return LLONG_MAX; }\n};\n\nstruct sum_monoid {\n    using\
+    \ val_t = ll;\n    static val_t op(val_t a, val_t b) { return a + b; }\n    static\
+    \ val_t e() { return 0; }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\
+    \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\
+    \nusing namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n   \
+    \ vector<ll> a(n);\n    for (ll i : rep(n)) cin >> a[i];\n    segtree<sum_monoid>\
+    \ st(a);\n    ll ans = LLONG_MAX;\n    for (ll l : rep(n)) {\n        ll r = st.max_right(l,\
     \ [&](ll x) { return x < s; });\n        if (r < n) chmin(ans, r - l + 1);\n \
     \   }\n    if (ans == LLONG_MAX) {\n        cout << 0 << endl;\n    } else {\n\
     \        cout << ans << endl;\n    }\n}\n"
@@ -114,8 +114,8 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-16 04:43:03+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
 layout: document

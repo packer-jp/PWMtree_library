@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/matrix.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"math/matrix.hpp\"\n\n#line 1 \"template.hpp\"\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
     using ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\n\
@@ -31,64 +31,65 @@ data:
     \ {\n    os << \"(\" << a.first << \", \" << a.second << \")\";\n    return os;\n\
     }\ntemplate <typename T> ostream &operator<<(ostream &os, const vector<T> &a)\
     \ {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os\
-    \ << *itr << (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate\
-    \ <typename T> ostream &operator<<(ostream &os, const set<T> &a) {\n    os <<\
-    \ \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr <<\
-    \ (next(itr) != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename\
-    \ T> ostream &operator<<(ostream &os, const multiset<T> &a) {\n    os << \"(\"\
-    ;\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \")\");\n    return os;\n}\ntemplate <typename T, typename\
-    \ U> ostream &operator<<(ostream &os, const map<T, U> &a) {\n    os << \"(\";\n\
-    \    for (auto itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr)\
-    \ != a.end() ? \", \" : \")\");\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define\
-    \ dump(...) (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename\
-    \ Head, typename... Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr\
-    \ << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n\
-    #define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
-    #endif\nstruct rep {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v)\
-    \ {}\n        void operator++() { ++v; }\n        ll operator*() const { return\
-    \ v; }\n        bool operator!=(itr i) const { return v < *i; }\n    };\n    ll\
-    \ l, r;\n    rep(ll l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n \
-    \   itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
-    struct per {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n \
-    \       void operator++() { --v; }\n        ll operator*() const { return v; }\n\
-    \        bool operator!=(itr i) const { return v > *i; }\n    };\n    ll l, r;\n\
-    \    per(ll l, ll r) : l(l), r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin()\
-    \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
-    \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
-    \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"math/matrix.hpp\"\n\ntemplate <typename S> struct matrix\
-    \ {\n    using V = typename S::val_t;\n    vector<vector<V>> val;\n    matrix(int\
-    \ n, int m) : matrix(vector(n, vector(m, S::zero()))) {}\n    matrix(const vector<vector<V>>\
-    \ &src) : val(src) {}\n    vector<V> &operator[](int i) { return val[i]; }\n \
-    \   const vector<V> &operator[](int i) const { return val[i]; }\n    int height()\
-    \ const { return val.size(); }\n    int width() const { return val[0].size();\
-    \ }\n    static matrix id(int n) {\n        matrix ret(n, n);\n        for (int\
-    \ i : rep(n)) ret[i][i] = S::one();\n        return ret;\n    }\n    void row_add(int\
-    \ i, int j, V a) {\n        for (int k : rep(width())) { val[i][k] += val[j][k]\
-    \ * a; }\n    }\n    bool place_nonzero(int i, int j) {\n        for (int k :\
-    \ rep(i, height())) {\n            if (val[k][j] != S::zero()) {\n           \
-    \     if (k > i) row_add(i, k, S::one());\n                break;\n          \
-    \  }\n        }\n        return val[i][j] != S::zero();\n    }\n    matrix upper_triangular()\
-    \ const {\n        matrix ret(*this);\n        for (int i = 0, j = 0; i < height()\
-    \ && j < width(); j++) {\n            if (!ret.place_nonzero(i, j)) continue;\n\
-    \            for (int k : rep(i + 1, height())) ret.row_add(k, i, -ret[k][j] /\
-    \ ret[i][j]);\n            i++;\n        }\n        return ret;\n    }\n    V\
-    \ det() const {\n        V ret = S::one();\n        matrix ut = upper_triangular();\n\
-    \        for (int i : rep(height())) ret *= ut[i][i];\n        return ret;\n \
-    \   }\n    matrix inv() const {\n        matrix ex(height(), width() << 1);\n\
-    \        for (int i : rep(height())) {\n            for (int j : rep(width()))\
-    \ { ex[i][j] = val[i][j]; }\n        }\n        for (int i : rep(height())) ex[i][width()\
-    \ + i] = S::one();\n        matrix ut = ex.upper_triangular();\n        for (int\
-    \ i : per(height())) {\n            ut.row_add(i, i, S::one() / ut[i][i] - S::one());\n\
-    \            for (int j : rep(i)) ut.row_add(j, i, -ut[j][i] / ut[i][i]);\n  \
-    \      }\n        matrix ret(height(), width());\n        for (int i : rep(height()))\
-    \ {\n            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j];\
-    \ }\n        }\n        return ret;\n    }\n    matrix pow(ll k) const {\n   \
-    \     matrix ret = matrix::id(height()), mul(*this);\n        while (k) {\n  \
-    \          if (k & 1) ret *= mul;\n            mul *= mul;\n            k >>=\
-    \ 1;\n        }\n        return ret;\n    }\n    matrix &operator+=(const matrix\
-    \ &a) {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
+    \ << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n    return\
+    \ os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const set<T>\
+    \ &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr)\
+    \ os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n  \
+    \  return os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
+    \ multiset<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
+    \ ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\"\
+    ;\n    return os;\n}\ntemplate <typename T, typename U> ostream &operator<<(ostream\
+    \ &os, const map<T, U> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+    \ itr != a.end(); ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n\
+    \    os << \")\";\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n\
+    #else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail>\
+    \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
+    \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
+    \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
+    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
+    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
+    \ operator!=(itr i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll\
+    \ l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const\
+    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
+    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
+    \ { --v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
+    \ i) const { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l),\
+    \ r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1;\
+    \ };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static\
+    \ constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
+    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"math/matrix.hpp\"\
+    \n\ntemplate <typename S> struct matrix {\n    using V = typename S::val_t;\n\
+    \    vector<vector<V>> val;\n    matrix(int n, int m) : matrix(vector(n, vector(m,\
+    \ S::zero()))) {}\n    matrix(const vector<vector<V>> &src) : val(src) {}\n  \
+    \  vector<V> &operator[](int i) { return val[i]; }\n    const vector<V> &operator[](int\
+    \ i) const { return val[i]; }\n    int height() const { return val.size(); }\n\
+    \    int width() const { return val[0].size(); }\n    static matrix id(int n)\
+    \ {\n        matrix ret(n, n);\n        for (int i : rep(n)) ret[i][i] = S::one();\n\
+    \        return ret;\n    }\n    void row_add(int i, int j, V a) {\n        for\
+    \ (int k : rep(width())) { val[i][k] += val[j][k] * a; }\n    }\n    bool place_nonzero(int\
+    \ i, int j) {\n        for (int k : rep(i, height())) {\n            if (val[k][j]\
+    \ != S::zero()) {\n                if (k > i) row_add(i, k, S::one());\n     \
+    \           break;\n            }\n        }\n        return val[i][j] != S::zero();\n\
+    \    }\n    matrix upper_triangular() const {\n        matrix ret(*this);\n  \
+    \      for (int i = 0, j = 0; i < height() && j < width(); j++) {\n          \
+    \  if (!ret.place_nonzero(i, j)) continue;\n            for (int k : rep(i + 1,\
+    \ height())) ret.row_add(k, i, -ret[k][j] / ret[i][j]);\n            i++;\n  \
+    \      }\n        return ret;\n    }\n    V det() const {\n        V ret = S::one();\n\
+    \        matrix ut = upper_triangular();\n        for (int i : rep(height()))\
+    \ ret *= ut[i][i];\n        return ret;\n    }\n    matrix inv() const {\n   \
+    \     matrix ex(height(), width() << 1);\n        for (int i : rep(height()))\
+    \ {\n            for (int j : rep(width())) { ex[i][j] = val[i][j]; }\n      \
+    \  }\n        for (int i : rep(height())) ex[i][width() + i] = S::one();\n   \
+    \     matrix ut = ex.upper_triangular();\n        for (int i : per(height()))\
+    \ {\n            ut.row_add(i, i, S::one() / ut[i][i] - S::one());\n         \
+    \   for (int j : rep(i)) ut.row_add(j, i, -ut[j][i] / ut[i][i]);\n        }\n\
+    \        matrix ret(height(), width());\n        for (int i : rep(height())) {\n\
+    \            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j]; }\n\
+    \        }\n        return ret;\n    }\n    matrix pow(ll k) const {\n       \
+    \ matrix ret = matrix::id(height()), mul(*this);\n        while (k) {\n      \
+    \      if (k & 1) ret *= mul;\n            mul *= mul;\n            k >>= 1;\n\
+    \        }\n        return ret;\n    }\n    matrix &operator+=(const matrix &a)\
+    \ {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
     \ { val[i][j] += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix\
     \ &operator-=(const matrix &a) {\n        for (int i : rep(height())) {\n    \
     \        for (int j : rep(width())) { val[i][j] -= a[i][j]; }\n        }\n   \
@@ -170,8 +171,8 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2021-09-13 22:50:01+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-16 04:43:03+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
 documentation_of: math/matrix.hpp
