@@ -6,15 +6,15 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/wf.hpp\"\n\n#line 1 \"template.hpp\"\n#include <bits/stdc++.h>\n\
+  bundledCode: "#line 2 \"graph/wf.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#define all(a) (a).begin(), (a).end()\n#define uniq(a)\
     \ (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\nusing ull = unsigned\
     \ long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll\
@@ -73,8 +73,8 @@ data:
   isVerificationFile: false
   path: graph/wf.hpp
   requiredBy: []
-  timestamp: '2021-09-16 04:43:03+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-16 13:52:10+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
 documentation_of: graph/wf.hpp

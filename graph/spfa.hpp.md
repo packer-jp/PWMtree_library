@@ -14,24 +14,24 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/spfa.hpp\"\n\n#line 1 \"template.hpp\"\n#include <bits/stdc++.h>\n\
-    using namespace std;\n\n#define all(a) (a).begin(), (a).end()\n#define uniq(a)\
-    \ (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\nusing ull = unsigned\
-    \ long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll\
-    \ dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1, 0, -1, 0,\
-    \ 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return (a > 0) - (a < 0); }\nconstexpr\
-    \ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr ll\
-    \ cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr ull bit(int n) { return\
-    \ 1ull << n; }\ntemplate <typename T> constexpr T sq(const T &a) { return a *\
-    \ a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T, vector<T>,\
-    \ greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a, const U &b)\
-    \ { return a < b ? a = b, true : false; }\ntemplate <typename T, typename U> bool\
-    \ chmin(T &a, const U &b) { return a > b ? a = b, true : false; }\ntemplate <typename\
-    \ T, typename U> ostream &operator<<(ostream &os, const pair<T, U> &a) {\n   \
-    \ os << \"(\" << a.first << \", \" << a.second << \")\";\n    return os;\n}\n\
-    template <typename T> ostream &operator<<(ostream &os, const vector<T> &a) {\n\
-    \    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os <<\
-    \ *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n    return\
+  bundledCode: "#line 2 \"graph/spfa.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
+    #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
+    using ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\n\
+    constexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1,\
+    \ 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return (a > 0) - (a <\
+    \ 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b);\
+    \ }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr ull bit(int\
+    \ n) { return 1ull << n; }\ntemplate <typename T> constexpr T sq(const T &a) {\
+    \ return a * a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+    \ vector<T>, greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a,\
+    \ const U &b) { return a < b ? a = b, true : false; }\ntemplate <typename T, typename\
+    \ U> bool chmin(T &a, const U &b) { return a > b ? a = b, true : false; }\ntemplate\
+    \ <typename T, typename U> ostream &operator<<(ostream &os, const pair<T, U> &a)\
+    \ {\n    os << \"(\" << a.first << \", \" << a.second << \")\";\n    return os;\n\
+    }\ntemplate <typename T> ostream &operator<<(ostream &os, const vector<T> &a)\
+    \ {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os\
+    \ << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n    return\
     \ os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const set<T>\
     \ &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr)\
     \ os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n  \
@@ -97,7 +97,7 @@ data:
   isVerificationFile: false
   path: graph/spfa.hpp
   requiredBy: []
-  timestamp: '2021-09-16 04:43:03+09:00'
+  timestamp: '2021-09-16 13:52:10+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp

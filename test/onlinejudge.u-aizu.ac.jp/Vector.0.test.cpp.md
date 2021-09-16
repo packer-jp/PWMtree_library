@@ -19,7 +19,7 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/1/ITP2_1_A
   bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp\"\n#define\
     \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/1/ITP2_1_A\"\
-    \n#line 2 \"data_structure/splay_tree.hpp\"\n\n#line 1 \"template.hpp\"\n#include\
+    \n#line 2 \"data_structure/splay_tree.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
     using ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\n\
@@ -84,35 +84,35 @@ data:
     \ = 1;\n            if (left) size += left->size;\n            if (right) size\
     \ += right->size;\n        }\n    };\n    node *root;\n    splay_tree(node *root\
     \ = nullptr) : root(root) {}\n    int size() { return root ? root->size : 0; }\n\
-    \    node *get_node(int idx) {\n        node *cur = root;\n        while (true)\
+    \    node *get_node(int i) {\n        node *cur = root;\n        while (true)\
     \ {\n            int size_l = cur->left ? cur->left->size : 0;\n            if\
-    \ (idx < size_l) cur = cur->left;\n            if (idx == size_l) {\n        \
-    \        cur->splay();\n                return root = cur;\n            }\n  \
-    \          if (idx > size_l) cur = cur->right, idx -= size_l + 1;\n        }\n\
-    \    }\n    T &operator[](int idx) { return get_node(idx)->val; }\n    template\
-    \ <typename F> int lower_bound(F f) {\n        if (!root) return 0;\n        node\
-    \ *cur = root;\n        int ret = -1;\n        while (true) {\n            if\
-    \ (cur->state() < 1) {\n                ret += cur->left ? cur->left->size + 1\
-    \ : 1;\n            } else {\n                ret -= cur->right ? cur->right->size\
-    \ + 1 : 1;\n            }\n            if (f(cur->val)) {\n                if\
-    \ (cur->left) {\n                    cur = cur->left;\n                } else\
-    \ {\n                    cur->splay(), root = cur;\n                    return\
-    \ ret;\n                }\n            } else {\n                if (cur->right)\
-    \ {\n                    cur = cur->right;\n                } else {\n       \
-    \             cur->splay(), root = cur;\n                    return ret + 1;\n\
-    \                }\n            }\n        }\n    }\n    splay_tree split(int\
-    \ size_left) {\n        if (size_left == 0) {\n            node *root_r = root;\n\
-    \            root = nullptr;\n            return root_r;\n        }\n        if\
-    \ (size_left == root->size) return nullptr;\n        node *root_r = get_node(size_left);\n\
+    \ (i < size_l) cur = cur->left;\n            if (i == size_l) {\n            \
+    \    cur->splay();\n                return root = cur;\n            }\n      \
+    \      if (i > size_l) cur = cur->right, i -= size_l + 1;\n        }\n    }\n\
+    \    T &operator[](int i) { return get_node(i)->val; }\n    template <typename\
+    \ F> int lower_bound(F f) {\n        if (!root) return 0;\n        node *cur =\
+    \ root;\n        int ret = -1;\n        while (true) {\n            if (cur->state()\
+    \ < 1) {\n                ret += cur->left ? cur->left->size + 1 : 1;\n      \
+    \      } else {\n                ret -= cur->right ? cur->right->size + 1 : 1;\n\
+    \            }\n            if (f(cur->val)) {\n                if (cur->left)\
+    \ {\n                    cur = cur->left;\n                } else {\n        \
+    \            cur->splay(), root = cur;\n                    return ret;\n    \
+    \            }\n            } else {\n                if (cur->right) {\n    \
+    \                cur = cur->right;\n                } else {\n               \
+    \     cur->splay(), root = cur;\n                    return ret + 1;\n       \
+    \         }\n            }\n        }\n    }\n    splay_tree split(int size_left)\
+    \ {\n        if (size_left == 0) {\n            node *root_r = root;\n       \
+    \     root = nullptr;\n            return root_r;\n        }\n        if (size_left\
+    \ == root->size) return nullptr;\n        node *root_r = get_node(size_left);\n\
     \        root = root_r->left;\n        root_r->left = nullptr, root->par = nullptr;\n\
     \        root_r->update();\n        return root_r;\n    }\n    void merge(splay_tree\
     \ right) {\n        if (!root) {\n            root = right.root;\n           \
     \ return;\n        }\n        if (!right.root) return;\n        get_node(root->size\
     \ - 1);\n        root->right = right.root, right.root->par = root;\n        root->update();\n\
-    \    }\n    void insert(int idx, T x) {\n        splay_tree xt = new node(x),\
-    \ right = split(idx);\n        merge(xt), merge(right);\n    }\n    void erase(int\
-    \ idx) {\n        splay_tree xt = split(idx);\n        splay_tree right = xt.split(1);\n\
-    \        delete xt.root;\n        merge(right);\n    }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp\"\
+    \    }\n    void insert(int i, T val) {\n        splay_tree vt = new node(val),\
+    \ right = split(i);\n        merge(vt), merge(right);\n    }\n    void erase(int\
+    \ i) {\n        splay_tree vt = split(i);\n        splay_tree right = vt.split(1);\n\
+    \        delete vt.root;\n        merge(right);\n    }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp\"\
     \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp\"\nusing namespace\
     \ std;\n\nint main() {\n    int q;\n    cin >> q;\n    splay_tree<ll> st;\n  \
     \  while (q--) {\n        ll ord, x;\n        cin >> ord;\n        if (ord ==\
@@ -133,7 +133,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 04:43:03+09:00'
+  timestamp: '2021-09-16 13:52:10+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp

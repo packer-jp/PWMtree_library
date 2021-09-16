@@ -19,7 +19,7 @@ data:
     - https://judge.yosupo.jp/problem/line_add_get_min
   bundledCode: "#line 1 \"test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n#line 2 \"data_structure/cht.hpp\"\
-    \n\n#line 1 \"template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    \n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace std;\n\
     \n#define all(a) (a).begin(), (a).end()\n#define uniq(a) (a).erase(unique(all(a)),\
     \ (a).end())\nusing ll = long long;\nusing ull = unsigned long long;\nusing pll\
     \ = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1,\
@@ -110,7 +110,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 04:43:03+09:00'
+  timestamp: '2021-09-16 13:52:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp

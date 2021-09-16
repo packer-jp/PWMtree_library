@@ -14,8 +14,8 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/splay_tree.hpp\"\n\n#line 1 \"template.hpp\"\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
+  bundledCode: "#line 2 \"data_structure/splay_tree.hpp\"\n\n#line 2 \"template.hpp\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
     \ (a).end()\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll =\
     \ long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing\
     \ vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr\
@@ -79,35 +79,35 @@ data:
     \ = 1;\n            if (left) size += left->size;\n            if (right) size\
     \ += right->size;\n        }\n    };\n    node *root;\n    splay_tree(node *root\
     \ = nullptr) : root(root) {}\n    int size() { return root ? root->size : 0; }\n\
-    \    node *get_node(int idx) {\n        node *cur = root;\n        while (true)\
+    \    node *get_node(int i) {\n        node *cur = root;\n        while (true)\
     \ {\n            int size_l = cur->left ? cur->left->size : 0;\n            if\
-    \ (idx < size_l) cur = cur->left;\n            if (idx == size_l) {\n        \
-    \        cur->splay();\n                return root = cur;\n            }\n  \
-    \          if (idx > size_l) cur = cur->right, idx -= size_l + 1;\n        }\n\
-    \    }\n    T &operator[](int idx) { return get_node(idx)->val; }\n    template\
-    \ <typename F> int lower_bound(F f) {\n        if (!root) return 0;\n        node\
-    \ *cur = root;\n        int ret = -1;\n        while (true) {\n            if\
-    \ (cur->state() < 1) {\n                ret += cur->left ? cur->left->size + 1\
-    \ : 1;\n            } else {\n                ret -= cur->right ? cur->right->size\
-    \ + 1 : 1;\n            }\n            if (f(cur->val)) {\n                if\
-    \ (cur->left) {\n                    cur = cur->left;\n                } else\
-    \ {\n                    cur->splay(), root = cur;\n                    return\
-    \ ret;\n                }\n            } else {\n                if (cur->right)\
-    \ {\n                    cur = cur->right;\n                } else {\n       \
-    \             cur->splay(), root = cur;\n                    return ret + 1;\n\
-    \                }\n            }\n        }\n    }\n    splay_tree split(int\
-    \ size_left) {\n        if (size_left == 0) {\n            node *root_r = root;\n\
-    \            root = nullptr;\n            return root_r;\n        }\n        if\
-    \ (size_left == root->size) return nullptr;\n        node *root_r = get_node(size_left);\n\
+    \ (i < size_l) cur = cur->left;\n            if (i == size_l) {\n            \
+    \    cur->splay();\n                return root = cur;\n            }\n      \
+    \      if (i > size_l) cur = cur->right, i -= size_l + 1;\n        }\n    }\n\
+    \    T &operator[](int i) { return get_node(i)->val; }\n    template <typename\
+    \ F> int lower_bound(F f) {\n        if (!root) return 0;\n        node *cur =\
+    \ root;\n        int ret = -1;\n        while (true) {\n            if (cur->state()\
+    \ < 1) {\n                ret += cur->left ? cur->left->size + 1 : 1;\n      \
+    \      } else {\n                ret -= cur->right ? cur->right->size + 1 : 1;\n\
+    \            }\n            if (f(cur->val)) {\n                if (cur->left)\
+    \ {\n                    cur = cur->left;\n                } else {\n        \
+    \            cur->splay(), root = cur;\n                    return ret;\n    \
+    \            }\n            } else {\n                if (cur->right) {\n    \
+    \                cur = cur->right;\n                } else {\n               \
+    \     cur->splay(), root = cur;\n                    return ret + 1;\n       \
+    \         }\n            }\n        }\n    }\n    splay_tree split(int size_left)\
+    \ {\n        if (size_left == 0) {\n            node *root_r = root;\n       \
+    \     root = nullptr;\n            return root_r;\n        }\n        if (size_left\
+    \ == root->size) return nullptr;\n        node *root_r = get_node(size_left);\n\
     \        root = root_r->left;\n        root_r->left = nullptr, root->par = nullptr;\n\
     \        root_r->update();\n        return root_r;\n    }\n    void merge(splay_tree\
     \ right) {\n        if (!root) {\n            root = right.root;\n           \
     \ return;\n        }\n        if (!right.root) return;\n        get_node(root->size\
     \ - 1);\n        root->right = right.root, right.root->par = root;\n        root->update();\n\
-    \    }\n    void insert(int idx, T x) {\n        splay_tree xt = new node(x),\
-    \ right = split(idx);\n        merge(xt), merge(right);\n    }\n    void erase(int\
-    \ idx) {\n        splay_tree xt = split(idx);\n        splay_tree right = xt.split(1);\n\
-    \        delete xt.root;\n        merge(right);\n    }\n};\n"
+    \    }\n    void insert(int i, T val) {\n        splay_tree vt = new node(val),\
+    \ right = split(i);\n        merge(vt), merge(right);\n    }\n    void erase(int\
+    \ i) {\n        splay_tree vt = split(i);\n        splay_tree right = vt.split(1);\n\
+    \        delete vt.root;\n        merge(right);\n    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> struct\
     \ splay_tree {\n    struct node {\n        node *left, *right, *par;\n       \
     \ int size;\n        T val;\n        node(T val) : left(nullptr), right(nullptr),\
@@ -129,12 +129,12 @@ data:
     \       }\n        void update() {\n            size = 1;\n            if (left)\
     \ size += left->size;\n            if (right) size += right->size;\n        }\n\
     \    };\n    node *root;\n    splay_tree(node *root = nullptr) : root(root) {}\n\
-    \    int size() { return root ? root->size : 0; }\n    node *get_node(int idx)\
-    \ {\n        node *cur = root;\n        while (true) {\n            int size_l\
-    \ = cur->left ? cur->left->size : 0;\n            if (idx < size_l) cur = cur->left;\n\
-    \            if (idx == size_l) {\n                cur->splay();\n           \
-    \     return root = cur;\n            }\n            if (idx > size_l) cur = cur->right,\
-    \ idx -= size_l + 1;\n        }\n    }\n    T &operator[](int idx) { return get_node(idx)->val;\
+    \    int size() { return root ? root->size : 0; }\n    node *get_node(int i) {\n\
+    \        node *cur = root;\n        while (true) {\n            int size_l = cur->left\
+    \ ? cur->left->size : 0;\n            if (i < size_l) cur = cur->left;\n     \
+    \       if (i == size_l) {\n                cur->splay();\n                return\
+    \ root = cur;\n            }\n            if (i > size_l) cur = cur->right, i\
+    \ -= size_l + 1;\n        }\n    }\n    T &operator[](int i) { return get_node(i)->val;\
     \ }\n    template <typename F> int lower_bound(F f) {\n        if (!root) return\
     \ 0;\n        node *cur = root;\n        int ret = -1;\n        while (true) {\n\
     \            if (cur->state() < 1) {\n                ret += cur->left ? cur->left->size\
@@ -154,16 +154,16 @@ data:
     \ right) {\n        if (!root) {\n            root = right.root;\n           \
     \ return;\n        }\n        if (!right.root) return;\n        get_node(root->size\
     \ - 1);\n        root->right = right.root, right.root->par = root;\n        root->update();\n\
-    \    }\n    void insert(int idx, T x) {\n        splay_tree xt = new node(x),\
-    \ right = split(idx);\n        merge(xt), merge(right);\n    }\n    void erase(int\
-    \ idx) {\n        splay_tree xt = split(idx);\n        splay_tree right = xt.split(1);\n\
-    \        delete xt.root;\n        merge(right);\n    }\n};"
+    \    }\n    void insert(int i, T val) {\n        splay_tree vt = new node(val),\
+    \ right = split(i);\n        merge(vt), merge(right);\n    }\n    void erase(int\
+    \ i) {\n        splay_tree vt = split(i);\n        splay_tree right = vt.split(1);\n\
+    \        delete vt.root;\n        merge(right);\n    }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: data_structure/splay_tree.hpp
   requiredBy: []
-  timestamp: '2021-09-16 04:43:03+09:00'
+  timestamp: '2021-09-16 13:52:10+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
@@ -171,6 +171,44 @@ documentation_of: data_structure/splay_tree.hpp
 layout: document
 title: Splay Tree
 ---
+
+## 概要
+- 平衡二分木の一種で、挿入、削除、分割、連結などが高速に行える列として用いる。
+
+## 詳細
+- `<typename T> struct splay_tree`  
+    Splay Tree 本体。
+
+    - `typename T`  
+        テンプレート引数として与える、要素の型。
+
+    - `int size()`  
+        要素数 $n$ を取得する。
+
+    - `T &operator[](int i)`  
+        $i$ 番目の要素を取得する。 ならし $O(\log n)$ 時間。
+
+    - `<typename F> int lower_bound(F f)`  
+        述語 $f$ について、
+        - $f([i])$
+        - $i = 0 \lor \lnot f([i - 1])$
+
+        を共に満たす $i$ をいずれか一つ返す。 ならし $O(\log n)$ 時間。
+
+    - `splay_tree split(int size_left)`  
+        先頭 $size\,left$ 要素だけを残してそれ以降を切り離し、新たな `splay_tree` として取得する。 ならし $O(\log n)$ 時間。
+
+    - `void merge(splay_tree right)`  
+        $right$ を右側に連結する。 $right$ はそれ以降単体で使用してはならない。 ならし $O(\log n)$ 時間。
+
+    - `void insert(int i, T val)`  
+        先頭から $i$ 番目となるよう $val$ を挿入する。 ならし $O(\log n)$ 時間。
+
+    - `void erase(int i)`  
+        要素 $i$ を削除する。 ならし $O(\log n)$ 時間。
+
+## 備考
+- ちゃんとデストラクタを書きたい
 
 ## 参考
 - [かつっぱさんの動画](https://www.youtube.com/watch?v=M6LcINhgXeM&t=0s)

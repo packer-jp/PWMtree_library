@@ -5,23 +5,23 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/persistent_uf.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
     title: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
     title: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/persistent_array.hpp\"\n\n#line 1 \"template.hpp\"\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
+  bundledCode: "#line 2 \"data_structure/persistent_array.hpp\"\n\n#line 2 \"template.hpp\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
     \ (a).end()\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll =\
     \ long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing\
     \ vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr\
@@ -99,8 +99,8 @@ data:
   path: data_structure/persistent_array.hpp
   requiredBy:
   - data_structure/persistent_uf.hpp
-  timestamp: '2021-09-16 04:43:03+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-09-16 13:52:10+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
   - test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
@@ -108,6 +108,29 @@ documentation_of: data_structure/persistent_array.hpp
 layout: document
 title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
 ---
+
+## 概要
+- コピー可能な配列。
+- `using ptr` を `shared_ptr<persistent_array>` から `persistent_array *` に変更するといくらか性能が良くなる。しかし参照の切れたメモリが開放されないので、行う処理によっては危険である。
+
+## 詳細
+- `<typename T, int SHIFT> struct persistent_array`  
+    永続配列本体。
+
+    - `typename T`  
+        テンプレート引数として与える、要素の型。
+
+    - `int SHIFT`  
+        テンプレート引数として与える値。 $2^{SHIFT}$ 分木として表現する。通常の使用では $2$ 程度にするとよい。
+
+    - `(constructor)(int n = 1, T val = T())`  
+        長さ $n$ 、全要素 $val$ で初期化。
+
+    - `T get(int i)`  
+        $i$ 番目の値を取得する。 $O(\log n)$ 時間。
+
+    - `persistent_array set(int i, T val)`  
+        $i$ 番目の値だけが $val$ に置き換えられた新たな完全永続配列を返す。$O(\log n)$ 時間および空間。
 
 ## 参考
 - [37zigen さんの記事](https://37zigen.com/persistent-array/)

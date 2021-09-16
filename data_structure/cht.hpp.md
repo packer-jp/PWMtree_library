@@ -14,16 +14,16 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/cht.hpp\"\n\n#line 1 \"template.hpp\"\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
-    #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
-    using ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\n\
-    constexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1,\
-    \ 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return (a > 0) - (a <\
-    \ 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b);\
-    \ }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr ull bit(int\
-    \ n) { return 1ull << n; }\ntemplate <typename T> constexpr T sq(const T &a) {\
-    \ return a * a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+  bundledCode: "#line 2 \"data_structure/cht.hpp\"\n\n#line 2 \"template.hpp\"\n\n\
+    #include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
+    \ (a).end()\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll =\
+    \ long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing\
+    \ vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr\
+    \ ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return\
+    \ (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b)\
+    \ < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr\
+    \ ull bit(int n) { return 1ull << n; }\ntemplate <typename T> constexpr T sq(const\
+    \ T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
     \ vector<T>, greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a,\
     \ const U &b) { return a < b ? a = b, true : false; }\ntemplate <typename T, typename\
     \ U> bool chmin(T &a, const U &b) { return a > b ? a = b, true : false; }\ntemplate\
@@ -116,7 +116,7 @@ data:
   isVerificationFile: false
   path: data_structure/cht.hpp
   requiredBy: []
-  timestamp: '2021-09-16 04:43:03+09:00'
+  timestamp: '2021-09-16 13:52:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
@@ -126,9 +126,10 @@ title: Convex Hull Trick
 ---
 
 ## 概要
-以下の二種類のクエリを処理する。
-- 座標平面 $V \times V$ 上の直線 $y=ax+b$ を集合 $L$ に追加する。
-- $x=c$ において $L$ 内の直線がとる $y$ の最小値を答える。
+- 以下の二種類のクエリを処理する。
+    - 座標平面 $V \times V$ 上の直線 $y=ax+b$ を集合 $L$ に追加する。
+    - $x=c$ において $L$ 内の直線がとる $y$ の最小値を答える。
+- 単調性などは特に要求しない。
 
 ## 詳細
 - `<typename S, bool MIN> struct cht`  
@@ -150,10 +151,10 @@ title: Convex Hull Trick
         $V$ を表す型。
 
     - `void add(V a, V b)`  
-        直線 $y=ax+b$ を集合 $L$ に追加する。
+        直線 $y=ax+b$ を集合 $L$ に追加する。 $O(\log |L|)$ 時間。
 
     - `V get(V c)`  
-        $x=c$ において $L$ 内の直線がとる $y$ の最小値を答える。
+        $x=c$ において $L$ 内の直線がとる $y$ の最小値を答える。 $O(\log |L|)$ 時間。
 
 ## 参考
 - [えびちゃんさんのスライド](https://hcpc-hokudai.github.io/archive/algorithm_convex_hull_trick_001.pdf)

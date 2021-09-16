@@ -18,7 +18,7 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"test/unit/permutation.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n#line 2 \"math/permutation.hpp\"\n\n#line 1 \"template.hpp\"\n#include <bits/stdc++.h>\n\
+    \n#line 2 \"math/permutation.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#define all(a) (a).begin(), (a).end()\n#define uniq(a)\
     \ (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\nusing ull = unsigned\
     \ long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll\
@@ -113,7 +113,7 @@ data:
   isVerificationFile: true
   path: test/unit/permutation.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 04:43:03+09:00'
+  timestamp: '2021-09-16 13:52:10+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/unit/permutation.test.cpp

@@ -6,24 +6,24 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Unionfind.0.test.cpp
     title: test/judge.yosupo.jp/Unionfind.0.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/uf.hpp\"\n\n#line 1 \"template.hpp\"\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
-    #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
-    using ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\n\
-    constexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1,\
-    \ 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return (a > 0) - (a <\
-    \ 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b);\
-    \ }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr ull bit(int\
-    \ n) { return 1ull << n; }\ntemplate <typename T> constexpr T sq(const T &a) {\
-    \ return a * a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
+  bundledCode: "#line 2 \"data_structure/uf.hpp\"\n\n#line 2 \"template.hpp\"\n\n\
+    #include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
+    \ (a).end()\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll =\
+    \ long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing\
+    \ vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr\
+    \ ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return\
+    \ (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b)\
+    \ < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr\
+    \ ull bit(int n) { return 1ull << n; }\ntemplate <typename T> constexpr T sq(const\
+    \ T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
     \ vector<T>, greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a,\
     \ const U &b) { return a < b ? a = b, true : false; }\ntemplate <typename T, typename\
     \ U> bool chmin(T &a, const U &b) { return a > b ? a = b, true : false; }\ntemplate\
@@ -83,14 +83,41 @@ data:
   isVerificationFile: false
   path: data_structure/uf.hpp
   requiredBy: []
-  timestamp: '2021-09-16 04:43:03+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-16 13:52:10+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Unionfind.0.test.cpp
 documentation_of: data_structure/uf.hpp
 layout: document
 title: Union-Find Tree
 ---
+
+## 概要
+- $n$ 個の要素をいくつかの素集合に分割したものを考える。初めは全ての要素がその要素ただ一つを含む集合に属している。以下の二種類のクエリを処理する。
+    - 要素 $i$ を含む集合と要素 $j$ を含む集合を併合する。
+    - 要素 $i$ を含む集合の代表元を得る。
+
+## 詳細
+- `struct uf`  
+    Union-Find Tree 本体。
+
+    - `(constructor)(int n)`  
+        $n$ 要素で初期化。
+
+    - `int find(int i)`  
+        要素 $i$ が属する集合の代表元を取得する。ならし $O(\alpha(n))$ 時間。
+
+    - `int size(int i)`  
+        要素 $i$ が属する集合のサイズを取得する。ならし $O(\alpha(n))$ 時間。
+
+    - `bool same(int i, int j)`  
+        要素 $i$ と要素 $j$ が同じ集合に含まれるかどうかを判定する。ならし $O(\alpha(n))$ 時間。
+
+    - `void unite(int i, int j)`  
+        要素 $i$ を含む集合と要素 $j$ を含む集合を併合する。ならし $O(\alpha(n))$ 時間。
+
+    - `vector<vector<int>> groups()`  
+        「「一つの集合に属する要素番号の`vector`」の`vector`」を取得する。 $O(n)$ 時間。
 
 ## 参考
 - [ACL](https://atcoder.github.io/ac-library/document_ja/dsu.html)

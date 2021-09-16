@@ -5,20 +5,20 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/and_or_convolution.hpp
     title: "and / or \u7573\u307F\u8FBC\u307F"
   - icon: ':x:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
     title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
   - icon: ':x:'
@@ -26,10 +26,10 @@ data:
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/fzt_fmt.hpp\"\n\n#line 1 \"template.hpp\"\n#include\
+  bundledCode: "#line 2 \"math/fzt_fmt.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
     using ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\n\
@@ -103,8 +103,8 @@ data:
   requiredBy:
   - math/and_or_convolution.hpp
   - math/subset_convolution.hpp
-  timestamp: '2021-09-16 04:43:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-09-16 13:52:10+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp

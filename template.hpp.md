@@ -8,10 +8,10 @@ data:
   - icon: ':x:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/persistent_array.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/persistent_uf.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
   - icon: ':x:'
@@ -20,13 +20,13 @@ data:
   - icon: ':x:'
     path: data_structure/splay_tree.hpp
     title: Splay Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/uf.hpp
     title: Union-Find Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/dijkstra.hpp
     title: "Dijkstra \u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/dinic.hpp
     title: "Dinic \u6CD5"
   - icon: ':x:'
@@ -38,38 +38,38 @@ data:
   - icon: ':x:'
     path: graph/spfa.hpp
     title: SPFA
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/wf.hpp
     title: "Warshall-Floyd \u6CD5"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/and_or_convolution.hpp
     title: "and / or \u7573\u307F\u8FBC\u307F"
   - icon: ':warning:'
     path: math/combination.hpp
     title: "\u7D44\u307F\u5408\u308F\u305B"
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/convolution.hpp
     title: "\u7573\u307F\u8FBC\u307F"
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/fwht.hpp
     title: "\u9AD8\u901F\u30A6\u30A9\u30EB\u30B7\u30E5\u30FB\u30A2\u30C0\u30DE\u30FC\
       \u30EB\u5909\u63DB"
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/fzt_fmt.hpp
     title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
   - icon: ':warning:'
     path: math/inner_basis.hpp
     title: "xor \u57FA\u5E95"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: "\u884C\u5217"
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: modint
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/ntt.hpp
     title: "\u6570\u8AD6\u5909\u63DB"
   - icon: ':x:'
@@ -78,12 +78,9 @@ data:
   - icon: ':x:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/xor_convolution.hpp
     title: "xor \u7573\u307F\u8FBC\u307F"
-  - icon: ':x:'
-    path: string/rolling_hash.hpp
-    title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - icon: ':x:'
     path: string/rolling_hash.hpp
     title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
@@ -97,70 +94,70 @@ data:
     path: util/xorshift.hpp
     title: Xorshift
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
     title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Convolution.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
     title: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
     title: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
     title: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
     title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   - icon: ':x:'
     path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Unionfind.0.test.cpp
     title: test/judge.yosupo.jp/Unionfind.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
   - icon: ':x:'
@@ -178,9 +175,6 @@ data:
   - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
-  - icon: ':x:'
-    path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
@@ -203,9 +197,6 @@ data:
     path: test/unit/hld.test.cpp
     title: test/unit/hld.test.cpp
   - icon: ':x:'
-    path: test/unit/hld.test.cpp
-    title: test/unit/hld.test.cpp
-  - icon: ':x:'
     path: test/unit/permutation.test.cpp
     title: test/unit/permutation.test.cpp
   _isVerificationFailed: true
@@ -213,7 +204,7 @@ data:
   _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+  bundledCode: "#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\n#define all(a) (a).begin(), (a).end()\n#define uniq(a) (a).erase(unique(all(a)),\
     \ (a).end())\nusing ll = long long;\nusing ull = unsigned long long;\nusing pll\
     \ = pair<ll, ll>;\nusing vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1,\
@@ -257,49 +248,50 @@ data:
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
     \    };\n} iOS;\n"
-  code: "#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
-    \ (a).end()\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll =\
-    \ long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing\
-    \ vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr\
-    \ ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return\
-    \ (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b)\
-    \ < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr\
-    \ ull bit(int n) { return 1ull << n; }\ntemplate <typename T> constexpr T sq(const\
-    \ T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev = priority_queue<T,\
-    \ vector<T>, greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a,\
-    \ const U &b) { return a < b ? a = b, true : false; }\ntemplate <typename T, typename\
-    \ U> bool chmin(T &a, const U &b) { return a > b ? a = b, true : false; }\ntemplate\
-    \ <typename T, typename U> ostream &operator<<(ostream &os, const pair<T, U> &a)\
-    \ {\n    os << \"(\" << a.first << \", \" << a.second << \")\";\n    return os;\n\
-    }\ntemplate <typename T> ostream &operator<<(ostream &os, const vector<T> &a)\
-    \ {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr) os\
-    \ << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n    return\
-    \ os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const set<T>\
-    \ &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end(); ++itr)\
-    \ os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\";\n  \
-    \  return os;\n}\ntemplate <typename T> ostream &operator<<(ostream &os, const\
-    \ multiset<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr != a.end();\
-    \ ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n    os << \")\"\
-    ;\n    return os;\n}\ntemplate <typename T, typename U> ostream &operator<<(ostream\
-    \ &os, const map<T, U> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+  code: "#pragma once\n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
+    \ all(a) (a).begin(), (a).end()\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\n\
+    using ll = long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\n\
+    using vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\n\
+    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a)\
+    \ { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b\
+    \ - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a,\
+    \ b); }\nconstexpr ull bit(int n) { return 1ull << n; }\ntemplate <typename T>\
+    \ constexpr T sq(const T &a) { return a * a; }\ntemplate <typename T> using priority_queue_rev\
+    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <typename T, typename\
+    \ U> bool chmax(T &a, const U &b) { return a < b ? a = b, true : false; }\ntemplate\
+    \ <typename T, typename U> bool chmin(T &a, const U &b) { return a > b ? a = b,\
+    \ true : false; }\ntemplate <typename T, typename U> ostream &operator<<(ostream\
+    \ &os, const pair<T, U> &a) {\n    os << \"(\" << a.first << \", \" << a.second\
+    \ << \")\";\n    return os;\n}\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const vector<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
     \ itr != a.end(); ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n\
-    \    os << \")\";\n    return os;\n}\n#ifdef ONLINE_JUDGE\n#define dump(...) (void(0))\n\
-    #else\nvoid debug() { cerr << endl; }\ntemplate <typename Head, typename... Tail>\
-    \ void debug(Head &&head, Tail &&... tail) {\n    cerr << head;\n    if (sizeof...(Tail))\
-    \ cerr << \", \";\n    debug(tail...);\n}\n#define dump(...) cerr << __LINE__\
-    \ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n#endif\nstruct rep\
-    \ {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void\
-    \ operator++() { ++v; }\n        ll operator*() const { return v; }\n        bool\
-    \ operator!=(itr i) const { return v < *i; }\n    };\n    ll l, r;\n    rep(ll\
-    \ l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n    itr begin() const\
-    \ { return l; };\n    itr end() const { return r; };\n};\nstruct per {\n    struct\
-    \ itr {\n        ll v;\n        itr(ll v) : v(v) {}\n        void operator++()\
-    \ { --v; }\n        ll operator*() const { return v; }\n        bool operator!=(itr\
-    \ i) const { return v > *i; }\n    };\n    ll l, r;\n    per(ll l, ll r) : l(l),\
-    \ r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1;\
-    \ };\n    itr end() const { return l - 1; };\n};\nstruct io_setup {\n    static\
-    \ constexpr int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
-    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;"
+    \    os << \")\";\n    return os;\n}\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const set<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin(); itr\
+    \ != a.end(); ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n \
+    \   os << \")\";\n    return os;\n}\ntemplate <typename T> ostream &operator<<(ostream\
+    \ &os, const multiset<T> &a) {\n    os << \"(\";\n    for (auto itr = a.begin();\
+    \ itr != a.end(); ++itr) os << *itr << (next(itr) != a.end() ? \", \" : \"\");\n\
+    \    os << \")\";\n    return os;\n}\ntemplate <typename T, typename U> ostream\
+    \ &operator<<(ostream &os, const map<T, U> &a) {\n    os << \"(\";\n    for (auto\
+    \ itr = a.begin(); itr != a.end(); ++itr) os << *itr << (next(itr) != a.end()\
+    \ ? \", \" : \"\");\n    os << \")\";\n    return os;\n}\n#ifdef ONLINE_JUDGE\n\
+    #define dump(...) (void(0))\n#else\nvoid debug() { cerr << endl; }\ntemplate <typename\
+    \ Head, typename... Tail> void debug(Head &&head, Tail &&... tail) {\n    cerr\
+    \ << head;\n    if (sizeof...(Tail)) cerr << \", \";\n    debug(tail...);\n}\n\
+    #define dump(...) cerr << __LINE__ << \": \" << #__VA_ARGS__ << \" = \", debug(__VA_ARGS__)\n\
+    #endif\nstruct rep {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v)\
+    \ {}\n        void operator++() { ++v; }\n        ll operator*() const { return\
+    \ v; }\n        bool operator!=(itr i) const { return v < *i; }\n    };\n    ll\
+    \ l, r;\n    rep(ll l, ll r) : l(l), r(r) {}\n    rep(ll r) : rep(0, r) {}\n \
+    \   itr begin() const { return l; };\n    itr end() const { return r; };\n};\n\
+    struct per {\n    struct itr {\n        ll v;\n        itr(ll v) : v(v) {}\n \
+    \       void operator++() { --v; }\n        ll operator*() const { return v; }\n\
+    \        bool operator!=(itr i) const { return v > *i; }\n    };\n    ll l, r;\n\
+    \    per(ll l, ll r) : l(l), r(r) {}\n    per(ll r) : per(0, r) {}\n    itr begin()\
+    \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
+    \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
+    \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
+    \    };\n} iOS;"
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
@@ -311,7 +303,6 @@ data:
   - data_structure/cht.hpp
   - data_structure/persistent_uf.hpp
   - data_structure/persistent_array.hpp
-  - string/rolling_hash.hpp
   - string/rolling_hash.hpp
   - graph/wf.hpp
   - graph/dijkstra.hpp
@@ -335,10 +326,9 @@ data:
   - math/fzt_fmt.hpp
   - math/convolution.hpp
   - math/ntt.hpp
-  timestamp: '2021-09-16 04:43:03+09:00'
+  timestamp: '2021-09-16 13:52:10+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
@@ -357,7 +347,6 @@ data:
   - test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - test/unit/permutation.test.cpp
-  - test/unit/hld.test.cpp
   - test/unit/hld.test.cpp
   - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp

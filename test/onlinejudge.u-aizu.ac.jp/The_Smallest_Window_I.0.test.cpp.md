@@ -19,7 +19,7 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A
   bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp\"\
     \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A\"\
-    \n#line 2 \"data_structure/segtree.hpp\"\n\n#line 1 \"template.hpp\"\n#include\
+    \n#line 2 \"data_structure/segtree.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(), (a).end()\n\
     #define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll = long long;\n\
     using ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing vll = vector<ll>;\n\
@@ -114,7 +114,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 04:43:03+09:00'
+  timestamp: '2021-09-16 13:52:10+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp

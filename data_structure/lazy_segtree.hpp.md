@@ -29,8 +29,8 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/lazy_segtree.hpp\"\n\n#line 1 \"template.hpp\"\
-    \n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
+  bundledCode: "#line 2 \"data_structure/lazy_segtree.hpp\"\n\n#line 2 \"template.hpp\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) (a).begin(),\
     \ (a).end()\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\nusing ll =\
     \ long long;\nusing ull = unsigned long long;\nusing pll = pair<ll, ll>;\nusing\
     \ vll = vector<ll>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr\
@@ -201,7 +201,7 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2021-09-16 04:43:03+09:00'
+  timestamp: '2021-09-16 13:52:10+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
@@ -238,7 +238,7 @@ title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
             $a \times b$ を返す。
         
         - `static val_t e()`  
-            $(V, \times)$ の単位元 $\mathrm{e}$ を返す。
+            $(V, \times)$ の単位元 $e$ を返す。
 
         - `static val_t mapping(fn_t f, val_t a)`  
             $f(a)$ を返す。
@@ -247,7 +247,7 @@ title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
             $f \circ g$ を返す。
 
         - `static fn_t id()`  
-            $(F, \circ)$ の単位元 $\mathrm{id}$ を返す。
+            $(F, \circ)$ の単位元 $id$ を返す。
 
     - `using V`  
         $V$ を表す型。
@@ -256,7 +256,7 @@ title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
         $F$ を表す型。
 
     - `(constructor)(int n)`  
-        長さ $n$ 、全要素 $\mathrm{e}$ で初期化。
+        長さ $n$ 、全要素 $e$ で初期化。
 
     - `(constructor)(vector<V> src)`  
         $s := src$ として初期化。
@@ -271,21 +271,21 @@ title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
         $i$ 番目の要素を得る。 $O(\log n)$ 時間。
     
     - `V prod(int l, int r)`  
-        $\mathrm{e} \times s_l \times \cdots \times s_{r-1}$ を計算する。 $O(\log n)$ 時間。
+        $e \times s_l \times \cdots \times s_{r-1}$ を計算する。 $O(\log n)$ 時間。
 
     - `<typename G> max_right(int l, G g)`  
         述語 $g$ について、
-        - $g(\mathrm{prod}(l, r))$
-        - $r = n \lor \lnot g(\mathrm{prod}(l, r + 1))$
+        - $g(prod(l, r))$
+        - $r = n \lor \lnot g(prod(l, r + 1))$
 
         を共に満たす $r$ をいずれか一つ返す。 $O(\log n)$ 時間。 $g(\mathrm{e})$ を要請。
 
     - `<typename G> int min_left(int r, G g)`  
         述語 $g$ について、
-        - $g(\mathrm{prod}(l, r))$
-        - $l = 0 \lor \lnot g(\mathrm{prod}(l - 1, r))$
+        - $g(prod(l, r))$
+        - $l = 0 \lor \lnot g(prod(l - 1, r))$
 
-        を共に満たす $l$ をいずれか一つ返す。 $O(\log n)$ 時間。 $g(\mathrm{e})$ を要請。
+        を共に満たす $l$ をいずれか一つ返す。 $O(\log n)$ 時間。 $g(e)$ を要請。
 
 - `struct min_monoid_with_addition`  
     区間最小/区間可算クエリを処理するときに`lazy_segtree`にテンプレート引数 `S` として与える。
