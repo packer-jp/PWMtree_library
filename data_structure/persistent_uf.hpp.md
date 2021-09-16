@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/persistent_array.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -140,7 +140,7 @@ title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
         要素 $i$ が属する集合のサイズを取得する。 $O((\log n)^2)$ 時間。
 
     - `bool same(int i, int j)`  
-        要素 $i$ と要素 $j$ が同じ集合に含まれるかどうかを判定する。
+        要素 $i$ と要素 $j$ が同じ集合に含まれるかどうかを判定する。 $O((\log n)^2)$ 時間。
 
     - `persistent_uf unite(int i, int j)`  
         要素 $i$ を含む集合と要素 $j$ を含む集合が併合された新たな完全永続 Union-Find Tree を返す。 $O((\log n)^2)$ 時間および $O(\log n)$ 空間。

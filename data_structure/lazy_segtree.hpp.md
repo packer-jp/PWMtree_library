@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/lazy_segtree.hpp\"\n\n#line 2 \"template.hpp\"\
@@ -202,7 +202,7 @@ data:
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
   timestamp: '2021-09-16 13:52:10+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
@@ -249,28 +249,22 @@ title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
         - `static fn_t id()`  
             $(F, \circ)$ の単位元 $id$ を返す。
 
-    - `using V`  
-        $V$ を表す型。
-
-    - `using F`  
-        $F$ を表す型。
-
     - `(constructor)(int n)`  
         長さ $n$ 、全要素 $e$ で初期化。
 
-    - `(constructor)(vector<V> src)`  
+    - `(constructor)(vector<S::val_t> src)`  
         $s := src$ として初期化。
 
-    - `void set(int i, V a)`  
+    - `void set(int i, S::val_t a)`  
         要素 $i$ を $a$ に置き換える。$O(\log n)$ 時間。
 
-    - `void apply(int l, int r, F f)`  
+    - `void apply(int l, int r, S::fn_t f)`  
         $s_l, \cdots s_{r-1}$ に $f$ を作用させる。 $O(\log n)$ 時間。
 
-    - `V get(int i)`  
+    - `S::val_t get(int i)`  
         $i$ 番目の要素を得る。 $O(\log n)$ 時間。
     
-    - `V prod(int l, int r)`  
+    - `S::val_t prod(int l, int r)`  
         $e \times s_l \times \cdots \times s_{r-1}$ を計算する。 $O(\log n)$ 時間。
 
     - `<typename G> max_right(int l, G g)`  

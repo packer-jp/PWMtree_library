@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Unionfind.0.test.cpp
     title: test/judge.yosupo.jp/Unionfind.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/uf.hpp\"\n\n#line 2 \"template.hpp\"\n\n\
@@ -84,7 +84,7 @@ data:
   path: data_structure/uf.hpp
   requiredBy: []
   timestamp: '2021-09-16 13:52:10+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Unionfind.0.test.cpp
 documentation_of: data_structure/uf.hpp
@@ -93,7 +93,7 @@ title: Union-Find Tree
 ---
 
 ## 概要
-- $n$ 個の要素をいくつかの素集合に分割したものを考える。初めは全ての要素がその要素ただ一つを含む集合に属している。以下の二種類のクエリを処理する。
+- $n$ 個の要素をいくつかの素集合に分割したものを考える。はじめは全ての要素がその要素ただ一つを含む集合に属している。以下の二種類のクエリを処理する。
     - 要素 $i$ を含む集合と要素 $j$ を含む集合を併合する。
     - 要素 $i$ を含む集合の代表元を得る。
 
