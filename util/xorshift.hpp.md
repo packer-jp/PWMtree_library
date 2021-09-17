@@ -1,20 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy:
-  - icon: ':x:'
-    path: string/rolling_hash.hpp
-    title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
-  _isVerificationFailed: true
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"util/xorshift.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -113,12 +107,10 @@ data:
   - template.hpp
   isVerificationFile: false
   path: util/xorshift.hpp
-  requiredBy:
-  - string/rolling_hash.hpp
+  requiredBy: []
   timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: util/xorshift.hpp
 layout: document
 title: Xorshift

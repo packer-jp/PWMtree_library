@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/hld.hpp
     title: "HL \u5206\u89E3"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

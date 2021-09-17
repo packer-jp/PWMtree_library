@@ -1,20 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
-  - icon: ':x:'
-    path: util/xorshift.hpp
-    title: Xorshift
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/14/ALDS1_14_B
@@ -108,13 +105,11 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 2 \"util/xorshift.hpp\"\n\n#line 4 \"util/xorshift.hpp\"\
-    \n\ntemplate <typename T> T xor64(T lb, T ub) {\n    static ull x = 88172645463325252ull;\n\
-    \    x ^= x << 7;\n    return lb + (x ^= x >> 9) % (ub - lb);\n}\n#line 5 \"string/rolling_hash.hpp\"\
-    \n\nstruct rolling_hash {\n    static constexpr ull MOD = bit(61) - 1;\n    static\
-    \ vector<ull> pbase;\n    vector<ull> hash;\n    static void resize_pbase(int\
-    \ n) {\n        int sz = pbase.size();\n        if (sz > n) return;\n        pbase.resize(n\
-    \ + 1);\n        for (int i : rep(sz - 1, n)) pbase[i + 1] = mul(pbase[i], pbase[1]);\n\
+    \    };\n} iOS;\n#line 4 \"string/rolling_hash.hpp\"\n\nstruct rolling_hash {\n\
+    \    static constexpr ull MOD = bit(61) - 1;\n    static vector<ull> pbase;\n\
+    \    vector<ull> hash;\n    static void resize_pbase(int n) {\n        int sz\
+    \ = pbase.size();\n        if (sz > n) return;\n        pbase.resize(n + 1);\n\
+    \        for (int i : rep(sz - 1, n)) pbase[i + 1] = mul(pbase[i], pbase[1]);\n\
     \    }\n    template <typename T> static T calc_mod(T val) {\n        val = (val\
     \ & MOD) + (val >> 61);\n        if (val >= MOD) val -= MOD;\n        return val;\n\
     \    }\n    static ull mul(ull a, ull b) { return calc_mod((__uint128_t)a * b);\
@@ -141,12 +136,11 @@ data:
   dependsOn:
   - string/rolling_hash.hpp
   - template.hpp
-  - util/xorshift.hpp
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 13:39:29+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-17 19:51:11+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
 layout: document
