@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/fzt_fmt.hpp
     title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
   - icon: ':question:'
@@ -9,7 +9,7 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
     title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -18,9 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
     title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/and_or_convolution.hpp\"\n\n#line 2 \"template.hpp\"\
@@ -145,7 +145,7 @@ data:
   path: math/and_or_convolution.hpp
   requiredBy: []
   timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp

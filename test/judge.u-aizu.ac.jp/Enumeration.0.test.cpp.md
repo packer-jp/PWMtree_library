@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/and_or_convolution.hpp
     title: "and / or \u7573\u307F\u8FBC\u307F"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/fzt_fmt.hpp
     title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: 1e-7
@@ -130,24 +130,24 @@ data:
     \ b.resize(n);\n    fzt_sub(a), fzt_sub(b);\n    for (int i : rep(n)) a[i] *=\
     \ b[i];\n    fmt_sub(a);\n    return a;\n}\n#line 4 \"test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\
     \n\n#line 6 \"test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp\"\nusing namespace\
-    \ std;\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    vll a(n), p(n);\n\
+    \ std;\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    Vl a(n), p(n);\n\
     \    for (ll i : rep(n)) cin >> a[i];\n    for (ll i : rep(n)) cin >> p[i];\n\
-    \    vector<ll> x(bit(n));\n    for (ll i : rep(bit(n))) {\n        ll l = 1;\n\
-    \        for (ll j : rep(n)) {\n            if ((i >> j) & 1) {\n            \
-    \    if (l) {\n                    ll d = l / gcd(l, a[j]);\n                \
-    \    l = (__int128_t)d * a[j] > m ? 0 : d * a[j];\n                }\n       \
-    \     }\n        }\n        if (l) x[i] = m / l;\n    }\n    fzt_super(x);\n \
-    \   fmt_super(x);\n    fzt_sub(x);\n    fmt_sub(x);\n\n    fmt_sub(x);\n    double\
-    \ ans = 0;\n    for (ll i : rep(bit(n))) {\n        double q = 1;\n        for\
-    \ (ll j : rep(n)) {\n            if ((i >> j) & 1) {\n                q *= p[j]\
-    \ / 100.0;\n            } else {\n                q *= (1 - p[j] / 100.0);\n \
-    \           }\n        }\n        x[i] = m - abs(x[i]);\n        ans += x[i] *\
-    \ q;\n    };\n    cout << ans << endl;\n}\n"
+    \    Vl x(bit(n));\n    for (ll i : rep(bit(n))) {\n        ll l = 1;\n      \
+    \  for (ll j : rep(n)) {\n            if ((i >> j) & 1) {\n                if\
+    \ (l) {\n                    ll d = l / gcd(l, a[j]);\n                    l =\
+    \ (__int128_t)d * a[j] > m ? 0 : d * a[j];\n                }\n            }\n\
+    \        }\n        if (l) x[i] = m / l;\n    }\n    fzt_super(x);\n    fmt_super(x);\n\
+    \    fzt_sub(x);\n    fmt_sub(x);\n\n    fmt_sub(x);\n    double ans = 0;\n  \
+    \  for (ll i : rep(bit(n))) {\n        double q = 1;\n        for (ll j : rep(n))\
+    \ {\n            if ((i >> j) & 1) {\n                q *= p[j] / 100.0;\n   \
+    \         } else {\n                q *= (1 - p[j] / 100.0);\n            }\n\
+    \        }\n        x[i] = m - abs(x[i]);\n        ans += x[i] * q;\n    };\n\
+    \    cout << ans << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446\"\
     \n#define ERROR 1e-7\n#include \"../../math/and_or_convolution.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ll n, m;\n    cin\
-    \ >> n >> m;\n    vll a(n), p(n);\n    for (ll i : rep(n)) cin >> a[i];\n    for\
-    \ (ll i : rep(n)) cin >> p[i];\n    vector<ll> x(bit(n));\n    for (ll i : rep(bit(n)))\
+    \ >> n >> m;\n    Vl a(n), p(n);\n    for (ll i : rep(n)) cin >> a[i];\n    for\
+    \ (ll i : rep(n)) cin >> p[i];\n    Vl x(bit(n));\n    for (ll i : rep(bit(n)))\
     \ {\n        ll l = 1;\n        for (ll j : rep(n)) {\n            if ((i >> j)\
     \ & 1) {\n                if (l) {\n                    ll d = l / gcd(l, a[j]);\n\
     \                    l = (__int128_t)d * a[j] > m ? 0 : d * a[j];\n          \
@@ -165,8 +165,8 @@ data:
   isVerificationFile: true
   path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-17 13:26:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
 layout: document

@@ -125,7 +125,7 @@ data:
     \ dij(n);\n    while (m--) {\n        int a, b, c;\n        cin >> a >> b >> c;\n\
     \        dij.add_edge(a, b, c);\n    }\n    auto [dist, prev] = dij.get(s);\n\
     \    if (prev[t] == -1) {\n        cout << -1 << endl;\n        return 0;\n  \
-    \  }\n    vector<ll> vs{t};\n    do {\n        ll back = vs.back();\n        vs.push_back(prev[back]);\n\
+    \  }\n    Vl vs{t};\n    do {\n        ll back = vs.back();\n        vs.push_back(prev[back]);\n\
     \    } while (vs.back() != s);\n    reverse(all(vs));\n    cout << dist[t] <<\
     \ \" \" << vs.size() - 1 << endl;\n    for (ll i : rep(vs.size() - 1)) cout <<\
     \ vs[i] << \" \" << vs[i + 1] << endl;\n}\n"
@@ -134,18 +134,18 @@ data:
     \ n >> m >> s >> t;\n    dijkstra<ll_dijkstra> dij(n);\n    while (m--) {\n  \
     \      int a, b, c;\n        cin >> a >> b >> c;\n        dij.add_edge(a, b, c);\n\
     \    }\n    auto [dist, prev] = dij.get(s);\n    if (prev[t] == -1) {\n      \
-    \  cout << -1 << endl;\n        return 0;\n    }\n    vector<ll> vs{t};\n    do\
-    \ {\n        ll back = vs.back();\n        vs.push_back(prev[back]);\n    } while\
-    \ (vs.back() != s);\n    reverse(all(vs));\n    cout << dist[t] << \" \" << vs.size()\
-    \ - 1 << endl;\n    for (ll i : rep(vs.size() - 1)) cout << vs[i] << \" \" <<\
-    \ vs[i + 1] << endl;\n}"
+    \  cout << -1 << endl;\n        return 0;\n    }\n    Vl vs{t};\n    do {\n  \
+    \      ll back = vs.back();\n        vs.push_back(prev[back]);\n    } while (vs.back()\
+    \ != s);\n    reverse(all(vs));\n    cout << dist[t] << \" \" << vs.size() - 1\
+    \ << endl;\n    for (ll i : rep(vs.size() - 1)) cout << vs[i] << \" \" << vs[i\
+    \ + 1] << endl;\n}"
   dependsOn:
   - graph/dijkstra.hpp
   - template.hpp
   isVerificationFile: true
   path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
+  timestamp: '2021-09-17 13:26:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Shortest_Path.0.test.cpp

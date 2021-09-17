@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/spfa.hpp
     title: SPFA
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/1/GRL_1_B
@@ -125,7 +125,7 @@ data:
     \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp\"\
     \nusing namespace std;\n\nint main() {\n    ll v, e, r;\n    cin >> v >> e >>\
     \ r;\n    spfa<ll_spfa> spfa(v);\n    while (e--) {\n        ll s, t, d;\n   \
-    \     cin >> s >> t >> d;\n        spfa.add_edge(s, t, d);\n    }\n    vll res\
+    \     cin >> s >> t >> d;\n        spfa.add_edge(s, t, d);\n    }\n    Vl res\
     \ = spfa.get(r).first;\n    if (res.empty()) {\n        cout << \"NEGATIVE CYCLE\"\
     \ << endl;\n        return 0;\n    }\n    for (ll ans : res) {\n        if (ans\
     \ == ll_spfa::inf()) {\n            cout << \"INF\" << endl;\n        } else {\n\
@@ -134,8 +134,8 @@ data:
     \n#include \"../../graph/spfa.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\nint main() {\n    ll v, e, r;\n    cin >> v >> e >> r;\n    spfa<ll_spfa>\
     \ spfa(v);\n    while (e--) {\n        ll s, t, d;\n        cin >> s >> t >> d;\n\
-    \        spfa.add_edge(s, t, d);\n    }\n    vll res = spfa.get(r).first;\n  \
-    \  if (res.empty()) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return\
+    \        spfa.add_edge(s, t, d);\n    }\n    Vl res = spfa.get(r).first;\n   \
+    \ if (res.empty()) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return\
     \ 0;\n    }\n    for (ll ans : res) {\n        if (ans == ll_spfa::inf()) {\n\
     \            cout << \"INF\" << endl;\n        } else {\n            cout << ans\
     \ << endl;\n        }\n    }\n}"
@@ -145,8 +145,8 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-17 13:26:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
 layout: document

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/wf.hpp
     title: "Warshall-Floyd \u6CD5"
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/1/GRL_1_C
@@ -112,9 +112,9 @@ data:
     \            }\n        }\n    }\n}\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp\"\
     \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp\"\
     \nusing namespace std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n   \
-    \ vector adj(v, vll(v, LLONG_MAX));\n    for (ll i : rep(v)) adj[i][i] = 0;\n\
-    \    while (e--) {\n        ll s, t, d;\n        cin >> s >> t >> d;\n       \
-    \ adj[s][t] = d;\n    }\n    wf(adj);\n    for (ll i : rep(v)) {\n        if (adj[i][i]\
+    \ vector adj(v, Vl(v, LLONG_MAX));\n    for (ll i : rep(v)) adj[i][i] = 0;\n \
+    \   while (e--) {\n        ll s, t, d;\n        cin >> s >> t >> d;\n        adj[s][t]\
+    \ = d;\n    }\n    wf(adj);\n    for (ll i : rep(v)) {\n        if (adj[i][i]\
     \ < 0) {\n            cout << \"NEGATIVE CYCLE\" << endl;\n            return\
     \ 0;\n        }\n    }\n    for (ll i : rep(v)) {\n        for (ll j : rep(v))\
     \ {\n            if (adj[i][j] == LLONG_MAX) {\n                cout << \"INF\"\
@@ -122,7 +122,7 @@ data:
     \           cout << (j == v - 1 ? \"\\n\" : \" \");\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/1/GRL_1_C\"\
     \n#include \"../../graph/wf.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n    vector adj(v, vll(v,\
+    \ std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n    vector adj(v, Vl(v,\
     \ LLONG_MAX));\n    for (ll i : rep(v)) adj[i][i] = 0;\n    while (e--) {\n  \
     \      ll s, t, d;\n        cin >> s >> t >> d;\n        adj[s][t] = d;\n    }\n\
     \    wf(adj);\n    for (ll i : rep(v)) {\n        if (adj[i][i] < 0) {\n     \
@@ -137,8 +137,8 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-17 13:26:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
 layout: document
