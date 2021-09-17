@@ -112,26 +112,26 @@ data:
     \n\ntemplate <typename T> T xor64(T lb, T ub) {\n    static ull x = 88172645463325252ull;\n\
     \    x ^= x << 7;\n    return lb + (x ^= x >> 9) % (ub - lb);\n}\n#line 5 \"string/rolling_hash.hpp\"\
     \n\nstruct rolling_hash {\n    static constexpr ull MOD = bit(61) - 1;\n    static\
-    \ vector<ull> pb;\n    vector<ull> hash;\n    static void resize_pb(int n) {\n\
-    \        int sz = pb.size();\n        if (sz > n) return;\n        pb.resize(n\
-    \ + 1);\n        for (int i : rep(sz - 1, n)) pb[i + 1] = mul(pb[i], pb[1]);\n\
+    \ vector<ull> pbase;\n    vector<ull> hash;\n    static void resize_pbase(int\
+    \ n) {\n        int sz = pbase.size();\n        if (sz > n) return;\n        pbase.resize(n\
+    \ + 1);\n        for (int i : rep(sz - 1, n)) pbase[i + 1] = mul(pbase[i], pbase[1]);\n\
     \    }\n    template <typename T> static T calc_mod(T val) {\n        val = (val\
     \ & MOD) + (val >> 61);\n        if (val >= MOD) val -= MOD;\n        return val;\n\
     \    }\n    static ull mul(ull a, ull b) { return calc_mod((__uint128_t)a * b);\
-    \ }\n    static ull concat(ull lhs, ull rhs, int rn) {\n        resize_pb(rn);\n\
-    \        return calc_mod(mul(lhs, pb[rn]) + rhs);\n    }\n    rolling_hash(const\
+    \ }\n    static ull concat(ull lhs, ull rhs, int rn) {\n        resize_pbase(rn);\n\
+    \        return calc_mod(mul(lhs, pbase[rn]) + rhs);\n    }\n    rolling_hash(const\
     \ string &src) : hash(src.size() + 1) {\n        for (int i : rep(src.size()))\
-    \ hash[i + 1] = calc_mod(mul(hash[i], pb[1]) + src[i]);\n        resize_pb(src.size());\n\
+    \ hash[i + 1] = calc_mod(mul(hash[i], pbase[1]) + src[i]);\n        resize_pbase(src.size());\n\
     \    }\n    template <typename T> rolling_hash(const vector<T> &src) : hash(src.size()\
     \ + 1) {\n        for (int i : rep(src.size())) hash[i + 1] = calc_mod(mul(hash[i],\
-    \ pb[1]) + src[i]);\n        resize_pb(src.size());\n    }\n    ull get_hash(int\
-    \ l, int r) const { return calc_mod(MOD - mul(hash[l], pb[r - l]) + hash[r]);\
-    \ }\n};\nvector<ull> rolling_hash::pb{1, xor64(MOD >> 1, MOD)};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp\"\
-    \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp\"\nusing\
-    \ namespace std;\n\nint main() {\n    string t, p;\n    cin >> t >> p;\n    rolling_hash\
-    \ th(t), ph(p);\n    for (int i : rep((int)t.size() - (int)p.size() + 1)) {\n\
-    \        if (th.get_hash(i, i + p.size()) == ph.get_hash(0, p.size())) cout <<\
-    \ i << endl;\n    }\n}\n"
+    \ pbase[1]) + src[i]);\n        resize_pbase(src.size());\n    }\n    ull get_hash(int\
+    \ l, int r) const { return calc_mod(MOD - mul(hash[l], pbase[r - l]) + hash[r]);\
+    \ }\n};\nvector<ull> rolling_hash::pbase{1, xor64(MOD >> 1, MOD)};\n#line 3 \"\
+    test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp\"\n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp\"\
+    \nusing namespace std;\n\nint main() {\n    string t, p;\n    cin >> t >> p;\n\
+    \    rolling_hash th(t), ph(p);\n    for (int i : rep((int)t.size() - (int)p.size()\
+    \ + 1)) {\n        if (th.get_hash(i, i + p.size()) == ph.get_hash(0, p.size()))\
+    \ cout << i << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/14/ALDS1_14_B\"\
     \n#include \"../../string/rolling_hash.hpp\"\n\n#include <bits/stdc++.h>\nusing\
     \ namespace std;\n\nint main() {\n    string t, p;\n    cin >> t >> p;\n    rolling_hash\
@@ -145,7 +145,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
+  timestamp: '2021-09-17 13:39:29+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
