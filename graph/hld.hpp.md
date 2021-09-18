@@ -115,13 +115,13 @@ data:
     \                head[u] = (i == 0 ? head[v] : u);\n                dfs_hld(dfs_hld,\
     \ u);\n            }\n            return out[v] = t;\n        };\n        dfs_sz(dfs_sz,\
     \ root, -1);\n        head[root] = root;\n        dfs_hld(dfs_hld, root);\n  \
-    \      return in;\n    }\n    int lca(int u, int v) {\n        while (true) {\n\
-    \            if (in[u] > in[v]) swap(u, v);\n            if (head[u] == head[v])\
+    \      return in;\n    }\n    int lca(int u, int v) const {\n        while (true)\
+    \ {\n            if (in[u] > in[v]) swap(u, v);\n            if (head[u] == head[v])\
     \ return u;\n            v = par[head[v]];\n        }\n    }\n    int dist(int\
-    \ u, int v) { return dep[u] + dep[v] - 2 * dep[lca(u, v)]; }\n    vector<pair<int,\
-    \ int>> get_path(int u, int v, bool edge) {\n        vector<pair<int, int>> a,\
-    \ b;\n        while (true) {\n            if (head[u] == head[v]) {\n        \
-    \        if (edge) {\n                    if (in[u] > in[v]) a.emplace_back(in[u],\
+    \ u, int v) const { return dep[u] + dep[v] - 2 * dep[lca(u, v)]; }\n    vector<pair<int,\
+    \ int>> get_path(int u, int v, bool edge) const {\n        vector<pair<int, int>>\
+    \ a, b;\n        while (true) {\n            if (head[u] == head[v]) {\n     \
+    \           if (edge) {\n                    if (in[u] > in[v]) a.emplace_back(in[u],\
     \ in[v] + 1);\n                    if (in[u] < in[v]) a.emplace_back(in[u] + 1,\
     \ in[v]);\n                } else {\n                    a.emplace_back(in[u],\
     \ in[v]);\n                }\n                break;\n            }\n        \
@@ -129,8 +129,8 @@ data:
     \                u = par[head[u]];\n            } else {\n                b.emplace_back(in[head[v]],\
     \ in[v]);\n                v = par[head[v]];\n            }\n        }\n     \
     \   a.insert(a.end(), b.rbegin(), b.rend());\n        return a;\n    }\n    pair<int,\
-    \ int> get_subtree(int v, bool edge) { return {in[v] + edge, out[v] - 1}; }\n\
-    };\n"
+    \ int> get_subtree(int v, bool edge) const { return {in[v] + edge, out[v] - 1};\
+    \ }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct hld {\n    vector<vector<int>>\
     \ g;\n    vector<int> par, sz, dep, in, out, head;\n    hld(int n) : g(n), par(n),\
     \ sz(n), dep(n), in(n), out(n), head(n) {}\n    void add_edge(int u, int v) {\
@@ -146,13 +146,13 @@ data:
     \                head[u] = (i == 0 ? head[v] : u);\n                dfs_hld(dfs_hld,\
     \ u);\n            }\n            return out[v] = t;\n        };\n        dfs_sz(dfs_sz,\
     \ root, -1);\n        head[root] = root;\n        dfs_hld(dfs_hld, root);\n  \
-    \      return in;\n    }\n    int lca(int u, int v) {\n        while (true) {\n\
-    \            if (in[u] > in[v]) swap(u, v);\n            if (head[u] == head[v])\
+    \      return in;\n    }\n    int lca(int u, int v) const {\n        while (true)\
+    \ {\n            if (in[u] > in[v]) swap(u, v);\n            if (head[u] == head[v])\
     \ return u;\n            v = par[head[v]];\n        }\n    }\n    int dist(int\
-    \ u, int v) { return dep[u] + dep[v] - 2 * dep[lca(u, v)]; }\n    vector<pair<int,\
-    \ int>> get_path(int u, int v, bool edge) {\n        vector<pair<int, int>> a,\
-    \ b;\n        while (true) {\n            if (head[u] == head[v]) {\n        \
-    \        if (edge) {\n                    if (in[u] > in[v]) a.emplace_back(in[u],\
+    \ u, int v) const { return dep[u] + dep[v] - 2 * dep[lca(u, v)]; }\n    vector<pair<int,\
+    \ int>> get_path(int u, int v, bool edge) const {\n        vector<pair<int, int>>\
+    \ a, b;\n        while (true) {\n            if (head[u] == head[v]) {\n     \
+    \           if (edge) {\n                    if (in[u] > in[v]) a.emplace_back(in[u],\
     \ in[v] + 1);\n                    if (in[u] < in[v]) a.emplace_back(in[u] + 1,\
     \ in[v]);\n                } else {\n                    a.emplace_back(in[u],\
     \ in[v]);\n                }\n                break;\n            }\n        \
@@ -160,14 +160,14 @@ data:
     \                u = par[head[u]];\n            } else {\n                b.emplace_back(in[head[v]],\
     \ in[v]);\n                v = par[head[v]];\n            }\n        }\n     \
     \   a.insert(a.end(), b.rbegin(), b.rend());\n        return a;\n    }\n    pair<int,\
-    \ int> get_subtree(int v, bool edge) { return {in[v] + edge, out[v] - 1}; }\n\
-    };"
+    \ int> get_subtree(int v, bool edge) const { return {in[v] + edge, out[v] - 1};\
+    \ }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: graph/hld.hpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
+  timestamp: '2021-09-18 20:49:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/unit/hld.test.cpp
@@ -177,6 +177,33 @@ title: "HL \u5206\u89E3"
 ---
 
 ## 概要
+- HL 分解を用いて木をパスに分解する。
+
+## 詳細
+
+- `struct hld`  
+    HL 分解を行う構造体。
+
+    - `(constructor)(int n)`  
+        頂点数 $n$ で初期化。
+
+    - `void add_edge(int u, int v)`  
+        頂点 $u, v$ 間に辺を張る。
+
+    - `vector<int> build(int root)`  
+        頂点 $root$ を根として初期化し、各頂点の別の番号の `vector` を返す。 $O(n)$ 時間。
+
+    - `int lca(int u, int v)`  
+        頂点 $u, v$ の LCA の番号を返す。 $O(\log n)$ 時間。
+    
+    - `int get_path(int u, int v, bool edge)`  
+        頂点属性のクエリの場合、頂点 $u, v$ 間のパスを $O(\log n)$ 個に分解し、「「新たな番号での始点、終点 (閉区間) を表す `pair`」 の `vector`」を返す。辺属性のクエリの場合もほぼ同様だが、こちらの場合は新たな頂点番号について、その頂点の親に繋がる辺という意味になる。
+
+    - `pair<int, int> get_subtree(int v, bool edge)`  
+        頂点 $v$ の部分木を $1$ 個の区間として返す。
+
+## 備考
+- 雑なのでまたちゃんと書く
 
 ## 参考
 - [adamant さんの Codeforces blog](https://codeforces.com/blog/entry/53170)

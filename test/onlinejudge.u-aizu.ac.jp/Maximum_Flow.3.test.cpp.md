@@ -139,9 +139,9 @@ data:
     \ e = g[pos[i].first][pos[i].second], re = g[e.to][e.rev];\n        return {pos[i].first,\
     \ e.to, e.cap + re.cap, re.cap};\n    }\n    vector<edge> edges() const {\n  \
     \      vector<edge> ret(pos.size());\n        for (int i : rep(pos.size())) ret[i]\
-    \ = get_edge(i);\n        return ret;\n    }\n    vector<bool> min_cut(int s)\
-    \ const {\n        vector<bool> ret(g.size());\n        auto dfs = [&](auto dfs,\
-    \ int v) -> void {\n            if (ret[v]) return;\n            ret[v] = true;\n\
+    \ = get_edge(i);\n        return ret;\n    }\n    vector<bool> cut(int s) const\
+    \ {\n        vector<bool> ret(g.size());\n        auto dfs = [&](auto dfs, int\
+    \ v) -> void {\n            if (ret[v]) return;\n            ret[v] = true;\n\
     \            for (_edge e : g[v]) {\n                if (e.cap) dfs(dfs, e.to);\n\
     \            }\n        };\n        dfs(dfs, s);\n        return ret;\n    }\n\
     };\n\nstruct ll_dinic {\n    using cap_t = ll;\n    static cap_t zero() { return\
@@ -151,7 +151,7 @@ data:
     \nint main() {\n    ll v, e;\n    cin >> v >> e;\n    dinic<ll_dinic> dinic(v);\n\
     \    while (e--) {\n        int u, v, c;\n        cin >> u >> v >> c;\n      \
     \  dinic.add_edge(u, v, c);\n    }\n    dinic.flow(0, v - 1);\n    auto flow =\
-    \ dinic.edges();\n    auto cut = dinic.min_cut(0);\n    ll ans = 0;\n    for (auto\
+    \ dinic.edges();\n    auto cut = dinic.cut(0);\n    ll ans = 0;\n    for (auto\
     \ e : flow) {\n        if (cut[e.from] && !cut[e.to]) ans += e.flow;\n    }\n\
     \    cout << ans << endl;\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/6/GRL_6_A\"\
@@ -159,7 +159,7 @@ data:
     \ std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n    dinic<ll_dinic>\
     \ dinic(v);\n    while (e--) {\n        int u, v, c;\n        cin >> u >> v >>\
     \ c;\n        dinic.add_edge(u, v, c);\n    }\n    dinic.flow(0, v - 1);\n   \
-    \ auto flow = dinic.edges();\n    auto cut = dinic.min_cut(0);\n    ll ans = 0;\n\
+    \ auto flow = dinic.edges();\n    auto cut = dinic.cut(0);\n    ll ans = 0;\n\
     \    for (auto e : flow) {\n        if (cut[e.from] && !cut[e.to]) ans += e.flow;\n\
     \    }\n    cout << ans << endl;\n}"
   dependsOn:
@@ -168,7 +168,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
+  timestamp: '2021-09-18 20:49:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp

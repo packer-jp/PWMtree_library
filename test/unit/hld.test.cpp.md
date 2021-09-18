@@ -152,13 +152,13 @@ data:
     \                head[u] = (i == 0 ? head[v] : u);\n                dfs_hld(dfs_hld,\
     \ u);\n            }\n            return out[v] = t;\n        };\n        dfs_sz(dfs_sz,\
     \ root, -1);\n        head[root] = root;\n        dfs_hld(dfs_hld, root);\n  \
-    \      return in;\n    }\n    int lca(int u, int v) {\n        while (true) {\n\
-    \            if (in[u] > in[v]) swap(u, v);\n            if (head[u] == head[v])\
+    \      return in;\n    }\n    int lca(int u, int v) const {\n        while (true)\
+    \ {\n            if (in[u] > in[v]) swap(u, v);\n            if (head[u] == head[v])\
     \ return u;\n            v = par[head[v]];\n        }\n    }\n    int dist(int\
-    \ u, int v) { return dep[u] + dep[v] - 2 * dep[lca(u, v)]; }\n    vector<pair<int,\
-    \ int>> get_path(int u, int v, bool edge) {\n        vector<pair<int, int>> a,\
-    \ b;\n        while (true) {\n            if (head[u] == head[v]) {\n        \
-    \        if (edge) {\n                    if (in[u] > in[v]) a.emplace_back(in[u],\
+    \ u, int v) const { return dep[u] + dep[v] - 2 * dep[lca(u, v)]; }\n    vector<pair<int,\
+    \ int>> get_path(int u, int v, bool edge) const {\n        vector<pair<int, int>>\
+    \ a, b;\n        while (true) {\n            if (head[u] == head[v]) {\n     \
+    \           if (edge) {\n                    if (in[u] > in[v]) a.emplace_back(in[u],\
     \ in[v] + 1);\n                    if (in[u] < in[v]) a.emplace_back(in[u] + 1,\
     \ in[v]);\n                } else {\n                    a.emplace_back(in[u],\
     \ in[v]);\n                }\n                break;\n            }\n        \
@@ -166,10 +166,10 @@ data:
     \                u = par[head[u]];\n            } else {\n                b.emplace_back(in[head[v]],\
     \ in[v]);\n                v = par[head[v]];\n            }\n        }\n     \
     \   a.insert(a.end(), b.rbegin(), b.rend());\n        return a;\n    }\n    pair<int,\
-    \ int> get_subtree(int v, bool edge) { return {in[v] + edge, out[v] - 1}; }\n\
-    };\n#line 4 \"test/unit/hld.test.cpp\"\n\n#line 6 \"test/unit/hld.test.cpp\"\n\
-    using namespace std;\n\nint main() {\n    int n = 10;\n    struct str {\n    \
-    \    using val_t = string;\n        static val_t op(val_t a, val_t b) { return\
+    \ int> get_subtree(int v, bool edge) const { return {in[v] + edge, out[v] - 1};\
+    \ }\n};\n#line 4 \"test/unit/hld.test.cpp\"\n\n#line 6 \"test/unit/hld.test.cpp\"\
+    \nusing namespace std;\n\nint main() {\n    int n = 10;\n    struct str {\n  \
+    \      using val_t = string;\n        static val_t op(val_t a, val_t b) { return\
     \ a + b; }\n        static val_t e() { return \"\"; }\n    };\n    segtree<str>\
     \ st_fwd(n), st_rev(n);\n    vector<string> weight = {\"a\", \"b\", \"c\", \"\
     d\", \"e\", \"f\", \"g\", \"h\", \"i\", \"j\"};\n    hld hld(n);\n    hld.add_edge(7,\
@@ -221,7 +221,7 @@ data:
   isVerificationFile: true
   path: test/unit/hld.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
+  timestamp: '2021-09-18 20:49:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/unit/hld.test.cpp
