@@ -19,7 +19,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

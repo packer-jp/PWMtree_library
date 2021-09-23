@@ -1,17 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/atcoder.jp/Discrete_Dowsing.0.test.cpp
-    title: test/atcoder.jp/Discrete_Dowsing.0.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"util/fibsect.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -124,13 +121,9 @@ data:
   path: util/fibsect.hpp
   requiredBy: []
   timestamp: '2021-09-24 01:16:16+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/atcoder.jp/Discrete_Dowsing.0.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: util/fibsect.hpp
 layout: document
-redirect_from:
-- /library/util/fibsect.hpp
-- /library/util/fibsect.hpp.html
-title: util/fibsect.hpp
+title: "\u30D5\u30A3\u30DC\u30CA\u30C3\u30C1\u63A2\u7D22"
 ---
