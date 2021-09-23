@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: data_structure/persistent_array.hpp
-    title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
   - icon: ':question:'
     path: template.hpp
     title: template.hpp
+  - icon: ':x:'
+    path: util/fibsect.hpp
+    title: util/fibsect.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/persistent_queue
+    PROBLEM: https://atcoder.jp/contests/typical90/tasks/typical90_ba
     links:
-    - https://judge.yosupo.jp/problem/persistent_queue
-  bundledCode: "#line 1 \"test/judge.yosupo.jp/Persistent_Queue.0.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#line 2 \"data_structure/persistent_array.hpp\"\
+    - https://atcoder.jp/contests/typical90/tasks/typical90_ba
+  bundledCode: "#line 1 \"test/atcoder.jp/Discrete_Dowsing.0.test.cpp\"\n#define PROBLEM\
+    \ \"https://atcoder.jp/contests/typical90/tasks/typical90_ba\"\n#line 2 \"util/fibsect.hpp\"\
     \n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace std;\n\
     \n#define all(a) begin(a), end(a)\n#define rall(a) rbegin(a), rend(a)\n#define\
     \ uniq(a) (a).erase(unique(all(a)), (a).end())\n#define SZ(x) ((int)(x).size())\n\
@@ -104,53 +104,43 @@ data:
     \    per(ll r) : per(0, r) {}\n    itr begin() const { return r - 1; };\n    itr\
     \ end() const { return l - 1; };\n};\nstruct io_setup {\n    static constexpr\
     \ int PREC = 20;\n    io_setup() {\n        cout << fixed << setprecision(PREC);\n\
-    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"data_structure/persistent_array.hpp\"\
-    \n\ntemplate <typename T, int SHIFT> struct persistent_array {\n    using ptr\
-    \ = shared_ptr<persistent_array>;\n    static constexpr int BASE = bit(SHIFT);\n\
-    \    static constexpr int MASK = BASE - 1;\n    T val;\n    array<ptr, BASE> ch;\n\
-    \    persistent_array(int n = 1, T val = T()) : val(val) {\n        for (int i\
-    \ : rep(BASE)) {\n            int m = (n >> SHIFT) + ((n & MASK) > i);\n     \
-    \       if (m > 1 || m > 0 && i > 0) ch[i] = ptr(new persistent_array(m, val));\n\
-    \        }\n    }\n    persistent_array(T val, const array<ptr, BASE> &ch) : val(val),\
-    \ ch(ch) {}\n    persistent_array(T val, const array<ptr, BASE> &ch, int i, ptr\
-    \ chp) : val(val), ch(ch) { this->ch[i] = chp; }\n    T get(int i) const { return\
-    \ i > 0 ? ch[i & MASK]->get(i >> SHIFT) : val; }\n    ptr setp(int i, T val) const\
-    \ {\n        return ptr(i > 0 ? new persistent_array(this->val, ch, i & MASK,\
-    \ ch[i & MASK]->setp(i >> SHIFT, val))\n                         : new persistent_array(val,\
-    \ ch));\n    }\n    persistent_array set(int i, T val) const { return *setp(i,\
-    \ val); }\n};\n#line 3 \"test/judge.yosupo.jp/Persistent_Queue.0.test.cpp\"\n\n\
-    int main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n \
-    \   ll q;\n    cin >> q;\n    ll il = q, ir = q + 1;\n    vector<persistent_array<ll,\
-    \ 2>> his;\n    his.emplace_back(q + 2, 0);\n    for (ll i : rep(q)) {\n     \
-    \   ll c, t;\n        cin >> c >> t, ++t;\n        if (c == 0) {\n           \
-    \ ll x;\n            cin >> x;\n            ll r = his[t].get(ir);\n         \
-    \   his.emplace_back(his[t].set(r, x).set(ir, r + 1));\n        }\n        if\
-    \ (c == 1) {\n            ll l = his[t].get(il);\n            cout << his[t].get(l)\
-    \ << '\\n';\n            his.emplace_back(his[t].set(il, l + 1));\n        }\n\
-    \    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#include\
-    \ \"../../data_structure/persistent_array.hpp\"\n\nint main() {\n    cin.tie(nullptr);\n\
-    \    ios_base::sync_with_stdio(false);\n    ll q;\n    cin >> q;\n    ll il =\
-    \ q, ir = q + 1;\n    vector<persistent_array<ll, 2>> his;\n    his.emplace_back(q\
-    \ + 2, 0);\n    for (ll i : rep(q)) {\n        ll c, t;\n        cin >> c >> t,\
-    \ ++t;\n        if (c == 0) {\n            ll x;\n            cin >> x;\n    \
-    \        ll r = his[t].get(ir);\n            his.emplace_back(his[t].set(r, x).set(ir,\
-    \ r + 1));\n        }\n        if (c == 1) {\n            ll l = his[t].get(il);\n\
-    \            cout << his[t].get(l) << '\\n';\n            his.emplace_back(his[t].set(il,\
-    \ l + 1));\n        }\n    }\n}"
+    \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n#line 4 \"util/fibsect.hpp\"\
+    \n\ntemplate <typename F> auto fibsect(ll lb, ll ub, F f) {\n    if (ub - lb ==\
+    \ 1) return make_pair(lb, f(lb));\n    --lb;\n    ll a = 1, b = 2;\n    while\
+    \ (a + b < ub - lb) b += a, a = b - a;\n    ll l = lb + a, r = lb + b;\n    auto\
+    \ fl = f(l), fr = f(r);\n    while (true) {\n        a = b - a;\n        b -=\
+    \ a;\n        if (r < ub && fl < fr) {\n            if (b == 1) return make_pair(r,\
+    \ fr);\n            l = r, fl = fr;\n            if ((r += b - a) < ub) fr = f(r);\n\
+    \        } else {\n            if (b == 1) return make_pair(l, fl);\n        \
+    \    r = l, fr = fl;\n            l += a - b, fl = f(l);\n        }\n    }\n}\n\
+    #line 3 \"test/atcoder.jp/Discrete_Dowsing.0.test.cpp\"\n\nint main() {\n    ll\
+    \ t;\n    cin >> t;\n    while (t--) {\n        ll n;\n        cin >> n;\n   \
+    \     ll ans = fibsect(1, n + 1,\n                         [](ll x) -> ll {\n\
+    \                             cout << \"? \" << x << endl;\n                 \
+    \            ll ret;\n                             cin >> ret;\n             \
+    \                return ret;\n                         })\n                  \
+    \   .second;\n        cout << \"! \" << ans << endl;\n    }\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/typical90/tasks/typical90_ba\"\
+    \n#include \"../../util/fibsect.hpp\"\n\nint main() {\n    ll t;\n    cin >> t;\n\
+    \    while (t--) {\n        ll n;\n        cin >> n;\n        ll ans = fibsect(1,\
+    \ n + 1,\n                         [](ll x) -> ll {\n                        \
+    \     cout << \"? \" << x << endl;\n                             ll ret;\n   \
+    \                          cin >> ret;\n                             return ret;\n\
+    \                         })\n                     .second;\n        cout << \"\
+    ! \" << ans << endl;\n    }\n}"
   dependsOn:
-  - data_structure/persistent_array.hpp
+  - util/fibsect.hpp
   - template.hpp
   isVerificationFile: true
-  path: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
+  path: test/atcoder.jp/Discrete_Dowsing.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-24 01:16:16+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
+documentation_of: test/atcoder.jp/Discrete_Dowsing.0.test.cpp
 layout: document
 redirect_from:
-- /verify/test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
-- /verify/test/judge.yosupo.jp/Persistent_Queue.0.test.cpp.html
-title: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
+- /verify/test/atcoder.jp/Discrete_Dowsing.0.test.cpp
+- /verify/test/atcoder.jp/Discrete_Dowsing.0.test.cpp.html
+title: test/atcoder.jp/Discrete_Dowsing.0.test.cpp
 ---

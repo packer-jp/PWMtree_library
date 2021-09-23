@@ -93,7 +93,7 @@ data:
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -104,10 +104,18 @@ data:
     - icon: ':warning:'
       path: util/doubling.hpp
       title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
+    - icon: ':x:'
+      path: util/fibsect.hpp
+      title: util/fibsect.hpp
     - icon: ':warning:'
       path: util/xorshift.hpp
       title: Xorshift
   verificationCategories:
+  - name: test/atcoder.jp
+    pages:
+    - icon: ':x:'
+      path: test/atcoder.jp/Discrete_Dowsing.0.test.cpp
+      title: test/atcoder.jp/Discrete_Dowsing.0.test.cpp
   - name: test/judge.u-aizu.ac.jp
     pages:
     - icon: ':heavy_check_mark:'

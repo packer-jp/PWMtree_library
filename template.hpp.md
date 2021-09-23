@@ -90,10 +90,16 @@ data:
   - icon: ':warning:'
     path: util/doubling.hpp
     title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
+  - icon: ':x:'
+    path: util/fibsect.hpp
+    title: util/fibsect.hpp
   - icon: ':warning:'
     path: util/xorshift.hpp
     title: Xorshift
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/atcoder.jp/Discrete_Dowsing.0.test.cpp
+    title: test/atcoder.jp/Discrete_Dowsing.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
     title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
@@ -199,9 +205,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/unit/permutation.test.cpp
     title: test/unit/permutation.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
@@ -394,6 +400,7 @@ data:
   - graph/spfa.hpp
   - graph/oibfs.hpp
   - graph/dinic.hpp
+  - util/fibsect.hpp
   - util/xorshift.hpp
   - util/bisect.hpp
   - util/doubling.hpp
@@ -411,7 +418,7 @@ data:
   - math/convolution.hpp
   - math/ntt.hpp
   timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
@@ -430,6 +437,7 @@ data:
   - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+  - test/atcoder.jp/Discrete_Dowsing.0.test.cpp
   - test/unit/permutation.test.cpp
   - test/unit/hld.test.cpp
   - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
