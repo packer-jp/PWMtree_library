@@ -1,10 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: graph/offline_dag_reachability.hpp
+    title: graph/offline_dag_reachability.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -104,19 +107,21 @@ data:
     \ bit(i);\n            } else\n                p &= ~bit(i);\n            return\
     \ *this;\n        }\n        ref &operator=(const ref &a) { return *this = a;\
     \ }\n        operator bool() const { return (p & bit(i)) != 0; }\n        bool\
-    \ operator~() const { return !*this; }\n        ref &flip() {}\n    };\n    ref\
-    \ operator[](int i) {\n        if (val.size() <= i >> 4) val.resize((i >> 4) +\
-    \ 1);\n        return {val[i >> 4], i & (bit(4) - 1)};\n    }\n    db &operator&=(const\
-    \ db &a) {\n        if (a.val.size() < val.size()) val.resize(a.val.size());\n\
-    \        for (int i : rep(a.val.size())) val[i] &= a.val[i];\n    }\n    db &operator|=(const\
-    \ db &a) {\n        if (a.val.size() > val.size()) val.resize(a.val.size());\n\
-    \        for (int i : rep(a.val.size())) val[i] |= a.val[i];\n    }\n    db &operator^=(const\
-    \ db &a) {\n        if (a.val.size() > val.size()) val.resize(a.val.size());\n\
-    \        for (int i : rep(a.val.size())) val[i] ^= a.val[i];\n    }\n    int count()\
-    \ const {\n        int ret = 0;\n        for (ull p : val) ret += __builtin_popcountll(p);\n\
-    \        return ret;\n    }\n    friend bool operator==(const db &a, const db\
-    \ &b) { return (a ^ b).count() == 0; }\n    friend bool operator!=(const db &a,\
-    \ const db &b) { return rel_ops::operator!=(a, b); }\n    friend bool operator<(const\
+    \ operator~() const { return !*this; }\n        ref &flip() {\n            p ^=\
+    \ bit(i);\n            return *this;\n        }\n    };\n    ref operator[](int\
+    \ i) {\n        if (val.size() <= i >> 4) val.resize((i >> 4) + 1);\n        return\
+    \ {val[i >> 4], i & 63};\n    }\n    db &operator&=(const db &a) {\n        if\
+    \ (a.val.size() < val.size()) val.resize(a.val.size());\n        for (int i :\
+    \ rep(a.val.size())) val[i] &= a.val[i];\n        return *this;\n    }\n    db\
+    \ &operator|=(const db &a) {\n        if (a.val.size() > val.size()) val.resize(a.val.size());\n\
+    \        for (int i : rep(a.val.size())) val[i] |= a.val[i];\n        return *this;\n\
+    \    }\n    db &operator^=(const db &a) {\n        if (a.val.size() > val.size())\
+    \ val.resize(a.val.size());\n        for (int i : rep(a.val.size())) val[i] ^=\
+    \ a.val[i];\n        return *this;\n    }\n    int count() const {\n        int\
+    \ ret = 0;\n        for (ull p : val) ret += __builtin_popcountll(p);\n      \
+    \  return ret;\n    }\n    friend bool operator==(const db &a, const db &b) {\
+    \ return (a ^ b).count() == 0; }\n    friend bool operator!=(const db &a, const\
+    \ db &b) { return rel_ops::operator!=(a, b); }\n    friend bool operator<(const\
     \ db &a, const db &b) {\n        for (int i : per(max(a.val.size(), b.val.size())))\
     \ {\n            ull pa = i < a.val.size() ? a.val[i] : 0;\n            ull pb\
     \ = i < b.val.size() ? b.val[i] : 0;\n            if (pa < pb) return true;\n\
@@ -134,19 +139,21 @@ data:
     \            } else\n                p &= ~bit(i);\n            return *this;\n\
     \        }\n        ref &operator=(const ref &a) { return *this = a; }\n     \
     \   operator bool() const { return (p & bit(i)) != 0; }\n        bool operator~()\
-    \ const { return !*this; }\n        ref &flip() {}\n    };\n    ref operator[](int\
-    \ i) {\n        if (val.size() <= i >> 4) val.resize((i >> 4) + 1);\n        return\
-    \ {val[i >> 4], i & (bit(4) - 1)};\n    }\n    db &operator&=(const db &a) {\n\
-    \        if (a.val.size() < val.size()) val.resize(a.val.size());\n        for\
-    \ (int i : rep(a.val.size())) val[i] &= a.val[i];\n    }\n    db &operator|=(const\
+    \ const { return !*this; }\n        ref &flip() {\n            p ^= bit(i);\n\
+    \            return *this;\n        }\n    };\n    ref operator[](int i) {\n \
+    \       if (val.size() <= i >> 4) val.resize((i >> 4) + 1);\n        return {val[i\
+    \ >> 4], i & 63};\n    }\n    db &operator&=(const db &a) {\n        if (a.val.size()\
+    \ < val.size()) val.resize(a.val.size());\n        for (int i : rep(a.val.size()))\
+    \ val[i] &= a.val[i];\n        return *this;\n    }\n    db &operator|=(const\
     \ db &a) {\n        if (a.val.size() > val.size()) val.resize(a.val.size());\n\
-    \        for (int i : rep(a.val.size())) val[i] |= a.val[i];\n    }\n    db &operator^=(const\
-    \ db &a) {\n        if (a.val.size() > val.size()) val.resize(a.val.size());\n\
-    \        for (int i : rep(a.val.size())) val[i] ^= a.val[i];\n    }\n    int count()\
-    \ const {\n        int ret = 0;\n        for (ull p : val) ret += __builtin_popcountll(p);\n\
-    \        return ret;\n    }\n    friend bool operator==(const db &a, const db\
-    \ &b) { return (a ^ b).count() == 0; }\n    friend bool operator!=(const db &a,\
-    \ const db &b) { return rel_ops::operator!=(a, b); }\n    friend bool operator<(const\
+    \        for (int i : rep(a.val.size())) val[i] |= a.val[i];\n        return *this;\n\
+    \    }\n    db &operator^=(const db &a) {\n        if (a.val.size() > val.size())\
+    \ val.resize(a.val.size());\n        for (int i : rep(a.val.size())) val[i] ^=\
+    \ a.val[i];\n        return *this;\n    }\n    int count() const {\n        int\
+    \ ret = 0;\n        for (ull p : val) ret += __builtin_popcountll(p);\n      \
+    \  return ret;\n    }\n    friend bool operator==(const db &a, const db &b) {\
+    \ return (a ^ b).count() == 0; }\n    friend bool operator!=(const db &a, const\
+    \ db &b) { return rel_ops::operator!=(a, b); }\n    friend bool operator<(const\
     \ db &a, const db &b) {\n        for (int i : per(max(a.val.size(), b.val.size())))\
     \ {\n            ull pa = i < a.val.size() ? a.val[i] : 0;\n            ull pb\
     \ = i < b.val.size() ? b.val[i] : 0;\n            if (pa < pb) return true;\n\
@@ -161,8 +168,9 @@ data:
   - template.hpp
   isVerificationFile: false
   path: util/dynamic_bitset.hpp
-  requiredBy: []
-  timestamp: '2021-09-24 15:58:58+09:00'
+  requiredBy:
+  - graph/offline_dag_reachability.hpp
+  timestamp: '2021-09-24 23:59:47+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: util/dynamic_bitset.hpp

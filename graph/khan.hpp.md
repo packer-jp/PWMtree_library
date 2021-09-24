@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -9,12 +9,12 @@ data:
     path: graph/offline_dag_reachability.hpp
     title: graph/offline_dag_reachability.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: test/unit/khan.test.cpp
+    title: test/unit/khan.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/khan.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -109,7 +109,7 @@ data:
     \ {\n        vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size()))\
     \ {\n            if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for\
     \ (int i : rep(g.size())) {\n            if (i > ret.size()) return {};\n    \
-    \        for (int to : g[ret[i]]) {\n                if (--indeg[to] == 0) ret.push_back(to);\n\
+    \        for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
     \            }\n        }\n        return ret;\n    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct khan {\n    vector<vector<int>>\
     \ g;\n    vector<int> indeg;\n    khan(int n) : g(n), indeg(n) {}\n    void add_edge(int\
@@ -117,7 +117,7 @@ data:
     \ {\n        vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size()))\
     \ {\n            if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for\
     \ (int i : rep(g.size())) {\n            if (i > ret.size()) return {};\n    \
-    \        for (int to : g[ret[i]]) {\n                if (--indeg[to] == 0) ret.push_back(to);\n\
+    \        for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
     \            }\n        }\n        return ret;\n    }\n};"
   dependsOn:
   - template.hpp
@@ -125,10 +125,10 @@ data:
   path: graph/khan.hpp
   requiredBy:
   - graph/offline_dag_reachability.hpp
-  timestamp: '2021-09-24 15:58:58+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-09-24 23:59:47+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
+  - test/unit/khan.test.cpp
 documentation_of: graph/khan.hpp
 layout: document
 title: "Khan \u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"

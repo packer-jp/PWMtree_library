@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -130,11 +130,10 @@ data:
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
 documentation_of: math/fwht.hpp
 layout: document
-title: "\u9AD8\u901F\u30A6\u30A9\u30EB\u30B7\u30E5\u30FB\u30A2\u30C0\u30DE\u30FC\u30EB\
-  \u5909\u63DB"
+title: "\u9AD8\u901F Walsh-Hadamard \u5909\u63DB"
 ---
 
 ## 概要
-- 高速ウォルシュ・アダマール変換を行う。
+- 高速 Walsh-Hadamard 変換を行う。
 
 - [cympfh さんの記事](https://cympfh.cc/aiura/hadamard-xor-convolution)

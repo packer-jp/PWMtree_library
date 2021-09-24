@@ -1,24 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/khan.hpp
     title: "Khan \u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_4_B
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_4_B
-  bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp\"\
-    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_4_B\"\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja
+  bundledCode: "#line 1 \"test/unit/khan.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja\"\
     \n#line 2 \"graph/khan.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\n#define all(a) begin(a), end(a)\n#define rall(a) rbegin(a),\
     \ rend(a)\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\n#define SZ(x)\
@@ -111,32 +110,46 @@ data:
     \ {\n        vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size()))\
     \ {\n            if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for\
     \ (int i : rep(g.size())) {\n            if (i > ret.size()) return {};\n    \
-    \        for (int to : g[ret[i]]) {\n                if (--indeg[to] == 0) ret.push_back(to);\n\
-    \            }\n        }\n        return ret;\n    }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp\"\
-    \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp\"\nusing\
-    \ namespace std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n    khan khan(v);\n\
-    \    for (ll i : rep(e)) {\n        ll s, t;\n        cin >> s >> t;\n       \
-    \ khan.add_edge(s, t);\n    }\n    auto ans = khan.get();\n    for (ll a : ans)\
-    \ cout << a << endl;\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_4_B\"\
+    \        for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
+    \            }\n        }\n        return ret;\n    }\n};\n#line 3 \"test/unit/khan.test.cpp\"\
+    \n\n#line 5 \"test/unit/khan.test.cpp\"\nusing namespace std;\n\nint main() {\n\
+    \    constexpr int n = 20, v = 100, e = 1000;\n    random_device rnd;\n    mt19937\
+    \ mt(rnd());\n    uniform_int_distribution<> uid(0, v - 1);\n    for (ll i : rep(n))\
+    \ {\n        khan khan(v);\n        bool used[v][v] = {};\n        int src[v];\n\
+    \        for (ll i : rep(v)) { src[i] = i; }\n        shuffle(src, src + n, mt);\n\
+    \        for (ll j : rep(e)) {\n            int u = uid(mt), v = uid(mt);\n  \
+    \          if (used[u][v]) { continue; }\n            if (src[u] < src[v]) {\n\
+    \                khan.add_edge(u, v);\n                used[u][v] = true;\n  \
+    \          }\n        }\n        vector<int> sorted = khan.get();\n        //\
+    \ shuffle(sorted.begin(), sorted.end(), mt);\n        for (ll j : rep(v)) {\n\
+    \            for (ll k : rep(j + 1, v)) { assert(!used[sorted[k]][sorted[j]]);\
+    \ }\n        }\n    }\n\n    cout << \"Hello World\" << endl;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A&lang=ja\"\
     \n#include \"../../graph/khan.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n    khan khan(v);\n\
-    \    for (ll i : rep(e)) {\n        ll s, t;\n        cin >> s >> t;\n       \
-    \ khan.add_edge(s, t);\n    }\n    auto ans = khan.get();\n    for (ll a : ans)\
-    \ cout << a << endl;\n}"
+    \ std;\n\nint main() {\n    constexpr int n = 20, v = 100, e = 1000;\n    random_device\
+    \ rnd;\n    mt19937 mt(rnd());\n    uniform_int_distribution<> uid(0, v - 1);\n\
+    \    for (ll i : rep(n)) {\n        khan khan(v);\n        bool used[v][v] = {};\n\
+    \        int src[v];\n        for (ll i : rep(v)) { src[i] = i; }\n        shuffle(src,\
+    \ src + n, mt);\n        for (ll j : rep(e)) {\n            int u = uid(mt), v\
+    \ = uid(mt);\n            if (used[u][v]) { continue; }\n            if (src[u]\
+    \ < src[v]) {\n                khan.add_edge(u, v);\n                used[u][v]\
+    \ = true;\n            }\n        }\n        vector<int> sorted = khan.get();\n\
+    \        // shuffle(sorted.begin(), sorted.end(), mt);\n        for (ll j : rep(v))\
+    \ {\n            for (ll k : rep(j + 1, v)) { assert(!used[sorted[k]][sorted[j]]);\
+    \ }\n        }\n    }\n\n    cout << \"Hello World\" << endl;\n}"
   dependsOn:
   - graph/khan.hpp
   - template.hpp
   isVerificationFile: true
-  path: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
+  path: test/unit/khan.test.cpp
   requiredBy: []
-  timestamp: '2021-09-24 15:58:58+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-24 23:59:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
+documentation_of: test/unit/khan.test.cpp
 layout: document
 redirect_from:
-- /verify/test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
-- /verify/test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp.html
-title: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
+- /verify/test/unit/khan.test.cpp
+- /verify/test/unit/khan.test.cpp.html
+title: test/unit/khan.test.cpp
 ---

@@ -9,7 +9,7 @@ data:
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   - icon: ':heavy_check_mark:'
     path: math/fzt_fmt.hpp
-    title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
+    title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
   - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
@@ -19,7 +19,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

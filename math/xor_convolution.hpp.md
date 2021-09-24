@@ -3,9 +3,8 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/fwht.hpp
-    title: "\u9AD8\u901F\u30A6\u30A9\u30EB\u30B7\u30E5\u30FB\u30A2\u30C0\u30DE\u30FC\
-      \u30EB\u5909\u63DB"
-  - icon: ':question:'
+    title: "\u9AD8\u901F Walsh-Hadamard \u5909\u63DB"
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

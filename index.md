@@ -35,7 +35,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/hld.hpp
       title: "HL \u5206\u89E3"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/khan.hpp
       title: "Khan \u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
     - icon: ':warning:'
@@ -66,11 +66,10 @@ data:
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
     - icon: ':heavy_check_mark:'
       path: math/fwht.hpp
-      title: "\u9AD8\u901F\u30A6\u30A9\u30EB\u30B7\u30E5\u30FB\u30A2\u30C0\u30DE\u30FC\
-        \u30EB\u5909\u63DB"
+      title: "\u9AD8\u901F Walsh-Hadamard \u5909\u63DB"
     - icon: ':heavy_check_mark:'
       path: math/fzt_fmt.hpp
-      title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
+      title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: "xor \u57FA\u5E95"
@@ -99,7 +98,7 @@ data:
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -115,7 +114,7 @@ data:
       title: util/dynamic_bitset.hpp
     - icon: ':warning:'
       path: util/fibsect.hpp
-      title: "\u30D5\u30A3\u30DC\u30CA\u30C3\u30C1\u63A2\u7D22"
+      title: "Fibonacci \u63A2\u7D22"
     - icon: ':warning:'
       path: util/xorshift.hpp
       title: Xorshift
@@ -222,9 +221,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-    - icon: ':x:'
-      path: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
-      title: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
@@ -233,6 +229,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/unit/hld.test.cpp
       title: test/unit/hld.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/unit/khan.test.cpp
+      title: test/unit/khan.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/unit/permutation.test.cpp
       title: test/unit/permutation.test.cpp

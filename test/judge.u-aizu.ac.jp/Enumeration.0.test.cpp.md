@@ -6,8 +6,8 @@ data:
     title: "and / or \u7573\u307F\u8FBC\u307F"
   - icon: ':heavy_check_mark:'
     path: math/fzt_fmt.hpp
-    title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
-  - icon: ':question:'
+    title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

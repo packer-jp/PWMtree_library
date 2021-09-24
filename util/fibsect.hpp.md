@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -125,5 +125,5 @@ data:
   verifiedWith: []
 documentation_of: util/fibsect.hpp
 layout: document
-title: "\u30D5\u30A3\u30DC\u30CA\u30C3\u30C1\u63A2\u7D22"
+title: "Fibonacci \u63A2\u7D22"
 ---
