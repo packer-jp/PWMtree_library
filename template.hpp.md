@@ -32,6 +32,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/hld.hpp
     title: "HL \u5206\u89E3"
+  - icon: ':x:'
+    path: graph/khan.hpp
+    title: "Khan \u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
+  - icon: ':warning:'
+    path: graph/offline_dag_reachability.hpp
+    title: graph/offline_dag_reachability.hpp
   - icon: ':warning:'
     path: graph/oibfs.hpp
     title: 01-BFS
@@ -90,6 +96,9 @@ data:
   - icon: ':warning:'
     path: util/doubling.hpp
     title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
+  - icon: ':warning:'
+    path: util/dynamic_bitset.hpp
+    title: util/dynamic_bitset.hpp
   - icon: ':warning:'
     path: util/fibsect.hpp
     title: "\u30D5\u30A3\u30DC\u30CA\u30C3\u30C1\u63A2\u7D22"
@@ -193,6 +202,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+  - icon: ':x:'
+    path: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
@@ -202,9 +214,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/unit/permutation.test.cpp
     title: test/unit/permutation.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
@@ -391,14 +403,17 @@ data:
   - data_structure/persistent_uf.hpp
   - data_structure/persistent_array.hpp
   - string/rolling_hash.hpp
+  - graph/offline_dag_reachability.hpp
   - graph/wf.hpp
   - graph/dijkstra.hpp
   - graph/hld.hpp
+  - graph/khan.hpp
   - graph/spfa.hpp
   - graph/oibfs.hpp
   - graph/dinic.hpp
   - util/fibsect.hpp
   - util/xorshift.hpp
+  - util/dynamic_bitset.hpp
   - util/bisect.hpp
   - util/doubling.hpp
   - math/fwht.hpp
@@ -415,7 +430,7 @@ data:
   - math/convolution.hpp
   - math/ntt.hpp
   timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
@@ -423,6 +438,7 @@ data:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp

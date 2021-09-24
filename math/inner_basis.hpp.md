@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -97,20 +97,20 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"math/inner_basis.hpp\"\n\nvector<ull> inner_basis(vector<ull>\
-    \ a) {\n    vector<ull> basis, ret;\n    for (ull e : a) {\n        ull e_ = e;\n\
-    \        for (ull b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e),\
-    \ ret.push_back(e_);\n    }\n    return ret;\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\nvector<ull> inner_basis(vector<ull>\
-    \ a) {\n    vector<ull> basis, ret;\n    for (ull e : a) {\n        ull e_ = e;\n\
-    \        for (ull b : basis) chmin(e, e ^ b);\n        if (e) basis.push_back(e),\
-    \ ret.push_back(e_);\n    }\n    return ret;\n}"
+    \    };\n} iOS;\n#line 4 \"math/inner_basis.hpp\"\n\ntemplate <typename T> vector<T>\
+    \ inner_basis(vector<T> a) {\n    vector<T> basis, ret;\n    for (T e : a) {\n\
+    \        T _e = e;\n        for (T b : basis) chmin(e, e ^ b);\n        if (e\
+    \ != T()) basis.push_back(e), ret.push_back(_e);\n    }\n    return ret;\n}\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> vector<T>\
+    \ inner_basis(vector<T> a) {\n    vector<T> basis, ret;\n    for (T e : a) {\n\
+    \        T _e = e;\n        for (T b : basis) chmin(e, e ^ b);\n        if (e\
+    \ != T()) basis.push_back(e), ret.push_back(_e);\n    }\n    return ret;\n}"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: math/inner_basis.hpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
+  timestamp: '2021-09-24 16:02:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/inner_basis.hpp

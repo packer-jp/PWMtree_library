@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/ntt.hpp
     title: "\u6570\u8AD6\u5909\u63DB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -150,15 +150,15 @@ data:
     \ *this;\n    }\n    modint &operator-=(const modint &a) {\n        if ((val +=\
     \ MOD - a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
     \ modint &a) {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n\
-    \    modint &operator/=(const modint &a) { return *this *= a.inv(); }\n    bool\
-    \ operator==(const modint &a) const { return val == a.val; }\n    bool operator!=(const\
-    \ modint &a) const { return rel_ops::operator!=(*this, a); }\n    modint operator+()\
-    \ const { return *this; }\n    modint operator-() const { return modint(-val);\
-    \ }\n    friend modint operator+(const modint &a, const modint &b) { return modint(a)\
-    \ += b; }\n    friend modint operator-(const modint &a, const modint &b) { return\
-    \ modint(a) -= b; }\n    friend modint operator*(const modint &a, const modint\
-    \ &b) { return modint(a) *= b; }\n    friend modint operator/(const modint &a,\
-    \ const modint &b) { return modint(a) /= b; }\n    friend istream &operator>>(istream\
+    \    modint &operator/=(const modint &a) { return *this *= a.inv(); }\n    modint\
+    \ operator+() const { return *this; }\n    modint operator-() const { return modint(-val);\
+    \ }\n    friend bool operator==(const modint &a, const modint &b) { return a.val\
+    \ == b.val; }\n    friend bool operator!=(const modint &a, const modint &b) {\
+    \ return rel_ops::operator!=(a, b); }\n    friend modint operator+(const modint\
+    \ &a, const modint &b) { return modint(a) += b; }\n    friend modint operator-(const\
+    \ modint &a, const modint &b) { return modint(a) -= b; }\n    friend modint operator*(const\
+    \ modint &a, const modint &b) { return modint(a) *= b; }\n    friend modint operator/(const\
+    \ modint &a, const modint &b) { return modint(a) /= b; }\n    friend istream &operator>>(istream\
     \ &is, modint &a) {\n        ll val;\n        is >> val;\n        a = modint(val);\n\
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\n#line 6 \"math/fps.hpp\"\n\ntemplate\
@@ -252,7 +252,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 00:26:26+09:00'
+  timestamp: '2021-09-24 15:58:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp

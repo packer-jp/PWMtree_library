@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -101,26 +101,26 @@ data:
     \ lb, ll ub, F f) {\n    if (ub - lb == 1) return make_pair(lb, f(lb));\n    --lb;\n\
     \    ll a = 1, b = 2;\n    while (a + b < ub - lb) b += a, a = b - a;\n    ll\
     \ l = lb + a, r = lb + b;\n    auto fl = f(l), fr = f(r);\n    while (true) {\n\
-    \        a = b - a;\n        b -= a;\n        if (r < ub && fl < fr) {\n     \
-    \       if (b == 1) return make_pair(r, fr);\n            l = r, fl = fr;\n  \
-    \          if ((r += b - a) < ub) fr = f(r);\n        } else {\n            if\
-    \ (b == 1) return make_pair(l, fl);\n            r = l, fr = fl;\n           \
-    \ l += a - b, fl = f(l);\n        }\n    }\n}\n"
+    \        a = b - a, b -= a;\n        if (r < ub && fl < fr) {\n            if\
+    \ (b == 1) return make_pair(r, fr);\n            l = r, fl = fr;\n           \
+    \ if ((r += b - a) < ub) fr = f(r);\n        } else {\n            if (b == 1)\
+    \ return make_pair(l, fl);\n            r = l, fr = fl;\n            l -= b -\
+    \ a, fl = f(l);\n        }\n    }\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename F> auto\
     \ fibsect(ll lb, ll ub, F f) {\n    if (ub - lb == 1) return make_pair(lb, f(lb));\n\
     \    --lb;\n    ll a = 1, b = 2;\n    while (a + b < ub - lb) b += a, a = b -\
     \ a;\n    ll l = lb + a, r = lb + b;\n    auto fl = f(l), fr = f(r);\n    while\
-    \ (true) {\n        a = b - a;\n        b -= a;\n        if (r < ub && fl < fr)\
-    \ {\n            if (b == 1) return make_pair(r, fr);\n            l = r, fl =\
-    \ fr;\n            if ((r += b - a) < ub) fr = f(r);\n        } else {\n     \
-    \       if (b == 1) return make_pair(l, fl);\n            r = l, fr = fl;\n  \
-    \          l += a - b, fl = f(l);\n        }\n    }\n}"
+    \ (true) {\n        a = b - a, b -= a;\n        if (r < ub && fl < fr) {\n   \
+    \         if (b == 1) return make_pair(r, fr);\n            l = r, fl = fr;\n\
+    \            if ((r += b - a) < ub) fr = f(r);\n        } else {\n           \
+    \ if (b == 1) return make_pair(l, fl);\n            r = l, fr = fl;\n        \
+    \    l -= b - a, fl = f(l);\n        }\n    }\n}"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: util/fibsect.hpp
   requiredBy: []
-  timestamp: '2021-09-24 01:16:16+09:00'
+  timestamp: '2021-09-24 15:58:58+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: util/fibsect.hpp

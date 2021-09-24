@@ -5,31 +5,19 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: math/and_or_convolution.hpp
-    title: "and / or \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
-    path: math/subset_convolution.hpp
-    title: Subset Convolution
+  - icon: ':warning:'
+    path: graph/offline_dag_reachability.hpp
+    title: graph/offline_dag_reachability.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-    title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-    title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-    title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-    title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/fzt_fmt.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"graph/khan.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a), end(a)\n#define\
     \ rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\n\
     #define SZ(x) ((int)(x).size())\n#define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n\
@@ -115,69 +103,33 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"math/fzt_fmt.hpp\"\n\ntemplate <typename T> void fzt_super(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if ((s >> i) & 1) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T> &a) {\n \
-    \   for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
-    \ a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fmt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] -= a[s];\n\
-    \        }\n    }\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> void\
-    \ fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1))\
-    \ {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1) a[s\
-    \ ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
-    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
-    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n"
+    \    };\n} iOS;\n#line 4 \"graph/khan.hpp\"\n\nstruct khan {\n    vector<vector<int>>\
+    \ g;\n    vector<int> indeg;\n    khan(int n) : g(n), indeg(n) {}\n    void add_edge(int\
+    \ from, int to) { g[from].push_back(to), ++indeg[to]; }\n    vector<int> get()\
+    \ {\n        vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size()))\
+    \ {\n            if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for\
+    \ (int i : rep(g.size())) {\n            if (i > ret.size()) return {};\n    \
+    \        for (int to : g[ret[i]]) {\n                if (--indeg[to] == 0) ret.push_back(to);\n\
+    \            }\n        }\n        return ret;\n    }\n};\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct khan {\n    vector<vector<int>>\
+    \ g;\n    vector<int> indeg;\n    khan(int n) : g(n), indeg(n) {}\n    void add_edge(int\
+    \ from, int to) { g[from].push_back(to), ++indeg[to]; }\n    vector<int> get()\
+    \ {\n        vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size()))\
+    \ {\n            if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for\
+    \ (int i : rep(g.size())) {\n            if (i > ret.size()) return {};\n    \
+    \        for (int to : g[ret[i]]) {\n                if (--indeg[to] == 0) ret.push_back(to);\n\
+    \            }\n        }\n        return ret;\n    }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: math/fzt_fmt.hpp
+  path: graph/khan.hpp
   requiredBy:
-  - math/and_or_convolution.hpp
-  - math/subset_convolution.hpp
-  timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - graph/offline_dag_reachability.hpp
+  timestamp: '2021-09-24 15:58:58+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-documentation_of: math/fzt_fmt.hpp
+  - test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
+documentation_of: graph/khan.hpp
 layout: document
-title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
+title: "Khan \u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
 ---
-
-## 概要
-- 高速ゼータ / メビウス変換を行う。両者は互いに逆変換の関係にある。
-
-## 詳細
-- `<typename T> fzt_super(vector<T> &a)`  
-    $a$ 自身をゼータ変換 (上位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $f$ と解釈したとき、
-    $$g(S) := \sum_{T \supseteq S}{f(T)}$$
-    で与えられる $g$ に更新する。
-
-- `<typename T> fzt_sub(vector<T> &a)`  
-    $a$ 自身をゼータ変換 (下位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $f$ と解釈したとき、
-    $$g(S) := \sum_{T \subseteq S}{f(T)}$$
-    で与えられる $g$ に更新する。
-
-- `<typename T> fmt_super(vector<T> &a)`  
-    $a$ 自身をメビウス変換 (上位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $g$ と解釈したとき、
-    $$f(S) = \sum_{T \supseteq S}{(-1)^{|T| - |S|}g(T)}$$
-    で与えられる $f$ に更新する。
-
-- `<typename T> fzt_sub(vector<T> &a)`  
-    $a$ 自身をメビウス変換 (下位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $g$ と解釈したとき、
-    $$f(S) = \sum_{T \subseteq S}{(-1)^{|T| - |S|}g(T)}$$
-    で与えられる $f$ に更新する。

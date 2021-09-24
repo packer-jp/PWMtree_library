@@ -35,6 +35,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/hld.hpp
       title: "HL \u5206\u89E3"
+    - icon: ':x:'
+      path: graph/khan.hpp
+      title: "Khan \u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
+    - icon: ':warning:'
+      path: graph/offline_dag_reachability.hpp
+      title: graph/offline_dag_reachability.hpp
     - icon: ':warning:'
       path: graph/oibfs.hpp
       title: 01-BFS
@@ -93,7 +99,7 @@ data:
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -104,6 +110,9 @@ data:
     - icon: ':warning:'
       path: util/doubling.hpp
       title: "\u30C0\u30D6\u30EA\u30F3\u30B0"
+    - icon: ':warning:'
+      path: util/dynamic_bitset.hpp
+      title: util/dynamic_bitset.hpp
     - icon: ':warning:'
       path: util/fibsect.hpp
       title: "\u30D5\u30A3\u30DC\u30CA\u30C3\u30C1\u63A2\u7D22"
@@ -213,6 +222,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+    - icon: ':x:'
+      path: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
+      title: test/onlinejudge.u-aizu.ac.jp/Topological_Sort.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp

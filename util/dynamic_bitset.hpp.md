@@ -4,37 +4,19 @@ data:
   - icon: ':question:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: math/and_or_convolution.hpp
-    title: "and / or \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
-    path: math/subset_convolution.hpp
-    title: Subset Convolution
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-    title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-    title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-    title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-    title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/fzt_fmt.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a), end(a)\n#define\
-    \ rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\n\
-    #define SZ(x) ((int)(x).size())\n#define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n\
-    #define vsum(x) reduce(all(x))\n#define vmax(a) *max_element(all(a))\n#define\
-    \ vmin(a) *min_element(all(a))\n#define LB(c, x) distance((c).begin(), lower_bound(all(c),\
+  bundledCode: "#line 2 \"util/dynamic_bitset.hpp\"\n\n#line 2 \"template.hpp\"\n\n\
+    #include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a), end(a)\n\
+    #define rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)),\
+    \ (a).end())\n#define SZ(x) ((int)(x).size())\n#define pb(x) push_back(x)\n#define\
+    \ eb(x) emplace_back(x)\n#define vsum(x) reduce(all(x))\n#define vmax(a) *max_element(all(a))\n\
+    #define vmin(a) *min_element(all(a))\n#define LB(c, x) distance((c).begin(), lower_bound(all(c),\
     \ (x)))\n#define UB(c, x) distance((c).begin(), upper_bound(all(c), (x)))\n#define\
     \ mp make_pair\n#define endl '\\n'\nusing ll = long long;\nusing ull = unsigned\
     \ long long;\nusing ld = long double;\nusing Pi = pair<int, int>;\nusing Pl =\
@@ -115,69 +97,78 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"math/fzt_fmt.hpp\"\n\ntemplate <typename T> void fzt_super(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if ((s >> i) & 1) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T> &a) {\n \
-    \   for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
-    \ a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fmt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] -= a[s];\n\
-    \        }\n    }\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> void\
-    \ fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1))\
-    \ {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1) a[s\
-    \ ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
-    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
-    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n"
+    \    };\n} iOS;\n#line 4 \"util/dynamic_bitset.hpp\"\n\nstruct dynamic_bitset\
+    \ {\n    using db = dynamic_bitset;\n    vector<ull> val;\n    struct ref {\n\
+    \        ull &p;\n        int i;\n        ref(ull &p, int i) : p(p), i(i) {}\n\
+    \        ref &operator=(bool a) {\n            if (a) {\n                p |=\
+    \ bit(i);\n            } else\n                p &= ~bit(i);\n            return\
+    \ *this;\n        }\n        ref &operator=(const ref &a) { return *this = a;\
+    \ }\n        operator bool() const { return (p & bit(i)) != 0; }\n        bool\
+    \ operator~() const { return !*this; }\n        ref &flip() {}\n    };\n    ref\
+    \ operator[](int i) {\n        if (val.size() <= i >> 4) val.resize((i >> 4) +\
+    \ 1);\n        return {val[i >> 4], i & (bit(4) - 1)};\n    }\n    db &operator&=(const\
+    \ db &a) {\n        if (a.val.size() < val.size()) val.resize(a.val.size());\n\
+    \        for (int i : rep(a.val.size())) val[i] &= a.val[i];\n    }\n    db &operator|=(const\
+    \ db &a) {\n        if (a.val.size() > val.size()) val.resize(a.val.size());\n\
+    \        for (int i : rep(a.val.size())) val[i] |= a.val[i];\n    }\n    db &operator^=(const\
+    \ db &a) {\n        if (a.val.size() > val.size()) val.resize(a.val.size());\n\
+    \        for (int i : rep(a.val.size())) val[i] ^= a.val[i];\n    }\n    int count()\
+    \ const {\n        int ret = 0;\n        for (ull p : val) ret += __builtin_popcountll(p);\n\
+    \        return ret;\n    }\n    friend bool operator==(const db &a, const db\
+    \ &b) { return (a ^ b).count() == 0; }\n    friend bool operator!=(const db &a,\
+    \ const db &b) { return rel_ops::operator!=(a, b); }\n    friend bool operator<(const\
+    \ db &a, const db &b) {\n        for (int i : per(max(a.val.size(), b.val.size())))\
+    \ {\n            ull pa = i < a.val.size() ? a.val[i] : 0;\n            ull pb\
+    \ = i < b.val.size() ? b.val[i] : 0;\n            if (pa < pb) return true;\n\
+    \            if (pa > pb) return false;\n        }\n        return false;\n  \
+    \  }\n    friend bool operator>(const db &a, const db &b) { return rel_ops::operator>(a,\
+    \ b); }\n    friend bool operator<=(const db &a, const db &b) { return rel_ops::operator<=(a,\
+    \ b); }\n    friend bool operator>=(const db &a, const db &b) { return rel_ops::operator>=(a,\
+    \ b); }\n    friend db operator&(const db &a, const db &b) { return db(a) &= b;\
+    \ }\n    friend db operator|(const db &a, const db &b) { return db(a) |= b; }\n\
+    \    friend db operator^(const db &a, const db &b) { return db(a) ^= b; }\n};\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct dynamic_bitset {\n\
+    \    using db = dynamic_bitset;\n    vector<ull> val;\n    struct ref {\n    \
+    \    ull &p;\n        int i;\n        ref(ull &p, int i) : p(p), i(i) {}\n   \
+    \     ref &operator=(bool a) {\n            if (a) {\n                p |= bit(i);\n\
+    \            } else\n                p &= ~bit(i);\n            return *this;\n\
+    \        }\n        ref &operator=(const ref &a) { return *this = a; }\n     \
+    \   operator bool() const { return (p & bit(i)) != 0; }\n        bool operator~()\
+    \ const { return !*this; }\n        ref &flip() {}\n    };\n    ref operator[](int\
+    \ i) {\n        if (val.size() <= i >> 4) val.resize((i >> 4) + 1);\n        return\
+    \ {val[i >> 4], i & (bit(4) - 1)};\n    }\n    db &operator&=(const db &a) {\n\
+    \        if (a.val.size() < val.size()) val.resize(a.val.size());\n        for\
+    \ (int i : rep(a.val.size())) val[i] &= a.val[i];\n    }\n    db &operator|=(const\
+    \ db &a) {\n        if (a.val.size() > val.size()) val.resize(a.val.size());\n\
+    \        for (int i : rep(a.val.size())) val[i] |= a.val[i];\n    }\n    db &operator^=(const\
+    \ db &a) {\n        if (a.val.size() > val.size()) val.resize(a.val.size());\n\
+    \        for (int i : rep(a.val.size())) val[i] ^= a.val[i];\n    }\n    int count()\
+    \ const {\n        int ret = 0;\n        for (ull p : val) ret += __builtin_popcountll(p);\n\
+    \        return ret;\n    }\n    friend bool operator==(const db &a, const db\
+    \ &b) { return (a ^ b).count() == 0; }\n    friend bool operator!=(const db &a,\
+    \ const db &b) { return rel_ops::operator!=(a, b); }\n    friend bool operator<(const\
+    \ db &a, const db &b) {\n        for (int i : per(max(a.val.size(), b.val.size())))\
+    \ {\n            ull pa = i < a.val.size() ? a.val[i] : 0;\n            ull pb\
+    \ = i < b.val.size() ? b.val[i] : 0;\n            if (pa < pb) return true;\n\
+    \            if (pa > pb) return false;\n        }\n        return false;\n  \
+    \  }\n    friend bool operator>(const db &a, const db &b) { return rel_ops::operator>(a,\
+    \ b); }\n    friend bool operator<=(const db &a, const db &b) { return rel_ops::operator<=(a,\
+    \ b); }\n    friend bool operator>=(const db &a, const db &b) { return rel_ops::operator>=(a,\
+    \ b); }\n    friend db operator&(const db &a, const db &b) { return db(a) &= b;\
+    \ }\n    friend db operator|(const db &a, const db &b) { return db(a) |= b; }\n\
+    \    friend db operator^(const db &a, const db &b) { return db(a) ^= b; }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: math/fzt_fmt.hpp
-  requiredBy:
-  - math/and_or_convolution.hpp
-  - math/subset_convolution.hpp
-  timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-documentation_of: math/fzt_fmt.hpp
+  path: util/dynamic_bitset.hpp
+  requiredBy: []
+  timestamp: '2021-09-24 15:58:58+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: util/dynamic_bitset.hpp
 layout: document
-title: "\u9AD8\u901F\u30BC\u30FC\u30BF / \u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
+redirect_from:
+- /library/util/dynamic_bitset.hpp
+- /library/util/dynamic_bitset.hpp.html
+title: util/dynamic_bitset.hpp
 ---
-
-## 概要
-- 高速ゼータ / メビウス変換を行う。両者は互いに逆変換の関係にある。
-
-## 詳細
-- `<typename T> fzt_super(vector<T> &a)`  
-    $a$ 自身をゼータ変換 (上位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $f$ と解釈したとき、
-    $$g(S) := \sum_{T \supseteq S}{f(T)}$$
-    で与えられる $g$ に更新する。
-
-- `<typename T> fzt_sub(vector<T> &a)`  
-    $a$ 自身をゼータ変換 (下位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $f$ と解釈したとき、
-    $$g(S) := \sum_{T \subseteq S}{f(T)}$$
-    で与えられる $g$ に更新する。
-
-- `<typename T> fmt_super(vector<T> &a)`  
-    $a$ 自身をメビウス変換 (上位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $g$ と解釈したとき、
-    $$f(S) = \sum_{T \supseteq S}{(-1)^{|T| - |S|}g(T)}$$
-    で与えられる $f$ に更新する。
-
-- `<typename T> fzt_sub(vector<T> &a)`  
-    $a$ 自身をメビウス変換 (下位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $g$ と解釈したとき、
-    $$f(S) = \sum_{T \subseteq S}{(-1)^{|T| - |S|}g(T)}$$
-    で与えられる $f$ に更新する。
