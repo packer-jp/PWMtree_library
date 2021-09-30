@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B
   bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\
-    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H\"\
+    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B\"\
     \n#line 2 \"data_structure/fenwick_tree.hpp\"\n\n#line 2 \"template.hpp\"\n\n\
     #include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a), end(a)\n\
     #define rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)),\
@@ -107,18 +107,17 @@ data:
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
     \    };\n} iOS;\n#line 4 \"data_structure/fenwick_tree.hpp\"\n\ntemplate <typename\
     \ T> struct fenwick_tree {\n    vector<T> data;\n    fenwick_tree(int n) : data(n\
-    \ + 1, T()) {}\n    void add(int i, const T &x) {\n        for (++i; i < data.size();\
+    \ + 1, T()) {}\n    void add(int i, const T &x) {\n        for (++i; i < (int)data.size();\
     \ i += i & -i) data[i] += x;\n    }\n    T sum(int i) const {\n        T ret =\
-    \ T();\n        for (; i > 0; i -= i & -i) { ret += data[i]; }\n        return\
-    \ ret;\n    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n\
-    #line 3 \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\n\n#line\
-    \ 5 \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\nusing namespace\
-    \ std;\n\nint main() {\n    ll n, q;\n    cin >> n >> q;\n    fenwick_tree<ll>\
-    \ ft(n);\n    while (q--) {\n        ll com, x, y;\n        cin >> com >> x >>\
-    \ y, --x;\n        if (com == 0) {\n            ft.add(x, y);\n        } else\
-    \ if (com == 1) {\n            cout << ft.sum(x, y) << endl;\n        }\n    }\n\
-    }\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_H\"\
+    \ T();\n        for (; i > 0; i -= i & -i) ret += data[i];\n        return ret;\n\
+    \    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n#line 3\
+    \ \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\
+    \nusing namespace std;\n\nint main() {\n    ll n, q;\n    cin >> n >> q;\n   \
+    \ fenwick_tree<ll> ft(n);\n    while (q--) {\n        ll com, x, y;\n        cin\
+    \ >> com >> x >> y, --x;\n        if (com == 0) {\n            ft.add(x, y);\n\
+    \        } else if (com == 1) {\n            cout << ft.sum(x, y) << endl;\n \
+    \       }\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B\"\
     \n#include \"../../data_structure/fenwick_tree.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\nint main() {\n    ll n, q;\n    cin >> n >> q;\n    fenwick_tree<ll>\
     \ ft(n);\n    while (q--) {\n        ll com, x, y;\n        cin >> com >> x >>\
@@ -131,8 +130,8 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-30 11:29:49+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-30 12:13:46+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
 layout: document

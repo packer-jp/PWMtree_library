@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/fenwick_tree.hpp\"\n\n#line 2 \"template.hpp\"\
@@ -102,23 +102,23 @@ data:
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
     \    };\n} iOS;\n#line 4 \"data_structure/fenwick_tree.hpp\"\n\ntemplate <typename\
     \ T> struct fenwick_tree {\n    vector<T> data;\n    fenwick_tree(int n) : data(n\
-    \ + 1, T()) {}\n    void add(int i, const T &x) {\n        for (++i; i < data.size();\
+    \ + 1, T()) {}\n    void add(int i, const T &x) {\n        for (++i; i < (int)data.size();\
     \ i += i & -i) data[i] += x;\n    }\n    T sum(int i) const {\n        T ret =\
-    \ T();\n        for (; i > 0; i -= i & -i) { ret += data[i]; }\n        return\
-    \ ret;\n    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n"
+    \ T();\n        for (; i > 0; i -= i & -i) ret += data[i];\n        return ret;\n\
+    \    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> struct\
     \ fenwick_tree {\n    vector<T> data;\n    fenwick_tree(int n) : data(n + 1, T())\
-    \ {}\n    void add(int i, const T &x) {\n        for (++i; i < data.size(); i\
-    \ += i & -i) data[i] += x;\n    }\n    T sum(int i) const {\n        T ret = T();\n\
-    \        for (; i > 0; i -= i & -i) { ret += data[i]; }\n        return ret;\n\
+    \ {}\n    void add(int i, const T &x) {\n        for (++i; i < (int)data.size();\
+    \ i += i & -i) data[i] += x;\n    }\n    T sum(int i) const {\n        T ret =\
+    \ T();\n        for (; i > 0; i -= i & -i) ret += data[i];\n        return ret;\n\
     \    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: data_structure/fenwick_tree.hpp
   requiredBy: []
-  timestamp: '2021-09-30 11:29:49+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-09-30 12:13:46+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp

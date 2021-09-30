@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -108,16 +108,16 @@ data:
     \ from, int to) { g[from].push_back(to), ++indeg[to]; }\n    vector<int> get()\
     \ {\n        vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size()))\
     \ {\n            if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for\
-    \ (int i : rep(g.size())) {\n            if (i > ret.size()) return {};\n    \
-    \        for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
+    \ (int i : rep(g.size())) {\n            if (i >= ret.size()) return {};\n   \
+    \         for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
     \            }\n        }\n        return ret;\n    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct khan {\n    vector<vector<int>>\
     \ g;\n    vector<int> indeg;\n    khan(int n) : g(n), indeg(n) {}\n    void add_edge(int\
     \ from, int to) { g[from].push_back(to), ++indeg[to]; }\n    vector<int> get()\
     \ {\n        vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size()))\
     \ {\n            if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for\
-    \ (int i : rep(g.size())) {\n            if (i > ret.size()) return {};\n    \
-    \        for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
+    \ (int i : rep(g.size())) {\n            if (i >= ret.size()) return {};\n   \
+    \         for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
     \            }\n        }\n        return ret;\n    }\n};"
   dependsOn:
   - template.hpp
@@ -125,7 +125,7 @@ data:
   path: graph/khan.hpp
   requiredBy:
   - graph/offline_dag_reachability.hpp
-  timestamp: '2021-09-24 23:59:47+09:00'
+  timestamp: '2021-09-30 12:13:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/unit/khan.test.cpp

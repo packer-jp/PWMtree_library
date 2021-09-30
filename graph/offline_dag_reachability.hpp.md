@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/khan.hpp
     title: "Khan \u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   - icon: ':warning:'
@@ -141,8 +141,8 @@ data:
     \ to) { g[from].push_back(to), ++indeg[to]; }\n    vector<int> get() {\n     \
     \   vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size())) {\n \
     \           if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for (int\
-    \ i : rep(g.size())) {\n            if (i > ret.size()) return {};\n         \
-    \   for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
+    \ i : rep(g.size())) {\n            if (i >= ret.size()) return {};\n        \
+    \    for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
     \            }\n        }\n        return ret;\n    }\n};\n#line 6 \"graph/offline_dag_reachability.hpp\"\
     \n\nstruct offline_dag_reachability {\n    khan ts;\n    offline_dag_reachability(int\
     \ n) : ts(n) {}\n    void add_edge(int from, int to) { ts.add_edge(from, to);\
@@ -174,7 +174,7 @@ data:
   isVerificationFile: false
   path: graph/offline_dag_reachability.hpp
   requiredBy: []
-  timestamp: '2021-09-24 23:59:47+09:00'
+  timestamp: '2021-09-30 12:13:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/offline_dag_reachability.hpp

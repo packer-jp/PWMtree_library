@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/khan.hpp
     title: "Khan \u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -109,8 +109,8 @@ data:
     \ from, int to) { g[from].push_back(to), ++indeg[to]; }\n    vector<int> get()\
     \ {\n        vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size()))\
     \ {\n            if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for\
-    \ (int i : rep(g.size())) {\n            if (i > ret.size()) return {};\n    \
-    \        for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
+    \ (int i : rep(g.size())) {\n            if (i >= ret.size()) return {};\n   \
+    \         for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
     \            }\n        }\n        return ret;\n    }\n};\n#line 3 \"test/unit/khan.test.cpp\"\
     \n\n#line 5 \"test/unit/khan.test.cpp\"\nusing namespace std;\n\nint main() {\n\
     \    constexpr int n = 20, v = 100, e = 1000;\n    random_device rnd;\n    mt19937\
@@ -143,7 +143,7 @@ data:
   isVerificationFile: true
   path: test/unit/khan.test.cpp
   requiredBy: []
-  timestamp: '2021-09-24 23:59:47+09:00'
+  timestamp: '2021-09-30 12:13:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/unit/khan.test.cpp
