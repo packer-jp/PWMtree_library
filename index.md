@@ -6,6 +6,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/cht.hpp
       title: Convex Hull Trick
+    - icon: ':x:'
+      path: data_structure/fenwick_tree.hpp
+      title: data_structure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segtree.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
@@ -98,7 +101,7 @@ data:
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: .
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -203,6 +206,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+    - icon: ':x:'
+      path: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
+      title: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp

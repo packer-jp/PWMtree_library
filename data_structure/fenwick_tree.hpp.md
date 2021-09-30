@@ -4,37 +4,22 @@ data:
   - icon: ':question:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: math/and_or_convolution.hpp
-    title: "and / or \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
-    path: math/subset_convolution.hpp
-    title: Subset Convolution
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-    title: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-    title: test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-    title: test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-    title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/fzt_fmt.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
-    \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a), end(a)\n#define\
-    \ rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\n\
-    #define SZ(x) ((int)(x).size())\n#define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n\
-    #define vsum(x) reduce(all(x))\n#define vmax(a) *max_element(all(a))\n#define\
-    \ vmin(a) *min_element(all(a))\n#define LB(c, x) distance((c).begin(), lower_bound(all(c),\
+  bundledCode: "#line 2 \"data_structure/fenwick_tree.hpp\"\n\n#line 2 \"template.hpp\"\
+    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a),\
+    \ end(a)\n#define rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)),\
+    \ (a).end())\n#define SZ(x) ((int)(x).size())\n#define pb(x) push_back(x)\n#define\
+    \ eb(x) emplace_back(x)\n#define vsum(x) reduce(all(x))\n#define vmax(a) *max_element(all(a))\n\
+    #define vmin(a) *min_element(all(a))\n#define LB(c, x) distance((c).begin(), lower_bound(all(c),\
     \ (x)))\n#define UB(c, x) distance((c).begin(), upper_bound(all(c), (x)))\n#define\
     \ mp make_pair\n#define endl '\\n'\nusing ll = long long;\nusing ull = unsigned\
     \ long long;\nusing ld = long double;\nusing Pi = pair<int, int>;\nusing Pl =\
@@ -115,69 +100,31 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"math/fzt_fmt.hpp\"\n\ntemplate <typename T> void fzt_super(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if ((s >> i) & 1) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T> &a) {\n \
-    \   for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
-    \ a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fmt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] -= a[s];\n\
-    \        }\n    }\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> void\
-    \ fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1))\
-    \ {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1) a[s\
-    \ ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
-    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
-    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n"
+    \    };\n} iOS;\n#line 4 \"data_structure/fenwick_tree.hpp\"\n\ntemplate <typename\
+    \ T> struct fenwick_tree {\n    vector<T> data;\n    fenwick_tree(int n) : data(n\
+    \ + 1, T()) {}\n    void add(int i, const T &x) {\n        for (++i; i <= data.size();\
+    \ i += i & -i) data[i] += x;\n    }\n    T sum(int i) const {\n        T ret =\
+    \ T();\n        for (; i > 0; i -= i & -i) { ret += data[i]; }\n        return\
+    \ ret;\n    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> struct\
+    \ fenwick_tree {\n    vector<T> data;\n    fenwick_tree(int n) : data(n + 1, T())\
+    \ {}\n    void add(int i, const T &x) {\n        for (++i; i <= data.size(); i\
+    \ += i & -i) data[i] += x;\n    }\n    T sum(int i) const {\n        T ret = T();\n\
+    \        for (; i > 0; i -= i & -i) { ret += data[i]; }\n        return ret;\n\
+    \    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: math/fzt_fmt.hpp
-  requiredBy:
-  - math/and_or_convolution.hpp
-  - math/subset_convolution.hpp
-  timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  path: data_structure/fenwick_tree.hpp
+  requiredBy: []
+  timestamp: '2021-09-30 10:57:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-documentation_of: math/fzt_fmt.hpp
+  - test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
+documentation_of: data_structure/fenwick_tree.hpp
 layout: document
-title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
+redirect_from:
+- /library/data_structure/fenwick_tree.hpp
+- /library/data_structure/fenwick_tree.hpp.html
+title: data_structure/fenwick_tree.hpp
 ---
-
-## 概要
-- 高速 Zeta / Moebius 変換を行う。両者は互いに逆変換の関係にある。
-
-## 詳細
-- `<typename T> fzt_super(vector<T> &a)`  
-    $a$ 自身を Zeta 変換 (上位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $f$ と解釈したとき、
-    $$g(S) := \sum_{T \supseteq S}{f(T)}$$
-    で与えられる $g$ に更新する。
-
-- `<typename T> fzt_sub(vector<T> &a)`  
-    $a$ 自身を Zeta 変換 (下位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $f$ と解釈したとき、
-    $$g(S) := \sum_{T \subseteq S}{f(T)}$$
-    で与えられる $g$ に更新する。
-
-- `<typename T> fmt_super(vector<T> &a)`  
-    $a$ 自身を Moebius 変換 (上位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $g$ と解釈したとき、
-    $$f(S) = \sum_{T \supseteq S}{(-1)^{|T| - |S|}g(T)}$$
-    で与えられる $f$ に更新する。
-
-- `<typename T> fzt_sub(vector<T> &a)`  
-    $a$ 自身を Moebius 変換 (下位集合版) した結果に更新する。即ち、$a$ を集合上で定義される関数 $g$ と解釈したとき、
-    $$f(S) = \sum_{T \subseteq S}{(-1)^{|T| - |S|}g(T)}$$
-    で与えられる $f$ に更新する。

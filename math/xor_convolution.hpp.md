@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/fwht.hpp
     title: "\u9AD8\u901F Walsh-Hadamard \u5909\u63DB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

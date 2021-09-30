@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/ntt.hpp
     title: "\u6570\u8AD6\u5909\u63DB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:

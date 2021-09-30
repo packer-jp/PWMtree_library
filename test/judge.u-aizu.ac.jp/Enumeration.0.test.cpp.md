@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/fzt_fmt.hpp
     title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
