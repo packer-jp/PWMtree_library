@@ -58,6 +58,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/and_or_convolution.hpp
       title: "and / or \u7573\u307F\u8FBC\u307F"
+    - icon: ':heavy_check_mark:'
+      path: math/bostan_mori.hpp
+      title: math/bostan_mori.hpp
     - icon: ':warning:'
       path: math/combination.hpp
       title: "\u7D44\u307F\u5408\u308F\u305B"
@@ -76,6 +79,9 @@ data:
     - icon: ':warning:'
       path: math/inner_basis.hpp
       title: "xor \u57FA\u5E95"
+    - icon: ':heavy_check_mark:'
+      path: math/kth_of_lrs.hpp
+      title: math/kth_of_lrs.hpp
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217"
@@ -150,6 +156,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
+      title: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
       title: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp

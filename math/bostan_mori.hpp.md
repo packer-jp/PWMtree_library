@@ -8,9 +8,6 @@ data:
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   - icon: ':heavy_check_mark:'
-    path: math/fzt_fmt.hpp
-    title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
-  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
   - icon: ':heavy_check_mark:'
@@ -19,22 +16,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: math/kth_of_lrs.hpp
+    title: math/kth_of_lrs.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-    title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+    path: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
+    title: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/subset_convolution.hpp\"\n\n#line 2 \"template.hpp\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a),\
-    \ end(a)\n#define rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)),\
-    \ (a).end())\n#define SZ(x) ((int)(x).size())\n#define pb(x) push_back(x)\n#define\
-    \ eb(x) emplace_back(x)\n#define vsum(x) reduce(all(x))\n#define vmax(a) *max_element(all(a))\n\
-    #define vmin(a) *min_element(all(a))\n#define LB(c, x) distance((c).begin(), lower_bound(all(c),\
+  bundledCode: "#line 2 \"math/bostan_mori.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a), end(a)\n#define\
+    \ rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\n\
+    #define SZ(x) ((int)(x).size())\n#define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n\
+    #define vsum(x) reduce(all(x))\n#define vmax(a) *max_element(all(a))\n#define\
+    \ vmin(a) *min_element(all(a))\n#define LB(c, x) distance((c).begin(), lower_bound(all(c),\
     \ (x)))\n#define UB(c, x) distance((c).begin(), upper_bound(all(c), (x)))\n#define\
     \ mp make_pair\n#define endl '\\n'\nusing ll = long long;\nusing ull = unsigned\
     \ long long;\nusing ld = long double;\nusing Pi = pair<int, int>;\nusing Pl =\
@@ -236,55 +236,38 @@ data:
     \        intt(t), t.resize(m);\n\n        fps u = (this->prefix(m << 1) - (t <<\
     \ m - 1).integral()) >> m;\n        u.resize(m << 1), ntt(u);\n        u.chdot(ret_freq);\n\
     \        intt(u);\n\n        ret += u.prefix(m) << m;\n    }\n    return ret.prefix(d);\n\
-    }\n#line 2 \"math/fzt_fmt.hpp\"\n\n#line 4 \"math/fzt_fmt.hpp\"\n\ntemplate <typename\
-    \ T> void fzt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
-    \ a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n\
-    \    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] -= a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
-    \ 1)) a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n#line 6 \"math/subset_convolution.hpp\"\
-    \n\ntemplate <typename T> vector<fps<T>> attach(const vector<T> &a) {\n    vector<fps<T>>\
-    \ ret(a.size());\n    for (int i : rep(a.size())) {\n        int j = __builtin_popcount(i);\n\
-    \        ret[i].resize(j + 1);\n        ret[i][j] = a[i];\n    }\n    return ret;\n\
-    }\n\ntemplate <typename T> vector<T> detach(const vector<fps<T>> &a) {\n    vector<T>\
-    \ ret(a.size());\n    for (int i : rep(a.size())) ret[i] = a[i][__builtin_popcount(i)];\n\
-    \    return ret;\n}\n\ntemplate <typename T> vector<T> subset_convolution(vector<T>\
-    \ a, vector<T> b) {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1;\
-    \ n < _n; n <<= 1) {}\n    a.resize(n), b.resize(n);\n    vector<fps<T>> _a =\
-    \ attach(a), _b = attach(b);\n    fzt_sub(_a), fzt_sub(_b);\n    for (int i :\
-    \ rep(n)) _a[i] *= _b[i];\n    fmt_sub(_a);\n    return detach(_a);\n}\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n#include \"fps.hpp\"\n#include\
-    \ \"fzt_fmt.hpp\"\n\ntemplate <typename T> vector<fps<T>> attach(const vector<T>\
-    \ &a) {\n    vector<fps<T>> ret(a.size());\n    for (int i : rep(a.size())) {\n\
-    \        int j = __builtin_popcount(i);\n        ret[i].resize(j + 1);\n     \
-    \   ret[i][j] = a[i];\n    }\n    return ret;\n}\n\ntemplate <typename T> vector<T>\
-    \ detach(const vector<fps<T>> &a) {\n    vector<T> ret(a.size());\n    for (int\
-    \ i : rep(a.size())) ret[i] = a[i][__builtin_popcount(i)];\n    return ret;\n\
-    }\n\ntemplate <typename T> vector<T> subset_convolution(vector<T> a, vector<T>\
-    \ b) {\n    int _n = max(a.size(), b.size()), n;\n    for (n = 1; n < _n; n <<=\
-    \ 1) {}\n    a.resize(n), b.resize(n);\n    vector<fps<T>> _a = attach(a), _b\
-    \ = attach(b);\n    fzt_sub(_a), fzt_sub(_b);\n    for (int i : rep(n)) _a[i]\
-    \ *= _b[i];\n    fmt_sub(_a);\n    return detach(_a);\n}"
+    }\n#line 5 \"math/bostan_mori.hpp\"\n\ntemplate <typename T> T bostan_mori(fps<T>\
+    \ p, fps<T> q, ll k) {\n    while (k) {\n        fps<T> _q(q);\n        for (int\
+    \ i = 1; i < _q.size(); i += 2) _q[i] = -_q[i];\n        fps<T> u = p * _q, v\
+    \ = q * _q;\n        p.resize((u.size() >> 1) + (u.size() & ~k & 1)), q.resize((v.size()\
+    \ >> 1) + 1);\n        for (int i : rep(p.size())) p[i] = u[i << 1 | k & 1];\n\
+    \        for (int i : rep(q.size())) q[i] = v[i << 1];\n        k >>= 1;\n   \
+    \ }\n    return p[0];\n}\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n#include \"fps.hpp\"\n\ntemplate\
+    \ <typename T> T bostan_mori(fps<T> p, fps<T> q, ll k) {\n    while (k) {\n  \
+    \      fps<T> _q(q);\n        for (int i = 1; i < _q.size(); i += 2) _q[i] = -_q[i];\n\
+    \        fps<T> u = p * _q, v = q * _q;\n        p.resize((u.size() >> 1) + (u.size()\
+    \ & ~k & 1)), q.resize((v.size() >> 1) + 1);\n        for (int i : rep(p.size()))\
+    \ p[i] = u[i << 1 | k & 1];\n        for (int i : rep(q.size())) q[i] = v[i <<\
+    \ 1];\n        k >>= 1;\n    }\n    return p[0];\n}"
   dependsOn:
   - template.hpp
   - math/fps.hpp
   - math/convolution.hpp
   - math/ntt.hpp
   - math/modint.hpp
-  - math/fzt_fmt.hpp
   isVerificationFile: false
-  path: math/subset_convolution.hpp
-  requiredBy: []
+  path: math/bostan_mori.hpp
+  requiredBy:
+  - math/kth_of_lrs.hpp
   timestamp: '2021-10-03 22:16:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-documentation_of: math/subset_convolution.hpp
+  - test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
+documentation_of: math/bostan_mori.hpp
 layout: document
-title: Subset Convolution
+redirect_from:
+- /library/math/bostan_mori.hpp
+- /library/math/bostan_mori.hpp.html
+title: math/bostan_mori.hpp
 ---

@@ -170,17 +170,17 @@ data:
     \ convolution_naive(a, b);\n    } else {\n        return convolution_ntt(a, b);\n\
     \    }\n}\n#line 6 \"math/fps.hpp\"\n\ntemplate <typename T> struct fps : vector<T>\
     \ {\n    using vector<T>::vector;\n    using vector<T>::operator=;\n    fps()\
-    \ : vector<T>() {}\n    fps(const T &a) : vector<T>(1, a) {}\n    fps(const fps\
-    \ &a) : vector<T>(a) {}\n    fps &operator=(const fps &a) {\n        *this = (vector<T>)a;\n\
-    \        return *this;\n    }\n    fps &operator+=(const fps &a) {\n        if\
-    \ (a.size() > this->size()) this->resize(a.size());\n        for (int i : rep(a.size()))\
-    \ (*this)[i] += a[i];\n        return *this;\n    }\n    fps &operator-=(const\
-    \ fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n  \
-    \      for (int i : rep(a.size())) (*this)[i] -= a[i];\n        return *this;\n\
-    \    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const T &a) {\n\
-    \        for (int i : rep(this->size())) (*this)[i] /= a;\n        return *this;\n\
-    \    };\n    fps &operator>>=(int d) {\n        if ((int)this->size() <= d) {\n\
-    \            *this = {};\n        } else {\n            this->erase(this->begin(),\
+    \ : vector<T>() {}\n    fps(const T &a) : vector<T>(1, a) {}\n    fps(const vector<T>\
+    \ &a) : vector<T>(a) {}\n    fps(const fps &a) : vector<T>(a) {}\n    fps &operator=(const\
+    \ fps &a) {\n        *this = (vector<T>)a;\n        return *this;\n    }\n   \
+    \ fps &operator+=(const fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n\
+    \        for (int i : rep(a.size())) (*this)[i] += a[i];\n        return *this;\n\
+    \    }\n    fps &operator-=(const fps &a) {\n        if (a.size() > this->size())\
+    \ this->resize(a.size());\n        for (int i : rep(a.size())) (*this)[i] -= a[i];\n\
+    \        return *this;\n    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const\
+    \ T &a) {\n        for (int i : rep(this->size())) (*this)[i] /= a;\n        return\
+    \ *this;\n    };\n    fps &operator>>=(int d) {\n        if ((int)this->size()\
+    \ <= d) {\n            *this = {};\n        } else {\n            this->erase(this->begin(),\
     \ this->begin() + d);\n        }\n        return *this;\n    }\n    fps &operator<<=(int\
     \ d) {\n        this->insert(this->begin(), d, T(0));\n        return *this;\n\
     \    }\n    fps &chdot(const fps &a) {\n        for (int i : rep(this->size()))\
@@ -286,7 +286,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-24 15:58:58+09:00'
+  timestamp: '2021-10-03 22:16:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp

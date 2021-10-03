@@ -6,11 +6,17 @@ data:
     title: template.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: math/bostan_mori.hpp
+    title: math/bostan_mori.hpp
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: "\u7573\u307F\u8FBC\u307F"
   - icon: ':heavy_check_mark:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
+  - icon: ':heavy_check_mark:'
+    path: math/kth_of_lrs.hpp
+    title: math/kth_of_lrs.hpp
   - icon: ':heavy_check_mark:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
@@ -24,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
+    title: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
@@ -152,12 +161,15 @@ data:
   isVerificationFile: false
   path: math/ntt.hpp
   requiredBy:
+  - math/kth_of_lrs.hpp
+  - math/bostan_mori.hpp
   - math/fps.hpp
   - math/subset_convolution.hpp
   - math/convolution.hpp
   timestamp: '2021-09-17 00:26:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp

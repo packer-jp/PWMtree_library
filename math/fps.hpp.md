@@ -15,6 +15,12 @@ data:
     title: template.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: math/bostan_mori.hpp
+    title: math/bostan_mori.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/kth_of_lrs.hpp
+    title: math/kth_of_lrs.hpp
+  - icon: ':heavy_check_mark:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
   _extendedVerifiedWith:
@@ -24,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
+    title: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
@@ -174,16 +183,17 @@ data:
     \ modint &a) { return os << a.val; }\n};\n#line 6 \"math/fps.hpp\"\n\ntemplate\
     \ <typename T> struct fps : vector<T> {\n    using vector<T>::vector;\n    using\
     \ vector<T>::operator=;\n    fps() : vector<T>() {}\n    fps(const T &a) : vector<T>(1,\
-    \ a) {}\n    fps(const fps &a) : vector<T>(a) {}\n    fps &operator=(const fps\
-    \ &a) {\n        *this = (vector<T>)a;\n        return *this;\n    }\n    fps\
-    \ &operator+=(const fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n\
-    \        for (int i : rep(a.size())) (*this)[i] += a[i];\n        return *this;\n\
-    \    }\n    fps &operator-=(const fps &a) {\n        if (a.size() > this->size())\
-    \ this->resize(a.size());\n        for (int i : rep(a.size())) (*this)[i] -= a[i];\n\
-    \        return *this;\n    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const\
-    \ T &a) {\n        for (int i : rep(this->size())) (*this)[i] /= a;\n        return\
-    \ *this;\n    };\n    fps &operator>>=(int d) {\n        if ((int)this->size()\
-    \ <= d) {\n            *this = {};\n        } else {\n            this->erase(this->begin(),\
+    \ a) {}\n    fps(const vector<T> &a) : vector<T>(a) {}\n    fps(const fps &a)\
+    \ : vector<T>(a) {}\n    fps &operator=(const fps &a) {\n        *this = (vector<T>)a;\n\
+    \        return *this;\n    }\n    fps &operator+=(const fps &a) {\n        if\
+    \ (a.size() > this->size()) this->resize(a.size());\n        for (int i : rep(a.size()))\
+    \ (*this)[i] += a[i];\n        return *this;\n    }\n    fps &operator-=(const\
+    \ fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n  \
+    \      for (int i : rep(a.size())) (*this)[i] -= a[i];\n        return *this;\n\
+    \    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const T &a) {\n\
+    \        for (int i : rep(this->size())) (*this)[i] /= a;\n        return *this;\n\
+    \    };\n    fps &operator>>=(int d) {\n        if ((int)this->size() <= d) {\n\
+    \            *this = {};\n        } else {\n            this->erase(this->begin(),\
     \ this->begin() + d);\n        }\n        return *this;\n    }\n    fps &operator<<=(int\
     \ d) {\n        this->insert(this->begin(), d, T(0));\n        return *this;\n\
     \    }\n    fps &chdot(const fps &a) {\n        for (int i : rep(this->size()))\
@@ -247,17 +257,17 @@ data:
   code: "#pragma once\n\n#include \"../template.hpp\"\n#include \"convolution.hpp\"\
     \n#include \"modint.hpp\"\n\ntemplate <typename T> struct fps : vector<T> {\n\
     \    using vector<T>::vector;\n    using vector<T>::operator=;\n    fps() : vector<T>()\
-    \ {}\n    fps(const T &a) : vector<T>(1, a) {}\n    fps(const fps &a) : vector<T>(a)\
-    \ {}\n    fps &operator=(const fps &a) {\n        *this = (vector<T>)a;\n    \
-    \    return *this;\n    }\n    fps &operator+=(const fps &a) {\n        if (a.size()\
-    \ > this->size()) this->resize(a.size());\n        for (int i : rep(a.size()))\
-    \ (*this)[i] += a[i];\n        return *this;\n    }\n    fps &operator-=(const\
-    \ fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n  \
-    \      for (int i : rep(a.size())) (*this)[i] -= a[i];\n        return *this;\n\
-    \    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const T &a) {\n\
-    \        for (int i : rep(this->size())) (*this)[i] /= a;\n        return *this;\n\
-    \    };\n    fps &operator>>=(int d) {\n        if ((int)this->size() <= d) {\n\
-    \            *this = {};\n        } else {\n            this->erase(this->begin(),\
+    \ {}\n    fps(const T &a) : vector<T>(1, a) {}\n    fps(const vector<T> &a) :\
+    \ vector<T>(a) {}\n    fps(const fps &a) : vector<T>(a) {}\n    fps &operator=(const\
+    \ fps &a) {\n        *this = (vector<T>)a;\n        return *this;\n    }\n   \
+    \ fps &operator+=(const fps &a) {\n        if (a.size() > this->size()) this->resize(a.size());\n\
+    \        for (int i : rep(a.size())) (*this)[i] += a[i];\n        return *this;\n\
+    \    }\n    fps &operator-=(const fps &a) {\n        if (a.size() > this->size())\
+    \ this->resize(a.size());\n        for (int i : rep(a.size())) (*this)[i] -= a[i];\n\
+    \        return *this;\n    }\n    fps &operator*=(const fps &a);\n    fps &operator/=(const\
+    \ T &a) {\n        for (int i : rep(this->size())) (*this)[i] /= a;\n        return\
+    \ *this;\n    };\n    fps &operator>>=(int d) {\n        if ((int)this->size()\
+    \ <= d) {\n            *this = {};\n        } else {\n            this->erase(this->begin(),\
     \ this->begin() + d);\n        }\n        return *this;\n    }\n    fps &operator<<=(int\
     \ d) {\n        this->insert(this->begin(), d, T(0));\n        return *this;\n\
     \    }\n    fps &chdot(const fps &a) {\n        for (int i : rep(this->size()))\
@@ -326,10 +336,13 @@ data:
   isVerificationFile: false
   path: math/fps.hpp
   requiredBy:
+  - math/kth_of_lrs.hpp
+  - math/bostan_mori.hpp
   - math/subset_convolution.hpp
-  timestamp: '2021-09-24 15:58:58+09:00'
+  timestamp: '2021-10-03 22:16:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp

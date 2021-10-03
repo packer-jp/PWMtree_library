@@ -97,22 +97,22 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"math/inner_basis.hpp\"\n\ntemplate <typename T> vector<T>\
-    \ inner_basis(const vector<T> &a) {\n    vector<T> basis, ret;\n    for (T e :\
-    \ a) {\n        T _e = e;\n        for (T b : basis) chmin(e, e ^ b);\n      \
-    \  if (e != T()) basis.push_back(e), ret.push_back(_e);\n    }\n    return ret;\n\
-    }\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> vector<T>\
-    \ inner_basis(const vector<T> &a) {\n    vector<T> basis, ret;\n    for (T e :\
-    \ a) {\n        T _e = e;\n        for (T b : basis) chmin(e, e ^ b);\n      \
-    \  if (e != T()) basis.push_back(e), ret.push_back(_e);\n    }\n    return ret;\n\
-    }"
+    \    };\n} iOS;\n#line 4 \"math/inner_basis.hpp\"\n\ntemplate <typename T> pair<vector<T>,\
+    \ vector<T>> xor_basis(const vector<T> &a) {\n    vector<T> umsb, inner;\n   \
+    \ for (T e : a) {\n        T _e = e;\n        for (T b : umsb) chmin(e, e ^ b);\n\
+    \        if (e != T()) umsb.push_back(e), inner.push_back(_e);\n    }\n    return\
+    \ {umsb, inner};\n}\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> pair<vector<T>,\
+    \ vector<T>> xor_basis(const vector<T> &a) {\n    vector<T> umsb, inner;\n   \
+    \ for (T e : a) {\n        T _e = e;\n        for (T b : umsb) chmin(e, e ^ b);\n\
+    \        if (e != T()) umsb.push_back(e), inner.push_back(_e);\n    }\n    return\
+    \ {umsb, inner};\n}"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: math/inner_basis.hpp
   requiredBy: []
-  timestamp: '2021-09-24 23:59:47+09:00'
+  timestamp: '2021-10-03 22:16:47+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/inner_basis.hpp
