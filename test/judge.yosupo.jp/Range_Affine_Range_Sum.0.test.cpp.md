@@ -17,16 +17,16 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F
+    PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F
-  bundledCode: "#line 1 \"test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp\"\n\
-    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\"\
-    \n#line 2 \"data_structure/lazy_segtree.hpp\"\n\n#line 2 \"math/modint.hpp\"\n\
-    \n#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    \n#define all(a) begin(a), end(a)\n#define rall(a) rbegin(a), rend(a)\n#define\
-    \ uniq(a) (a).erase(unique(all(a)), (a).end())\n#define SZ(x) ((int)(x).size())\n\
-    #define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n#define vsum(x) reduce(all(x))\n\
+    - https://judge.yosupo.jp/problem/range_affine_range_sum
+  bundledCode: "#line 1 \"test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\n\
+    #line 2 \"data_structure/lazy_segtree.hpp\"\n\n#line 2 \"math/modint.hpp\"\n\n\
+    #line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace std;\n\n\
+    #define all(a) begin(a), end(a)\n#define rall(a) rbegin(a), rend(a)\n#define uniq(a)\
+    \ (a).erase(unique(all(a)), (a).end())\n#define SZ(x) ((int)(x).size())\n#define\
+    \ pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n#define vsum(x) reduce(all(x))\n\
     #define vmax(a) *max_element(all(a))\n#define vmin(a) *min_element(all(a))\n#define\
     \ LB(c, x) distance((c).begin(), lower_bound(all(c), (x)))\n#define UB(c, x) distance((c).begin(),\
     \ upper_bound(all(c), (x)))\n#define mp make_pair\n#define endl '\\n'\nusing ll\
@@ -201,38 +201,37 @@ data:
     \ e() { return {0, 0}; }\n    static val_t mapping(fn_t f, val_t a) { return {f.first\
     \ * a.first + f.second * a.second, a.second}; }\n    static fn_t composition(fn_t\
     \ f, fn_t g) { return {f.first * g.first, f.second + f.first * g.second}; }\n\
-    \    static fn_t id() { return {1, 0}; };\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp\"\
-    \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp\"\nusing namespace\
-    \ std;\n\nint main() {\n    ll n, q;\n    cin >> n >> q;\n    vector<ll> src(n,\
-    \ INT_MAX);\n    lazy_segtree<min_monoid_with_update> lst(src);\n    while (q--)\
-    \ {\n        ll com;\n        cin >> com;\n        if (com == 0) {\n         \
-    \   ll s, t, x;\n            cin >> s >> t >> x;\n            lst.apply(s, t +\
-    \ 1, x);\n        } else if (com == 1) {\n            ll s, t;\n            cin\
-    \ >> s >> t;\n            cout << lst.prod(s, t + 1) << endl;\n        }\n   \
-    \ }\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\"\
-    \n#include \"../../data_structure/lazy_segtree.hpp\"\n\n#include <bits/stdc++.h>\n\
-    using namespace std;\n\nint main() {\n    ll n, q;\n    cin >> n >> q;\n    vector<ll>\
-    \ src(n, INT_MAX);\n    lazy_segtree<min_monoid_with_update> lst(src);\n    while\
-    \ (q--) {\n        ll com;\n        cin >> com;\n        if (com == 0) {\n   \
-    \         ll s, t, x;\n            cin >> s >> t >> x;\n            lst.apply(s,\
-    \ t + 1, x);\n        } else if (com == 1) {\n            ll s, t;\n         \
-    \   cin >> s >> t;\n            cout << lst.prod(s, t + 1) << endl;\n        }\n\
-    \    }\n}"
+    \    static fn_t id() { return {1, 0}; };\n};\n#line 4 \"test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp\"\
+    \n\nint main() {\n    using mint = modint<998244353>;\n    ll n, q;\n    cin >>\
+    \ n >> q;\n    vector<pair<mint, int>> src(n, {0, 1});\n    for (ll i : rep(n))\
+    \ cin >> src[i].first;\n    lazy_segtree<sum_monoid_with_affine<mint>> lst(src);\n\
+    \    while (q--) {\n        ll t, l, r;\n        cin >> t >> l >> r;\n       \
+    \ if (t == 0) {\n            ll b, c;\n            cin >> b >> c;\n          \
+    \  lst.apply(l, r, {b, c});\n        }\n        if (t == 1) { cout << lst.prod(l,\
+    \ r).first << endl; }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
+    \n#include \"../../data_structure/lazy_segtree.hpp\"\n#include \"../../math/modint.hpp\"\
+    \n\nint main() {\n    using mint = modint<998244353>;\n    ll n, q;\n    cin >>\
+    \ n >> q;\n    vector<pair<mint, int>> src(n, {0, 1});\n    for (ll i : rep(n))\
+    \ cin >> src[i].first;\n    lazy_segtree<sum_monoid_with_affine<mint>> lst(src);\n\
+    \    while (q--) {\n        ll t, l, r;\n        cin >> t >> l >> r;\n       \
+    \ if (t == 0) {\n            ll b, c;\n            cin >> b >> c;\n          \
+    \  lst.apply(l, r, {b, c});\n        }\n        if (t == 1) { cout << lst.prod(l,\
+    \ r).first << endl; }\n    }\n}"
   dependsOn:
   - data_structure/lazy_segtree.hpp
   - math/modint.hpp
   - template.hpp
   isVerificationFile: true
-  path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  path: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
   requiredBy: []
   timestamp: '2021-10-04 12:58:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+documentation_of: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
 layout: document
 redirect_from:
-- /verify/test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-- /verify/test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp.html
-title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+- /verify/test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
+- /verify/test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp.html
+title: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
 ---

@@ -245,12 +245,12 @@ data:
     \ }\n    return p[0];\n}\n#line 5 \"math/kth_of_lrs.hpp\"\n\ntemplate <typename\
     \ T> T kth_of_lrs(const vector<T> &a, const vector<T> &c, ll k) {\n    fps<T>\
     \ q = {1};\n    q.insert(end(q), begin(c), end(c));\n    for (int i : rep(1, q.size()))\
-    \ q[i] = -q[i];\n    fps<T> p = (q * fps(a)).prefix(a.size());\n    return bostan_mori(p,\
+    \ q[i] = -q[i];\n    fps<T> p = (q * a).prefix(a.size());\n    return bostan_mori(p,\
     \ q, k);\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n#include \"bostan_mori.hpp\"\
     \n\ntemplate <typename T> T kth_of_lrs(const vector<T> &a, const vector<T> &c,\
     \ ll k) {\n    fps<T> q = {1};\n    q.insert(end(q), begin(c), end(c));\n    for\
-    \ (int i : rep(1, q.size())) q[i] = -q[i];\n    fps<T> p = (q * fps(a)).prefix(a.size());\n\
+    \ (int i : rep(1, q.size())) q[i] = -q[i];\n    fps<T> p = (q * a).prefix(a.size());\n\
     \    return bostan_mori(p, q, k);\n}"
   dependsOn:
   - template.hpp
@@ -262,7 +262,7 @@ data:
   isVerificationFile: false
   path: math/kth_of_lrs.hpp
   requiredBy: []
-  timestamp: '2021-10-03 22:16:47+09:00'
+  timestamp: '2021-10-04 12:58:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp

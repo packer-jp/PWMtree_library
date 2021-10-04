@@ -6,6 +6,9 @@ data:
     title: template.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: data_structure/lazy_segtree.hpp
+    title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
+  - icon: ':heavy_check_mark:'
     path: math/bostan_mori.hpp
     title: math/bostan_mori.hpp
   - icon: ':heavy_check_mark:'
@@ -49,8 +52,29 @@ data:
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
+    title: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+    title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -197,6 +221,7 @@ data:
   isVerificationFile: false
   path: math/modint.hpp
   requiredBy:
+  - data_structure/lazy_segtree.hpp
   - math/kth_of_lrs.hpp
   - math/bostan_mori.hpp
   - math/fps.hpp
@@ -204,6 +229,12 @@ data:
   timestamp: '2021-09-24 15:58:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
   - test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
@@ -215,6 +246,7 @@ data:
   - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 title: modint

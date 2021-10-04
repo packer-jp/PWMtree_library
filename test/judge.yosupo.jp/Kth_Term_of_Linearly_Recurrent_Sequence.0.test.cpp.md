@@ -250,7 +250,7 @@ data:
     \ }\n    return p[0];\n}\n#line 5 \"math/kth_of_lrs.hpp\"\n\ntemplate <typename\
     \ T> T kth_of_lrs(const vector<T> &a, const vector<T> &c, ll k) {\n    fps<T>\
     \ q = {1};\n    q.insert(end(q), begin(c), end(c));\n    for (int i : rep(1, q.size()))\
-    \ q[i] = -q[i];\n    fps<T> p = (q * fps(a)).prefix(a.size());\n    return bostan_mori(p,\
+    \ q[i] = -q[i];\n    fps<T> p = (q * a).prefix(a.size());\n    return bostan_mori(p,\
     \ q, k);\n}\n#line 3 \"test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp\"\
     \n\nint main() {\n    using mint = modint<998244353>;\n    ll d, k;\n    cin >>\
     \ d >> k;\n    vector<mint> a(d), c(d);\n    for (ll i : rep(d)) cin >> a[i];\n\
@@ -272,7 +272,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
   requiredBy: []
-  timestamp: '2021-10-03 22:16:47+09:00'
+  timestamp: '2021-10-04 12:58:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp

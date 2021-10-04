@@ -71,9 +71,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/fzt_fmt.hpp
     title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
-  - icon: ':warning:'
-    path: math/inner_basis.hpp
-    title: "xor \u57FA\u5E95"
   - icon: ':heavy_check_mark:'
     path: math/kth_of_lrs.hpp
     title: math/kth_of_lrs.hpp
@@ -92,6 +89,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
+  - icon: ':warning:'
+    path: math/xor_basis.hpp
+    title: "xor \u57FA\u5E95"
   - icon: ':heavy_check_mark:'
     path: math/xor_convolution.hpp
     title: "xor \u7573\u307F\u8FBC\u307F"
@@ -156,6 +156,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
+    title: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
     title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
@@ -437,7 +440,7 @@ data:
   - math/modint.hpp
   - math/kth_of_lrs.hpp
   - math/combination.hpp
-  - math/inner_basis.hpp
+  - math/xor_basis.hpp
   - math/matrix.hpp
   - math/bostan_mori.hpp
   - math/fps.hpp
@@ -487,6 +490,7 @@ data:
   - test/judge.yosupo.jp/Unionfind.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

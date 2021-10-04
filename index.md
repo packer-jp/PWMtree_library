@@ -76,9 +76,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/fzt_fmt.hpp
       title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
-    - icon: ':warning:'
-      path: math/inner_basis.hpp
-      title: "xor \u57FA\u5E95"
     - icon: ':heavy_check_mark:'
       path: math/kth_of_lrs.hpp
       title: math/kth_of_lrs.hpp
@@ -97,6 +94,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/subset_convolution.hpp
       title: Subset Convolution
+    - icon: ':warning:'
+      path: math/xor_basis.hpp
+      title: "xor \u57FA\u5E95"
     - icon: ':heavy_check_mark:'
       path: math/xor_convolution.hpp
       title: "xor \u7573\u307F\u8FBC\u307F"
@@ -174,6 +174,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
+      title: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
       title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp

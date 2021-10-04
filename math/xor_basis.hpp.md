@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/inner_basis.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"math/xor_basis.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a), end(a)\n#define\
     \ rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\n\
     #define SZ(x) ((int)(x).size())\n#define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n\
@@ -97,7 +97,7 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"math/inner_basis.hpp\"\n\ntemplate <typename T> pair<vector<T>,\
+    \    };\n} iOS;\n#line 4 \"math/xor_basis.hpp\"\n\ntemplate <typename T> pair<vector<T>,\
     \ vector<T>> xor_basis(const vector<T> &a) {\n    vector<T> umsb, inner;\n   \
     \ for (T e : a) {\n        T _e = e;\n        for (T b : umsb) chmin(e, e ^ b);\n\
     \        if (e != T()) umsb.push_back(e), inner.push_back(_e);\n    }\n    return\
@@ -110,12 +110,12 @@ data:
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: math/inner_basis.hpp
+  path: math/xor_basis.hpp
   requiredBy: []
-  timestamp: '2021-10-03 22:16:47+09:00'
+  timestamp: '2021-10-04 12:58:29+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: math/inner_basis.hpp
+documentation_of: math/xor_basis.hpp
 layout: document
 title: "xor \u57FA\u5E95"
 ---
