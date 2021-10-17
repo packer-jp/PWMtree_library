@@ -151,7 +151,7 @@ data:
     \    using F = typename S::fn_t;\n    int n, size, log;\n    vector<V> val;\n\
     \    vector<F> lazy;\n    lazy_segtree(int n) : lazy_segtree(vector(n, S::e()))\
     \ {}\n    lazy_segtree(const vector<V> &src) : n(src.size()) {\n        for (size\
-    \ = 1, log = 0; size < n; size <<= 1, log++) {}\n        val.resize(size << 1);\n\
+    \ = 1, log = 0; size < n; size <<= 1, ++log) {}\n        val.resize(size << 1);\n\
     \        copy(all(src), val.begin() + size);\n        lazy.resize(size << 1, S::id());\n\
     \        for (int i : per(1, size)) val[i] = S::op(val[i << 1 | 0], val[i << 1\
     \ | 1]);\n    }\n    V reflect(int i) { return S::mapping(lazy[i], val[i]); }\n\
@@ -170,7 +170,7 @@ data:
     \   recalc(r);\n    }\n    V get(int i) {\n        thrust(i += size);\n      \
     \  return reflect(i);\n    }\n    V prod(int l, int r) {\n        if (l >= r)\
     \ return S::e();\n        thrust(l += size);\n        thrust(r += size - 1);\n\
-    \        V a = S::e(), b = S::e();\n        for (r++; l < r; l >>= 1, r >>= 1)\
+    \        V a = S::e(), b = S::e();\n        for (++r; l < r; l >>= 1, r >>= 1)\
     \ {\n            if (l & 1) a = S::op(a, reflect(l++));\n            if (r & 1)\
     \ b = S::op(reflect(--r), b);\n        }\n        return S::op(a, b);\n    }\n\
     \    template <typename G> int max_right(int l, G g) {\n        if (l == n) return\
@@ -182,7 +182,7 @@ data:
     \            }\n            a = S::op(a, reflect(l++));\n        } while ((l &\
     \ -l) != l);\n        return n;\n    }\n    template <typename G> int min_left(int\
     \ r, G g) {\n        if (r == 0) return 0;\n        thrust((r += size) - 1);\n\
-    \        V a = S::e();\n        do {\n            r--;\n            while (r >\
+    \        V a = S::e();\n        do {\n            --r;\n            while (r >\
     \ 1 && r & 1) r >>= 1;\n            if (!g(S::op(reflect(r), a))) {\n        \
     \        while (r < size) {\n                    push(r);\n                  \
     \  r = r << 1 | 1;\n                    if (g(S::op(reflect(r), a))) a = S::op(reflect(r--),\
@@ -220,7 +220,7 @@ data:
     \    using F = typename S::fn_t;\n    int n, size, log;\n    vector<V> val;\n\
     \    vector<F> lazy;\n    lazy_segtree(int n) : lazy_segtree(vector(n, S::e()))\
     \ {}\n    lazy_segtree(const vector<V> &src) : n(src.size()) {\n        for (size\
-    \ = 1, log = 0; size < n; size <<= 1, log++) {}\n        val.resize(size << 1);\n\
+    \ = 1, log = 0; size < n; size <<= 1, ++log) {}\n        val.resize(size << 1);\n\
     \        copy(all(src), val.begin() + size);\n        lazy.resize(size << 1, S::id());\n\
     \        for (int i : per(1, size)) val[i] = S::op(val[i << 1 | 0], val[i << 1\
     \ | 1]);\n    }\n    V reflect(int i) { return S::mapping(lazy[i], val[i]); }\n\
@@ -239,7 +239,7 @@ data:
     \   recalc(r);\n    }\n    V get(int i) {\n        thrust(i += size);\n      \
     \  return reflect(i);\n    }\n    V prod(int l, int r) {\n        if (l >= r)\
     \ return S::e();\n        thrust(l += size);\n        thrust(r += size - 1);\n\
-    \        V a = S::e(), b = S::e();\n        for (r++; l < r; l >>= 1, r >>= 1)\
+    \        V a = S::e(), b = S::e();\n        for (++r; l < r; l >>= 1, r >>= 1)\
     \ {\n            if (l & 1) a = S::op(a, reflect(l++));\n            if (r & 1)\
     \ b = S::op(reflect(--r), b);\n        }\n        return S::op(a, b);\n    }\n\
     \    template <typename G> int max_right(int l, G g) {\n        if (l == n) return\
@@ -251,7 +251,7 @@ data:
     \            }\n            a = S::op(a, reflect(l++));\n        } while ((l &\
     \ -l) != l);\n        return n;\n    }\n    template <typename G> int min_left(int\
     \ r, G g) {\n        if (r == 0) return 0;\n        thrust((r += size) - 1);\n\
-    \        V a = S::e();\n        do {\n            r--;\n            while (r >\
+    \        V a = S::e();\n        do {\n            --r;\n            while (r >\
     \ 1 && r & 1) r >>= 1;\n            if (!g(S::op(reflect(r), a))) {\n        \
     \        while (r < size) {\n                    push(r);\n                  \
     \  r = r << 1 | 1;\n                    if (g(S::op(reflect(r), a))) a = S::op(reflect(r--),\
@@ -290,16 +290,16 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2021-10-04 12:58:29+09:00'
+  timestamp: '2021-10-17 16:15:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   - test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
 documentation_of: data_structure/lazy_segtree.hpp
 layout: document
 title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"

@@ -110,13 +110,16 @@ data:
     \ + 1, T()) {}\n    void add(int i, const T &x) {\n        for (++i; i < (int)data.size();\
     \ i += i & -i) data[i] += x;\n    }\n    T sum(int i) const {\n        T ret =\
     \ T();\n        for (; i > 0; i -= i & -i) ret += data[i];\n        return ret;\n\
-    \    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n#line 3\
-    \ \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\
-    \nusing namespace std;\n\nint main() {\n    ll n, q;\n    cin >> n >> q;\n   \
-    \ fenwick_tree<ll> ft(n);\n    while (q--) {\n        ll com, x, y;\n        cin\
-    \ >> com >> x >> y, --x;\n        if (com == 0) {\n            ft.add(x, y);\n\
-    \        } else if (com == 1) {\n            cout << ft.sum(x, y) << endl;\n \
-    \       }\n    }\n}\n"
+    \    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n\ntemplate\
+    \ <typename T> struct fenwick_tree_range {\n    fenwick_tree<T> ft;\n    fenwick_tree_range(int\
+    \ n) : ft(n) {}\n    void add(int l, int r, const T &x) { ft.add(l, x), ft.add(r,\
+    \ -x); }\n    T get(int i) const { return ft.sum(i + 1); }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\
+    \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\nusing\
+    \ namespace std;\n\nint main() {\n    ll n, q;\n    cin >> n >> q;\n    fenwick_tree<ll>\
+    \ ft(n);\n    while (q--) {\n        ll com, x, y;\n        cin >> com >> x >>\
+    \ y, --x;\n        if (com == 0) {\n            ft.add(x, y);\n        } else\
+    \ if (com == 1) {\n            cout << ft.sum(x, y) << endl;\n        }\n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_B\"\
     \n#include \"../../data_structure/fenwick_tree.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\nint main() {\n    ll n, q;\n    cin >> n >> q;\n    fenwick_tree<ll>\
@@ -130,7 +133,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-30 12:13:46+09:00'
+  timestamp: '2021-10-17 16:15:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp

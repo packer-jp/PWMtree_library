@@ -148,8 +148,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
   - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
 documentation_of: math/and_or_convolution.hpp
 layout: document
 title: "and / or \u7573\u307F\u8FBC\u307F"

@@ -174,9 +174,9 @@ data:
   timestamp: '2021-09-17 00:26:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
   - test/unit/hld.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
 documentation_of: data_structure/segtree.hpp
 layout: document
 title: Segment Tree
