@@ -81,6 +81,9 @@ data:
     path: math/modint.hpp
     title: modint
   - icon: ':heavy_check_mark:'
+    path: math/modlog.hpp
+    title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C"
+  - icon: ':heavy_check_mark:'
     path: math/ntt.hpp
     title: "\u6570\u8AD6\u5909\u63DB"
   - icon: ':heavy_check_mark:'
@@ -132,6 +135,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
+    title: test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
@@ -426,6 +432,7 @@ data:
   - math/matrix.hpp
   - math/ntt.hpp
   - math/convolution.hpp
+  - math/modlog.hpp
   - math/permutation.hpp
   - math/xor_basis.hpp
   - graph/hld.hpp
@@ -459,6 +466,7 @@ data:
   - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
   - test/judge.yosupo.jp/Unionfind.0.test.cpp
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
   - test/judge.yosupo.jp/Convolution.0.test.cpp
   - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
   - test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
