@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"string/parse.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"string/parser.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a), end(a)\n#define\
     \ rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\n\
     #define SZ(x) int((x).size())\n#define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n\
@@ -99,7 +99,7 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"string/parse.hpp\"\n\nusing state = string::const_iterator;\n\
+    \    };\n} iOS;\n#line 4 \"string/parser.hpp\"\n\nusing state = string::const_iterator;\n\
     struct parse_error {};\n\nvoid consume(state &cur, char expected) {\n    if (*cur\
     \ == expected) {\n        ++cur;\n    } else {\n        cerr << \"Expected '\"\
     \ << expected << \"' but got '\" << *cur << \"'\" << endl;\n        cerr << \"\
@@ -148,15 +148,15 @@ data:
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: string/parse.hpp
+  path: string/parser.hpp
   requiredBy: []
-  timestamp: '2021-11-03 10:53:09+09:00'
+  timestamp: '2021-11-03 11:41:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: string/parse.hpp
+documentation_of: string/parser.hpp
 layout: document
 redirect_from:
-- /library/string/parse.hpp
-- /library/string/parse.hpp.html
-title: string/parse.hpp
+- /library/string/parser.hpp
+- /library/string/parser.hpp.html
+title: string/parser.hpp
 ---
