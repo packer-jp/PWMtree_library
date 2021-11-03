@@ -5,21 +5,18 @@ data:
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
-    title: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/fenwick_tree.hpp\"\n\n#line 2 \"template.hpp\"\
-    \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a),\
-    \ end(a)\n#define rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)),\
-    \ (a).end())\n#define SZ(x) int((x).size())\n#define pb(x) push_back(x)\n#define\
-    \ eb(x) emplace_back(x)\n#define vsum(x) reduce(all(x))\n#define vmax(a) *max_element(all(a))\n\
-    #define vmin(a) *min_element(all(a))\n#define LB(c, x) distance((c).begin(), lower_bound(all(c),\
+  bundledCode: "#line 2 \"string/parse.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
+    \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a), end(a)\n#define\
+    \ rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\n\
+    #define SZ(x) int((x).size())\n#define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n\
+    #define vsum(x) reduce(all(x))\n#define vmax(a) *max_element(all(a))\n#define\
+    \ vmin(a) *min_element(all(a))\n#define LB(c, x) distance((c).begin(), lower_bound(all(c),\
     \ (x)))\n#define UB(c, x) distance((c).begin(), upper_bound(all(c), (x)))\n#define\
     \ mp make_pair\n#define endl '\\n'\nusing ll = long long;\nusing ull = unsigned\
     \ long long;\nusing ld = long double;\nusing Pi = pair<int, int>;\nusing Pl =\
@@ -102,37 +99,64 @@ data:
     \ const { return r - 1; };\n    itr end() const { return l - 1; };\n};\nstruct\
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
-    \    };\n} iOS;\n#line 4 \"data_structure/fenwick_tree.hpp\"\n\ntemplate <typename\
-    \ T> struct fenwick_tree {\n    vector<T> data;\n    fenwick_tree(int n) : data(n\
-    \ + 1, T()) {}\n    void add(int i, const T &x) {\n        for (++i; i < (int)data.size();\
-    \ i += i & -i) data[i] += x;\n    }\n    T sum(int i) const {\n        T ret =\
-    \ T();\n        for (; i > 0; i -= i & -i) ret += data[i];\n        return ret;\n\
-    \    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n\ntemplate\
-    \ <typename T> struct fenwick_tree_range {\n    fenwick_tree<T> ft;\n    fenwick_tree_range(int\
-    \ n) : ft(n) {}\n    void add(int l, int r, const T &x) { ft.add(l, x), ft.add(r,\
-    \ -x); }\n    T get(int i) const { return ft.sum(i + 1); }\n};\n"
-  code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> struct\
-    \ fenwick_tree {\n    vector<T> data;\n    fenwick_tree(int n) : data(n + 1, T())\
-    \ {}\n    void add(int i, const T &x) {\n        for (++i; i < (int)data.size();\
-    \ i += i & -i) data[i] += x;\n    }\n    T sum(int i) const {\n        T ret =\
-    \ T();\n        for (; i > 0; i -= i & -i) ret += data[i];\n        return ret;\n\
-    \    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n\ntemplate\
-    \ <typename T> struct fenwick_tree_range {\n    fenwick_tree<T> ft;\n    fenwick_tree_range(int\
-    \ n) : ft(n) {}\n    void add(int l, int r, const T &x) { ft.add(l, x), ft.add(r,\
-    \ -x); }\n    T get(int i) const { return ft.sum(i + 1); }\n};\n"
+    \    };\n} iOS;\n#line 4 \"string/parse.hpp\"\n\nusing state = string::const_iterator;\n\
+    struct parse_error {};\n\nvoid consume(state &cur, char expected) {\n    if (*cur\
+    \ == expected) {\n        ++cur;\n    } else {\n        cerr << \"Expected '\"\
+    \ << expected << \"' but got '\" << *cur << \"'\" << endl;\n        cerr << \"\
+    Rest string is '\";\n        while (*cur) cerr << *cur++;\n        cerr << \"\
+    '\" << endl;\n        throw parse_error();\n    }\n}\n\nstruct parser {\n    int\
+    \ expr(state &cur) {\n        int ret = term(cur);\n        while (true) {\n \
+    \           if (*cur == '+') {\n                consume(cur, '+');\n         \
+    \       ret += term(cur);\n            } else if (*cur == '-') {\n           \
+    \     consume(cur, '-');\n                ret -= term(cur);\n            } else\
+    \ {\n                break;\n            }\n        }\n        return ret;\n \
+    \   }\n    int term(state &cur) {\n        int ret = factor(cur);\n        while\
+    \ (true) {\n            if (*cur == '*') {\n                consume(cur, '*');\n\
+    \                ret *= factor(cur);\n            } else if (*cur == '/') {\n\
+    \                consume(cur, '/');\n                ret /= factor(cur);\n   \
+    \         } else {\n                break;\n            }\n        }\n       \
+    \ return ret;\n    }\n    int factor(state &cur) {\n        if (*cur == '(') {\n\
+    \            consume(cur, '(');\n            int ret = expr(cur);\n          \
+    \  consume(cur, ')');\n            return ret;\n        } else {\n           \
+    \ return number(cur);\n        }\n    }\n    int number(state &cur) {\n      \
+    \  int ret = 0;\n        while (isdigit(*cur)) {\n            ret *= 10;\n   \
+    \         ret += *cur - '0';\n            cur++;\n        }\n        return ret;\n\
+    \    }\n};\n"
+  code: "#pragma once\n\n#include \"../template.hpp\"\n\nusing state = string::const_iterator;\n\
+    struct parse_error {};\n\nvoid consume(state &cur, char expected) {\n    if (*cur\
+    \ == expected) {\n        ++cur;\n    } else {\n        cerr << \"Expected '\"\
+    \ << expected << \"' but got '\" << *cur << \"'\" << endl;\n        cerr << \"\
+    Rest string is '\";\n        while (*cur) cerr << *cur++;\n        cerr << \"\
+    '\" << endl;\n        throw parse_error();\n    }\n}\n\nstruct parser {\n    int\
+    \ expr(state &cur) {\n        int ret = term(cur);\n        while (true) {\n \
+    \           if (*cur == '+') {\n                consume(cur, '+');\n         \
+    \       ret += term(cur);\n            } else if (*cur == '-') {\n           \
+    \     consume(cur, '-');\n                ret -= term(cur);\n            } else\
+    \ {\n                break;\n            }\n        }\n        return ret;\n \
+    \   }\n    int term(state &cur) {\n        int ret = factor(cur);\n        while\
+    \ (true) {\n            if (*cur == '*') {\n                consume(cur, '*');\n\
+    \                ret *= factor(cur);\n            } else if (*cur == '/') {\n\
+    \                consume(cur, '/');\n                ret /= factor(cur);\n   \
+    \         } else {\n                break;\n            }\n        }\n       \
+    \ return ret;\n    }\n    int factor(state &cur) {\n        if (*cur == '(') {\n\
+    \            consume(cur, '(');\n            int ret = expr(cur);\n          \
+    \  consume(cur, ')');\n            return ret;\n        } else {\n           \
+    \ return number(cur);\n        }\n    }\n    int number(state &cur) {\n      \
+    \  int ret = 0;\n        while (isdigit(*cur)) {\n            ret *= 10;\n   \
+    \         ret += *cur - '0';\n            cur++;\n        }\n        return ret;\n\
+    \    }\n};"
   dependsOn:
   - template.hpp
   isVerificationFile: false
-  path: data_structure/fenwick_tree.hpp
+  path: string/parse.hpp
   requiredBy: []
   timestamp: '2021-11-03 10:53:09+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
-documentation_of: data_structure/fenwick_tree.hpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: string/parse.hpp
 layout: document
 redirect_from:
-- /library/data_structure/fenwick_tree.hpp
-- /library/data_structure/fenwick_tree.hpp.html
-title: data_structure/fenwick_tree.hpp
+- /library/string/parse.hpp
+- /library/string/parse.hpp.html
+title: string/parse.hpp
 ---

@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
   - icon: ':heavy_check_mark:'
     path: math/bostan_mori.hpp
     title: math/bostan_mori.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   - icon: ':heavy_check_mark:'
     path: math/kth_of_lrs.hpp
     title: math/kth_of_lrs.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
   _extendedVerifiedWith:
@@ -48,42 +48,42 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
     title: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/modint.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a), end(a)\n#define\
     \ rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)), (a).end())\n\
-    #define SZ(x) ((int)(x).size())\n#define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n\
+    #define SZ(x) int((x).size())\n#define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n\
     #define vsum(x) reduce(all(x))\n#define vmax(a) *max_element(all(a))\n#define\
     \ vmin(a) *min_element(all(a))\n#define LB(c, x) distance((c).begin(), lower_bound(all(c),\
     \ (x)))\n#define UB(c, x) distance((c).begin(), upper_bound(all(c), (x)))\n#define\
@@ -91,16 +91,18 @@ data:
     \ long long;\nusing ld = long double;\nusing Pi = pair<int, int>;\nusing Pl =\
     \ pair<ll, ll>;\nusing Vi = vector<int>;\nusing Vl = vector<ll>;\nusing Vc = vector<char>;\n\
     using VVi = vector<vector<int>>;\nusing VVl = vector<vector<ll>>;\nusing VVc =\
-    \ vector<vector<char>>;\nconstexpr ll inf = 1000000000ll;\nconstexpr ll INF =\
-    \ 4000000004000000000LL;\nconstexpr ld eps = 1e-15;\nconstexpr ld PI = 3.141592653589793;\n\
-    constexpr int popcnt(ull x) { return __builtin_popcountll(x); }\ntemplate <typename\
-    \ T> using mat = vector<vector<T>>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1,\
-    \ -1, -1, 0};\nconstexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr\
-    \ ll sign(ll a) { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) {\
-    \ return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return\
-    \ -fdiv(-a, b); }\nconstexpr ull bit(int n) { return 1ull << n; }\ntemplate <typename\
-    \ T> constexpr T mypow(T x, ll n) {\n    T ret = 1;\n    while (n) {\n       \
-    \ if (n & 1) ret *= x;\n        x *= x;\n        n >>= 1;\n    }\n    return ret;\n\
+    \ vector<vector<char>>;\ntemplate <typename T, typename U> using P = pair<T, U>;\n\
+    template <typename T> using V = vector<T>;\ntemplate <typename T> using VV = V<V<T>>;\n\
+    constexpr ll inf = 1000000000ll;\nconstexpr ll INF = 4000000004000000000LL;\n\
+    constexpr ld eps = 1e-15;\nconstexpr ld PI = 3.141592653589793;\nconstexpr int\
+    \ popcnt(ull x) { return __builtin_popcountll(x); }\ntemplate <typename T> using\
+    \ mat = vector<vector<T>>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\n\
+    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a)\
+    \ { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b\
+    \ - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a,\
+    \ b); }\nconstexpr ull bit(int n) { return 1ull << n; }\ntemplate <typename T>\
+    \ constexpr T mypow(T x, ll n) {\n    T ret = 1;\n    while (n) {\n        if\
+    \ (n & 1) ret *= x;\n        x *= x;\n        n >>= 1;\n    }\n    return ret;\n\
     }\nconstexpr ll modpow(ll x, ll n, ll mod) {\n    ll ret = 1;\n    while (n) {\n\
     \        if (n & 1) ret *= x;\n        x *= x;\n        n >>= 1;\n        x %=\
     \ mod;\n        ret %= mod;\n    }\n    return ret;\n}\ntemplate <typename T>\
@@ -221,32 +223,32 @@ data:
   isVerificationFile: false
   path: math/modint.hpp
   requiredBy:
-  - math/subset_convolution.hpp
   - math/fps.hpp
-  - math/kth_of_lrs.hpp
+  - math/subset_convolution.hpp
   - math/bostan_mori.hpp
+  - math/kth_of_lrs.hpp
   - data_structure/lazy_segtree.hpp
-  timestamp: '2021-09-24 15:58:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-11-03 10:53:09+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-  - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
-  - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-  - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  - test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  - test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
+  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
+  - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
 documentation_of: math/modint.hpp
 layout: document
 title: modint

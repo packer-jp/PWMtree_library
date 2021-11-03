@@ -5,10 +5,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/cht.hpp
     title: Convex Hull Trick
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
   - icon: ':heavy_check_mark:'
@@ -17,25 +17,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/persistent_uf.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/segtree.hpp
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/splay_tree.hpp
     title: Splay Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/uf.hpp
     title: Union-Find Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/dijkstra.hpp
     title: "Dijkstra \u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/dinic.hpp
     title: "Dinic \u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/hld.hpp
     title: "HL \u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/khan.hpp
     title: "Khan \u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
   - icon: ':warning:'
@@ -44,10 +44,10 @@ data:
   - icon: ':warning:'
     path: graph/oibfs.hpp
     title: 01-BFS
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/spfa.hpp
     title: SPFA
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/wf.hpp
     title: "Warshall-Floyd \u6CD5"
   - icon: ':heavy_check_mark:'
@@ -59,16 +59,16 @@ data:
   - icon: ':warning:'
     path: math/combination.hpp
     title: "\u7D44\u307F\u5408\u308F\u305B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/convolution.hpp
     title: "\u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fps.hpp
     title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
   - icon: ':heavy_check_mark:'
     path: math/fwht.hpp
     title: "\u9AD8\u901F Walsh-Hadamard \u5909\u63DB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fzt_fmt.hpp
     title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
   - icon: ':heavy_check_mark:'
@@ -77,19 +77,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: "\u884C\u5217"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint.hpp
     title: modint
   - icon: ':heavy_check_mark:'
     path: math/modlog.hpp
     title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ntt.hpp
     title: "\u6570\u8AD6\u5909\u63DB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/permutation.hpp
     title: "\u9806\u5217"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/subset_convolution.hpp
     title: Subset Convolution
   - icon: ':warning:'
@@ -98,7 +98,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/xor_convolution.hpp
     title: "xor \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
+    path: string/parse.hpp
+    title: string/parse.hpp
+  - icon: ':x:'
     path: string/rolling_hash.hpp
     title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - icon: ':warning:'
@@ -159,92 +162,92 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
     title: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
     title: test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
     title: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/judge.yosupo.jp/Unionfind.0.test.cpp
     title: test/judge.yosupo.jp/Unionfind.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
     title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/unit/hld.test.cpp
     title: test/unit/hld.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/unit/khan.test.cpp
     title: test/unit/khan.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/unit/permutation.test.cpp
     title: test/unit/permutation.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\n#define all(a) begin(a), end(a)\n#define rall(a) rbegin(a), rend(a)\n\
-    #define uniq(a) (a).erase(unique(all(a)), (a).end())\n#define SZ(x) ((int)(x).size())\n\
+    #define uniq(a) (a).erase(unique(all(a)), (a).end())\n#define SZ(x) int((x).size())\n\
     #define pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n#define vsum(x) reduce(all(x))\n\
     #define vmax(a) *max_element(all(a))\n#define vmin(a) *min_element(all(a))\n#define\
     \ LB(c, x) distance((c).begin(), lower_bound(all(c), (x)))\n#define UB(c, x) distance((c).begin(),\
@@ -252,23 +255,25 @@ data:
     \ = long long;\nusing ull = unsigned long long;\nusing ld = long double;\nusing\
     \ Pi = pair<int, int>;\nusing Pl = pair<ll, ll>;\nusing Vi = vector<int>;\nusing\
     \ Vl = vector<ll>;\nusing Vc = vector<char>;\nusing VVi = vector<vector<int>>;\n\
-    using VVl = vector<vector<ll>>;\nusing VVc = vector<vector<char>>;\nconstexpr\
-    \ ll inf = 1000000000ll;\nconstexpr ll INF = 4000000004000000000LL;\nconstexpr\
-    \ ld eps = 1e-15;\nconstexpr ld PI = 3.141592653589793;\nconstexpr int popcnt(ull\
-    \ x) { return __builtin_popcountll(x); }\ntemplate <typename T> using mat = vector<vector<T>>;\n\
-    constexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1,\
-    \ 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return (a > 0) - (a <\
-    \ 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b);\
-    \ }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr ull bit(int\
-    \ n) { return 1ull << n; }\ntemplate <typename T> constexpr T mypow(T x, ll n)\
-    \ {\n    T ret = 1;\n    while (n) {\n        if (n & 1) ret *= x;\n        x\
-    \ *= x;\n        n >>= 1;\n    }\n    return ret;\n}\nconstexpr ll modpow(ll x,\
-    \ ll n, ll mod) {\n    ll ret = 1;\n    while (n) {\n        if (n & 1) ret *=\
-    \ x;\n        x *= x;\n        n >>= 1;\n        x %= mod;\n        ret %= mod;\n\
-    \    }\n    return ret;\n}\ntemplate <typename T> T xor64(T lb, T ub) {\n    static\
-    \ ull x = 88172645463325252ull;\n    x ^= x << 7;\n    return lb + (x ^= x >>\
-    \ 9) % (ub - lb);\n}\nconstexpr ll safemod(ll x, ll mod) { return (x % mod + mod)\
-    \ % mod; }\ntemplate <typename T> constexpr T sq(const T &a) { return a * a; }\n\
+    using VVl = vector<vector<ll>>;\nusing VVc = vector<vector<char>>;\ntemplate <typename\
+    \ T, typename U> using P = pair<T, U>;\ntemplate <typename T> using V = vector<T>;\n\
+    template <typename T> using VV = V<V<T>>;\nconstexpr ll inf = 1000000000ll;\n\
+    constexpr ll INF = 4000000004000000000LL;\nconstexpr ld eps = 1e-15;\nconstexpr\
+    \ ld PI = 3.141592653589793;\nconstexpr int popcnt(ull x) { return __builtin_popcountll(x);\
+    \ }\ntemplate <typename T> using mat = vector<vector<T>>;\nconstexpr ll dy[9]\
+    \ = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1, 0, -1, 0, 1, -1,\
+    \ -1, 1, 0};\nconstexpr ll sign(ll a) { return (a > 0) - (a < 0); }\nconstexpr\
+    \ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr ll\
+    \ cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr ull bit(int n) { return\
+    \ 1ull << n; }\ntemplate <typename T> constexpr T mypow(T x, ll n) {\n    T ret\
+    \ = 1;\n    while (n) {\n        if (n & 1) ret *= x;\n        x *= x;\n     \
+    \   n >>= 1;\n    }\n    return ret;\n}\nconstexpr ll modpow(ll x, ll n, ll mod)\
+    \ {\n    ll ret = 1;\n    while (n) {\n        if (n & 1) ret *= x;\n        x\
+    \ *= x;\n        n >>= 1;\n        x %= mod;\n        ret %= mod;\n    }\n   \
+    \ return ret;\n}\ntemplate <typename T> T xor64(T lb, T ub) {\n    static ull\
+    \ x = 88172645463325252ull;\n    x ^= x << 7;\n    return lb + (x ^= x >> 9) %\
+    \ (ub - lb);\n}\nconstexpr ll safemod(ll x, ll mod) { return (x % mod + mod) %\
+    \ mod; }\ntemplate <typename T> constexpr T sq(const T &a) { return a * a; }\n\
     template <typename T> using priority_queue_rev = priority_queue<T, vector<T>,\
     \ greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a, const U &b)\
     \ { return a < b ? a = b, true : false; }\ntemplate <typename T, typename U> bool\
@@ -330,7 +335,7 @@ data:
     \        cerr << fixed << setprecision(PREC);\n    };\n} iOS;\n"
   code: "#pragma once\n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define\
     \ all(a) begin(a), end(a)\n#define rall(a) rbegin(a), rend(a)\n#define uniq(a)\
-    \ (a).erase(unique(all(a)), (a).end())\n#define SZ(x) ((int)(x).size())\n#define\
+    \ (a).erase(unique(all(a)), (a).end())\n#define SZ(x) int((x).size())\n#define\
     \ pb(x) push_back(x)\n#define eb(x) emplace_back(x)\n#define vsum(x) reduce(all(x))\n\
     #define vmax(a) *max_element(all(a))\n#define vmin(a) *min_element(all(a))\n#define\
     \ LB(c, x) distance((c).begin(), lower_bound(all(c), (x)))\n#define UB(c, x) distance((c).begin(),\
@@ -338,23 +343,25 @@ data:
     \ = long long;\nusing ull = unsigned long long;\nusing ld = long double;\nusing\
     \ Pi = pair<int, int>;\nusing Pl = pair<ll, ll>;\nusing Vi = vector<int>;\nusing\
     \ Vl = vector<ll>;\nusing Vc = vector<char>;\nusing VVi = vector<vector<int>>;\n\
-    using VVl = vector<vector<ll>>;\nusing VVc = vector<vector<char>>;\nconstexpr\
-    \ ll inf = 1000000000ll;\nconstexpr ll INF = 4000000004000000000LL;\nconstexpr\
-    \ ld eps = 1e-15;\nconstexpr ld PI = 3.141592653589793;\nconstexpr int popcnt(ull\
-    \ x) { return __builtin_popcountll(x); }\ntemplate <typename T> using mat = vector<vector<T>>;\n\
-    constexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1,\
-    \ 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a) { return (a > 0) - (a <\
-    \ 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b);\
-    \ }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr ull bit(int\
-    \ n) { return 1ull << n; }\ntemplate <typename T> constexpr T mypow(T x, ll n)\
-    \ {\n    T ret = 1;\n    while (n) {\n        if (n & 1) ret *= x;\n        x\
-    \ *= x;\n        n >>= 1;\n    }\n    return ret;\n}\nconstexpr ll modpow(ll x,\
-    \ ll n, ll mod) {\n    ll ret = 1;\n    while (n) {\n        if (n & 1) ret *=\
-    \ x;\n        x *= x;\n        n >>= 1;\n        x %= mod;\n        ret %= mod;\n\
-    \    }\n    return ret;\n}\ntemplate <typename T> T xor64(T lb, T ub) {\n    static\
-    \ ull x = 88172645463325252ull;\n    x ^= x << 7;\n    return lb + (x ^= x >>\
-    \ 9) % (ub - lb);\n}\nconstexpr ll safemod(ll x, ll mod) { return (x % mod + mod)\
-    \ % mod; }\ntemplate <typename T> constexpr T sq(const T &a) { return a * a; }\n\
+    using VVl = vector<vector<ll>>;\nusing VVc = vector<vector<char>>;\ntemplate <typename\
+    \ T, typename U> using P = pair<T, U>;\ntemplate <typename T> using V = vector<T>;\n\
+    template <typename T> using VV = V<V<T>>;\nconstexpr ll inf = 1000000000ll;\n\
+    constexpr ll INF = 4000000004000000000LL;\nconstexpr ld eps = 1e-15;\nconstexpr\
+    \ ld PI = 3.141592653589793;\nconstexpr int popcnt(ull x) { return __builtin_popcountll(x);\
+    \ }\ntemplate <typename T> using mat = vector<vector<T>>;\nconstexpr ll dy[9]\
+    \ = {0, 1, 0, -1, 1, 1, -1, -1, 0};\nconstexpr ll dx[9] = {1, 0, -1, 0, 1, -1,\
+    \ -1, 1, 0};\nconstexpr ll sign(ll a) { return (a > 0) - (a < 0); }\nconstexpr\
+    \ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr ll\
+    \ cdiv(ll a, ll b) { return -fdiv(-a, b); }\nconstexpr ull bit(int n) { return\
+    \ 1ull << n; }\ntemplate <typename T> constexpr T mypow(T x, ll n) {\n    T ret\
+    \ = 1;\n    while (n) {\n        if (n & 1) ret *= x;\n        x *= x;\n     \
+    \   n >>= 1;\n    }\n    return ret;\n}\nconstexpr ll modpow(ll x, ll n, ll mod)\
+    \ {\n    ll ret = 1;\n    while (n) {\n        if (n & 1) ret *= x;\n        x\
+    \ *= x;\n        n >>= 1;\n        x %= mod;\n        ret %= mod;\n    }\n   \
+    \ return ret;\n}\ntemplate <typename T> T xor64(T lb, T ub) {\n    static ull\
+    \ x = 88172645463325252ull;\n    x ^= x << 7;\n    return lb + (x ^= x >> 9) %\
+    \ (ub - lb);\n}\nconstexpr ll safemod(ll x, ll mod) { return (x % mod + mod) %\
+    \ mod; }\ntemplate <typename T> constexpr T sq(const T &a) { return a * a; }\n\
     template <typename T> using priority_queue_rev = priority_queue<T, vector<T>,\
     \ greater<T>>;\ntemplate <typename T, typename U> bool chmax(T &a, const U &b)\
     \ { return a < b ? a = b, true : false; }\ntemplate <typename T, typename U> bool\
@@ -418,87 +425,88 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
-  - string/rolling_hash.hpp
-  - math/subset_convolution.hpp
-  - math/fwht.hpp
-  - math/xor_convolution.hpp
-  - math/combination.hpp
-  - math/fps.hpp
-  - math/fzt_fmt.hpp
-  - math/modint.hpp
-  - math/and_or_convolution.hpp
-  - math/kth_of_lrs.hpp
-  - math/bostan_mori.hpp
-  - math/matrix.hpp
+  - util/dynamic_bitset.hpp
+  - util/fibsect.hpp
+  - util/bisect.hpp
+  - util/xorshift.hpp
+  - util/doubling.hpp
   - math/ntt.hpp
-  - math/convolution.hpp
-  - math/modlog.hpp
-  - math/permutation.hpp
   - math/xor_basis.hpp
-  - graph/hld.hpp
-  - graph/dijkstra.hpp
-  - graph/wf.hpp
+  - math/modint.hpp
+  - math/fzt_fmt.hpp
+  - math/fwht.hpp
+  - math/permutation.hpp
+  - math/xor_convolution.hpp
+  - math/modlog.hpp
+  - math/fps.hpp
+  - math/and_or_convolution.hpp
+  - math/subset_convolution.hpp
+  - math/convolution.hpp
+  - math/combination.hpp
+  - math/matrix.hpp
+  - math/bostan_mori.hpp
+  - math/kth_of_lrs.hpp
+  - string/rolling_hash.hpp
+  - string/parse.hpp
   - graph/spfa.hpp
-  - graph/khan.hpp
-  - graph/oibfs.hpp
   - graph/offline_dag_reachability.hpp
+  - graph/oibfs.hpp
+  - graph/khan.hpp
+  - graph/dijkstra.hpp
+  - graph/hld.hpp
+  - graph/wf.hpp
   - graph/dinic.hpp
   - data_structure/lazy_segtree.hpp
   - data_structure/segtree.hpp
-  - data_structure/splay_tree.hpp
-  - data_structure/cht.hpp
   - data_structure/uf.hpp
-  - data_structure/fenwick_tree.hpp
-  - data_structure/persistent_array.hpp
+  - data_structure/cht.hpp
+  - data_structure/splay_tree.hpp
   - data_structure/persistent_uf.hpp
-  - util/dynamic_bitset.hpp
-  - util/bisect.hpp
-  - util/fibsect.hpp
-  - util/xorshift.hpp
-  - util/doubling.hpp
-  timestamp: '2021-09-17 00:26:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - data_structure/persistent_array.hpp
+  - data_structure/fenwick_tree.hpp
+  timestamp: '2021-11-03 10:53:09+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
-  - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-  - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  - test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
-  - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
-  - test/judge.yosupo.jp/Unionfind.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
-  - test/judge.yosupo.jp/Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
-  - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
-  - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
-  - test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
-  - test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
-  - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
-  - test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
-  - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
-  - test/unit/hld.test.cpp
-  - test/unit/permutation.test.cpp
-  - test/unit/khan.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RAQ.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/Arrangement_of_pieces.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-  - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.3.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
+  - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.2.test.cpp
+  - test/unit/khan.test.cpp
+  - test/unit/permutation.test.cpp
+  - test/unit/hld.test.cpp
+  - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
+  - test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
+  - test/judge.yosupo.jp/Range_Affine_Range_Sum.0.test.cpp
+  - test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_And_Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Pow_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
+  - test/judge.yosupo.jp/Exp_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
+  - test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Unionfind.0.test.cpp
+  - test/judge.yosupo.jp/Convolution.0.test.cpp
+  - test/judge.yosupo.jp/Bitwise_And_Convolution.1.test.cpp
+  - test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
+  - test/judge.yosupo.jp/Inv_of_Formal_Power_Series.0.test.cpp
+  - test/judge.yosupo.jp/Shortest_Path.0.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

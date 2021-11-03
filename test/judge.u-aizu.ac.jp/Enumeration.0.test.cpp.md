@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/and_or_convolution.hpp
     title: "and / or \u7573\u307F\u8FBC\u307F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fzt_fmt.hpp
     title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -26,7 +26,7 @@ data:
     #define ERROR 1e-7\n#line 2 \"math/and_or_convolution.hpp\"\n\n#line 2 \"template.hpp\"\
     \n\n#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a),\
     \ end(a)\n#define rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)),\
-    \ (a).end())\n#define SZ(x) ((int)(x).size())\n#define pb(x) push_back(x)\n#define\
+    \ (a).end())\n#define SZ(x) int((x).size())\n#define pb(x) push_back(x)\n#define\
     \ eb(x) emplace_back(x)\n#define vsum(x) reduce(all(x))\n#define vmax(a) *max_element(all(a))\n\
     #define vmin(a) *min_element(all(a))\n#define LB(c, x) distance((c).begin(), lower_bound(all(c),\
     \ (x)))\n#define UB(c, x) distance((c).begin(), upper_bound(all(c), (x)))\n#define\
@@ -34,16 +34,18 @@ data:
     \ long long;\nusing ld = long double;\nusing Pi = pair<int, int>;\nusing Pl =\
     \ pair<ll, ll>;\nusing Vi = vector<int>;\nusing Vl = vector<ll>;\nusing Vc = vector<char>;\n\
     using VVi = vector<vector<int>>;\nusing VVl = vector<vector<ll>>;\nusing VVc =\
-    \ vector<vector<char>>;\nconstexpr ll inf = 1000000000ll;\nconstexpr ll INF =\
-    \ 4000000004000000000LL;\nconstexpr ld eps = 1e-15;\nconstexpr ld PI = 3.141592653589793;\n\
-    constexpr int popcnt(ull x) { return __builtin_popcountll(x); }\ntemplate <typename\
-    \ T> using mat = vector<vector<T>>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1,\
-    \ -1, -1, 0};\nconstexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr\
-    \ ll sign(ll a) { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) {\
-    \ return a / b - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return\
-    \ -fdiv(-a, b); }\nconstexpr ull bit(int n) { return 1ull << n; }\ntemplate <typename\
-    \ T> constexpr T mypow(T x, ll n) {\n    T ret = 1;\n    while (n) {\n       \
-    \ if (n & 1) ret *= x;\n        x *= x;\n        n >>= 1;\n    }\n    return ret;\n\
+    \ vector<vector<char>>;\ntemplate <typename T, typename U> using P = pair<T, U>;\n\
+    template <typename T> using V = vector<T>;\ntemplate <typename T> using VV = V<V<T>>;\n\
+    constexpr ll inf = 1000000000ll;\nconstexpr ll INF = 4000000004000000000LL;\n\
+    constexpr ld eps = 1e-15;\nconstexpr ld PI = 3.141592653589793;\nconstexpr int\
+    \ popcnt(ull x) { return __builtin_popcountll(x); }\ntemplate <typename T> using\
+    \ mat = vector<vector<T>>;\nconstexpr ll dy[9] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\n\
+    constexpr ll dx[9] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr ll sign(ll a)\
+    \ { return (a > 0) - (a < 0); }\nconstexpr ll fdiv(ll a, ll b) { return a / b\
+    \ - ((a ^ b) < 0 && a % b); }\nconstexpr ll cdiv(ll a, ll b) { return -fdiv(-a,\
+    \ b); }\nconstexpr ull bit(int n) { return 1ull << n; }\ntemplate <typename T>\
+    \ constexpr T mypow(T x, ll n) {\n    T ret = 1;\n    while (n) {\n        if\
+    \ (n & 1) ret *= x;\n        x *= x;\n        n >>= 1;\n    }\n    return ret;\n\
     }\nconstexpr ll modpow(ll x, ll n, ll mod) {\n    ll ret = 1;\n    while (n) {\n\
     \        if (n & 1) ret *= x;\n        x *= x;\n        n >>= 1;\n        x %=\
     \ mod;\n        ret %= mod;\n    }\n    return ret;\n}\ntemplate <typename T>\
@@ -165,7 +167,7 @@ data:
   isVerificationFile: true
   path: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 13:26:47+09:00'
+  timestamp: '2021-11-03 10:53:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp
