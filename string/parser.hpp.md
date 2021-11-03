@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -104,53 +104,53 @@ data:
     \ == expected) {\n        ++cur;\n    } else {\n        cerr << \"Expected '\"\
     \ << expected << \"' but got '\" << *cur << \"'\" << endl;\n        cerr << \"\
     Rest string is '\";\n        while (*cur) cerr << *cur++;\n        cerr << \"\
-    '\" << endl;\n        throw parse_error();\n    }\n}\n\nstruct parser {\n    int\
-    \ expr(state &cur) {\n        int ret = term(cur);\n        while (true) {\n \
-    \           if (*cur == '+') {\n                consume(cur, '+');\n         \
-    \       ret += term(cur);\n            } else if (*cur == '-') {\n           \
-    \     consume(cur, '-');\n                ret -= term(cur);\n            } else\
+    '\" << endl;\n        throw parse_error();\n    }\n}\n\nstruct parser {\n    ll\
+    \ expr(state &cur) {\n        ll ret = term(cur);\n        while (true) {\n  \
+    \          if (*cur == '+') {\n                consume(cur, '+');\n          \
+    \      ret += term(cur);\n            } else if (*cur == '-') {\n            \
+    \    consume(cur, '-');\n                ret -= term(cur);\n            } else\
     \ {\n                break;\n            }\n        }\n        return ret;\n \
-    \   }\n    int term(state &cur) {\n        int ret = factor(cur);\n        while\
+    \   }\n    ll term(state &cur) {\n        ll ret = factor(cur);\n        while\
     \ (true) {\n            if (*cur == '*') {\n                consume(cur, '*');\n\
     \                ret *= factor(cur);\n            } else if (*cur == '/') {\n\
     \                consume(cur, '/');\n                ret /= factor(cur);\n   \
     \         } else {\n                break;\n            }\n        }\n       \
-    \ return ret;\n    }\n    int factor(state &cur) {\n        if (*cur == '(') {\n\
-    \            consume(cur, '(');\n            int ret = expr(cur);\n          \
-    \  consume(cur, ')');\n            return ret;\n        } else {\n           \
-    \ return number(cur);\n        }\n    }\n    int number(state &cur) {\n      \
-    \  int ret = 0;\n        while (isdigit(*cur)) {\n            ret *= 10;\n   \
-    \         ret += *cur - '0';\n            cur++;\n        }\n        return ret;\n\
-    \    }\n};\n"
+    \ return ret;\n    }\n    ll factor(state &cur) {\n        if (*cur == '(') {\n\
+    \            consume(cur, '(');\n            ll ret = expr(cur);\n           \
+    \ consume(cur, ')');\n            return ret;\n        } else {\n            return\
+    \ number(cur);\n        }\n    }\n    ll number(state &cur) {\n        ll ret\
+    \ = 0;\n        while (isdigit(*cur)) {\n            ret *= 10;\n            ret\
+    \ += *cur - '0';\n            ++cur;\n        }\n        return ret;\n    }\n\
+    };\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nusing state = string::const_iterator;\n\
     struct parse_error {};\n\nvoid consume(state &cur, char expected) {\n    if (*cur\
     \ == expected) {\n        ++cur;\n    } else {\n        cerr << \"Expected '\"\
     \ << expected << \"' but got '\" << *cur << \"'\" << endl;\n        cerr << \"\
     Rest string is '\";\n        while (*cur) cerr << *cur++;\n        cerr << \"\
-    '\" << endl;\n        throw parse_error();\n    }\n}\n\nstruct parser {\n    int\
-    \ expr(state &cur) {\n        int ret = term(cur);\n        while (true) {\n \
-    \           if (*cur == '+') {\n                consume(cur, '+');\n         \
-    \       ret += term(cur);\n            } else if (*cur == '-') {\n           \
-    \     consume(cur, '-');\n                ret -= term(cur);\n            } else\
+    '\" << endl;\n        throw parse_error();\n    }\n}\n\nstruct parser {\n    ll\
+    \ expr(state &cur) {\n        ll ret = term(cur);\n        while (true) {\n  \
+    \          if (*cur == '+') {\n                consume(cur, '+');\n          \
+    \      ret += term(cur);\n            } else if (*cur == '-') {\n            \
+    \    consume(cur, '-');\n                ret -= term(cur);\n            } else\
     \ {\n                break;\n            }\n        }\n        return ret;\n \
-    \   }\n    int term(state &cur) {\n        int ret = factor(cur);\n        while\
+    \   }\n    ll term(state &cur) {\n        ll ret = factor(cur);\n        while\
     \ (true) {\n            if (*cur == '*') {\n                consume(cur, '*');\n\
     \                ret *= factor(cur);\n            } else if (*cur == '/') {\n\
     \                consume(cur, '/');\n                ret /= factor(cur);\n   \
     \         } else {\n                break;\n            }\n        }\n       \
-    \ return ret;\n    }\n    int factor(state &cur) {\n        if (*cur == '(') {\n\
-    \            consume(cur, '(');\n            int ret = expr(cur);\n          \
-    \  consume(cur, ')');\n            return ret;\n        } else {\n           \
-    \ return number(cur);\n        }\n    }\n    int number(state &cur) {\n      \
-    \  int ret = 0;\n        while (isdigit(*cur)) {\n            ret *= 10;\n   \
-    \         ret += *cur - '0';\n            cur++;\n        }\n        return ret;\n\
-    \    }\n};"
+    \ return ret;\n    }\n    ll factor(state &cur) {\n        if (*cur == '(') {\n\
+    \            consume(cur, '(');\n            ll ret = expr(cur);\n           \
+    \ consume(cur, ')');\n            return ret;\n        } else {\n            return\
+    \ number(cur);\n        }\n    }\n    ll number(state &cur) {\n        ll ret\
+    \ = 0;\n        while (isdigit(*cur)) {\n            ret *= 10;\n            ret\
+    \ += *cur - '0';\n            ++cur;\n        }\n        return ret;\n    }\n\
+    };"
   dependsOn:
   - template.hpp
   isVerificationFile: false
   path: string/parser.hpp
   requiredBy: []
-  timestamp: '2021-11-03 11:41:30+09:00'
+  timestamp: '2021-11-03 12:13:19+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: string/parser.hpp

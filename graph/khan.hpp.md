@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -9,12 +9,12 @@ data:
     path: graph/offline_dag_reachability.hpp
     title: graph/offline_dag_reachability.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/unit/khan.test.cpp
     title: test/unit/khan.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/khan.hpp\"\n\n#line 2 \"template.hpp\"\n\n#include\
@@ -128,7 +128,7 @@ data:
   requiredBy:
   - graph/offline_dag_reachability.hpp
   timestamp: '2021-11-03 10:53:09+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/unit/khan.test.cpp
 documentation_of: graph/khan.hpp

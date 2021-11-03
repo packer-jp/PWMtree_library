@@ -6,10 +6,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/cht.hpp
       title: Convex Hull Trick
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: data_structure/fenwick_tree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segtree.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
     - icon: ':heavy_check_mark:'
@@ -18,10 +18,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/persistent_uf.hpp
       title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segtree.hpp
       title: Segment Tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/splay_tree.hpp
       title: Splay Tree
     - icon: ':heavy_check_mark:'
@@ -35,10 +35,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dinic.hpp
       title: "Dinic \u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/hld.hpp
       title: "HL \u5206\u89E3"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/khan.hpp
       title: "Khan \u306E\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
     - icon: ':warning:'
@@ -47,7 +47,7 @@ data:
     - icon: ':warning:'
       path: graph/oibfs.hpp
       title: 01-BFS
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/spfa.hpp
       title: SPFA
     - icon: ':heavy_check_mark:'
@@ -82,7 +82,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "\u884C\u5217"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/modint.hpp
       title: modint
     - icon: ':heavy_check_mark:'
@@ -91,7 +91,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/ntt.hpp
       title: "\u6570\u8AD6\u5909\u63DB"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/permutation.hpp
       title: "\u9806\u5217"
     - icon: ':heavy_check_mark:'
@@ -108,12 +108,12 @@ data:
     - icon: ':warning:'
       path: string/parser.hpp
       title: string/parser.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: .
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -221,45 +221,45 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RMQ_and_RUQ.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RAQ.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/RSQ_and_RUQ.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
       title: test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp
   - name: test/unit
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/unit/hld.test.cpp
       title: test/unit/hld.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/unit/khan.test.cpp
       title: test/unit/khan.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/unit/permutation.test.cpp
       title: test/unit/permutation.test.cpp
 layout: toppage

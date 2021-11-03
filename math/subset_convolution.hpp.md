@@ -10,13 +10,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/fzt_fmt.hpp
     title: "\u9AD8\u901F Zeta / Moebius \u5909\u63DB"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint.hpp
     title: modint
   - icon: ':heavy_check_mark:'
     path: math/ntt.hpp
     title: "\u6570\u8AD6\u5909\u63DB"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
