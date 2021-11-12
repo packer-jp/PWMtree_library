@@ -67,6 +67,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/convolution.hpp
       title: "\u7573\u307F\u8FBC\u307F"
+    - icon: ':warning:'
+      path: math/divisors.hpp
+      title: math/divisors.hpp
     - icon: ':heavy_check_mark:'
       path: math/fps.hpp
       title: "\u5F62\u5F0F\u7684\u51AA\u7D1A\u6570"
