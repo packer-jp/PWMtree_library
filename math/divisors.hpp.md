@@ -100,12 +100,12 @@ data:
     \ io_setup {\n    static constexpr int PREC = 20;\n    io_setup() {\n        cout\
     \ << fixed << setprecision(PREC);\n        cerr << fixed << setprecision(PREC);\n\
     \    };\n} iOS;\n#line 4 \"math/divisors.hpp\"\n\ntemplate <typename T> vector<T>\
-    \ divisors(T n) {\n    vector<T> ret;\n    T i;\n    for (i = 1; i * i < n; i++)\
+    \ divisors(T n) {\n    vector<T> ret;\n    T i;\n    for (i = 1; i * i < n; ++i)\
     \ {\n        if (n % i == 0) {\n            ret.push_back(i);\n            ret.push_back(n\
     \ / i);\n        }\n    }\n    if (i * i == n) ret.push_back(i);\n    sort(all(ret));\n\
     \    return ret;\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> vector<T>\
-    \ divisors(T n) {\n    vector<T> ret;\n    T i;\n    for (i = 1; i * i < n; i++)\
+    \ divisors(T n) {\n    vector<T> ret;\n    T i;\n    for (i = 1; i * i < n; ++i)\
     \ {\n        if (n % i == 0) {\n            ret.push_back(i);\n            ret.push_back(n\
     \ / i);\n        }\n    }\n    if (i * i == n) ret.push_back(i);\n    sort(all(ret));\n\
     \    return ret;\n}"
@@ -114,7 +114,7 @@ data:
   isVerificationFile: false
   path: math/divisors.hpp
   requiredBy: []
-  timestamp: '2021-11-12 20:24:06+09:00'
+  timestamp: '2021-11-12 20:28:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/divisors.hpp
