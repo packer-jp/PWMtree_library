@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -94,12 +94,11 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/xor_basis.hpp\"\n\ntemplate <typename T> pair<vector<T>,\
-    \ vector<T>> xor_basis(const vector<T> &a) {\n    vector<T> umsb, inner;\n   \
-    \ for (T e : a) {\n        T _e = e;\n        for (T b : umsb) chmin(e, e ^ b);\n\
-    \        if (e != T()) umsb.push_back(e), inner.push_back(_e);\n    }\n    return\
-    \ {umsb, inner};\n}\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/xor_basis.hpp\"\n\ntemplate <typename T> pair<vector<T>, vector<T>> xor_basis(const\
+    \ vector<T> &a) {\n    vector<T> umsb, inner;\n    for (T e : a) {\n        T\
+    \ _e = e;\n        for (T b : umsb) chmin(e, e ^ b);\n        if (e != T()) umsb.push_back(e),\
+    \ inner.push_back(_e);\n    }\n    return {umsb, inner};\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> pair<vector<T>,\
     \ vector<T>> xor_basis(const vector<T> &a) {\n    vector<T> umsb, inner;\n   \
     \ for (T e : a) {\n        T _e = e;\n        for (T b : umsb) chmin(e, e ^ b);\n\
@@ -110,7 +109,7 @@ data:
   isVerificationFile: false
   path: math/xor_basis.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/xor_basis.hpp

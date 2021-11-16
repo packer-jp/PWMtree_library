@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -97,26 +97,26 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"graph/hld.hpp\"\n\nstruct hld {\n    vector<vector<int>> g;\n\
-    \    vector<int> par, sz, dep, in, out, head;\n    hld(int n) : g(n), par(n),\
-    \ sz(n), dep(n), in(n), out(n), head(n) {}\n    void add_edge(int u, int v) {\
-    \ g[u].push_back(v), g[v].push_back(u); }\n    vector<int> build(int root) {\n\
-    \        auto dfs_sz = [&](auto dfs_sz, int v, int p) -> void {\n            sz[v]\
-    \ = 1;\n            par[v] = p;\n            if (p != -1) dep[v] = dep[p] + 1;\n\
-    \            for (int &u : g[v]) {\n                if (u == p) continue;\n  \
-    \              dfs_sz(dfs_sz, u, v);\n                sz[v] += sz[u];\n      \
-    \          if (sz[u] > sz[g[v][0]]) swap(u, g[v][0]);\n            }\n       \
-    \ };\n        int t = 0;\n        auto dfs_hld = [&](auto dfs_hld, int v) -> int\
-    \ {\n            in[v] = t++;\n            for (int i : rep(g[v].size())) {\n\
-    \                int u = g[v][i];\n                if (u == par[v]) continue;\n\
-    \                head[u] = (i == 0 ? head[v] : u);\n                dfs_hld(dfs_hld,\
-    \ u);\n            }\n            return out[v] = t;\n        };\n        dfs_sz(dfs_sz,\
-    \ root, -1);\n        head[root] = root;\n        dfs_hld(dfs_hld, root);\n  \
-    \      return in;\n    }\n    int lca(int u, int v) const {\n        while (true)\
-    \ {\n            if (in[u] > in[v]) swap(u, v);\n            if (head[u] == head[v])\
-    \ return u;\n            v = par[head[v]];\n        }\n    }\n    int dist(int\
-    \ u, int v) const { return dep[u] + dep[v] - 2 * dep[lca(u, v)]; }\n    vector<pair<int,\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    graph/hld.hpp\"\n\nstruct hld {\n    vector<vector<int>> g;\n    vector<int> par,\
+    \ sz, dep, in, out, head;\n    hld(int n) : g(n), par(n), sz(n), dep(n), in(n),\
+    \ out(n), head(n) {}\n    void add_edge(int u, int v) { g[u].push_back(v), g[v].push_back(u);\
+    \ }\n    vector<int> build(int root) {\n        auto dfs_sz = [&](auto dfs_sz,\
+    \ int v, int p) -> void {\n            sz[v] = 1;\n            par[v] = p;\n \
+    \           if (p != -1) dep[v] = dep[p] + 1;\n            for (int &u : g[v])\
+    \ {\n                if (u == p) continue;\n                dfs_sz(dfs_sz, u,\
+    \ v);\n                sz[v] += sz[u];\n                if (sz[u] > sz[g[v][0]])\
+    \ swap(u, g[v][0]);\n            }\n        };\n        int t = 0;\n        auto\
+    \ dfs_hld = [&](auto dfs_hld, int v) -> int {\n            in[v] = t++;\n    \
+    \        for (int i : rep(g[v].size())) {\n                int u = g[v][i];\n\
+    \                if (u == par[v]) continue;\n                head[u] = (i == 0\
+    \ ? head[v] : u);\n                dfs_hld(dfs_hld, u);\n            }\n     \
+    \       return out[v] = t;\n        };\n        dfs_sz(dfs_sz, root, -1);\n  \
+    \      head[root] = root;\n        dfs_hld(dfs_hld, root);\n        return in;\n\
+    \    }\n    int lca(int u, int v) const {\n        while (true) {\n          \
+    \  if (in[u] > in[v]) swap(u, v);\n            if (head[u] == head[v]) return\
+    \ u;\n            v = par[head[v]];\n        }\n    }\n    int dist(int u, int\
+    \ v) const { return dep[u] + dep[v] - 2 * dep[lca(u, v)]; }\n    vector<pair<int,\
     \ int>> get_path(int u, int v, bool edge) const {\n        vector<pair<int, int>>\
     \ a, b;\n        while (true) {\n            if (head[u] == head[v]) {\n     \
     \           if (edge) {\n                    if (in[u] > in[v]) a.emplace_back(in[u],\
@@ -165,7 +165,7 @@ data:
   isVerificationFile: false
   path: graph/hld.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/unit/hld.test.cpp

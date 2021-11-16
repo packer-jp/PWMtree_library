@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -100,14 +100,14 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"graph/khan.hpp\"\n\nstruct khan {\n    vector<vector<int>> g;\n\
-    \    vector<int> indeg;\n    khan(int n) : g(n), indeg(n) {}\n    void add_edge(int\
-    \ from, int to) { g[from].push_back(to), ++indeg[to]; }\n    vector<int> get()\
-    \ {\n        vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size()))\
-    \ {\n            if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for\
-    \ (int i : rep(g.size())) {\n            if (i >= ret.size()) return {};\n   \
-    \         for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    graph/khan.hpp\"\n\nstruct khan {\n    vector<vector<int>> g;\n    vector<int>\
+    \ indeg;\n    khan(int n) : g(n), indeg(n) {}\n    void add_edge(int from, int\
+    \ to) { g[from].push_back(to), ++indeg[to]; }\n    vector<int> get() {\n     \
+    \   vector<int> _indeg(indeg), ret;\n        for (int i : rep(g.size())) {\n \
+    \           if (_indeg[i] == 0) ret.push_back(i);\n        }\n        for (int\
+    \ i : rep(g.size())) {\n            if (i >= ret.size()) return {};\n        \
+    \    for (int to : g[ret[i]]) {\n                if (--_indeg[to] == 0) ret.push_back(to);\n\
     \            }\n        }\n        return ret;\n    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct khan {\n    vector<vector<int>>\
     \ g;\n    vector<int> indeg;\n    khan(int n) : g(n), indeg(n) {}\n    void add_edge(int\
@@ -123,7 +123,7 @@ data:
   path: graph/khan.hpp
   requiredBy:
   - graph/offline_dag_reachability.hpp
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/unit/khan.test.cpp

@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/cht.hpp
       title: Convex Hull Trick
     - icon: ':x:'
@@ -12,7 +12,7 @@ data:
     - icon: ':x:'
       path: data_structure/lazy_segtree.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-    - icon: ':x:'
+    - icon: ':question:'
       path: data_structure/persistent_array.hpp
       title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
     - icon: ':x:'
@@ -24,7 +24,7 @@ data:
     - icon: ':x:'
       path: data_structure/splay_tree.hpp
       title: Splay Tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/uf.hpp
       title: Union-Find Tree
   - name: graph
@@ -88,7 +88,7 @@ data:
     - icon: ':x:'
       path: math/modint.hpp
       title: modint
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/modlog.hpp
       title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C"
     - icon: ':x:'
@@ -116,7 +116,7 @@ data:
       title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
   - name: .
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: util
@@ -159,7 +159,7 @@ data:
     - icon: ':x:'
       path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
       title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
       title: test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
     - icon: ':x:'
@@ -171,13 +171,13 @@ data:
     - icon: ':x:'
       path: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
       title: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
       title: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
     - icon: ':x:'
       path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
       title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
       title: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
     - icon: ':x:'
@@ -195,7 +195,7 @@ data:
     - icon: ':x:'
       path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
       title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/judge.yosupo.jp/Unionfind.0.test.cpp
       title: test/judge.yosupo.jp/Unionfind.0.test.cpp
   - name: test/onlinejudge.u-aizu.ac.jp

@@ -7,10 +7,10 @@ data:
   - icon: ':x:'
     path: math/modint.hpp
     title: modint
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -108,22 +108,22 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007> struct modint\
-    \ {\n    ll val;\n    modint(ll val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val)\
-    \ % MOD) % MOD) {}\n    static ll mod() { return MOD; }\n    modint inv() const\
-    \ {\n        ll a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n\
-    \            t = a / b;\n            swap(a -= t * b, b);\n            swap(u\
-    \ -= t * v, v);\n        }\n        return modint(u);\n    }\n    modint pow(ll\
-    \ k) const {\n        modint ret = 1, mul = val;\n        while (k) {\n      \
-    \      if (k & 1) ret *= mul;\n            mul *= mul;\n            k >>= 1;\n\
-    \        }\n        return ret;\n    }\n    modint &operator+=(const modint &a)\
-    \ {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return *this;\n \
-    \   }\n    modint &operator-=(const modint &a) {\n        if ((val += MOD - a.val)\
-    \ >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
-    \ modint &a) {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n\
-    \    modint &operator/=(const modint &a) { return *this *= a.inv(); }\n    modint\
-    \ operator+() const { return *this; }\n    modint operator-() const { return modint(-val);\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007> struct modint {\n    ll val;\n\
+    \    modint(ll val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD)\
+    \ {}\n    static ll mod() { return MOD; }\n    modint inv() const {\n        ll\
+    \ a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t =\
+    \ a / b;\n            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n\
+    \        }\n        return modint(u);\n    }\n    modint pow(ll k) const {\n \
+    \       modint ret = 1, mul = val;\n        while (k) {\n            if (k & 1)\
+    \ ret *= mul;\n            mul *= mul;\n            k >>= 1;\n        }\n    \
+    \    return ret;\n    }\n    modint &operator+=(const modint &a) {\n        if\
+    \ ((val += a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint\
+    \ &operator-=(const modint &a) {\n        if ((val += MOD - a.val) >= MOD) val\
+    \ -= MOD;\n        return *this;\n    }\n    modint &operator*=(const modint &a)\
+    \ {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n    modint\
+    \ &operator/=(const modint &a) { return *this *= a.inv(); }\n    modint operator+()\
+    \ const { return *this; }\n    modint operator-() const { return modint(-val);\
     \ }\n    friend bool operator==(const modint &a, const modint &b) { return a.val\
     \ == b.val; }\n    friend bool operator!=(const modint &a, const modint &b) {\
     \ return rel_ops::operator!=(a, b); }\n    friend modint operator+(const modint\
@@ -216,10 +216,10 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 5 \"data_structure/lazy_segtree.hpp\"\n\ntemplate <typename S> struct\
-    \ lazy_segtree {\n    using V = typename S::val_t;\n    using F = typename S::fn_t;\n\
-    \    int n, size, log;\n    vector<V> val;\n    vector<F> lazy;\n    lazy_segtree(int\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 5 \"\
+    data_structure/lazy_segtree.hpp\"\n\ntemplate <typename S> struct lazy_segtree\
+    \ {\n    using V = typename S::val_t;\n    using F = typename S::fn_t;\n    int\
+    \ n, size, log;\n    vector<V> val;\n    vector<F> lazy;\n    lazy_segtree(int\
     \ n) : lazy_segtree(vector(n, S::e())) {}\n    lazy_segtree(const vector<V> &src)\
     \ : n(src.size()) {\n        for (size = 1, log = 0; size < n; size <<= 1, ++log)\
     \ {}\n        val.resize(size << 1);\n        copy(all(src), val.begin() + size);\n\
@@ -310,7 +310,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.3.test.cpp

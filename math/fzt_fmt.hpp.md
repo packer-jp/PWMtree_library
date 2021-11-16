@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -112,16 +112,16 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/fzt_fmt.hpp\"\n\ntemplate <typename T> void fzt_super(vector<T>\
-    \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
-    \ s : rep(a.size())) {\n            if ((s >> i) & 1) a[s ^ bit(i)] += a[s];\n\
-    \        }\n    }\n}\n\ntemplate <typename T> void fzt_sub(vector<T> &a) {\n \
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/fzt_fmt.hpp\"\n\ntemplate <typename T> void fzt_super(vector<T> &a) {\n \
     \   for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int s : rep(a.size()))\
-    \ {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] += a[s];\n        }\n    }\n\
-    }\n\ntemplate <typename T> void fmt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
-    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1)\
-    \ a[s ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fmt_sub(vector<T>\
+    \ {\n            if ((s >> i) & 1) a[s ^ bit(i)] += a[s];\n        }\n    }\n\
+    }\n\ntemplate <typename T> void fzt_sub(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size())\
+    \ - 1)) {\n        for (int s : rep(a.size())) {\n            if (!((s >> i) &\
+    \ 1)) a[s ^ bit(i)] += a[s];\n        }\n    }\n}\n\ntemplate <typename T> void\
+    \ fmt_super(vector<T> &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1))\
+    \ {\n        for (int s : rep(a.size())) {\n            if ((s >> i) & 1) a[s\
+    \ ^ bit(i)] -= a[s];\n        }\n    }\n}\n\ntemplate <typename T> void fmt_sub(vector<T>\
     \ &a) {\n    for (int i : rep(__builtin_ffs(a.size()) - 1)) {\n        for (int\
     \ s : rep(a.size())) {\n            if (!((s >> i) & 1)) a[s ^ bit(i)] -= a[s];\n\
     \        }\n    }\n}\n"
@@ -144,7 +144,7 @@ data:
   requiredBy:
   - math/and_or_convolution.hpp
   - math/subset_convolution.hpp
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.u-aizu.ac.jp/Enumeration.0.test.cpp

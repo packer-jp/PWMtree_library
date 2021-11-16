@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -163,22 +163,22 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007> struct modint\
-    \ {\n    ll val;\n    modint(ll val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val)\
-    \ % MOD) % MOD) {}\n    static ll mod() { return MOD; }\n    modint inv() const\
-    \ {\n        ll a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n\
-    \            t = a / b;\n            swap(a -= t * b, b);\n            swap(u\
-    \ -= t * v, v);\n        }\n        return modint(u);\n    }\n    modint pow(ll\
-    \ k) const {\n        modint ret = 1, mul = val;\n        while (k) {\n      \
-    \      if (k & 1) ret *= mul;\n            mul *= mul;\n            k >>= 1;\n\
-    \        }\n        return ret;\n    }\n    modint &operator+=(const modint &a)\
-    \ {\n        if ((val += a.val) >= MOD) val -= MOD;\n        return *this;\n \
-    \   }\n    modint &operator-=(const modint &a) {\n        if ((val += MOD - a.val)\
-    \ >= MOD) val -= MOD;\n        return *this;\n    }\n    modint &operator*=(const\
-    \ modint &a) {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n\
-    \    modint &operator/=(const modint &a) { return *this *= a.inv(); }\n    modint\
-    \ operator+() const { return *this; }\n    modint operator-() const { return modint(-val);\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/modint.hpp\"\n\ntemplate <ll MOD = 1000000007> struct modint {\n    ll val;\n\
+    \    modint(ll val = 0) : val(val >= 0 ? val % MOD : (MOD - (-val) % MOD) % MOD)\
+    \ {}\n    static ll mod() { return MOD; }\n    modint inv() const {\n        ll\
+    \ a = val, b = MOD, u = 1, v = 0, t;\n        while (b > 0) {\n            t =\
+    \ a / b;\n            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n\
+    \        }\n        return modint(u);\n    }\n    modint pow(ll k) const {\n \
+    \       modint ret = 1, mul = val;\n        while (k) {\n            if (k & 1)\
+    \ ret *= mul;\n            mul *= mul;\n            k >>= 1;\n        }\n    \
+    \    return ret;\n    }\n    modint &operator+=(const modint &a) {\n        if\
+    \ ((val += a.val) >= MOD) val -= MOD;\n        return *this;\n    }\n    modint\
+    \ &operator-=(const modint &a) {\n        if ((val += MOD - a.val) >= MOD) val\
+    \ -= MOD;\n        return *this;\n    }\n    modint &operator*=(const modint &a)\
+    \ {\n        (val *= a.val) %= MOD;\n        return *this;\n    }\n    modint\
+    \ &operator/=(const modint &a) { return *this *= a.inv(); }\n    modint operator+()\
+    \ const { return *this; }\n    modint operator-() const { return modint(-val);\
     \ }\n    friend bool operator==(const modint &a, const modint &b) { return a.val\
     \ == b.val; }\n    friend bool operator!=(const modint &a, const modint &b) {\
     \ return rel_ops::operator!=(a, b); }\n    friend modint operator+(const modint\
@@ -224,7 +224,7 @@ data:
   - math/bostan_mori.hpp
   - math/kth_of_lrs.hpp
   - data_structure/lazy_segtree.hpp
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.2.test.cpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
     title: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/cht.hpp\"\n\n#line 1 \"template.hpp\"\n#include\
@@ -97,13 +97,13 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"data_structure/cht.hpp\"\n\ntemplate <typename S, bool MIN> struct\
-    \ cht {\n    using V = typename S::val_t;\n    struct line {\n        mutable\
-    \ V a, b, l, r;\n        bool operator<(const line &o) const { return a < o.a;\
-    \ };\n        bool operator<(V x) const { return r < x; };\n    };\n    set<line,\
-    \ less<>> lines;\n    void add(V a, V b) {\n        if (MIN) a = -a, b = -b;\n\
-    \        line cur = {a, b, -S::inf(), S::inf()};\n        auto p = lines.lower_bound(cur);\n\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    data_structure/cht.hpp\"\n\ntemplate <typename S, bool MIN> struct cht {\n   \
+    \ using V = typename S::val_t;\n    struct line {\n        mutable V a, b, l,\
+    \ r;\n        bool operator<(const line &o) const { return a < o.a; };\n     \
+    \   bool operator<(V x) const { return r < x; };\n    };\n    set<line, less<>>\
+    \ lines;\n    void add(V a, V b) {\n        if (MIN) a = -a, b = -b;\n       \
+    \ line cur = {a, b, -S::inf(), S::inf()};\n        auto p = lines.lower_bound(cur);\n\
     \        if (p != lines.end() && p->a == a) {\n            if (p->b > b) {\n \
     \               return;\n            } else {\n                p = lines.erase(p);\n\
     \            }\n        }\n        auto fi = [](const line &s, const line &t)\
@@ -157,8 +157,8 @@ data:
   isVerificationFile: false
   path: data_structure/cht.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-11-16 21:52:32+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
 documentation_of: data_structure/cht.hpp

@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: math/permutation.hpp
     title: "\u9806\u5217"
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -101,12 +101,12 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/permutation.hpp\"\n\nstruct permutation {\n    vector<int>\
-    \ data;\n    permutation(int n) : data(n) { iota(all(data), 0); }\n    permutation(const\
-    \ vector<int> &src) : data(src) {}\n    int size() const { return data.size();\
-    \ }\n    static permutation id(int n) {\n        vector<int> ret(n);\n       \
-    \ iota(all(ret), 0);\n        return ret;\n    }\n    bool next() { return next_permutation(all(data));\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/permutation.hpp\"\n\nstruct permutation {\n    vector<int> data;\n    permutation(int\
+    \ n) : data(n) { iota(all(data), 0); }\n    permutation(const vector<int> &src)\
+    \ : data(src) {}\n    int size() const { return data.size(); }\n    static permutation\
+    \ id(int n) {\n        vector<int> ret(n);\n        iota(all(ret), 0);\n     \
+    \   return ret;\n    }\n    bool next() { return next_permutation(all(data));\
     \ }\n    bool prev() { return prev_permutation(all(data)); }\n    int operator[](int\
     \ i) const { return data[i]; }\n    permutation &operator*=(const permutation\
     \ &a) {\n        vector<int> tmp(data);\n        for (int i : rep(size())) data[i]\
@@ -153,7 +153,7 @@ data:
   isVerificationFile: true
   path: test/unit/permutation.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/unit/permutation.test.cpp

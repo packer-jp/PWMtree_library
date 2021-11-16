@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -97,39 +97,39 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"util/dynamic_bitset.hpp\"\n\nstruct dynamic_bitset {\n    using\
-    \ db = dynamic_bitset;\n    vector<ull> val;\n    struct ref {\n        ull &p;\n\
-    \        int i;\n        ref(ull &p, int i) : p(p), i(i) {}\n        ref &operator=(bool\
-    \ a) {\n            if (a) {\n                p |= bit(i);\n            } else\n\
-    \                p &= ~bit(i);\n            return *this;\n        }\n       \
-    \ ref &operator=(const ref &a) { return *this = a; }\n        operator bool()\
-    \ const { return (p & bit(i)) != 0; }\n        bool operator~() const { return\
-    \ !*this; }\n        ref &flip() {\n            p ^= bit(i);\n            return\
-    \ *this;\n        }\n    };\n    ref operator[](int i) {\n        if (val.size()\
-    \ <= i >> 4) val.resize((i >> 4) + 1);\n        return {val[i >> 4], i & 63};\n\
-    \    }\n    db &operator&=(const db &a) {\n        if (a.val.size() < val.size())\
-    \ val.resize(a.val.size());\n        for (int i : rep(a.val.size())) val[i] &=\
-    \ a.val[i];\n        return *this;\n    }\n    db &operator|=(const db &a) {\n\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    util/dynamic_bitset.hpp\"\n\nstruct dynamic_bitset {\n    using db = dynamic_bitset;\n\
+    \    vector<ull> val;\n    struct ref {\n        ull &p;\n        int i;\n   \
+    \     ref(ull &p, int i) : p(p), i(i) {}\n        ref &operator=(bool a) {\n \
+    \           if (a) {\n                p |= bit(i);\n            } else\n     \
+    \           p &= ~bit(i);\n            return *this;\n        }\n        ref &operator=(const\
+    \ ref &a) { return *this = a; }\n        operator bool() const { return (p & bit(i))\
+    \ != 0; }\n        bool operator~() const { return !*this; }\n        ref &flip()\
+    \ {\n            p ^= bit(i);\n            return *this;\n        }\n    };\n\
+    \    ref operator[](int i) {\n        if (val.size() <= i >> 4) val.resize((i\
+    \ >> 4) + 1);\n        return {val[i >> 4], i & 63};\n    }\n    db &operator&=(const\
+    \ db &a) {\n        if (a.val.size() < val.size()) val.resize(a.val.size());\n\
+    \        for (int i : rep(a.val.size())) val[i] &= a.val[i];\n        return *this;\n\
+    \    }\n    db &operator|=(const db &a) {\n        if (a.val.size() > val.size())\
+    \ val.resize(a.val.size());\n        for (int i : rep(a.val.size())) val[i] |=\
+    \ a.val[i];\n        return *this;\n    }\n    db &operator^=(const db &a) {\n\
     \        if (a.val.size() > val.size()) val.resize(a.val.size());\n        for\
-    \ (int i : rep(a.val.size())) val[i] |= a.val[i];\n        return *this;\n   \
-    \ }\n    db &operator^=(const db &a) {\n        if (a.val.size() > val.size())\
-    \ val.resize(a.val.size());\n        for (int i : rep(a.val.size())) val[i] ^=\
-    \ a.val[i];\n        return *this;\n    }\n    int count() const {\n        int\
-    \ ret = 0;\n        for (ull p : val) ret += __builtin_popcountll(p);\n      \
-    \  return ret;\n    }\n    friend bool operator==(const db &a, const db &b) {\
-    \ return (a ^ b).count() == 0; }\n    friend bool operator!=(const db &a, const\
-    \ db &b) { return rel_ops::operator!=(a, b); }\n    friend bool operator<(const\
-    \ db &a, const db &b) {\n        for (int i : per(max(a.val.size(), b.val.size())))\
-    \ {\n            ull pa = i < a.val.size() ? a.val[i] : 0;\n            ull pb\
-    \ = i < b.val.size() ? b.val[i] : 0;\n            if (pa < pb) return true;\n\
-    \            if (pa > pb) return false;\n        }\n        return false;\n  \
-    \  }\n    friend bool operator>(const db &a, const db &b) { return rel_ops::operator>(a,\
-    \ b); }\n    friend bool operator<=(const db &a, const db &b) { return rel_ops::operator<=(a,\
-    \ b); }\n    friend bool operator>=(const db &a, const db &b) { return rel_ops::operator>=(a,\
-    \ b); }\n    friend db operator&(const db &a, const db &b) { return db(a) &= b;\
-    \ }\n    friend db operator|(const db &a, const db &b) { return db(a) |= b; }\n\
-    \    friend db operator^(const db &a, const db &b) { return db(a) ^= b; }\n};\n"
+    \ (int i : rep(a.val.size())) val[i] ^= a.val[i];\n        return *this;\n   \
+    \ }\n    int count() const {\n        int ret = 0;\n        for (ull p : val)\
+    \ ret += __builtin_popcountll(p);\n        return ret;\n    }\n    friend bool\
+    \ operator==(const db &a, const db &b) { return (a ^ b).count() == 0; }\n    friend\
+    \ bool operator!=(const db &a, const db &b) { return rel_ops::operator!=(a, b);\
+    \ }\n    friend bool operator<(const db &a, const db &b) {\n        for (int i\
+    \ : per(max(a.val.size(), b.val.size()))) {\n            ull pa = i < a.val.size()\
+    \ ? a.val[i] : 0;\n            ull pb = i < b.val.size() ? b.val[i] : 0;\n   \
+    \         if (pa < pb) return true;\n            if (pa > pb) return false;\n\
+    \        }\n        return false;\n    }\n    friend bool operator>(const db &a,\
+    \ const db &b) { return rel_ops::operator>(a, b); }\n    friend bool operator<=(const\
+    \ db &a, const db &b) { return rel_ops::operator<=(a, b); }\n    friend bool operator>=(const\
+    \ db &a, const db &b) { return rel_ops::operator>=(a, b); }\n    friend db operator&(const\
+    \ db &a, const db &b) { return db(a) &= b; }\n    friend db operator|(const db\
+    \ &a, const db &b) { return db(a) |= b; }\n    friend db operator^(const db &a,\
+    \ const db &b) { return db(a) ^= b; }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct dynamic_bitset {\n\
     \    using db = dynamic_bitset;\n    vector<ull> val;\n    struct ref {\n    \
     \    ull &p;\n        int i;\n        ref(ull &p, int i) : p(p), i(i) {}\n   \
@@ -168,7 +168,7 @@ data:
   path: util/dynamic_bitset.hpp
   requiredBy:
   - graph/offline_dag_reachability.hpp
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: util/dynamic_bitset.hpp

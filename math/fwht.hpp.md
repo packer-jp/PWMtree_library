@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -100,14 +100,14 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/fwht.hpp\"\n\ntemplate <typename T> void fwht(vector<T> &a)\
-    \ {\n    int n = a.size();\n    for (int i = 1; i < n; i <<= 1) {\n        for\
-    \ (int j = 0; j < n; j += i << 1) {\n            for (int k : rep(i)) {\n    \
-    \            T p = a[0 + j + k], q = a[i + j + k];\n                a[0 + j +\
-    \ k] = p + q;\n                a[i + j + k] = p - q;\n            }\n        }\n\
-    \    }\n}\n\ntemplate <typename T> void ifwht(vector<T> &a) {\n    fwht(a);\n\
-    \    T ninv = T(1) / a.size();\n    for (T &ai : a) ai *= ninv;\n}\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/fwht.hpp\"\n\ntemplate <typename T> void fwht(vector<T> &a) {\n    int n\
+    \ = a.size();\n    for (int i = 1; i < n; i <<= 1) {\n        for (int j = 0;\
+    \ j < n; j += i << 1) {\n            for (int k : rep(i)) {\n                T\
+    \ p = a[0 + j + k], q = a[i + j + k];\n                a[0 + j + k] = p + q;\n\
+    \                a[i + j + k] = p - q;\n            }\n        }\n    }\n}\n\n\
+    template <typename T> void ifwht(vector<T> &a) {\n    fwht(a);\n    T ninv = T(1)\
+    \ / a.size();\n    for (T &ai : a) ai *= ninv;\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> void\
     \ fwht(vector<T> &a) {\n    int n = a.size();\n    for (int i = 1; i < n; i <<=\
     \ 1) {\n        for (int j = 0; j < n; j += i << 1) {\n            for (int k\
@@ -122,7 +122,7 @@ data:
   path: math/fwht.hpp
   requiredBy:
   - math/xor_convolution.hpp
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Bitwise_Xor_Convolution.0.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -97,39 +97,39 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/matrix.hpp\"\n\ntemplate <typename S> struct matrix {\n \
-    \   using V = typename S::val_t;\n    vector<vector<V>> val;\n    matrix(int n,\
-    \ int m) : matrix(vector(n, vector(m, S::zero()))) {}\n    matrix(const vector<vector<V>>\
-    \ &src) : val(src) {}\n    vector<V> &operator[](int i) { return val[i]; }\n \
-    \   const vector<V> &operator[](int i) const { return val[i]; }\n    int height()\
-    \ const { return val.size(); }\n    int width() const { return val[0].size();\
-    \ }\n    static matrix id(int n) {\n        matrix ret(n, n);\n        for (int\
-    \ i : rep(n)) ret[i][i] = S::one();\n        return ret;\n    }\n    void row_add(int\
-    \ i, int j, V a) {\n        for (int k : rep(width())) { val[i][k] += val[j][k]\
-    \ * a; }\n    }\n    bool place_nonzero(int i, int j) {\n        for (int k :\
-    \ rep(i, height())) {\n            if (val[k][j] != S::zero()) {\n           \
-    \     if (k > i) row_add(i, k, S::one());\n                break;\n          \
-    \  }\n        }\n        return val[i][j] != S::zero();\n    }\n    matrix upper_triangular()\
-    \ const {\n        matrix ret(*this);\n        for (int i = 0, j = 0; i < height()\
-    \ && j < width(); j++) {\n            if (!ret.place_nonzero(i, j)) continue;\n\
-    \            for (int k : rep(i + 1, height())) ret.row_add(k, i, -ret[k][j] /\
-    \ ret[i][j]);\n            i++;\n        }\n        return ret;\n    }\n    V\
-    \ det() const {\n        V ret = S::one();\n        matrix ut = upper_triangular();\n\
-    \        for (int i : rep(height())) ret *= ut[i][i];\n        return ret;\n \
-    \   }\n    matrix inv() const {\n        matrix ex(height(), width() << 1);\n\
-    \        for (int i : rep(height())) {\n            for (int j : rep(width()))\
-    \ { ex[i][j] = val[i][j]; }\n        }\n        for (int i : rep(height())) ex[i][width()\
-    \ + i] = S::one();\n        matrix ut = ex.upper_triangular();\n        for (int\
-    \ i : per(height())) {\n            ut.row_add(i, i, S::one() / ut[i][i] - S::one());\n\
-    \            for (int j : rep(i)) ut.row_add(j, i, -ut[j][i] / ut[i][i]);\n  \
-    \      }\n        matrix ret(height(), width());\n        for (int i : rep(height()))\
-    \ {\n            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j];\
-    \ }\n        }\n        return ret;\n    }\n    matrix pow(ll k) const {\n   \
-    \     matrix ret = matrix::id(height()), mul(*this);\n        while (k) {\n  \
-    \          if (k & 1) ret *= mul;\n            mul *= mul;\n            k >>=\
-    \ 1;\n        }\n        return ret;\n    }\n    matrix &operator+=(const matrix\
-    \ &a) {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/matrix.hpp\"\n\ntemplate <typename S> struct matrix {\n    using V = typename\
+    \ S::val_t;\n    vector<vector<V>> val;\n    matrix(int n, int m) : matrix(vector(n,\
+    \ vector(m, S::zero()))) {}\n    matrix(const vector<vector<V>> &src) : val(src)\
+    \ {}\n    vector<V> &operator[](int i) { return val[i]; }\n    const vector<V>\
+    \ &operator[](int i) const { return val[i]; }\n    int height() const { return\
+    \ val.size(); }\n    int width() const { return val[0].size(); }\n    static matrix\
+    \ id(int n) {\n        matrix ret(n, n);\n        for (int i : rep(n)) ret[i][i]\
+    \ = S::one();\n        return ret;\n    }\n    void row_add(int i, int j, V a)\
+    \ {\n        for (int k : rep(width())) { val[i][k] += val[j][k] * a; }\n    }\n\
+    \    bool place_nonzero(int i, int j) {\n        for (int k : rep(i, height()))\
+    \ {\n            if (val[k][j] != S::zero()) {\n                if (k > i) row_add(i,\
+    \ k, S::one());\n                break;\n            }\n        }\n        return\
+    \ val[i][j] != S::zero();\n    }\n    matrix upper_triangular() const {\n    \
+    \    matrix ret(*this);\n        for (int i = 0, j = 0; i < height() && j < width();\
+    \ j++) {\n            if (!ret.place_nonzero(i, j)) continue;\n            for\
+    \ (int k : rep(i + 1, height())) ret.row_add(k, i, -ret[k][j] / ret[i][j]);\n\
+    \            i++;\n        }\n        return ret;\n    }\n    V det() const {\n\
+    \        V ret = S::one();\n        matrix ut = upper_triangular();\n        for\
+    \ (int i : rep(height())) ret *= ut[i][i];\n        return ret;\n    }\n    matrix\
+    \ inv() const {\n        matrix ex(height(), width() << 1);\n        for (int\
+    \ i : rep(height())) {\n            for (int j : rep(width())) { ex[i][j] = val[i][j];\
+    \ }\n        }\n        for (int i : rep(height())) ex[i][width() + i] = S::one();\n\
+    \        matrix ut = ex.upper_triangular();\n        for (int i : per(height()))\
+    \ {\n            ut.row_add(i, i, S::one() / ut[i][i] - S::one());\n         \
+    \   for (int j : rep(i)) ut.row_add(j, i, -ut[j][i] / ut[i][i]);\n        }\n\
+    \        matrix ret(height(), width());\n        for (int i : rep(height())) {\n\
+    \            for (int j : rep(width())) { ret[i][j] = ut[i][width() + j]; }\n\
+    \        }\n        return ret;\n    }\n    matrix pow(ll k) const {\n       \
+    \ matrix ret = matrix::id(height()), mul(*this);\n        while (k) {\n      \
+    \      if (k & 1) ret *= mul;\n            mul *= mul;\n            k >>= 1;\n\
+    \        }\n        return ret;\n    }\n    matrix &operator+=(const matrix &a)\
+    \ {\n        for (int i : rep(height())) {\n            for (int j : rep(width()))\
     \ { val[i][j] += a[i][j]; }\n        }\n        return *this;\n    }\n    matrix\
     \ &operator-=(const matrix &a) {\n        for (int i : rep(height())) {\n    \
     \        for (int j : rep(width())) { val[i][j] -= a[i][j]; }\n        }\n   \
@@ -211,7 +211,7 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp

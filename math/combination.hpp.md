@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -94,17 +94,16 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/combination.hpp\"\n\ntemplate <typename mint> struct combination\
-    \ {\n    vector<mint> fact, finv, inv;\n    combination(int n) : fact(n + 1),\
-    \ finv(n + 1), inv(n + 1) {\n        fact[0] = fact[1] = finv[0] = finv[1] = inv[1]\
-    \ = 1;\n        for (int i : rep(2, n + 1)) {\n            fact[i] = fact[i -\
-    \ 1] * i;\n            inv[i] = -inv[mint::mod() % i] * (mint::mod() / i);\n \
-    \           finv[i] = finv[i - 1] * inv[i];\n        }\n    }\n    mint P(int\
-    \ n, int r) { return r < 0 || n < r ? 0 : (fact[n] * finv[n - r]); }\n    mint\
-    \ C(int n, int r) { return P(n, r) * finv[r]; }\n    mint H(int n, int r) { return\
-    \ C(n + r - 1, r); }\n    mint catalan(int n) { return C(2 * n, n) / (n + 1);\
-    \ }\n};\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/combination.hpp\"\n\ntemplate <typename mint> struct combination {\n    vector<mint>\
+    \ fact, finv, inv;\n    combination(int n) : fact(n + 1), finv(n + 1), inv(n +\
+    \ 1) {\n        fact[0] = fact[1] = finv[0] = finv[1] = inv[1] = 1;\n        for\
+    \ (int i : rep(2, n + 1)) {\n            fact[i] = fact[i - 1] * i;\n        \
+    \    inv[i] = -inv[mint::mod() % i] * (mint::mod() / i);\n            finv[i]\
+    \ = finv[i - 1] * inv[i];\n        }\n    }\n    mint P(int n, int r) { return\
+    \ r < 0 || n < r ? 0 : (fact[n] * finv[n - r]); }\n    mint C(int n, int r) {\
+    \ return P(n, r) * finv[r]; }\n    mint H(int n, int r) { return C(n + r - 1,\
+    \ r); }\n    mint catalan(int n) { return C(2 * n, n) / (n + 1); }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename mint>\
     \ struct combination {\n    vector<mint> fact, finv, inv;\n    combination(int\
     \ n) : fact(n + 1), finv(n + 1), inv(n + 1) {\n        fact[0] = fact[1] = finv[0]\
@@ -120,7 +119,7 @@ data:
   isVerificationFile: false
   path: math/combination.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/combination.hpp

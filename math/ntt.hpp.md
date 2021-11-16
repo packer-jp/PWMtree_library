@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -130,18 +130,18 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/ntt.hpp\"\n\ntemplate <typename mint> void ntt(vector<mint>\
-    \ &a, bool inv = false) {\n    int n = a.size(), m = n >> 1;\n    mint root =\
-    \ 2;\n    while (root.pow((mint::mod() - 1) >> 1) == 1) root += 1;\n    mint wn\
-    \ = root.pow((mint::mod() - 1) / n);\n    if (inv) wn = wn.inv();\n    vector<mint>\
-    \ b(n);\n    for (int i = 1; i < n; i <<= 1, wn *= wn, swap(a, b)) {\n       \
-    \ mint wj = 1;\n        for (int j = 0; j < m; j += i, wj *= wn) {\n         \
-    \   for (int k : rep(i)) {\n                b[0 + (j << 1) + k] = (a[0 + j + k]\
-    \ + a[m + j + k]);\n                b[i + (j << 1) + k] = (a[0 + j + k] - a[m\
-    \ + j + k]) * wj;\n            }\n        }\n    }\n    if (inv) {\n        mint\
-    \ ninv = mint(n).inv();\n        for (mint &ai : a) ai *= ninv;\n    }\n}\ntemplate\
-    \ <typename mint> void intt(vector<mint> &a) { ntt(a, true); }\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/ntt.hpp\"\n\ntemplate <typename mint> void ntt(vector<mint> &a, bool inv\
+    \ = false) {\n    int n = a.size(), m = n >> 1;\n    mint root = 2;\n    while\
+    \ (root.pow((mint::mod() - 1) >> 1) == 1) root += 1;\n    mint wn = root.pow((mint::mod()\
+    \ - 1) / n);\n    if (inv) wn = wn.inv();\n    vector<mint> b(n);\n    for (int\
+    \ i = 1; i < n; i <<= 1, wn *= wn, swap(a, b)) {\n        mint wj = 1;\n     \
+    \   for (int j = 0; j < m; j += i, wj *= wn) {\n            for (int k : rep(i))\
+    \ {\n                b[0 + (j << 1) + k] = (a[0 + j + k] + a[m + j + k]);\n  \
+    \              b[i + (j << 1) + k] = (a[0 + j + k] - a[m + j + k]) * wj;\n   \
+    \         }\n        }\n    }\n    if (inv) {\n        mint ninv = mint(n).inv();\n\
+    \        for (mint &ai : a) ai *= ninv;\n    }\n}\ntemplate <typename mint> void\
+    \ intt(vector<mint> &a) { ntt(a, true); }\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename mint>\
     \ void ntt(vector<mint> &a, bool inv = false) {\n    int n = a.size(), m = n >>\
     \ 1;\n    mint root = 2;\n    while (root.pow((mint::mod() - 1) >> 1) == 1) root\
@@ -164,7 +164,7 @@ data:
   - math/convolution.hpp
   - math/bostan_mori.hpp
   - math/kth_of_lrs.hpp
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy:
@@ -9,7 +9,7 @@ data:
     path: data_structure/persistent_uf.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A Union-Find Tree"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
     title: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/persistent_array.hpp\"\n\n#line 1 \"template.hpp\"\
@@ -103,22 +103,21 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"data_structure/persistent_array.hpp\"\n\ntemplate <typename T,\
-    \ int SHIFT> struct persistent_array {\n    using ptr = shared_ptr<persistent_array>;\n\
-    \    static constexpr int BASE = bit(SHIFT);\n    static constexpr int MASK =\
-    \ BASE - 1;\n    T val;\n    array<ptr, BASE> ch;\n    persistent_array(int n\
-    \ = 1, T val = T()) : val(val) {\n        for (int i : rep(BASE)) {\n        \
-    \    int m = (n >> SHIFT) + ((n & MASK) > i);\n            if (m > 1 || m > 0\
-    \ && i > 0) ch[i] = ptr(new persistent_array(m, val));\n        }\n    }\n   \
-    \ persistent_array(T val, const array<ptr, BASE> &ch) : val(val), ch(ch) {}\n\
-    \    persistent_array(T val, const array<ptr, BASE> &ch, int i, ptr chp) : val(val),\
-    \ ch(ch) { this->ch[i] = chp; }\n    T get(int i) const { return i > 0 ? ch[i\
-    \ & MASK]->get(i >> SHIFT) : val; }\n    ptr setp(int i, T val) const {\n    \
-    \    return ptr(i > 0 ? new persistent_array(this->val, ch, i & MASK, ch[i & MASK]->setp(i\
-    \ >> SHIFT, val))\n                         : new persistent_array(val, ch));\n\
-    \    }\n    persistent_array set(int i, T val) const { return *setp(i, val); }\n\
-    };\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    data_structure/persistent_array.hpp\"\n\ntemplate <typename T, int SHIFT> struct\
+    \ persistent_array {\n    using ptr = shared_ptr<persistent_array>;\n    static\
+    \ constexpr int BASE = bit(SHIFT);\n    static constexpr int MASK = BASE - 1;\n\
+    \    T val;\n    array<ptr, BASE> ch;\n    persistent_array(int n = 1, T val =\
+    \ T()) : val(val) {\n        for (int i : rep(BASE)) {\n            int m = (n\
+    \ >> SHIFT) + ((n & MASK) > i);\n            if (m > 1 || m > 0 && i > 0) ch[i]\
+    \ = ptr(new persistent_array(m, val));\n        }\n    }\n    persistent_array(T\
+    \ val, const array<ptr, BASE> &ch) : val(val), ch(ch) {}\n    persistent_array(T\
+    \ val, const array<ptr, BASE> &ch, int i, ptr chp) : val(val), ch(ch) { this->ch[i]\
+    \ = chp; }\n    T get(int i) const { return i > 0 ? ch[i & MASK]->get(i >> SHIFT)\
+    \ : val; }\n    ptr setp(int i, T val) const {\n        return ptr(i > 0 ? new\
+    \ persistent_array(this->val, ch, i & MASK, ch[i & MASK]->setp(i >> SHIFT, val))\n\
+    \                         : new persistent_array(val, ch));\n    }\n    persistent_array\
+    \ set(int i, T val) const { return *setp(i, val); }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T, int\
     \ SHIFT> struct persistent_array {\n    using ptr = shared_ptr<persistent_array>;\n\
     \    static constexpr int BASE = bit(SHIFT);\n    static constexpr int MASK =\
@@ -140,8 +139,8 @@ data:
   path: data_structure/persistent_array.hpp
   requiredBy:
   - data_structure/persistent_uf.hpp
-  timestamp: '2021-11-16 21:28:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-11-16 21:52:32+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/judge.yosupo.jp/Persistent_UnionFind.0.test.cpp
   - test/judge.yosupo.jp/Persistent_Queue.0.test.cpp

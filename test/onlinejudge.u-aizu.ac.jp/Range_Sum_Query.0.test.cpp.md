@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -102,14 +102,14 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"data_structure/fenwick_tree.hpp\"\n\ntemplate <typename T> struct\
-    \ fenwick_tree {\n    vector<T> data;\n    fenwick_tree(int n) : data(n + 1, T())\
-    \ {}\n    void add(int i, const T &x) {\n        for (++i; i < (int)data.size();\
-    \ i += i & -i) data[i] += x;\n    }\n    T sum(int i) const {\n        T ret =\
-    \ T();\n        for (; i > 0; i -= i & -i) ret += data[i];\n        return ret;\n\
-    \    }\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n\ntemplate\
-    \ <typename T> struct fenwick_tree_range {\n    fenwick_tree<T> ft;\n    fenwick_tree_range(int\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    data_structure/fenwick_tree.hpp\"\n\ntemplate <typename T> struct fenwick_tree\
+    \ {\n    vector<T> data;\n    fenwick_tree(int n) : data(n + 1, T()) {}\n    void\
+    \ add(int i, const T &x) {\n        for (++i; i < (int)data.size(); i += i & -i)\
+    \ data[i] += x;\n    }\n    T sum(int i) const {\n        T ret = T();\n     \
+    \   for (; i > 0; i -= i & -i) ret += data[i];\n        return ret;\n    }\n \
+    \   T sum(int l, int r) const { return sum(r) - sum(l); }\n};\n\ntemplate <typename\
+    \ T> struct fenwick_tree_range {\n    fenwick_tree<T> ft;\n    fenwick_tree_range(int\
     \ n) : ft(n) {}\n    void add(int l, int r, const T &x) { ft.add(l, x), ft.add(r,\
     \ -x); }\n    T get(int i) const { return ft.sum(i + 1); }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\
     \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp\"\nusing\
@@ -131,7 +131,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Range_Sum_Query.0.test.cpp

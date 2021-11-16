@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -94,16 +94,16 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"util/doubling.hpp\"\n\nstruct doubling {\n    int n;\n    vector<int>\
-    \ next;\n    vector<vector<int>> dst;\n    doubling(int n) : n(n), next(n + 1,\
-    \ n) {}\n    void set(int i, int j) { next[i] = ((j == -1) ? n : j); }\n    void\
-    \ build(ll t_max) {\n        dst.assign(64 - __builtin_clzll(t_max), next);\n\
-    \        for (int i : rep(dst.size() - 1)) {\n            for (int j : rep(n +\
-    \ 1)) dst[i + 1][j] = dst[i][dst[i][j]];\n        }\n    }\n    int get(int i,\
-    \ ll t) const {\n        if (i == -1) return -1;\n        for (int j : per(dst.size()))\
-    \ {\n            if ((t >> j) & 1) i = dst[j][i];\n        }\n        return i\
-    \ == n ? -1 : i;\n    }\n};\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    util/doubling.hpp\"\n\nstruct doubling {\n    int n;\n    vector<int> next;\n\
+    \    vector<vector<int>> dst;\n    doubling(int n) : n(n), next(n + 1, n) {}\n\
+    \    void set(int i, int j) { next[i] = ((j == -1) ? n : j); }\n    void build(ll\
+    \ t_max) {\n        dst.assign(64 - __builtin_clzll(t_max), next);\n        for\
+    \ (int i : rep(dst.size() - 1)) {\n            for (int j : rep(n + 1)) dst[i\
+    \ + 1][j] = dst[i][dst[i][j]];\n        }\n    }\n    int get(int i, ll t) const\
+    \ {\n        if (i == -1) return -1;\n        for (int j : per(dst.size())) {\n\
+    \            if ((t >> j) & 1) i = dst[j][i];\n        }\n        return i ==\
+    \ n ? -1 : i;\n    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct doubling {\n    int\
     \ n;\n    vector<int> next;\n    vector<vector<int>> dst;\n    doubling(int n)\
     \ : n(n), next(n + 1, n) {}\n    void set(int i, int j) { next[i] = ((j == -1)\
@@ -118,7 +118,7 @@ data:
   isVerificationFile: false
   path: util/doubling.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: util/doubling.hpp

@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: graph/spfa.hpp
     title: SPFA
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -102,24 +102,24 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"graph/spfa.hpp\"\n\ntemplate <typename S> struct spfa {\n    using\
-    \ D = typename S::dist_t;\n    using C = typename S::cost_t;\n    struct edge\
-    \ {\n        int to;\n        C cost;\n    };\n    vector<vector<edge>> g;\n \
-    \   spfa(int n) : g(n) {}\n    void add_edge(int from, int to, const C &cost)\
-    \ { g[from].push_back({to, cost}); }\n    pair<vector<D>, vector<int>> get(int\
-    \ s, const D &base = D()) const {\n        int n = g.size();\n        vector<D>\
-    \ dist(n, S::inf());\n        vector<int> prev(n, -1), time(n);\n        vector<bool>\
-    \ inq(n);\n        queue<int> q;\n        q.push(s);\n        dist[s] = base;\n\
-    \        ++time[s];\n        while (!q.empty()) {\n            int from = q.front();\n\
-    \            q.pop();\n            inq[from] = false;\n            for (auto [to,\
-    \ cost] : g[from]) {\n                if (chmin(dist[to], dist[from] + cost))\
-    \ {\n                    prev[to] = from;\n                    if (!inq[to]) {\n\
-    \                        if (++time[to] >= n) return {{}, {}};\n             \
-    \           q.push(to);\n                        inq[to] = true;\n           \
-    \         }\n                }\n            }\n        }\n        return {dist,\
-    \ prev};\n    }\n};\n\nstruct ll_spfa {\n    using dist_t = ll;\n    using cost_t\
-    \ = ll;\n    static dist_t inf() { return LLONG_MAX; }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp\"\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    graph/spfa.hpp\"\n\ntemplate <typename S> struct spfa {\n    using D = typename\
+    \ S::dist_t;\n    using C = typename S::cost_t;\n    struct edge {\n        int\
+    \ to;\n        C cost;\n    };\n    vector<vector<edge>> g;\n    spfa(int n) :\
+    \ g(n) {}\n    void add_edge(int from, int to, const C &cost) { g[from].push_back({to,\
+    \ cost}); }\n    pair<vector<D>, vector<int>> get(int s, const D &base = D())\
+    \ const {\n        int n = g.size();\n        vector<D> dist(n, S::inf());\n \
+    \       vector<int> prev(n, -1), time(n);\n        vector<bool> inq(n);\n    \
+    \    queue<int> q;\n        q.push(s);\n        dist[s] = base;\n        ++time[s];\n\
+    \        while (!q.empty()) {\n            int from = q.front();\n           \
+    \ q.pop();\n            inq[from] = false;\n            for (auto [to, cost] :\
+    \ g[from]) {\n                if (chmin(dist[to], dist[from] + cost)) {\n    \
+    \                prev[to] = from;\n                    if (!inq[to]) {\n     \
+    \                   if (++time[to] >= n) return {{}, {}};\n                  \
+    \      q.push(to);\n                        inq[to] = true;\n                \
+    \    }\n                }\n            }\n        }\n        return {dist, prev};\n\
+    \    }\n};\n\nstruct ll_spfa {\n    using dist_t = ll;\n    using cost_t = ll;\n\
+    \    static dist_t inf() { return LLONG_MAX; }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp\"\
     \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp\"\
     \nusing namespace std;\n\nint main() {\n    ll v, e, r;\n    cin >> v >> e >>\
     \ r;\n    spfa<ll_spfa> spfa(v);\n    while (e--) {\n        ll s, t, d;\n   \
@@ -143,7 +143,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Single_Source_Shortest_Path_Negative_Edges.0.test.cpp

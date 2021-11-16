@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -94,21 +94,20 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"graph/oibfs.hpp\"\n\nstruct oibfs {\n    struct edge {\n     \
-    \   int to, cost;\n    };\n    vector<vector<edge>> g;\n    oibfs(int n) : g(n)\
-    \ {}\n    void add_edge(int from, int to, int cost) { g[from].push_back({to, cost});\
-    \ }\n    pair<vector<int>, vector<int>> get(int s) const {\n        vector<int>\
-    \ dist(g.size(), INT_MAX), prev(g.size(), -1);\n        using P = pair<int, int>;\n\
-    \        deque<P> deq;\n        dist[s] = 0;\n        deq.emplace_front(0, s);\n\
-    \        while (!deq.empty()) {\n            auto [d, from] = deq.front();\n \
-    \           deq.pop_front();\n            if (dist[from] < d) continue;\n    \
-    \        for (auto [to, cost] : g[from]) {\n                int nd = dist[from]\
-    \ + cost;\n                if (nd < dist[to]) {\n                    dist[to]\
-    \ = nd;\n                    prev[to] = from;\n                    if (cost ==\
-    \ 0) deq.emplace_front(nd, to);\n                    if (cost == 1) deq.emplace_back(nd,\
-    \ to);\n                }\n            }\n        }\n        return {dist, prev};\n\
-    \    }\n};\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    graph/oibfs.hpp\"\n\nstruct oibfs {\n    struct edge {\n        int to, cost;\n\
+    \    };\n    vector<vector<edge>> g;\n    oibfs(int n) : g(n) {}\n    void add_edge(int\
+    \ from, int to, int cost) { g[from].push_back({to, cost}); }\n    pair<vector<int>,\
+    \ vector<int>> get(int s) const {\n        vector<int> dist(g.size(), INT_MAX),\
+    \ prev(g.size(), -1);\n        using P = pair<int, int>;\n        deque<P> deq;\n\
+    \        dist[s] = 0;\n        deq.emplace_front(0, s);\n        while (!deq.empty())\
+    \ {\n            auto [d, from] = deq.front();\n            deq.pop_front();\n\
+    \            if (dist[from] < d) continue;\n            for (auto [to, cost] :\
+    \ g[from]) {\n                int nd = dist[from] + cost;\n                if\
+    \ (nd < dist[to]) {\n                    dist[to] = nd;\n                    prev[to]\
+    \ = from;\n                    if (cost == 0) deq.emplace_front(nd, to);\n   \
+    \                 if (cost == 1) deq.emplace_back(nd, to);\n                }\n\
+    \            }\n        }\n        return {dist, prev};\n    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct oibfs {\n    struct\
     \ edge {\n        int to, cost;\n    };\n    vector<vector<edge>> g;\n    oibfs(int\
     \ n) : g(n) {}\n    void add_edge(int from, int to, int cost) { g[from].push_back({to,\
@@ -128,7 +127,7 @@ data:
   isVerificationFile: false
   path: graph/oibfs.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/oibfs.hpp

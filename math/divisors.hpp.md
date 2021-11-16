@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -94,12 +94,12 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/divisors.hpp\"\n\ntemplate <typename T> vector<T> divisors(T\
-    \ n) {\n    vector<T> ret;\n    T i;\n    for (i = 1; i * i < n; ++i) {\n    \
-    \    if (n % i == 0) {\n            ret.push_back(i);\n            ret.push_back(n\
-    \ / i);\n        }\n    }\n    if (i * i == n) ret.push_back(i);\n    sort(all(ret));\n\
-    \    return ret;\n}\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/divisors.hpp\"\n\ntemplate <typename T> vector<T> divisors(T n) {\n    vector<T>\
+    \ ret;\n    T i;\n    for (i = 1; i * i < n; ++i) {\n        if (n % i == 0) {\n\
+    \            ret.push_back(i);\n            ret.push_back(n / i);\n        }\n\
+    \    }\n    if (i * i == n) ret.push_back(i);\n    sort(all(ret));\n    return\
+    \ ret;\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> vector<T>\
     \ divisors(T n) {\n    vector<T> ret;\n    T i;\n    for (i = 1; i * i < n; ++i)\
     \ {\n        if (n % i == 0) {\n            ret.push_back(i);\n            ret.push_back(n\
@@ -110,7 +110,7 @@ data:
   isVerificationFile: false
   path: math/divisors.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/divisors.hpp

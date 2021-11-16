@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/modlog.hpp
     title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C"
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -102,11 +102,11 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"math/modlog.hpp\"\n\nll modlog(ll a, ll b, ll m) {\n    a = safemod(a,\
-    \ m), b = safemod(b, m);\n    ll t = 1, c;\n    for (c = 1; bit(c) < m; ++c) {\n\
-    \        (t *= a) %= m;\n        if (t == b) return c;\n    }\n    ll g = gcd(t,\
-    \ m);\n    if (b % g != 0) return -1;\n    t /= g, b /= g, m /= g;\n    unordered_map<ll,\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    math/modlog.hpp\"\n\nll modlog(ll a, ll b, ll m) {\n    a = safemod(a, m), b =\
+    \ safemod(b, m);\n    ll t = 1, c;\n    for (c = 1; bit(c) < m; ++c) {\n     \
+    \   (t *= a) %= m;\n        if (t == b) return c;\n    }\n    ll g = gcd(t, m);\n\
+    \    if (b % g != 0) return -1;\n    t /= g, b /= g, m /= g;\n    unordered_map<ll,\
     \ ll> bs;\n    ll r, gs = 1;\n    for (r = 0; r * r < m; ++r) {\n        bs[(gs\
     \ * b) % m] = r;\n        (gs *= a) %= m;\n    }\n    for (ll i : rep(1, r + 1))\
     \ {\n        (t *= gs) %= m;\n        if (bs.count(t)) return r * i - bs[t] +\
@@ -126,8 +126,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-11-16 21:52:32+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
 layout: document

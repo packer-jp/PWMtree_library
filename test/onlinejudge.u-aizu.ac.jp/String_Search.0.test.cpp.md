@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: string/rolling_hash.hpp
     title: "\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5"
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -102,23 +102,23 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"string/rolling_hash.hpp\"\n\nstruct rolling_hash {\n    static\
-    \ constexpr ull MOD = bit(61) - 1;\n    static vector<ull> pbase;\n    vector<ull>\
-    \ hash;\n    static void resize_pbase(int n) {\n        int sz = pbase.size();\n\
-    \        if (sz > n) return;\n        pbase.resize(n + 1);\n        for (int i\
-    \ : rep(sz - 1, n)) pbase[i + 1] = mul(pbase[i], pbase[1]);\n    }\n    template\
-    \ <typename T> static T calc_mod(T val) {\n        val = (val & MOD) + (val >>\
-    \ 61);\n        if (val >= MOD) val -= MOD;\n        return val;\n    }\n    static\
-    \ ull mul(ull a, ull b) { return calc_mod((__uint128_t)a * b); }\n    static ull\
-    \ concat(ull lhs, ull rhs, int rn) {\n        resize_pbase(rn);\n        return\
-    \ calc_mod(mul(lhs, pbase[rn]) + rhs);\n    }\n    rolling_hash(const string &src)\
-    \ : hash(src.size() + 1) {\n        for (int i : rep(src.size())) hash[i + 1]\
-    \ = calc_mod(mul(hash[i], pbase[1]) + src[i]);\n        resize_pbase(src.size());\n\
-    \    }\n    template <typename T> rolling_hash(const vector<T> &src) : hash(src.size()\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    string/rolling_hash.hpp\"\n\nstruct rolling_hash {\n    static constexpr ull MOD\
+    \ = bit(61) - 1;\n    static vector<ull> pbase;\n    vector<ull> hash;\n    static\
+    \ void resize_pbase(int n) {\n        int sz = pbase.size();\n        if (sz >\
+    \ n) return;\n        pbase.resize(n + 1);\n        for (int i : rep(sz - 1, n))\
+    \ pbase[i + 1] = mul(pbase[i], pbase[1]);\n    }\n    template <typename T> static\
+    \ T calc_mod(T val) {\n        val = (val & MOD) + (val >> 61);\n        if (val\
+    \ >= MOD) val -= MOD;\n        return val;\n    }\n    static ull mul(ull a, ull\
+    \ b) { return calc_mod((__uint128_t)a * b); }\n    static ull concat(ull lhs,\
+    \ ull rhs, int rn) {\n        resize_pbase(rn);\n        return calc_mod(mul(lhs,\
+    \ pbase[rn]) + rhs);\n    }\n    rolling_hash(const string &src) : hash(src.size()\
     \ + 1) {\n        for (int i : rep(src.size())) hash[i + 1] = calc_mod(mul(hash[i],\
-    \ pbase[1]) + src[i]);\n        resize_pbase(src.size());\n    }\n    ull get_hash(int\
-    \ l, int r) const { return calc_mod(MOD - mul(hash[l], pbase[r - l]) + hash[r]);\
+    \ pbase[1]) + src[i]);\n        resize_pbase(src.size());\n    }\n    template\
+    \ <typename T> rolling_hash(const vector<T> &src) : hash(src.size() + 1) {\n \
+    \       for (int i : rep(src.size())) hash[i + 1] = calc_mod(mul(hash[i], pbase[1])\
+    \ + src[i]);\n        resize_pbase(src.size());\n    }\n    ull get_hash(int l,\
+    \ int r) const { return calc_mod(MOD - mul(hash[l], pbase[r - l]) + hash[r]);\
     \ }\n};\nvector<ull> rolling_hash::pbase{1, xor64(MOD >> 1, MOD)};\n#line 3 \"\
     test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp\"\n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp\"\
     \nusing namespace std;\n\nint main() {\n    string t, p;\n    cin >> t >> p;\n\
@@ -137,7 +137,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/String_Search.0.test.cpp

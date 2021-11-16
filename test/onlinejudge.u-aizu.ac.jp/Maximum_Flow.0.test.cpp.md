@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: graph/dinic.hpp
     title: "Dinic \u6CD5"
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -102,54 +102,53 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"graph/dinic.hpp\"\n\ntemplate <typename S> struct dinic {\n  \
-    \  using C = typename S::cap_t;\n    struct _edge {\n        int to, rev;\n  \
-    \      C cap;\n    };\n    struct edge {\n        int from, to;\n        C cap,\
-    \ flow;\n    };\n    vector<vector<_edge>> g;\n    vector<int> level, iter;\n\
-    \    vector<pair<int, int>> pos;\n    dinic(int n) : g(n), level(n), iter(n) {}\n\
-    \    int add_edge(int from, int to, C cap) {\n        int from_id = g[from].size();\n\
-    \        int to_id = g[to].size();\n        if (from == to) ++to_id;\n       \
-    \ g[from].push_back({to, to_id, cap});\n        g[to].push_back({from, from_id,\
-    \ S::zero()});\n        pos.emplace_back(from, from_id);\n        return pos.size()\
-    \ - 1;\n    }\n    void change_edge(int i, C new_cap, C new_flow) {\n        _edge\
-    \ &e = g[pos[i].first][pos[i].second], &re = g[e.to][e.rev];\n        e.cap =\
-    \ new_cap - new_flow;\n        re.cap = new_flow;\n    }\n    C flow(int s, int\
-    \ t, C lim = S::inf()) {\n        auto bfs = [&](int s) -> void {\n          \
-    \  fill(level.begin(), level.end(), -1);\n            queue<int> q;\n        \
-    \    level[s] = 0;\n            q.push(s);\n            while (!q.empty()) {\n\
-    \                int v = q.front();\n                q.pop();\n              \
-    \  for (_edge &e : g[v]) {\n                    if (e.cap == S::zero() || level[e.to]\
-    \ >= 0) continue;\n                    level[e.to] = level[v] + 1;\n         \
-    \           q.push(e.to);\n                }\n            }\n        };\n    \
-    \    auto dfs = [&](auto dfs, int v, int t, C lim) -> C {\n            if (v ==\
-    \ t) return lim;\n            for (int &i = iter[v]; i < g[v].size(); ++i) {\n\
-    \                _edge &e = g[v][i];\n                if (level[v] >= level[e.to]\
-    \ || e.cap == S::zero()) continue;\n                C d = dfs(dfs, e.to, t, lim\
-    \ > e.cap ? e.cap : lim);\n                if (d == S::zero()) continue;\n   \
-    \             e.cap -= d;\n                g[e.to][e.rev].cap += d;\n        \
-    \        return d;\n            }\n            return S::zero();\n        };\n\
-    \        C ret = S::zero();\n        while (true) {\n            bfs(s);\n   \
-    \         if (level[t] < 0 || lim == S::zero()) return ret;\n            fill(iter.begin(),\
-    \ iter.end(), 0);\n            C f;\n            while ((f = dfs(dfs, s, t, lim))\
-    \ != S::zero()) {\n                ret += f;\n                lim -= f;\n    \
-    \        }\n        }\n    }\n    edge get_edge(int i) const {\n        _edge\
-    \ e = g[pos[i].first][pos[i].second], re = g[e.to][e.rev];\n        return {pos[i].first,\
-    \ e.to, e.cap + re.cap, re.cap};\n    }\n    vector<edge> edges() const {\n  \
-    \      vector<edge> ret(pos.size());\n        for (int i : rep(pos.size())) ret[i]\
-    \ = get_edge(i);\n        return ret;\n    }\n    vector<bool> cut(int s) const\
-    \ {\n        vector<bool> ret(g.size());\n        auto dfs = [&](auto dfs, int\
-    \ v) -> void {\n            if (ret[v]) return;\n            ret[v] = true;\n\
-    \            for (_edge e : g[v]) {\n                if (e.cap) dfs(dfs, e.to);\n\
-    \            }\n        };\n        dfs(dfs, s);\n        return ret;\n    }\n\
-    };\n\nstruct ll_dinic {\n    using cap_t = ll;\n    static cap_t zero() { return\
-    \ 0; }\n    static cap_t inf() { return numeric_limits<cap_t>::max(); }\n};\n\
-    #line 3 \"test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp\"\n\n#line 5 \"\
-    test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp\"\nusing namespace std;\n\
-    \nint main() {\n    ll v, e;\n    cin >> v >> e;\n    dinic<ll_dinic> dinic(v);\n\
-    \    while (e--) {\n        int u, v, c;\n        cin >> u >> v >> c;\n      \
-    \  dinic.add_edge(u, v, c);\n    }\n    ll ans = dinic.flow(0, v - 1);\n    cout\
-    \ << ans << endl;\n}\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    graph/dinic.hpp\"\n\ntemplate <typename S> struct dinic {\n    using C = typename\
+    \ S::cap_t;\n    struct _edge {\n        int to, rev;\n        C cap;\n    };\n\
+    \    struct edge {\n        int from, to;\n        C cap, flow;\n    };\n    vector<vector<_edge>>\
+    \ g;\n    vector<int> level, iter;\n    vector<pair<int, int>> pos;\n    dinic(int\
+    \ n) : g(n), level(n), iter(n) {}\n    int add_edge(int from, int to, C cap) {\n\
+    \        int from_id = g[from].size();\n        int to_id = g[to].size();\n  \
+    \      if (from == to) ++to_id;\n        g[from].push_back({to, to_id, cap});\n\
+    \        g[to].push_back({from, from_id, S::zero()});\n        pos.emplace_back(from,\
+    \ from_id);\n        return pos.size() - 1;\n    }\n    void change_edge(int i,\
+    \ C new_cap, C new_flow) {\n        _edge &e = g[pos[i].first][pos[i].second],\
+    \ &re = g[e.to][e.rev];\n        e.cap = new_cap - new_flow;\n        re.cap =\
+    \ new_flow;\n    }\n    C flow(int s, int t, C lim = S::inf()) {\n        auto\
+    \ bfs = [&](int s) -> void {\n            fill(level.begin(), level.end(), -1);\n\
+    \            queue<int> q;\n            level[s] = 0;\n            q.push(s);\n\
+    \            while (!q.empty()) {\n                int v = q.front();\n      \
+    \          q.pop();\n                for (_edge &e : g[v]) {\n               \
+    \     if (e.cap == S::zero() || level[e.to] >= 0) continue;\n                \
+    \    level[e.to] = level[v] + 1;\n                    q.push(e.to);\n        \
+    \        }\n            }\n        };\n        auto dfs = [&](auto dfs, int v,\
+    \ int t, C lim) -> C {\n            if (v == t) return lim;\n            for (int\
+    \ &i = iter[v]; i < g[v].size(); ++i) {\n                _edge &e = g[v][i];\n\
+    \                if (level[v] >= level[e.to] || e.cap == S::zero()) continue;\n\
+    \                C d = dfs(dfs, e.to, t, lim > e.cap ? e.cap : lim);\n       \
+    \         if (d == S::zero()) continue;\n                e.cap -= d;\n       \
+    \         g[e.to][e.rev].cap += d;\n                return d;\n            }\n\
+    \            return S::zero();\n        };\n        C ret = S::zero();\n     \
+    \   while (true) {\n            bfs(s);\n            if (level[t] < 0 || lim ==\
+    \ S::zero()) return ret;\n            fill(iter.begin(), iter.end(), 0);\n   \
+    \         C f;\n            while ((f = dfs(dfs, s, t, lim)) != S::zero()) {\n\
+    \                ret += f;\n                lim -= f;\n            }\n       \
+    \ }\n    }\n    edge get_edge(int i) const {\n        _edge e = g[pos[i].first][pos[i].second],\
+    \ re = g[e.to][e.rev];\n        return {pos[i].first, e.to, e.cap + re.cap, re.cap};\n\
+    \    }\n    vector<edge> edges() const {\n        vector<edge> ret(pos.size());\n\
+    \        for (int i : rep(pos.size())) ret[i] = get_edge(i);\n        return ret;\n\
+    \    }\n    vector<bool> cut(int s) const {\n        vector<bool> ret(g.size());\n\
+    \        auto dfs = [&](auto dfs, int v) -> void {\n            if (ret[v]) return;\n\
+    \            ret[v] = true;\n            for (_edge e : g[v]) {\n            \
+    \    if (e.cap) dfs(dfs, e.to);\n            }\n        };\n        dfs(dfs, s);\n\
+    \        return ret;\n    }\n};\n\nstruct ll_dinic {\n    using cap_t = ll;\n\
+    \    static cap_t zero() { return 0; }\n    static cap_t inf() { return numeric_limits<cap_t>::max();\
+    \ }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp\"\n\n\
+    #line 5 \"test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp\"\nusing namespace\
+    \ std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n    dinic<ll_dinic>\
+    \ dinic(v);\n    while (e--) {\n        int u, v, c;\n        cin >> u >> v >>\
+    \ c;\n        dinic.add_edge(u, v, c);\n    }\n    ll ans = dinic.flow(0, v -\
+    \ 1);\n    cout << ans << endl;\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/6/GRL_6_A\"\
     \n#include \"../../graph/dinic.hpp\"\n\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\n\nint main() {\n    ll v, e;\n    cin >> v >> e;\n    dinic<ll_dinic>\
@@ -162,7 +161,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.0.test.cpp

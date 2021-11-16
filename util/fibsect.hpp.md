@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -94,16 +94,16 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"util/fibsect.hpp\"\n\ntemplate <typename F> auto fibsect(ll lb,\
-    \ ll ub, F f) {\n    if (ub - lb == 1) return make_pair(lb, f(lb));\n    --lb;\n\
-    \    ll a = 1, b = 2;\n    while (a + b < ub - lb) b += a, a = b - a;\n    ll\
-    \ l = lb + a, r = lb + b;\n    auto fl = f(l), fr = f(r);\n    while (true) {\n\
-    \        a = b - a, b -= a;\n        if (r < ub && fl < fr) {\n            if\
-    \ (b == 1) return make_pair(r, fr);\n            l = r, fl = fr;\n           \
-    \ if ((r += b - a) < ub) fr = f(r);\n        } else {\n            if (b == 1)\
-    \ return make_pair(l, fl);\n            r = l, fr = fl;\n            l -= b -\
-    \ a, fl = f(l);\n        }\n    }\n}\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    util/fibsect.hpp\"\n\ntemplate <typename F> auto fibsect(ll lb, ll ub, F f) {\n\
+    \    if (ub - lb == 1) return make_pair(lb, f(lb));\n    --lb;\n    ll a = 1,\
+    \ b = 2;\n    while (a + b < ub - lb) b += a, a = b - a;\n    ll l = lb + a, r\
+    \ = lb + b;\n    auto fl = f(l), fr = f(r);\n    while (true) {\n        a = b\
+    \ - a, b -= a;\n        if (r < ub && fl < fr) {\n            if (b == 1) return\
+    \ make_pair(r, fr);\n            l = r, fl = fr;\n            if ((r += b - a)\
+    \ < ub) fr = f(r);\n        } else {\n            if (b == 1) return make_pair(l,\
+    \ fl);\n            r = l, fr = fl;\n            l -= b - a, fl = f(l);\n    \
+    \    }\n    }\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename F> auto\
     \ fibsect(ll lb, ll ub, F f) {\n    if (ub - lb == 1) return make_pair(lb, f(lb));\n\
     \    --lb;\n    ll a = 1, b = 2;\n    while (a + b < ub - lb) b += a, a = b -\
@@ -118,7 +118,7 @@ data:
   isVerificationFile: false
   path: util/fibsect.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: util/fibsect.hpp

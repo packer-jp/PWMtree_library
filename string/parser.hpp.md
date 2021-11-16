@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -94,30 +94,29 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"string/parser.hpp\"\n\nusing state = string::const_iterator;\n\
-    struct parse_error {};\n\nvoid consume(state &cur, char expected) {\n    if (*cur\
-    \ == expected) {\n        ++cur;\n    } else {\n        cerr << \"Expected '\"\
-    \ << expected << \"' but got '\" << *cur << \"'\" << endl;\n        cerr << \"\
-    Rest string is '\";\n        while (*cur) cerr << *cur++;\n        cerr << \"\
-    '\" << endl;\n        throw parse_error();\n    }\n}\n\nstruct parser {\n    ll\
-    \ expr(state &cur) {\n        ll ret = term(cur);\n        while (true) {\n  \
-    \          if (*cur == '+') {\n                consume(cur, '+');\n          \
-    \      ret += term(cur);\n            } else if (*cur == '-') {\n            \
-    \    consume(cur, '-');\n                ret -= term(cur);\n            } else\
-    \ {\n                break;\n            }\n        }\n        return ret;\n \
-    \   }\n    ll term(state &cur) {\n        ll ret = factor(cur);\n        while\
-    \ (true) {\n            if (*cur == '*') {\n                consume(cur, '*');\n\
-    \                ret *= factor(cur);\n            } else if (*cur == '/') {\n\
-    \                consume(cur, '/');\n                ret /= factor(cur);\n   \
-    \         } else {\n                break;\n            }\n        }\n       \
-    \ return ret;\n    }\n    ll factor(state &cur) {\n        if (*cur == '(') {\n\
-    \            consume(cur, '(');\n            ll ret = expr(cur);\n           \
-    \ consume(cur, ')');\n            return ret;\n        } else {\n            return\
-    \ number(cur);\n        }\n    }\n    ll number(state &cur) {\n        ll ret\
-    \ = 0;\n        while (isdigit(*cur)) {\n            ret *= 10;\n            ret\
-    \ += *cur - '0';\n            ++cur;\n        }\n        return ret;\n    }\n\
-    };\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    string/parser.hpp\"\n\nusing state = string::const_iterator;\nstruct parse_error\
+    \ {};\n\nvoid consume(state &cur, char expected) {\n    if (*cur == expected)\
+    \ {\n        ++cur;\n    } else {\n        cerr << \"Expected '\" << expected\
+    \ << \"' but got '\" << *cur << \"'\" << endl;\n        cerr << \"Rest string\
+    \ is '\";\n        while (*cur) cerr << *cur++;\n        cerr << \"'\" << endl;\n\
+    \        throw parse_error();\n    }\n}\n\nstruct parser {\n    ll expr(state\
+    \ &cur) {\n        ll ret = term(cur);\n        while (true) {\n            if\
+    \ (*cur == '+') {\n                consume(cur, '+');\n                ret +=\
+    \ term(cur);\n            } else if (*cur == '-') {\n                consume(cur,\
+    \ '-');\n                ret -= term(cur);\n            } else {\n           \
+    \     break;\n            }\n        }\n        return ret;\n    }\n    ll term(state\
+    \ &cur) {\n        ll ret = factor(cur);\n        while (true) {\n           \
+    \ if (*cur == '*') {\n                consume(cur, '*');\n                ret\
+    \ *= factor(cur);\n            } else if (*cur == '/') {\n                consume(cur,\
+    \ '/');\n                ret /= factor(cur);\n            } else {\n         \
+    \       break;\n            }\n        }\n        return ret;\n    }\n    ll factor(state\
+    \ &cur) {\n        if (*cur == '(') {\n            consume(cur, '(');\n      \
+    \      ll ret = expr(cur);\n            consume(cur, ')');\n            return\
+    \ ret;\n        } else {\n            return number(cur);\n        }\n    }\n\
+    \    ll number(state &cur) {\n        ll ret = 0;\n        while (isdigit(*cur))\
+    \ {\n            ret *= 10;\n            ret += *cur - '0';\n            ++cur;\n\
+    \        }\n        return ret;\n    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nusing state = string::const_iterator;\n\
     struct parse_error {};\n\nvoid consume(state &cur, char expected) {\n    if (*cur\
     \ == expected) {\n        ++cur;\n    } else {\n        cerr << \"Expected '\"\
@@ -146,7 +145,7 @@ data:
   isVerificationFile: false
   path: string/parser.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: string/parser.hpp

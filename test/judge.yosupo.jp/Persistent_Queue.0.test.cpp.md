@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data_structure/persistent_array.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/persistent_queue
@@ -102,30 +102,30 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"data_structure/persistent_array.hpp\"\n\ntemplate <typename T,\
-    \ int SHIFT> struct persistent_array {\n    using ptr = shared_ptr<persistent_array>;\n\
-    \    static constexpr int BASE = bit(SHIFT);\n    static constexpr int MASK =\
-    \ BASE - 1;\n    T val;\n    array<ptr, BASE> ch;\n    persistent_array(int n\
-    \ = 1, T val = T()) : val(val) {\n        for (int i : rep(BASE)) {\n        \
-    \    int m = (n >> SHIFT) + ((n & MASK) > i);\n            if (m > 1 || m > 0\
-    \ && i > 0) ch[i] = ptr(new persistent_array(m, val));\n        }\n    }\n   \
-    \ persistent_array(T val, const array<ptr, BASE> &ch) : val(val), ch(ch) {}\n\
-    \    persistent_array(T val, const array<ptr, BASE> &ch, int i, ptr chp) : val(val),\
-    \ ch(ch) { this->ch[i] = chp; }\n    T get(int i) const { return i > 0 ? ch[i\
-    \ & MASK]->get(i >> SHIFT) : val; }\n    ptr setp(int i, T val) const {\n    \
-    \    return ptr(i > 0 ? new persistent_array(this->val, ch, i & MASK, ch[i & MASK]->setp(i\
-    \ >> SHIFT, val))\n                         : new persistent_array(val, ch));\n\
-    \    }\n    persistent_array set(int i, T val) const { return *setp(i, val); }\n\
-    };\n#line 3 \"test/judge.yosupo.jp/Persistent_Queue.0.test.cpp\"\n\nint main()\
-    \ {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n    ll q;\n\
-    \    cin >> q;\n    ll il = q, ir = q + 1;\n    vector<persistent_array<ll, 2>>\
-    \ his;\n    his.emplace_back(q + 2, 0);\n    for (ll i : rep(q)) {\n        ll\
-    \ c, t;\n        cin >> c >> t, ++t;\n        if (c == 0) {\n            ll x;\n\
-    \            cin >> x;\n            ll r = his[t].get(ir);\n            his.emplace_back(his[t].set(r,\
-    \ x).set(ir, r + 1));\n        }\n        if (c == 1) {\n            ll l = his[t].get(il);\n\
-    \            cout << his[t].get(l) << '\\n';\n            his.emplace_back(his[t].set(il,\
-    \ l + 1));\n        }\n    }\n}\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    data_structure/persistent_array.hpp\"\n\ntemplate <typename T, int SHIFT> struct\
+    \ persistent_array {\n    using ptr = shared_ptr<persistent_array>;\n    static\
+    \ constexpr int BASE = bit(SHIFT);\n    static constexpr int MASK = BASE - 1;\n\
+    \    T val;\n    array<ptr, BASE> ch;\n    persistent_array(int n = 1, T val =\
+    \ T()) : val(val) {\n        for (int i : rep(BASE)) {\n            int m = (n\
+    \ >> SHIFT) + ((n & MASK) > i);\n            if (m > 1 || m > 0 && i > 0) ch[i]\
+    \ = ptr(new persistent_array(m, val));\n        }\n    }\n    persistent_array(T\
+    \ val, const array<ptr, BASE> &ch) : val(val), ch(ch) {}\n    persistent_array(T\
+    \ val, const array<ptr, BASE> &ch, int i, ptr chp) : val(val), ch(ch) { this->ch[i]\
+    \ = chp; }\n    T get(int i) const { return i > 0 ? ch[i & MASK]->get(i >> SHIFT)\
+    \ : val; }\n    ptr setp(int i, T val) const {\n        return ptr(i > 0 ? new\
+    \ persistent_array(this->val, ch, i & MASK, ch[i & MASK]->setp(i >> SHIFT, val))\n\
+    \                         : new persistent_array(val, ch));\n    }\n    persistent_array\
+    \ set(int i, T val) const { return *setp(i, val); }\n};\n#line 3 \"test/judge.yosupo.jp/Persistent_Queue.0.test.cpp\"\
+    \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
+    \    ll q;\n    cin >> q;\n    ll il = q, ir = q + 1;\n    vector<persistent_array<ll,\
+    \ 2>> his;\n    his.emplace_back(q + 2, 0);\n    for (ll i : rep(q)) {\n     \
+    \   ll c, t;\n        cin >> c >> t, ++t;\n        if (c == 0) {\n           \
+    \ ll x;\n            cin >> x;\n            ll r = his[t].get(ir);\n         \
+    \   his.emplace_back(his[t].set(r, x).set(ir, r + 1));\n        }\n        if\
+    \ (c == 1) {\n            ll l = his[t].get(il);\n            cout << his[t].get(l)\
+    \ << '\\n';\n            his.emplace_back(his[t].set(il, l + 1));\n        }\n\
+    \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#include\
     \ \"../../data_structure/persistent_array.hpp\"\n\nint main() {\n    cin.tie(nullptr);\n\
     \    ios_base::sync_with_stdio(false);\n    ll q;\n    cin >> q;\n    ll il =\
@@ -142,8 +142,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-11-16 21:52:32+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
 layout: document

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Unionfind.0.test.cpp
     title: test/judge.yosupo.jp/Unionfind.0.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/uf.hpp\"\n\n#line 1 \"template.hpp\"\n#include\
@@ -97,17 +97,17 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"data_structure/uf.hpp\"\n\nstruct uf {\n    int n;\n    vector<int>\
-    \ ps;\n    uf(int n) : n(n), ps(n, -1) {}\n    int find(int i) {\n        if (ps[i]\
-    \ < 0) return i;\n        return ps[i] = find(ps[i]);\n    }\n    int size(int\
-    \ i) { return -ps[find(i)]; }\n    void unite(int i, int j) {\n        if ((i\
-    \ = find(i)) == (j = find(j))) return;\n        if (-ps[i] < -ps[j]) swap(i, j);\n\
-    \        ps[i] += ps[j];\n        ps[j] = i;\n    }\n    bool same(int i, int\
-    \ j) { return find(i) == find(j); }\n    vector<vector<int>> groups() {\n    \
-    \    vector<vector<int>> ret(n);\n        for (int i : rep(n)) ret[find(i)].push_back(i);\n\
-    \        ret.erase(remove_if(all(ret), [](const vector<int> &v) { return v.empty();\
-    \ }), ret.end());\n        return ret;\n    }\n};\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    data_structure/uf.hpp\"\n\nstruct uf {\n    int n;\n    vector<int> ps;\n    uf(int\
+    \ n) : n(n), ps(n, -1) {}\n    int find(int i) {\n        if (ps[i] < 0) return\
+    \ i;\n        return ps[i] = find(ps[i]);\n    }\n    int size(int i) { return\
+    \ -ps[find(i)]; }\n    void unite(int i, int j) {\n        if ((i = find(i)) ==\
+    \ (j = find(j))) return;\n        if (-ps[i] < -ps[j]) swap(i, j);\n        ps[i]\
+    \ += ps[j];\n        ps[j] = i;\n    }\n    bool same(int i, int j) { return find(i)\
+    \ == find(j); }\n    vector<vector<int>> groups() {\n        vector<vector<int>>\
+    \ ret(n);\n        for (int i : rep(n)) ret[find(i)].push_back(i);\n        ret.erase(remove_if(all(ret),\
+    \ [](const vector<int> &v) { return v.empty(); }), ret.end());\n        return\
+    \ ret;\n    }\n};\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\nstruct uf {\n    int n;\n\
     \    vector<int> ps;\n    uf(int n) : n(n), ps(n, -1) {}\n    int find(int i)\
     \ {\n        if (ps[i] < 0) return i;\n        return ps[i] = find(ps[i]);\n \
@@ -123,8 +123,8 @@ data:
   isVerificationFile: false
   path: data_structure/uf.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-11-16 21:52:32+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/judge.yosupo.jp/Unionfind.0.test.cpp
 documentation_of: data_structure/uf.hpp

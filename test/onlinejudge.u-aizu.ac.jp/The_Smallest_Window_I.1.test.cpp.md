@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: data_structure/segtree.hpp
     title: Segment Tree
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -102,45 +102,44 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"data_structure/segtree.hpp\"\n\ntemplate <typename S> struct segtree\
-    \ {\n    using V = typename S::val_t;\n    int n, size;\n    vector<V> val;\n\
-    \    segtree(int n) : segtree(vector(n, S::e())) {}\n    segtree(const vector<V>\
-    \ &src) : n(src.size()) {\n        for (size = 1; size < n; size <<= 1) {}\n \
-    \       val.resize(size << 1);\n        copy(all(src), val.begin() + size);\n\
-    \        for (int i : per(1, size)) val[i] = S::op(val[i << 1 | 0], val[i << 1\
-    \ | 1]);\n    }\n    void set(int i, const V &a) {\n        val[i += size] = a;\n\
-    \        while (i >>= 1) val[i] = S::op(val[i << 1 | 0], val[i << 1 | 1]);\n \
-    \   }\n    V get(int i) const { return val[i + size]; }\n    V prod(int l, int\
-    \ r) const {\n        V a = S::e(), b = S::e();\n        for (l += size, r +=\
-    \ size; l < r; l >>= 1, r >>= 1) {\n            if (l & 1) a = S::op(a, val[l++]);\n\
-    \            if (r & 1) b = S::op(val[--r], b);\n        }\n        return S::op(a,\
-    \ b);\n    }\n    template <typename F> int max_right(int l, F f) const {\n  \
-    \      if (l == n) return n;\n        V a = S::e();\n        l += size;\n    \
-    \    do {\n            while (~l & 1) l >>= 1;\n            if (!f(S::op(a, val[l])))\
-    \ {\n                while (l < size) {\n                    l = l << 1;\n   \
-    \                 if (f(S::op(a, val[l]))) a = S::op(a, val[l++]);\n         \
-    \       }\n                return l - size;\n            }\n            a = S::op(a,\
-    \ val[l++]);\n        } while ((l & -l) != l);\n        return n;\n    }\n   \
-    \ template <typename F> int min_left(int r, F f) const {\n        if (r == 0)\
-    \ return 0;\n        V a = S::e();\n        r += size;\n        do {\n       \
-    \     r--;\n            while (r > 1 && r & 1) r >>= 1;\n            if (!f(S::op(val[r],\
-    \ a))) {\n                while (r < size) {\n                    r = r << 1 |\
-    \ 1;\n                    if (f(S::op(val[r], a))) a = S::op(val[r--], a);\n \
-    \               }\n                return r + 1 - size;\n            }\n     \
-    \       a = S::op(val[r], a);\n        } while ((r & -r) != r);\n        return\
-    \ 0;\n    }\n};\n\nstruct min_monoid {\n    using val_t = ll;\n    static val_t\
-    \ op(val_t a, val_t b) { return min(a, b); }\n    static val_t e() { return LLONG_MAX;\
-    \ }\n};\n\nstruct sum_monoid {\n    using val_t = ll;\n    static val_t op(val_t\
-    \ a, val_t b) { return a + b; }\n    static val_t e() { return 0; }\n};\n#line\
-    \ 3 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp\"\n\n#line\
-    \ 5 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp\"\nusing\
-    \ namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n    vector<ll>\
-    \ a(n);\n    for (ll i : rep(n)) cin >> a[i];\n    segtree<sum_monoid> st(a);\n\
-    \    ll ans = LLONG_MAX;\n    for (int r = 1; r <= n; r++) {\n        ll l = st.min_left(r,\
-    \ [&](ll x) { return x < s; });\n        if (l > 0) chmin(ans, r - l + 1);\n \
-    \   }\n    if (ans == LLONG_MAX) {\n        cout << 0 << endl;\n    } else {\n\
-    \        cout << ans << endl;\n    }\n}\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    data_structure/segtree.hpp\"\n\ntemplate <typename S> struct segtree {\n    using\
+    \ V = typename S::val_t;\n    int n, size;\n    vector<V> val;\n    segtree(int\
+    \ n) : segtree(vector(n, S::e())) {}\n    segtree(const vector<V> &src) : n(src.size())\
+    \ {\n        for (size = 1; size < n; size <<= 1) {}\n        val.resize(size\
+    \ << 1);\n        copy(all(src), val.begin() + size);\n        for (int i : per(1,\
+    \ size)) val[i] = S::op(val[i << 1 | 0], val[i << 1 | 1]);\n    }\n    void set(int\
+    \ i, const V &a) {\n        val[i += size] = a;\n        while (i >>= 1) val[i]\
+    \ = S::op(val[i << 1 | 0], val[i << 1 | 1]);\n    }\n    V get(int i) const {\
+    \ return val[i + size]; }\n    V prod(int l, int r) const {\n        V a = S::e(),\
+    \ b = S::e();\n        for (l += size, r += size; l < r; l >>= 1, r >>= 1) {\n\
+    \            if (l & 1) a = S::op(a, val[l++]);\n            if (r & 1) b = S::op(val[--r],\
+    \ b);\n        }\n        return S::op(a, b);\n    }\n    template <typename F>\
+    \ int max_right(int l, F f) const {\n        if (l == n) return n;\n        V\
+    \ a = S::e();\n        l += size;\n        do {\n            while (~l & 1) l\
+    \ >>= 1;\n            if (!f(S::op(a, val[l]))) {\n                while (l <\
+    \ size) {\n                    l = l << 1;\n                    if (f(S::op(a,\
+    \ val[l]))) a = S::op(a, val[l++]);\n                }\n                return\
+    \ l - size;\n            }\n            a = S::op(a, val[l++]);\n        } while\
+    \ ((l & -l) != l);\n        return n;\n    }\n    template <typename F> int min_left(int\
+    \ r, F f) const {\n        if (r == 0) return 0;\n        V a = S::e();\n    \
+    \    r += size;\n        do {\n            r--;\n            while (r > 1 && r\
+    \ & 1) r >>= 1;\n            if (!f(S::op(val[r], a))) {\n                while\
+    \ (r < size) {\n                    r = r << 1 | 1;\n                    if (f(S::op(val[r],\
+    \ a))) a = S::op(val[r--], a);\n                }\n                return r +\
+    \ 1 - size;\n            }\n            a = S::op(val[r], a);\n        } while\
+    \ ((r & -r) != r);\n        return 0;\n    }\n};\n\nstruct min_monoid {\n    using\
+    \ val_t = ll;\n    static val_t op(val_t a, val_t b) { return min(a, b); }\n \
+    \   static val_t e() { return LLONG_MAX; }\n};\n\nstruct sum_monoid {\n    using\
+    \ val_t = ll;\n    static val_t op(val_t a, val_t b) { return a + b; }\n    static\
+    \ val_t e() { return 0; }\n};\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp\"\
+    \n\n#line 5 \"test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp\"\
+    \nusing namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n   \
+    \ vector<ll> a(n);\n    for (ll i : rep(n)) cin >> a[i];\n    segtree<sum_monoid>\
+    \ st(a);\n    ll ans = LLONG_MAX;\n    for (int r = 1; r <= n; r++) {\n      \
+    \  ll l = st.min_left(r, [&](ll x) { return x < s; });\n        if (l > 0) chmin(ans,\
+    \ r - l + 1);\n    }\n    if (ans == LLONG_MAX) {\n        cout << 0 << endl;\n\
+    \    } else {\n        cout << ans << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/3/DSL_3_A\"\
     \n#include \"../../data_structure/segtree.hpp\"\n\n#include <bits/stdc++.h>\n\
     using namespace std;\n\nint main() {\n    ll n, s;\n    cin >> n >> s;\n    vector<ll>\
@@ -155,7 +154,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/The_Smallest_Window_I.1.test.cpp

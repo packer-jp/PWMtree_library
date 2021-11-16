@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: graph/wf.hpp
     title: "Warshall-Floyd \u6CD5"
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -102,9 +102,9 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"graph/wf.hpp\"\n\ntemplate <typename T, T INF = numeric_limits<T>::max()>\
-    \ void wf(vector<vector<T>> &g) {\n    int n = g.size();\n    for (int k : rep(n))\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    graph/wf.hpp\"\n\ntemplate <typename T, T INF = numeric_limits<T>::max()> void\
+    \ wf(vector<vector<T>> &g) {\n    int n = g.size();\n    for (int k : rep(n))\
     \ {\n        for (int i : rep(n)) {\n            for (int j : rep(n)) {\n    \
     \            if (g[i][k] != INF && g[k][j] != INF) chmin(g[i][j], g[i][k] + g[k][j]);\n\
     \            }\n        }\n    }\n}\n#line 3 \"test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp\"\
@@ -135,7 +135,7 @@ data:
   isVerificationFile: true
   path: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -97,30 +97,30 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"data_structure/splay_tree.hpp\"\n\ntemplate <typename T> struct\
-    \ splay_tree {\n    struct node {\n        node *left, *right, *par;\n       \
-    \ int size;\n        T val;\n        node(T val) : left(nullptr), right(nullptr),\
-    \ par(nullptr), size(1), val(val) {}\n        void rotate() {\n            node\
-    \ *p, *pp, *c;\n            p = par, pp = p->par;\n            if (p->left ==\
-    \ this) {\n                c = right, right = p, p->left = c;\n            } else\
-    \ {\n                c = left, left = p, p->right = c;\n            }\n      \
-    \      if (pp) {\n                if (pp->left == p) {\n                    pp->left\
-    \ = this;\n                } else {\n                    pp->right = this;\n \
-    \               }\n            }\n            if (c) c->par = p;\n           \
-    \ par = pp, p->par = this;\n            p->update();\n            update();\n\
-    \        }\n        int state() {\n            if (!par) { return 0; }\n     \
-    \       if (par->left == this) {\n                return 1;\n            } else\
-    \ {\n                return -1;\n            }\n        }\n        void splay()\
-    \ {\n            while (state() != 0) {\n                if (par->state() == 0)\
-    \ {\n                    rotate();\n                } else if (state() == par->state())\
-    \ {\n                    par->rotate(), rotate();\n                } else {\n\
-    \                    rotate(), rotate();\n                }\n            }\n \
-    \       }\n        void update() {\n            size = 1;\n            if (left)\
-    \ size += left->size;\n            if (right) size += right->size;\n        }\n\
-    \    };\n    node *root;\n    splay_tree(node *root = nullptr) : root(root) {}\n\
-    \    int size() { return root ? root->size : 0; }\n    node *get_node(int i) {\n\
-    \        node *cur = root;\n        while (true) {\n            int size_l = cur->left\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    data_structure/splay_tree.hpp\"\n\ntemplate <typename T> struct splay_tree {\n\
+    \    struct node {\n        node *left, *right, *par;\n        int size;\n   \
+    \     T val;\n        node(T val) : left(nullptr), right(nullptr), par(nullptr),\
+    \ size(1), val(val) {}\n        void rotate() {\n            node *p, *pp, *c;\n\
+    \            p = par, pp = p->par;\n            if (p->left == this) {\n     \
+    \           c = right, right = p, p->left = c;\n            } else {\n       \
+    \         c = left, left = p, p->right = c;\n            }\n            if (pp)\
+    \ {\n                if (pp->left == p) {\n                    pp->left = this;\n\
+    \                } else {\n                    pp->right = this;\n           \
+    \     }\n            }\n            if (c) c->par = p;\n            par = pp,\
+    \ p->par = this;\n            p->update();\n            update();\n        }\n\
+    \        int state() {\n            if (!par) { return 0; }\n            if (par->left\
+    \ == this) {\n                return 1;\n            } else {\n              \
+    \  return -1;\n            }\n        }\n        void splay() {\n            while\
+    \ (state() != 0) {\n                if (par->state() == 0) {\n               \
+    \     rotate();\n                } else if (state() == par->state()) {\n     \
+    \               par->rotate(), rotate();\n                } else {\n         \
+    \           rotate(), rotate();\n                }\n            }\n        }\n\
+    \        void update() {\n            size = 1;\n            if (left) size +=\
+    \ left->size;\n            if (right) size += right->size;\n        }\n    };\n\
+    \    node *root;\n    splay_tree(node *root = nullptr) : root(root) {}\n    int\
+    \ size() { return root ? root->size : 0; }\n    node *get_node(int i) {\n    \
+    \    node *cur = root;\n        while (true) {\n            int size_l = cur->left\
     \ ? cur->left->size : 0;\n            if (i < size_l) cur = cur->left;\n     \
     \       if (i == size_l) {\n                cur->splay();\n                return\
     \ root = cur;\n            }\n            if (i > size_l) cur = cur->right, i\
@@ -203,7 +203,7 @@ data:
   isVerificationFile: false
   path: data_structure/splay_tree.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/Vector.0.test.cpp

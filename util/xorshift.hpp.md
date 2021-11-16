@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -94,10 +94,10 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"util/xorshift.hpp\"\n\ntemplate <typename T> T xor64(T lb, T ub)\
-    \ {\n    static ull x = 88172645463325252ull;\n    x ^= x << 7;\n    return lb\
-    \ + (x ^= x >> 9) % (ub - lb);\n}\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    util/xorshift.hpp\"\n\ntemplate <typename T> T xor64(T lb, T ub) {\n    static\
+    \ ull x = 88172645463325252ull;\n    x ^= x << 7;\n    return lb + (x ^= x >>\
+    \ 9) % (ub - lb);\n}\n"
   code: "#pragma once\n\n#include \"../template.hpp\"\n\ntemplate <typename T> T xor64(T\
     \ lb, T ub) {\n    static ull x = 88172645463325252ull;\n    x ^= x << 7;\n  \
     \  return lb + (x ^= x >> 9) % (ub - lb);\n}"
@@ -106,7 +106,7 @@ data:
   isVerificationFile: false
   path: util/xorshift.hpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: util/xorshift.hpp

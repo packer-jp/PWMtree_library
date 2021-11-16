@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/uf.hpp
     title: Union-Find Tree
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/unionfind
@@ -102,21 +102,21 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"data_structure/uf.hpp\"\n\nstruct uf {\n    int n;\n    vector<int>\
-    \ ps;\n    uf(int n) : n(n), ps(n, -1) {}\n    int find(int i) {\n        if (ps[i]\
-    \ < 0) return i;\n        return ps[i] = find(ps[i]);\n    }\n    int size(int\
-    \ i) { return -ps[find(i)]; }\n    void unite(int i, int j) {\n        if ((i\
-    \ = find(i)) == (j = find(j))) return;\n        if (-ps[i] < -ps[j]) swap(i, j);\n\
-    \        ps[i] += ps[j];\n        ps[j] = i;\n    }\n    bool same(int i, int\
-    \ j) { return find(i) == find(j); }\n    vector<vector<int>> groups() {\n    \
-    \    vector<vector<int>> ret(n);\n        for (int i : rep(n)) ret[find(i)].push_back(i);\n\
-    \        ret.erase(remove_if(all(ret), [](const vector<int> &v) { return v.empty();\
-    \ }), ret.end());\n        return ret;\n    }\n};\n#line 3 \"test/judge.yosupo.jp/Unionfind.0.test.cpp\"\
-    \n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
-    \    ll n, q;\n    cin >> n >> q;\n    uf uf(n);\n    while (q--) {\n        ll\
-    \ t, u, v;\n        cin >> t >> u >> v;\n        if (t == 0) uf.unite(u, v);\n\
-    \        if (t == 1) cout << uf.same(u, v) << endl;\n    }\n}\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    data_structure/uf.hpp\"\n\nstruct uf {\n    int n;\n    vector<int> ps;\n    uf(int\
+    \ n) : n(n), ps(n, -1) {}\n    int find(int i) {\n        if (ps[i] < 0) return\
+    \ i;\n        return ps[i] = find(ps[i]);\n    }\n    int size(int i) { return\
+    \ -ps[find(i)]; }\n    void unite(int i, int j) {\n        if ((i = find(i)) ==\
+    \ (j = find(j))) return;\n        if (-ps[i] < -ps[j]) swap(i, j);\n        ps[i]\
+    \ += ps[j];\n        ps[j] = i;\n    }\n    bool same(int i, int j) { return find(i)\
+    \ == find(j); }\n    vector<vector<int>> groups() {\n        vector<vector<int>>\
+    \ ret(n);\n        for (int i : rep(n)) ret[find(i)].push_back(i);\n        ret.erase(remove_if(all(ret),\
+    \ [](const vector<int> &v) { return v.empty(); }), ret.end());\n        return\
+    \ ret;\n    }\n};\n#line 3 \"test/judge.yosupo.jp/Unionfind.0.test.cpp\"\n\nint\
+    \ main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n   \
+    \ ll n, q;\n    cin >> n >> q;\n    uf uf(n);\n    while (q--) {\n        ll t,\
+    \ u, v;\n        cin >> t >> u >> v;\n        if (t == 0) uf.unite(u, v);\n  \
+    \      if (t == 1) cout << uf.same(u, v) << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#include \"\
     ../../data_structure/uf.hpp\"\n\nint main() {\n    cin.tie(nullptr);\n    ios_base::sync_with_stdio(false);\n\
     \    ll n, q;\n    cin >> n >> q;\n    uf uf(n);\n    while (q--) {\n        ll\
@@ -128,8 +128,8 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Unionfind.0.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-11-16 21:52:32+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Unionfind.0.test.cpp
 layout: document

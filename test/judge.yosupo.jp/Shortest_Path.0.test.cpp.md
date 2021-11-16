@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: graph/dijkstra.hpp
     title: "Dijkstra \u6CD5"
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -102,24 +102,24 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n#line 4 \"graph/dijkstra.hpp\"\n\ntemplate <typename S> struct dijkstra\
-    \ {\n    using D = typename S::dist_t;\n    using C = typename S::cost_t;\n  \
-    \  struct edge {\n        int to;\n        C cost;\n    };\n    vector<vector<edge>>\
-    \ g;\n    dijkstra(int n) : g(n) {}\n    void add_edge(int from, int to, const\
-    \ C &cost) { g[from].push_back({to, cost}); }\n    pair<vector<D>, vector<int>>\
-    \ get(int s, const D &base = D()) const {\n        vector<D> dist(g.size(), S::inf());\n\
-    \        vector<int> prev(g.size(), -1);\n        using P = pair<D, int>;\n  \
-    \      priority_queue_rev<P> pq;\n        dist[s] = base;\n        pq.emplace(base,\
-    \ s);\n        while (!pq.empty()) {\n            auto [d, from] = pq.top();\n\
-    \            pq.pop();\n            if (dist[from] < d) continue;\n          \
-    \  for (auto [to, cost] : g[from]) {\n                D nd = d + cost;\n     \
-    \           if (nd < dist[to]) {\n                    dist[to] = nd;\n       \
-    \             prev[to] = from;\n                    pq.emplace(nd, to);\n    \
-    \            }\n            }\n        }\n        return {dist, prev};\n    }\n\
-    };\n\nstruct ll_dijkstra {\n    using dist_t = ll;\n    using cost_t = ll;\n \
-    \   static dist_t inf() { return LLONG_MAX; }\n};\n#line 3 \"test/judge.yosupo.jp/Shortest_Path.0.test.cpp\"\
-    \n\nint main() {\n    ll n, m, s, t;\n    cin >> n >> m >> s >> t;\n    dijkstra<ll_dijkstra>\
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line 4 \"\
+    graph/dijkstra.hpp\"\n\ntemplate <typename S> struct dijkstra {\n    using D =\
+    \ typename S::dist_t;\n    using C = typename S::cost_t;\n    struct edge {\n\
+    \        int to;\n        C cost;\n    };\n    vector<vector<edge>> g;\n    dijkstra(int\
+    \ n) : g(n) {}\n    void add_edge(int from, int to, const C &cost) { g[from].push_back({to,\
+    \ cost}); }\n    pair<vector<D>, vector<int>> get(int s, const D &base = D())\
+    \ const {\n        vector<D> dist(g.size(), S::inf());\n        vector<int> prev(g.size(),\
+    \ -1);\n        using P = pair<D, int>;\n        priority_queue_rev<P> pq;\n \
+    \       dist[s] = base;\n        pq.emplace(base, s);\n        while (!pq.empty())\
+    \ {\n            auto [d, from] = pq.top();\n            pq.pop();\n         \
+    \   if (dist[from] < d) continue;\n            for (auto [to, cost] : g[from])\
+    \ {\n                D nd = d + cost;\n                if (nd < dist[to]) {\n\
+    \                    dist[to] = nd;\n                    prev[to] = from;\n  \
+    \                  pq.emplace(nd, to);\n                }\n            }\n   \
+    \     }\n        return {dist, prev};\n    }\n};\n\nstruct ll_dijkstra {\n   \
+    \ using dist_t = ll;\n    using cost_t = ll;\n    static dist_t inf() { return\
+    \ LLONG_MAX; }\n};\n#line 3 \"test/judge.yosupo.jp/Shortest_Path.0.test.cpp\"\n\
+    \nint main() {\n    ll n, m, s, t;\n    cin >> n >> m >> s >> t;\n    dijkstra<ll_dijkstra>\
     \ dij(n);\n    while (m--) {\n        int a, b, c;\n        cin >> a >> b >> c;\n\
     \        dij.add_edge(a, b, c);\n    }\n    auto [dist, prev] = dij.get(s);\n\
     \    if (prev[t] == -1) {\n        cout << -1 << endl;\n        return 0;\n  \
@@ -143,7 +143,7 @@ data:
   isVerificationFile: true
   path: test/judge.yosupo.jp/Shortest_Path.0.test.cpp
   requiredBy: []
-  timestamp: '2021-11-16 21:28:12+09:00'
+  timestamp: '2021-11-16 21:52:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/judge.yosupo.jp/Shortest_Path.0.test.cpp

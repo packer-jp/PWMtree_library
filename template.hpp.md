@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/cht.hpp
     title: Convex Hull Trick
   - icon: ':x:'
@@ -14,7 +14,7 @@ data:
   - icon: ':x:'
     path: data_structure/lazy_segtree.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1 Segment Tree"
-  - icon: ':x:'
+  - icon: ':question:'
     path: data_structure/persistent_array.hpp
     title: "\u5B8C\u5168\u6C38\u7D9A\u914D\u5217"
   - icon: ':x:'
@@ -26,7 +26,7 @@ data:
   - icon: ':x:'
     path: data_structure/splay_tree.hpp
     title: Splay Tree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/uf.hpp
     title: Union-Find Tree
   - icon: ':x:'
@@ -89,7 +89,7 @@ data:
   - icon: ':x:'
     path: math/modint.hpp
     title: modint
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/modlog.hpp
     title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C"
   - icon: ':x:'
@@ -147,7 +147,7 @@ data:
   - icon: ':x:'
     path: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
     title: test/judge.yosupo.jp/Determinant_of_Matrix.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
     title: test/judge.yosupo.jp/Discrete_Logaritm.0.test.cpp
   - icon: ':x:'
@@ -159,13 +159,13 @@ data:
   - icon: ':x:'
     path: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
     title: test/judge.yosupo.jp/Kth_Term_of_Linearly_Recurrent_Sequence.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
     title: test/judge.yosupo.jp/Line_Add_Get_Min.0.test.cpp
   - icon: ':x:'
     path: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
     title: test/judge.yosupo.jp/Log_of_Formal_Power_Series.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
     title: test/judge.yosupo.jp/Persistent_Queue.0.test.cpp
   - icon: ':x:'
@@ -186,7 +186,7 @@ data:
   - icon: ':x:'
     path: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
     title: test/judge.yosupo.jp/Subset_Convolution.0.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/judge.yosupo.jp/Unionfind.0.test.cpp
     title: test/judge.yosupo.jp/Unionfind.0.test.cpp
   - icon: ':x:'
@@ -275,7 +275,7 @@ data:
     title: test/unit/permutation.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -361,8 +361,7 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}\n"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n"
   code: "#include <bits/stdc++.h>\nusing namespace std;\n\n#define all(a) begin(a),\
     \ end(a)\n#define rall(a) rbegin(a), rend(a)\n#define uniq(a) (a).erase(unique(all(a)),\
     \ (a).end())\nusing ll = long long;\nusing ull = unsigned long long;\nusing pll\
@@ -445,8 +444,7 @@ data:
     \        return is;\n    }\n    friend ostream &operator<<(ostream &os, const\
     \ modint &a) { return os << a.val; }\n};\ntemplate <typename F> ll bisect(ll ok,\
     \ ll ng, F f) {\n    while (abs(ok - ng) > 1) {\n        ll mid = (ok + ng) /\
-    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\nint main()\
-    \ {}"
+    \ 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}"
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
@@ -493,8 +491,8 @@ data:
   - data_structure/persistent_uf.hpp
   - data_structure/persistent_array.hpp
   - data_structure/fenwick_tree.hpp
-  timestamp: '2021-11-16 21:28:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-11-16 21:52:32+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/onlinejudge.u-aizu.ac.jp/All_Pairs_Shortest_Path.0.test.cpp
   - test/onlinejudge.u-aizu.ac.jp/Maximum_Flow.1.test.cpp
